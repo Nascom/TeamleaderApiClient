@@ -1,5 +1,5 @@
 # TeamleaderApiClient
-PHP client to connect to the Teamleader API.
+PHP client to connect to the [Teamleader API](http://apidocs.teamleader.be/index.php).
 
 ## Installation
 The package is available via composer:
@@ -13,7 +13,9 @@ First, you'll need to provide a client that can make HTTP requests.
 It has to implement the `HttpClientInterface`. A client using Guzzle
 is already available in the package.
 
-```
+```php
+<?php
+
 use Nascom\TeamleaderApiClient\Http\HttpClient\GuzzleHttpClient;
 
 $guzzle = new \Guzzle\Client(['base_uri' => 'https://www.teamleader.be/api/']);
@@ -22,7 +24,9 @@ $httpClient = new GuzzleHttpClient($guzzle);
 
 You can use this HttpClient to instantiate the actual API client.
 You'll have to provide your Teamleader API credentials as well.
-```
+```php
+<?php
+
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
 
 $teamleaderParameters = [
@@ -42,7 +46,9 @@ be passed to the client's `handle()` method, which will return a Response object
 All available requests can be found [here](https://github.com/Nascom/TeamleaderApiClient/tree/master/src/Request).
 
 For example, here is how you could fetch the details of a project:
-```
+```php
+<?php
+
 use Nascom\TeamleaderApiClient\Request\Project\RetrieveProjectRequest;
 
 $projectsRequest = new RetrieveProjectRequest(23);
@@ -55,7 +61,9 @@ echo $response->getData(); // Returns the Teamleader JSON response as a string.
 ### Providing extra options
 Extra options can be passed to the ApiClient. These will be merged with some
 default options, and passed to the HttpClient on making a request.
-```
+```php
+<?php
+
 $client = new ApiClient(
     $httpClient,
     $teamleaderParameters,
@@ -68,7 +76,9 @@ You can create a custom HttpClient to handle requests. All it has to do is
 implement the `HttpClientInterface`. You could, for example, implement a client
 using curl.
 
-```
+```php
+<?php
+
 use Nascom\TeamleaderApiClient\Http\HttpClient\HttpClientInterface;
 
 class CurlHttpClient implements HttpClientInterface
@@ -93,6 +103,6 @@ class CurlHttpClient implements HttpClientInterface
 
 $client = new ApiClient(
     new CurlHttpCLient(),
-    $teamleaderParameters,
+    $teamleaderParameters
 );
 ```
