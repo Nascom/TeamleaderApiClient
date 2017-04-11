@@ -1,0 +1,31 @@
+{
+  "name": "nascom/teamleader-api-client",
+  "description": "PHP Client to connect to the Teamleader API ",
+  "type": "library",
+  "authors": [{
+    "name": "Stijn De Meyere",
+    "role": "Lead Developer"
+  },
+  {
+    "name": "Stephan Bisschop",
+    "role": "Collaborator"
+  },
+  {
+    "name": "Mark Gerarts",
+    "role": "Collaborator"
+  }],
+  "keywords" : [
+    "Teamleader",
+    "api"
+  ],
+  "license": "MIT",
+  "require" : {
+    "php": ">=5.6",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "autoload" : {
+    "psr-0" : {
+      "Nascom\\TeamleaderApiClient":  ["src"]
+    }
+  }
+}
