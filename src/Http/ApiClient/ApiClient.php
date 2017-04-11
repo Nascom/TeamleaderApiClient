@@ -49,7 +49,7 @@ class ApiClient implements ApiClientInterface
     {
         $this->client = $client;
         $this->teamleaderApiParameters = $teamleaderApiParameters;
-        $this->defaultOptions = array_merge_recursive($this->defaultOptions, $defaultOptions);
+        $this->defaultOptions = array_merge($this->defaultOptions, $defaultOptions);
     }
 
     /**
