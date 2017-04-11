@@ -1,6 +1,6 @@
 {
   "name": "nascom/teamleader-api-client",
-  "description": "PHP Client to connect to the Teamleader API ",
+  "description": "PHP client to connect to the Teamleader API ",
   "type": "library",
   "authors": [{
     "name": "Stijn De Meyere",
