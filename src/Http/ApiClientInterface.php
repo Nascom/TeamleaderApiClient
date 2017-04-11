@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Http;
 
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
+use Nascom\TeamleaderApiClient\Response\Response;
 
 /**
  * Interface ApiClientInterface
@@ -12,10 +13,8 @@ use Nascom\TeamleaderApiClient\Request\RequestInterface;
 interface ApiClientInterface
 {
     /**
-     * Returns the response's body, or an array containing possible errors.
-     *
      * @param RequestInterface $query
-     * @return array|string
+     * @return Response
      */
     public function handle(RequestInterface $query);
 }

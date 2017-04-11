@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Http;
 
 use GuzzleHttp\ClientInterface;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
+use Nascom\TeamleaderApiClient\Response\Response;
 
 /**
  * Class ApiClient
@@ -62,7 +63,7 @@ class ApiClient implements ApiClientInterface
             $this->getOptions($request)
         );
 
-        return $response->getBody()->getContents();
+        return new Response($response->getBody()->getContents());
     }
 
     /**
