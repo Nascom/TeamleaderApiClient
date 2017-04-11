@@ -1,6 +1,6 @@
 <?php
 
-namespace Nascom\TeamleaderApiClient\Http;
+namespace Nascom\TeamleaderApiClient\Http\ApiClient;
 
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
 use Nascom\TeamleaderApiClient\Response\Response;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Nascom\TeamleaderApiClient\Http;
+namespace Nascom\TeamleaderApiClient\Http\ApiClient;
 
-use GuzzleHttp\ClientInterface;
+use Nascom\TeamleaderApiClient\Http\HttpClient\HttpClientInterface;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
 use Nascom\TeamleaderApiClient\Response\Response;
 
@@ -14,7 +14,7 @@ use Nascom\TeamleaderApiClient\Response\Response;
 class ApiClient implements ApiClientInterface
 {
     /**
-     * @var ClientInterface
+     * @var HttpClientInterface
      */
     protected $client;
 
@@ -36,13 +36,13 @@ class ApiClient implements ApiClientInterface
     /**
      * ApiClient constructor.
      *
-     * @param ClientInterface $client
+     * @param HttpClientInterface $client
      * @param $teamleaderApiParameters
      * @param array $defaultOptions
      */
     public function __construct
     (
-        ClientInterface $client,
+        HttpClientInterface $client,
         $teamleaderApiParameters,
         array $defaultOptions = []
     )
@@ -63,7 +63,7 @@ class ApiClient implements ApiClientInterface
             $this->getOptions($request)
         );
 
-        return new Response($response->getBody()->getContents());
+        return new Response($response);
     }
 
     /**
