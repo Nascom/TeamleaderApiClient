@@ -17,7 +17,7 @@ class Response implements ResponseInterface
     /**
      * Response constructor.
      *
-     * @param null $data
+     * @param mixed $data
      */
     public function __construct($data = null)
     {

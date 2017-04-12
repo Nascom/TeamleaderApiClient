@@ -19,9 +19,21 @@ class ResponseSpec extends ObjectBehavior
         $this->shouldImplement(ResponseInterface::class);
     }
 
-    function it_should_return_its_data()
+    function it_should_return_string_data()
     {
         $this->beConstructedWith('data');
         $this->getData()->shouldBe('data');
+    }
+
+    function it_should_return_numeric_data()
+    {
+        $this->beConstructedWith(100);
+        $this->getData()->shouldBe(100);
+    }
+
+    function it_should_return_array_data()
+    {
+        $this->beConstructedWith(['id' => 10]);
+        $this->getData()->shouldBe(['id' => 10]);
     }
 }
