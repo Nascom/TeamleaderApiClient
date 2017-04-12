@@ -70,7 +70,7 @@ class ApiClient implements ApiClientInterface
      * @param RequestInterface $request
      * @return array
      */
-    protected function getOptions(RequestInterface $request)
+    public function getOptions(RequestInterface $request)
     {
         return $this->mergeOptions($this->getDefaultOptions(), $request);
     }
