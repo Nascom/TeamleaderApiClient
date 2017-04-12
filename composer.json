@@ -20,8 +20,10 @@
   ],
   "license": "MIT",
   "require": {
-    "php": ">=5.6",
-    "guzzlehttp/guzzle": "~6.0"
+    "php": ">=5.6"
+  },
+  "suggest": {
+    "guzzlehttp/guzzle": "Needed to use the premade HttpClient implementation"
   },
   "autoload": {
     "psr-4": {
