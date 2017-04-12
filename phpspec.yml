@@ -1,0 +1,4 @@
+suites:
+    TeamleaderApiClient:
+        namespace: Nascom\TeamleaderApiClient
+        psr4_prefix: Nascom\TeamleaderApiClient
