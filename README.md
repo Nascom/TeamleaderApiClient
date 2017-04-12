@@ -11,7 +11,8 @@ composer require nascom/teamleader-api-client dev-master
 ### Setup
 First, you'll need to provide a client that can make HTTP requests.
 It has to implement the `HttpClientInterface`. A client using Guzzle
-is already available in the package.
+is already available in the package. This requires installing
+[guzzlehttp/guzzle](https://github.com/guzzle/guzzle).
 
 ```php
 <?php
