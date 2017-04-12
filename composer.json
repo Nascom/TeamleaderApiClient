@@ -27,5 +27,11 @@
     "psr-4": {
       "Nascom\\TeamleaderApiClient\\":  ["src/"]
     }
+  },
+  "require-dev": {
+    "phpspec/phpspec": "^3.2"
+  },
+  "config": {
+    "bin-dir": "bin"
   }
 }
