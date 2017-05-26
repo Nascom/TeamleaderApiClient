@@ -3,8 +3,9 @@ PHP client to connect to the [Teamleader API](http://apidocs.teamleader.be/index
 
 ## Installation
 The package is available via composer:
-```
-composer require nascom/teamleader-api-client dev-master
+
+```Bash
+$ composer require nascom/teamleader-api-client
 ```
 
 ## Basic usage
@@ -52,8 +53,8 @@ For example, here is how you could fetch the details of a project:
 
 use Nascom\TeamleaderApiClient\Request\Project\RetrieveProjectRequest;
 
-$projectsRequest = new RetrieveProjectRequest(23);
-$response = $client->handle($projectsRequest);
+$projectRequest = new RetrieveProjectRequest(23);
+$response = $client->handle($projectRequest);
 
 echo $response->getData(); // Returns the Teamleader JSON response as a string.
 ```

@@ -44,7 +44,7 @@ class ListCompaniesRequest extends AbstractPostRequest
      */
     public function setPageno($pageno)
     {
-        $this->option['pageno'] = $pageno;
+        $this->options['pageno'] = $pageno;
     }
 
     /**

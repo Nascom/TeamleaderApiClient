@@ -20,7 +20,7 @@ class RetrieveMeetingRequest extends AbstractPostRequest
     public function __construct($meeting_id, array $options = [])
     {
         $this->options = $options;
-        $this->option['meeting_id'] = $meeting_id;
+        $this->options['meeting_id'] = $meeting_id;
     }
 
     /**
