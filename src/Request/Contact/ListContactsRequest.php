@@ -44,7 +44,7 @@ class ListContactsRequest extends AbstractPostRequest
      */
     public function setPageno($pageno)
     {
-        $this->pageno = $pageno;
+        $this->options['pageno'] = $pageno;
     }
 
     /**
