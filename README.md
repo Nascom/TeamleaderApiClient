@@ -20,7 +20,7 @@ is already available in the package. This requires installing
 
 use Nascom\TeamleaderApiClient\Http\HttpClient\GuzzleHttpClient;
 
-$guzzle = new \Guzzle\Client(['base_uri' => 'https://www.teamleader.be/api/']);
+$guzzle = new \GuzzleHttp\Client(['base_uri' => 'https://www.teamleader.be/api/']);
 $httpClient = new GuzzleHttpClient($guzzle);
 ```
 
