@@ -1,3 +1,7 @@
 # Composer generated directories
 bin/
 vendor/
+
+# Editors
+.idea/
+.#*
