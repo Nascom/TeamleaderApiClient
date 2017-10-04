@@ -28,7 +28,7 @@ class RetrieveCreditnoteRequest extends AbstractPostRequest
      */
     public function setCreditnoteId($credit_id)
     {
-        $this->options['credit_id'] = $credit_id;
+        $this->options['creditnote_id'] = $credit_id;
     }
 
     /**
