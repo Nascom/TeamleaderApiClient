@@ -14,21 +14,21 @@ class RetrieveCreditnoteRequest extends AbstractPostRequest
     /**
      * RetrieveCreditnoteRequest constructor.
      *
-     * @param $credit_id
+     * @param $creditnote_id
      * @param array $options
      */
-    public function __construct($credit_id, array $options = [])
+    public function __construct($creditnote_id, array $options = [])
     {
         $this->options = $options;
-        $this->setCreditnoteId($credit_id);
+        $this->setCreditnoteId($creditnote_id);
     }
 
     /**
-     * @param $credit_id
+     * @param $creditnote_id
      */
-    public function setCreditnoteId($credit_id)
+    public function setCreditnoteId($creditnote_id)
     {
-        $this->options['creditnote_id'] = $credit_id;
+        $this->options['creditnote_id'] = $creditnote_id;
     }
 
     /**
