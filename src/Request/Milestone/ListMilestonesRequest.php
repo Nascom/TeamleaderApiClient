@@ -31,7 +31,7 @@ class ListMilestonesRequest extends AbstractPostRequest
      */
     public function setProjectId($project_id)
     {
-        $this->options['$project_id'] = $project_id;
+        $this->options['project_id'] = $project_id;
     }
 
     /**

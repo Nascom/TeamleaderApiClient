@@ -28,7 +28,7 @@ class ListBookkeepingAccountsRequest extends AbstractPostRequest
      */
     public function setSysDepartmentId($sys_department_id)
     {
-        $this->options['$sys_department_id'] = $sys_department_id;
+        $this->options['sys_department_id'] = $sys_department_id;
     }
 
     /**
