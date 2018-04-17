@@ -14,7 +14,9 @@ class CreateInvoiceRequest extends AbstractPostRequest
     /**
      * CreateInvoiceRequest constructor.
      *
-     * @param $invoice_id
+     * @param $contact_or_company
+     * @param $contact_or_company_id
+     * @param $sys_department_id
      * @param array $options
      *   Extra parameters for invoice lines (required):
      *   - description_1
@@ -42,18 +44,36 @@ class CreateInvoiceRequest extends AbstractPostRequest
      *   - comments
      *   - force_set_number
      */
-    public function __construct($invoice_id, array $options = [])
+    public function __construct($contact_or_company, $contact_or_company_id, $sys_department_id, array $options = [])
     {
+        $this->setContactOrCompany($contact_or_company);
+        $this->setContactOrCompanyId($contact_or_company_id);
+        $this->setSysDepartmentId($sys_department_id);
         $this->options = $options;
-        $this->setInvoiceId($invoice_id);
     }
 
     /**
-     * @param $invoice_id
+     * @param $type
      */
-    public function setInvoiceId($invoice_id)
+    public function setContactOrCompany($contact_or_company)
     {
-        $this->options['invoice_id'] = $invoice_id;
+        $this->options['contact_or_company'] = $contact_or_company;
+    }
+
+    /**
+     * @param $id
+     */
+    public function setContactOrCompanyId($contact_or_company_id)
+    {
+        $this->options['contact_or_company_id'] = $contact_or_company_id;
+    }
+
+    /**
+     * @param $id
+     */
+    public function setSysDepartmentId($sys_department_id)
+    {
+        $this->options['sys_department_id'] = $sys_department_id;
     }
 
     /**
