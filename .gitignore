@@ -5,3 +5,4 @@ vendor/
 # Editors
 .idea/
 .#*
+.DS_Store
