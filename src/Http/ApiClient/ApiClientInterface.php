@@ -13,8 +13,7 @@ use Nascom\TeamleaderApiClient\Response\Response;
 interface ApiClientInterface
 {
     /**
-     * @param RequestInterface $query
      * @return Response
      */
-    public function handle(RequestInterface $query);
+    public function handle($query);
 }

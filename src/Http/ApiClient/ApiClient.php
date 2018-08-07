@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Http\ApiClient;
 
 use Nascom\TeamleaderApiClient\Http\HttpClient\HttpClientInterface;
+use Nascom\TeamleaderApiClient\Repository\ContactRepository;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
 use Nascom\TeamleaderApiClient\Response\Response;
 
@@ -17,6 +18,7 @@ class ApiClient implements ApiClientInterface
   protected $clientId;
   protected $clientSecret;
   protected $provider;
+  protected $accessToken;
 
     /**
      * @var array
@@ -96,40 +98,21 @@ class ApiClient implements ApiClientInterface
         try {
 
           // Try to get an access token using the authorization code grant.
-          $accessToken = $this->provider->getAccessToken('authorization_code', [
+          $this->accessToken = $this->provider->getAccessToken('authorization_code', [
             'code' => $_GET['code']
           ]);
 
           // We have an access token, which we may use in authenticated
           // requests against the service provider's API.
-          echo 'Access Token: ' . $accessToken->getToken() . "<br>";
-          echo 'Refresh Token: ' . $accessToken->getRefreshToken() . "<br>";
-          echo 'Expired in: ' . $accessToken->getExpires() . "<br>";
-          echo 'Already expired? ' . ($accessToken->hasExpired() ? 'expired' : 'not expired') . "<br>";
+//          echo 'Access Token: ' . $this->accessToken->getToken() . "<br>";
+//          echo 'Refresh Token: ' . $this->accessToken->getRefreshToken() . "<br>";
+//          echo 'Expired in: ' . $this->accessToken->getExpires() . "<br>";
+//          echo 'Already expired? ' . ($this->accessToken->hasExpired() ? 'expired' : 'not expired') . "<br>";
 
-          // Using the access token, we may look up details about the
-          // resource owner.
-          $resourceOwner = $this->provider->getResourceOwner($accessToken);
 
-          var_export($resourceOwner->toArray());
 
-          // The provider provides a way to get an authenticated API request for
-          // the service, using the access token; it returns an object conforming
-          // to Psr\Http\Message\RequestInterface.
-          $request = $this->provider->getAuthenticatedRequest(
-            'GET',
-            'https://api.teamleader.eu/contacts.list',
-            $accessToken
-          );
 
-            $httpResponse = $this->provider->getResponse($request);
-            $resp_body = $httpResponse->getBody();
 
-            echo '<br /> <br /><br /><br /><br />';
-            echo $resp_body->getContents();
-            $tmp = '';
-
-            echo '<br /><br /><br /><a href="https://94f8b6b3.ngrok.io/examples/UserList.php">Try again</a>';
 
         } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
 
@@ -141,66 +124,52 @@ class ApiClient implements ApiClientInterface
       }
     }
 
+
+    /**
+     * Checks if the access token has expired.
+     *
+     * @return string
+     */
+    public function hasAccessTokenExpired() {
+        return $this->accessToken->hasExpired() ? 'expired' : 'not expired';
+    }
+
+    /**
+     * Gets the owner of the resource.
+     */
+    public function getResourceOwner() {
+        $resourceOwner = $this->provider->getResourceOwner($this->accessToken);
+        return $resourceOwnerr->toArray();
+    }
+
+    /**
+     * Perform authenticted request on the given url.
+     */
+    public function request($method, $url) {
+        $request = $this->provider->getAuthenticatedRequest(
+          $method,
+          'https://api.teamleader.eu/' . $url,
+          $this->accessToken
+        );
+        return $request;
+    }
+
     /**
      * @inheritdoc
      */
-    public function handle(RequestInterface $request)
+    public function handle($request)
     {
-        $response = $this->client->request(
-            $request->getMethod(),
-            $request->getUri(),
-            $this->getOptions($request)
-        );
-
-        return new Response($response);
+        $httpResponse = $this->provider->getResponse($request);
+        $resp_body = $httpResponse->getBody();
+        return $resp_body->getContents();
     }
 
     /**
-     * @param RequestInterface $request
-     * @return array
+     * Returns the contactrepository.
      */
-    public function getOptions(RequestInterface $request)
-    {
-        return $this->mergeOptions($this->getDefaultOptions(), $request);
+    public function getContactRepository() {
+        return new ContactRepository($this);
     }
 
-    /**
-     * Merges the default options with the request options.
-     *
-     * @param array $options
-     * @param RequestInterface $request
-     * @return array
-     */
-    protected function mergeOptions(array $options, RequestInterface $request)
-    {
-        $options['form_params']['api_group'] = $this->teamleaderApiParameters['api_group'];
-        $options['form_params']['api_secret'] = $this->teamleaderApiParameters['api_secret'];
-
-        if (!empty($request->getParameters())) {
-            $options['query'] = array_merge(
-                isset($options['query']) ? $options['query'] : [],
-                $request->getParameters()
-            );
-        }
-
-        if (!empty($request->getOptions())) {
-            $options['form_params'] = array_merge(
-                $options['form_params'],
-                $request->getOptions()
-            );
-        }
-
-        return $options;
-    }
-
-    /**
-     * Combines some sensible default options with optional provided options.
-     *
-     * @return array
-     */
-    protected function getDefaultOptions()
-    {
-        return $this->defaultOptions;
-    }
 
 }
