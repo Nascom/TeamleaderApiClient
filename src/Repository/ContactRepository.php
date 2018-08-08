@@ -2,9 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
-use Nascom\TeamleaderApiClient\Request\RequestInterface;
-
 class ContactRepository extends RepositoryBase
 {
 
