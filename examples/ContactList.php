@@ -8,6 +8,10 @@ use Nascom\TeamleaderApiClient\Attributes\Email;
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
 use Nascom\TeamleaderApiClient\Http\ApiClient\GuzzleOAuthClient;
 
+///////////////////////////////////////
+// Initialize for a connection.  //////
+///////////////////////////////////////
+
 $clientId = '';
 $clientSecret = '';
 $redirectUri = 'http://6514aaba.ngrok.io/ContactList.php';
@@ -50,17 +54,23 @@ $httpClient = $guzzleOAuthClient->getHttpClient();
 // Get the TeamleaderClient
 $tlClient = new ApiClient($httpClient);
 
+//////////////////////////////////////////////////////////
+// Actual code example starts here for ContactList. //////
+//////////////////////////////////////////////////////////
+
 // Get the Teamleader Contact Repository
 $contactRepository = $tlClient->getContactRepository();
 
-// Filter to just return contacts with a specific email
+// Create a filter to return contacts with a specific email.
 $email = new Email();
 $email->setEmail('nick.veenhof@dropsolid.com');
 $email->setType('primary');
+
+// Add our email to the filter.
 $filter = new ContactFilter();
 $filter->setEmail($email);
 
-// Get the list of contacts. Phpstorm should normally detect this is a list of contacts.
+// Get the list of contacts.
 $contacts = $contactRepository->listContacts($filter);
 
 // Print all contact objects
