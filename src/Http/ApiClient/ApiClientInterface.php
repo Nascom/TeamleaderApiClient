@@ -15,5 +15,5 @@ interface ApiClientInterface
     /**
      * @return Response
      */
-    public function handle($query);
+    public function getContactRepository();
 }

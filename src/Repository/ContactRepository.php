@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
+use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
 
 class ContactRepository extends RepositoryBase
@@ -13,22 +14,16 @@ class ContactRepository extends RepositoryBase
      * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.list
      */
     public function listContacts() {
-
         $url = 'contacts.list';
-//        $url .= $this->getQueryString($options);
-        // Now make the request.
-        $request = $this->getRequest('GET', $url);
-        $data = $this->getResponseJson($request);
+        $contacts = $this->getResponse('GET', $url);
 
-//        $request = new Request('GET', $url);
-//        $data = $this->getResponseJson($request);
-//        // Get them as Slot objects
-//        $slots = [];
+//        // Get them as Contacts objects
+//        $contacts = [];
 //        foreach ($data as $dataItem) {
-//            $slots[] = new Slot($dataItem);
+//            $slots[] = new Contact($dataItem);
 //        }
-//        return $slots;
+//        return $contacts;
 
-        return $data;
+        return $contacts;
     }
 }

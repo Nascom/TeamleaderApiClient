@@ -2,28 +2,27 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
+use GuzzleHttp\Psr7\Request;
+use Http\Client\Common\HttpMethodsClient;
+use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
 
 abstract class RepositoryBase
 {
-    protected $client;
+    /** @var  ApiClient */
+    protected $apiClient;
 
     public function __construct($apiClient)
     {
-        $this->client = $apiClient;
+        $this->apiClient = $apiClient;
     }
 
-    public function getClient() {
-        return $this->client;
+    public function getApiClient() {
+        return $this->apiClient;
     }
 
-    protected function getRequest($method, $url) {
-        return $this->client->request($method, $url);
-    }
-
-    protected function getResponseJson($request) {
-        $response = $this->client->handle($request);
-
-        return $response;
+    public function getResponse($method, $url) {
+        $response = $this->getApiClient()->gethttpMethodsClient()->send($method, ApiClient::BASE_API_URL . $url);
+        return \GuzzleHttp\json_decode($response->getBody()->getContents());
     }
 }

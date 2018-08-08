@@ -1,0 +1,16 @@
+{
+    "name": "nickveenhof/teamleaderapi-client-examples",
+    "type": "project",
+    "version": "0.0.1",
+    "authors": [
+        {
+            "name": "Nick Veenhof",
+            "email": "nick.veenhof@gmail.com"
+        }
+    ],
+    "require": {
+        "php-http/guzzle6-adapter": "^1.1",
+        "php-http/discovery": "^1.4",
+        "guzzlehttp/guzzle": "^6.3"
+    }
+}
