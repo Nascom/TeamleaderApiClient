@@ -4,8 +4,6 @@ namespace Nascom\TeamleaderApiClient\Http\ApiClient;
 
 use Http\Client\Common\HttpMethodsClient;
 use Http\Client\HttpClient;
-
-use Http\Discovery\HttpClientInterface;
 use Http\Discovery\MessageFactoryDiscovery;
 use Nascom\TeamleaderApiClient\Repository\ContactRepository;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
@@ -21,24 +19,6 @@ class ApiClient implements ApiClientInterface
 
     /** @var HttpClient */
     protected $httpClient;
-
-    /** @var string */
-    protected $accessToken;
-
-    /**
-     * @var array
-     */
-    protected $teamleaderApiParameters;
-
-    /**
-     * @var array
-     */
-    protected $defaultOptions = [
-        'connect_timeout' => 3.0,
-        'headers' => [
-            'Accept' => 'application/json',
-        ]
-    ];
 
     const URL_AUTHORIZE = 'https://app.teamleader.eu/oauth2/authorize';
     const URL_ACCESS_TOKEN = 'https://app.teamleader.eu/oauth2/access_token';
@@ -61,16 +41,11 @@ class ApiClient implements ApiClientInterface
         array $defaultOptions = []
     )
     {
-        // Use discovery to find our client if this is supported
+        // Use discovery to find our client if present.
         if ($httpClient == null) {
             $httpClient = HttpClientDiscovery::find();
         }
-
         $this->httpClient = $httpClient;
-
-        $this->teamleaderApiParameters = $teamleaderApiParameters;
-        $this->defaultOptions = array_merge($this->defaultOptions, $defaultOptions);
-
     }
 
     /**
@@ -81,10 +56,6 @@ class ApiClient implements ApiClientInterface
         return new ContactRepository($this);
     }
 
-    public function gethttpClient() {
-        return $this->httpClient;
-    }
-
     public function gethttpMethodsClient() {
         return new HttpMethodsClient(
             $this->httpClient,
@@ -92,5 +63,19 @@ class ApiClient implements ApiClientInterface
         );
     }
 
+    /**
+     * @return HttpClient
+     */
+    public function getHttpClient()
+    {
+        return $this->httpClient;
+    }
 
+    /**
+     * @param HttpClient $httpClient
+     */
+    public function setHttpClient(HttpClient $httpClient)
+    {
+        $this->httpClient = $httpClient;
+    }
 }

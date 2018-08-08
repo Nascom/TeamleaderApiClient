@@ -1,10 +1,7 @@
 <?php
 namespace Nascom\TeamleaderApiClient\Request;
-use Http\Discovery\MessageFactoryDiscovery;
 use Http\Discovery\StreamFactoryDiscovery;
-use http\Env\Request;
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\UriInterface;
 
 /**
  * Class ListContactsRequest
@@ -20,7 +17,8 @@ abstract class AbstractRequest
     protected $request;
 
     /**
-     * @var \Psr\Http\Message\StreamInterface
+     * Body that will be encoded into json upon transmission to the API.
+     * @var string|array
      */
     protected $requestBody;
 
@@ -28,14 +26,6 @@ abstract class AbstractRequest
      * @var string
      */
     protected $uri = '';
-
-    /**
-     * abstractRequest constructor.
-     */
-    public function __construct()
-    {
-        $this->requestBody = StreamFactoryDiscovery::find()->createStream();
-    }
 
     /**
      * @return RequestInterface
@@ -69,4 +59,19 @@ abstract class AbstractRequest
         $this->uri = $uri;
     }
 
+    /**
+     * @return string|array|null
+     */
+    public function getRequestBody()
+    {
+        return $this->requestBody;
+    }
+
+    /**
+     * @param  @return string|array
+     */
+    public function setRequestBody($requestBody)
+    {
+        $this->requestBody = $requestBody;
+    }
 }

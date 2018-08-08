@@ -4,6 +4,10 @@ namespace Nascom\TeamleaderApiClient\Repository;
 
 use GuzzleHttp\Psr7\Request;
 use Http\Discovery\MessageFactoryDiscovery;
+use Nascom\TeamleaderApiClient\Attributes\ContactFilter;
+use Nascom\TeamleaderApiClient\Attributes\Page;
+use Nascom\TeamleaderApiClient\Attributes\Sort;
+use Nascom\TeamleaderApiClient\Entity\Contact;
 use Nascom\TeamleaderApiClient\Request\Contact\ContactsListRequest;
 
 class ContactRepository extends RepositoryBase
@@ -13,20 +17,34 @@ class ContactRepository extends RepositoryBase
      * Gets a list of contacts.
      *
      * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.list
+     *
+     * @param ContactFilter|null $filter
+     * @param Page|null $page
+     * @param Sort[]|null $sorts
+     *
+     * @return Contact[]
      */
-    public function listContacts($filter = null, $page = null, $sort = null) {
-        $url = 'contacts.list';
+    public function listContacts(ContactFilter $filter = null, Page $page = null, array $sorts = [])
+    {
+        $request = new ContactsListRequest();
+        if ($page !== null) {
+            $request->setPage($page);
+        }
+        if ($filter !== null) {
+            $request->setFilter($filter);
+        }
+        if (!empty($sorts)) {
+            $request->setSort($sorts);
+        }
 
-        $request = new ContactsListRequest($page, $filter, $sort);
         $response = $this->sendRequest($request);
+        $responseBody = $this->getResponseBody($response);
 
-//        // Get them as Contacts objects
-//        $contacts = [];
-//        foreach ($data as $dataItem) {
-//            $slots[] = new Contact($dataItem);
-//        }
-//        return $contacts;
+        $contacts = [];
+        foreach ($responseBody['data'] as $contactItem) {
+            $contacts[] = new Contact($contactItem);
+        }
 
-        return $response->getBody()->getContents();
+        return $contacts;
     }
 }

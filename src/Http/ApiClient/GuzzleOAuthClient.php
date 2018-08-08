@@ -54,7 +54,7 @@ class GuzzleOAuthClient
         /** @var \GuzzleHttp\Client $client */
         $this->stack = new HandlerStack();
         $this->stack->setHandler(new CurlHandler());
-        $this->guzzleClient = new \GuzzleHttp\Client(['handler' => $this->stack]);
+        $this->guzzleClient = new \GuzzleHttp\Client(['handler' => $this->stack, 'headers' => ['Content-Type' => 'application/json;charset=utf-8']]);
     }
 
     /**
