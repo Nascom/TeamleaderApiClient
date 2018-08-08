@@ -8,7 +8,7 @@ use Nascom\TeamleaderApiClient\Http\ApiClient\GuzzleOAuthClient;
 
 $clientId = '';
 $clientSecret = '';
-$redirectUri = 'http://my-publically-accessible-site.localhost/ContactList.php';
+$redirectUri = 'http://6514aaba.ngrok.io/ContactList.php';
 
 $guzzleOAuthClient = new GuzzleOAuthClient($clientId, $clientSecret, $redirectUri);
 

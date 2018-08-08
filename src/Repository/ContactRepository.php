@@ -2,6 +2,10 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
+use GuzzleHttp\Psr7\Request;
+use Http\Discovery\MessageFactoryDiscovery;
+use Nascom\TeamleaderApiClient\Request\Contact\ContactsListRequest;
+
 class ContactRepository extends RepositoryBase
 {
 
@@ -10,9 +14,11 @@ class ContactRepository extends RepositoryBase
      *
      * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.list
      */
-    public function listContacts() {
+    public function listContacts($filter = null, $page = null, $sort = null) {
         $url = 'contacts.list';
-        $contacts = $this->getResponse('GET', $url);
+
+        $request = new ContactsListRequest($page, $filter, $sort);
+        $response = $this->sendRequest($request);
 
 //        // Get them as Contacts objects
 //        $contacts = [];
@@ -21,6 +27,6 @@ class ContactRepository extends RepositoryBase
 //        }
 //        return $contacts;
 
-        return $contacts;
+        return $response->getBody()->getContents();
     }
 }

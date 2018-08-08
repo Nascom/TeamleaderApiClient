@@ -1,7 +1,7 @@
 # Composer generated directories
 bin/
 vendor/
-docroot/
+docroot
 
 # Editors
 .idea/

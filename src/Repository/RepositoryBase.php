@@ -3,6 +3,9 @@
 namespace Nascom\TeamleaderApiClient\Repository;
 
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
+use Nascom\TeamleaderApiClient\Request\AbstractRequest;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 abstract class RepositoryBase
 {
@@ -18,8 +21,11 @@ abstract class RepositoryBase
         return $this->apiClient;
     }
 
-    public function getResponse($method, $url) {
-        $response = $this->getApiClient()->gethttpMethodsClient()->send($method, ApiClient::BASE_API_URL . $url);
+    public function sendRequest(AbstractRequest $request) {
+        return $this->getApiClient()->gethttpClient()->sendRequest($request->getRequest());
+    }
+
+    public function getResponseBody(ResponseInterface $response) {
         return json_decode($response->getBody()->getContents());
     }
 }

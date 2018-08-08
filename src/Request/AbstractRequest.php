@@ -1,47 +1,72 @@
 <?php
-
 namespace Nascom\TeamleaderApiClient\Request;
+use Http\Discovery\MessageFactoryDiscovery;
+use Http\Discovery\StreamFactoryDiscovery;
+use http\Env\Request;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\UriInterface;
 
 /**
- * Class AbstractRequest
+ * Class ListContactsRequest
  *
  * @package Nascom\TeamleaderApiClient\Request
  */
-abstract class AbstractRequest implements RequestInterface
+abstract class AbstractRequest
 {
-    /**
-     * @var array
-     */
-    protected $options = [];
 
     /**
-     * @var array
+     * @var RequestInterface
      */
-    protected $parameters = [];
+    protected $request;
 
     /**
-     * @inheritdoc
+     * @var \Psr\Http\Message\StreamInterface
      */
-    abstract public function getUri();
+    protected $requestBody;
 
     /**
-     * @inheritdoc
+     * @var string
      */
-    abstract public function getMethod();
+    protected $uri = '';
 
     /**
-     * @inheritdoc
+     * abstractRequest constructor.
      */
-    public function getOptions()
+    public function __construct()
     {
-        return $this->options;
+        $this->requestBody = StreamFactoryDiscovery::find()->createStream();
     }
 
     /**
-     * @inheritdoc
+     * @return RequestInterface
      */
-    public function getParameters()
+    public function getRequest()
     {
-        return $this->parameters;
+        return $this->request;
     }
+
+    /**
+     * @param RequestInterface $request
+     */
+    public function setRequest($request)
+    {
+        $this->request = $request;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUri()
+    {
+        return $this->uri;
+    }
+
+    /**
+     * @param string $uri
+     */
+    public function setUri($uri)
+    {
+        $this->uri = $uri;
+    }
+
 }
