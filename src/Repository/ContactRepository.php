@@ -56,7 +56,7 @@ class ContactRepository extends RepositoryBase
      *
      * @param string $id
      *
-     * @return Contact[]
+     * @return Contact
      */
     public function getContact($id)
     {
