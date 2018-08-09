@@ -6,6 +6,7 @@ require('../vendor/autoload.php');
 use Nascom\TeamleaderApiClient\Attributes\ContactFilter;
 use Nascom\TeamleaderApiClient\Attributes\Email;
 use Nascom\TeamleaderApiClient\Attributes\Page;
+use Nascom\TeamleaderApiClient\Entity\Contact;
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
 use Nascom\TeamleaderApiClient\Http\ApiClient\GuzzleOAuthClient;
 
@@ -13,8 +14,8 @@ use Nascom\TeamleaderApiClient\Http\ApiClient\GuzzleOAuthClient;
 // Initialize for a connection.  //////
 ///////////////////////////////////////
 
-$clientId = '';
-$clientSecret = '';
+$clientId = 'XXXX';
+$clientSecret = 'YYYY';
 $redirectUri = 'https://60583853.ngrok.io/examples/ContactList.php';
 
 $guzzleOAuthClient = new GuzzleOAuthClient($clientId, $clientSecret, $redirectUri);
@@ -76,7 +77,7 @@ $filter->setEmail($email);
 $contacts = $contactRepository->listContacts($filter);
 
 // Print all contact objects
-//var_dump($contacts);
+var_dump($contacts);
 
 
 // Get a list of 40 contacts from page 2.
@@ -91,4 +92,59 @@ var_dump($contacts);
 
 // Get a single contact.
 $contact = $contactRepository->getContact('6267fb2c-9298-06a5-b266-dd7a9b82d800');
+var_dump($contact);
+
+
+// Create a contact.
+$contact_variables = [
+    'first_name' => 'John',
+    'last_name' => 'Smith',
+    'emails' => [
+        [
+            'type' => 'primary',
+            'email' => 'info@piedpiper.eu',
+        ]
+    ],
+    'salutation' => 'Mr.',
+    'telephones' => [
+        [
+            'type' => 'phone',
+            'number' => '092980615',
+        ],
+    ],
+    'website' => 'http://example.com',
+    'addresses' => [
+        [
+            'type' => 'invoicing',
+            'address' => [
+                'addressee' => 'Teamleader HQ',
+                'line_1' => 'Dok Noord 3A 101',
+                'postal_code' => '9000',
+                'city' => 'Ghent',
+                'country' => 'BE',
+            ]
+        ],
+    ],
+    'language' => 'en',
+    'gender' => 'male',
+    'birthdate' => '1978-11-19',
+    'iban' => 'BE12123412341234',
+    'bic' => 'BICBANK',
+    'remarks' => 'Met at expo',
+    'marketing_mails_consent' => false,
+    'tags' =>[
+        'prospect',
+        'expo',
+    ],
+//    'custom_fields' => [
+//        [
+//            'id' => 'custom_field_150279',
+//            'value' => 'http://example.com',
+//        ]
+//    ],
+];
+// @TODO fields: custom fields implementation.
+$contact = new Contact($contact_variables);
+$contact = $contactRepository->addContact($contact);
+
 var_dump($contact);

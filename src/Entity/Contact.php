@@ -262,17 +262,17 @@ class Contact extends Entity
     /**
      * @return array
      */
-    public function getAddress()
+    public function getAddresses()
     {
-        return $this->getEntityValue('address', '');
+        return $this->getEntityValue('addresses', '');
     }
 
     /**
      * @param array $address
      */
-    public function setAddress($address)
+    public function setAddresses($address)
     {
-        $this->setEntityValue('address', $address);
+        $this->setEntityValue('addresses', $address);
     }
 
     /**
@@ -292,6 +292,22 @@ class Contact extends Entity
     }
 
     /**
+     * @return string
+     */
+    public function getRemarks()
+    {
+        return $this->getEntityValue('remarks', '');
+    }
+
+    /**
+     * @param string $remarks
+     */
+    public function setRemarks($remarks)
+    {
+        $this->setEntityValue('remarks', $remarks);
+    }
+
+    /**
      * @return array
      */
     public function getTags()
@@ -306,4 +322,36 @@ class Contact extends Entity
     {
         $this->setEntityValue('tags', $tags);
     }
+
+    /**
+     * @return array
+     */
+    public function getCustomFields()
+    {
+        return $this->getEntityValue('custom_fields', []);
+    }
+
+    /**
+     * @param array $customFields
+     */
+    public function setCustomFields(array $customFields)
+    {
+        $this->setEntityValue('custom_fields', $customFields);
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getMarketingMailsConsent()
+    {
+        return $this->getEntityValue('marketing_mails_consent', false);
+    }
+
+    /**
+     * @param boolean $marketingMailsConsent
+     */
+    public function setMarketingMailsConsent(boolean $marketingMailsConsent) {
+        $this->setEntityValue('marketing_mails_consent', $marketingMailsConsent);
+    }
+
 }

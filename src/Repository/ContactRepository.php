@@ -8,6 +8,8 @@ use Nascom\TeamleaderApiClient\Attributes\ContactFilter;
 use Nascom\TeamleaderApiClient\Attributes\Page;
 use Nascom\TeamleaderApiClient\Attributes\Sort;
 use Nascom\TeamleaderApiClient\Entity\Contact;
+use Nascom\TeamleaderApiClient\Exception\ApiException;
+use Nascom\TeamleaderApiClient\Request\Contact\ContactsAddRequest;
 use Nascom\TeamleaderApiClient\Request\Contact\ContactsInfoRequest;
 use Nascom\TeamleaderApiClient\Request\Contact\ContactsListRequest;
 
@@ -56,6 +58,8 @@ class ContactRepository extends RepositoryBase
      *
      * @param string $id
      *
+     * @throws Nascom\TeamleaderApiClient\Exception\ApiException
+     *
      * @return Contact
      */
     public function getContact($id)
@@ -66,10 +70,46 @@ class ContactRepository extends RepositoryBase
         $responseBody = $this->getResponseBody($response);
 
         $contact = [];
-        if (isset($responseBody['data'])) {
-            $contact = new Contact($responseBody['data']);
+        if (!isset($responseBody['data'])) {
+            throw new ApiException('Something went wrong while getting information for user with id .' . $id);
+        }
+        $contact = new Contact($responseBody['data']);
+
+        return $contact;
+    }
+
+
+    /**
+     * Add a new contact.
+     *
+     * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.add
+     *
+     * @param Contact $contact
+     *
+     * @throws Nascom\TeamleaderApiClient\Exception\ApiException
+     *
+     * @return Contact
+     */
+    public function addContact(Contact $contact) {
+
+        $request = new ContactsAddRequest($contact);
+
+        $response = $this->sendRequest($request);
+        $responseBody = $this->getResponseBody($response);
+
+        if ($response->getStatusCode() == 201) {
+            if (isset($responseBody['data']['id'])) {
+                $contact->setId($responseBody['data']['id']);
+            }
+            else {
+                throw new ApiException('Something went wrong while creating a contact.');
+            }
+        }
+        else {
+            throw new ApiException('Something went wrong while creating a contact.');
         }
 
         return $contact;
+
     }
 }
