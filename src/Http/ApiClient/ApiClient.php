@@ -2,7 +2,10 @@
 
 namespace Nascom\TeamleaderApiClient\Http\ApiClient;
 
-use Nascom\TeamleaderApiClient\Http\HttpClient\HttpClientInterface;
+use Http\Client\Common\HttpMethodsClient;
+use Http\Client\HttpClient;
+use Http\Discovery\MessageFactoryDiscovery;
+use Nascom\TeamleaderApiClient\Repository\ContactRepository;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
 use Nascom\TeamleaderApiClient\Response\Response;
 
@@ -13,104 +16,66 @@ use Nascom\TeamleaderApiClient\Response\Response;
  */
 class ApiClient implements ApiClientInterface
 {
-    /**
-     * @var HttpClientInterface
-     */
-    protected $client;
 
-    /**
-     * @var array
-     */
-    protected $teamleaderApiParameters;
+    /** @var HttpClient */
+    protected $httpClient;
 
-    /**
-     * @var array
-     */
-    protected $defaultOptions = [
-        'connect_timeout' => 3.0,
-        'headers' => [
-            'Accept' => 'application/json',
-        ]
-    ];
+    const URL_AUTHORIZE = 'https://app.teamleader.eu/oauth2/authorize';
+    const URL_ACCESS_TOKEN = 'https://app.teamleader.eu/oauth2/access_token';
+    const URL_RESOURCE_OWNER_DETAILS = 'https://api.teamleader.eu/users.me';
+    const BASE_API_URL = 'https://api.teamleader.eu/';
 
     /**
      * ApiClient constructor.
      *
-     * @param HttpClientInterface $client
+     * @param string $clientId
+     * @param string $clientSecret
+     * @param string $redirectUri
      * @param $teamleaderApiParameters
      * @param array $defaultOptions
      */
     public function __construct
     (
-        HttpClientInterface $client,
-        $teamleaderApiParameters,
+        HttpClient $httpClient = null,
+        array $teamleaderApiParameters = [],
         array $defaultOptions = []
     )
     {
-        $this->client = $client;
-        $this->teamleaderApiParameters = $teamleaderApiParameters;
-        $this->defaultOptions = array_merge($this->defaultOptions, $defaultOptions);
+        // Use discovery to find our client if present.
+        if ($httpClient == null) {
+            $httpClient = HttpClientDiscovery::find();
+        }
+        $this->httpClient = $httpClient;
     }
 
     /**
-     * @inheritdoc
+     * Returns the contactrepository.
      */
-    public function handle(RequestInterface $request)
+    public function getContactRepository()
     {
-        $response = $this->client->request(
-            $request->getMethod(),
-            $request->getUri(),
-            $this->getOptions($request)
+        return new ContactRepository($this);
+    }
+
+    public function gethttpMethodsClient() {
+        return new HttpMethodsClient(
+            $this->httpClient,
+            MessageFactoryDiscovery::find()
         );
-
-        return new Response($response);
     }
 
     /**
-     * @param RequestInterface $request
-     * @return array
+     * @return HttpClient
      */
-    public function getOptions(RequestInterface $request)
+    public function getHttpClient()
     {
-        return $this->mergeOptions($this->getDefaultOptions(), $request);
+        return $this->httpClient;
     }
 
     /**
-     * Merges the default options with the request options.
-     *
-     * @param array $options
-     * @param RequestInterface $request
-     * @return array
+     * @param HttpClient $httpClient
      */
-    protected function mergeOptions(array $options, RequestInterface $request)
+    public function setHttpClient(HttpClient $httpClient)
     {
-        $options['form_params']['api_group'] = $this->teamleaderApiParameters['api_group'];
-        $options['form_params']['api_secret'] = $this->teamleaderApiParameters['api_secret'];
-
-        if (!empty($request->getParameters())) {
-            $options['query'] = array_merge(
-                isset($options['query']) ? $options['query'] : [],
-                $request->getParameters()
-            );
-        }
-
-        if (!empty($request->getOptions())) {
-            $options['form_params'] = array_merge(
-                $options['form_params'],
-                $request->getOptions()
-            );
-        }
-
-        return $options;
-    }
-
-    /**
-     * Combines some sensible default options with optional provided options.
-     *
-     * @return array
-     */
-    protected function getDefaultOptions()
-    {
-        return $this->defaultOptions;
+        $this->httpClient = $httpClient;
     }
 }

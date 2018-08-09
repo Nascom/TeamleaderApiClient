@@ -1,47 +1,77 @@
 <?php
-
 namespace Nascom\TeamleaderApiClient\Request;
+use Http\Discovery\StreamFactoryDiscovery;
+use Psr\Http\Message\RequestInterface;
 
 /**
- * Class AbstractRequest
+ * Class ListContactsRequest
  *
  * @package Nascom\TeamleaderApiClient\Request
  */
-abstract class AbstractRequest implements RequestInterface
+abstract class AbstractRequest
 {
-    /**
-     * @var array
-     */
-    protected $options = [];
 
     /**
-     * @var array
+     * @var RequestInterface
      */
-    protected $parameters = [];
+    protected $request;
 
     /**
-     * @inheritdoc
+     * Body that will be encoded into json upon transmission to the API.
+     * @var string|array
      */
-    abstract public function getUri();
+    protected $requestBody;
 
     /**
-     * @inheritdoc
+     * @var string
      */
-    abstract public function getMethod();
+    protected $uri = '';
 
     /**
-     * @inheritdoc
+     * @return RequestInterface
      */
-    public function getOptions()
+    public function getRequest()
     {
-        return $this->options;
+        return $this->request;
     }
 
     /**
-     * @inheritdoc
+     * @param RequestInterface $request
      */
-    public function getParameters()
+    public function setRequest($request)
     {
-        return $this->parameters;
+        $this->request = $request;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUri()
+    {
+        return $this->uri;
+    }
+
+    /**
+     * @param string $uri
+     */
+    public function setUri($uri)
+    {
+        $this->uri = $uri;
+    }
+
+    /**
+     * @return string|array|null
+     */
+    public function getRequestBody()
+    {
+        return $this->requestBody;
+    }
+
+    /**
+     * @param  @return string|array
+     */
+    public function setRequestBody($requestBody)
+    {
+        $this->requestBody = $requestBody;
     }
 }

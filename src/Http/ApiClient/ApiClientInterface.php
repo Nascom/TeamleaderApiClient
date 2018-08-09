@@ -2,8 +2,8 @@
 
 namespace Nascom\TeamleaderApiClient\Http\ApiClient;
 
-use Nascom\TeamleaderApiClient\Request\RequestInterface;
-use Nascom\TeamleaderApiClient\Response\Response;
+use Nascom\TeamleaderApiClient\Repository\ContactRepository;
+use Http\Client\HttpClient;
 
 /**
  * Interface ApiClientInterface
@@ -13,8 +13,9 @@ use Nascom\TeamleaderApiClient\Response\Response;
 interface ApiClientInterface
 {
     /**
-     * @param RequestInterface $query
-     * @return Response
+     * @return ContactRepository
      */
-    public function handle(RequestInterface $query);
+    public function getContactRepository();
+    public function getHttpClient();
+    public function setHttpClient(HttpClient $httpClient);
 }

@@ -1,7 +1,9 @@
 # Composer generated directories
 bin/
 vendor/
+docroot
 
 # Editors
 .idea/
 .#*
+.DS_Store
