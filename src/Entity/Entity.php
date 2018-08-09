@@ -17,6 +17,18 @@ class Entity extends \ArrayObject
     {
         return isset($this[$key]) ? $this[$key] : $default;
     }
+
+    /**
+     * Sets the value of an attribute.
+     *
+     * @param string                      $key
+     * @param string|int|float|array|bool $value
+     */
+    protected function setEntityValue($key, $value)
+    {
+        $this[$key] = $value;
+    }
+
     /**
      * Returns the json representation of the current object.
      *
