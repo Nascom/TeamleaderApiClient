@@ -4,9 +4,9 @@ namespace Nascom\TeamleaderApiClient\Entity;
 /**
  * Class Telephone
  *
- * @package Nascom\TeamleaderApiClient\Attributes
+ * @package Nascom\TeamleaderApiClient\Entity
  */
-class Telephone extends Entity
+class Email extends Entity
 {
     /**
      * @return string
@@ -27,16 +27,16 @@ class Telephone extends Entity
     /**
      * @return string
      */
-    public function getNumber()
+    public function getEmail()
     {
-        return $this->getEntityValue('number', '');
+        return $this->getEntityValue('email', '');
     }
 
     /**
-     * @param string $number
+     * @param string $email
      */
-    public function setNumber($number)
+    public function setEmail($email)
     {
-        $this->setEntityValue('number', $number);
+        $this->setEntityValue('email', $email);
     }
 }

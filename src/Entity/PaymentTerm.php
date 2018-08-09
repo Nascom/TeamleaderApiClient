@@ -1,8 +1,6 @@
 <?php
 namespace Nascom\TeamleaderApiClient\Entity;
 
-use Nascom\TeamleaderApiClient\Attributes\Entity;
-
 /**
  * Class PaymentTerm
  *
@@ -10,12 +8,19 @@ use Nascom\TeamleaderApiClient\Attributes\Entity;
  */
 class PaymentTerm extends Entity
 {
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->getEntityValue('type', '');
+    }
 
     /**
-     * @param array $array
+     * @param string $type
      */
-    public function __construct(array $array = [])
+    public function setType($type)
     {
-        parent::__construct($array);
+        $this->setEntityValue('type', $type);
     }
 }

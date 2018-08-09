@@ -11,100 +11,59 @@ $ composer require nascom/teamleader-api-client
 ## Basic usage
 ### Setup
 First, you'll need to provide a client that can make HTTP requests.
-It has to implement the `HttpClientInterface`. A client using Guzzle
+It has to implement the `HttpClientInterface`. A helper class that generates a client using Guzzle
 is already available in the package. This requires installing
 [guzzlehttp/guzzle](https://github.com/guzzle/guzzle).
 
 ```php
 <?php
 
-use Nascom\TeamleaderApiClient\Http\HttpClient\GuzzleHttpClient;
+use Nascom\TeamleaderApiClient\Http\ApiClient\GuzzleOAuthHelper;
 
-$guzzle = new \GuzzleHttp\Client(['base_uri' => 'https://www.teamleader.be/api/']);
-$httpClient = new GuzzleHttpClient($guzzle);
+$clientId = 'my-client-id';
+$clientSecret = 'my-client-secret';
+$redirectUri = 'http://my-uri-that-stores-access-token-and-knows-where-to-go';
+
+// Initialize our OAuth Client.
+// Make sure your Redirect URI is able to store the Access Token in a secure
+// way. We assume it is available in $accessToken variable here.
+// You'll have to provide your Teamleader API credentials as well.
+$guzzleOAuthHelper = new GuzzleOAuthHelper($clientId, $clientSecret, $redirectUri);
+// Set the Access token after OAuth returned
+// See examples/authorize.php how to make this work.
+$guzzleOAuthHelper->setAccessToken($accessToken);
+// Get the HttpClient
+$httpClient = $guzzleOAuthHelper->getHttpClient();
 ```
 
 You can use this HttpClient to instantiate the actual API client.
-You'll have to provide your Teamleader API credentials as well.
+
 ```php
 <?php
 
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
 
-$teamleaderParameters = [
-    'api_group' => '12345',
-    'api_secret' => 'XXXXXXXXXXXXXXX'
-];
-
-$client = new ApiClient(
-    $httpClient, // A client implementing HttpClientInterface.
-    $teamleaderParameters // An array containing the Teamleader credentials.
-);
+// Get the TeamleaderClient
+$tlClient = new ApiClient($httpClient);
 ```
 
 ### Making requests
-Every API endpoint has a corresponding Request class. These classes have to
-be passed to the client's `handle()` method, which will return a Response object.
+Every API endpoint has a corresponding Repository class. They can also be used
+as separate requests.
 All available requests can be found [here](https://github.com/Nascom/TeamleaderApiClient/tree/master/src/Request).
-
-For example, here is how you could fetch the details of a project:
+All available managers can be found [here](https://github.com/Nascom/TeamleaderApiClient/tree/master/src/Repository)
+For example, here is how you could fetch the details of a contact:
 ```php
 <?php
 
-use Nascom\TeamleaderApiClient\Request\Project\RetrieveProjectRequest;
-
-$projectRequest = new RetrieveProjectRequest(23);
-$response = $client->handle($projectRequest);
-
-echo $response->getData(); // Returns the Teamleader JSON response as a string.
+// Get the Teamleader Contact Repository
+$contactRepository = $tlClient->getContactRepository();
+// Get a single contact.
+$contact = $contactRepository->getContact('6267fb2c-9298-06a5-b266-dd7a9b82d800');
 ```
 
 ## Advanced features
 ### Providing extra options
-Extra options can be passed to the ApiClient. These will be merged with some
-default options, and passed to the HttpClient on making a request.
-```php
-<?php
-
-$client = new ApiClient(
-    $httpClient,
-    $teamleaderParameters,
-    ['connect_timeout' => 5.0] // This will override the default timeout.
-);
-```
-
-### Creating a custom HttpClient
-You can create a custom HttpClient to handle requests. All it has to do is
-implement the `HttpClientInterface`. You could, for example, implement a client
-using curl.
-
-```php
-<?php
-
-use Nascom\TeamleaderApiClient\Http\HttpClient\HttpClientInterface;
-
-class CurlHttpClient implements HttpClientInterface
-{
-    public function request($method, $uri, array $options = [])
-    {
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://www.teamleader.be/api/' . $uri,
-            CURLOPT_POST => 1,
-            CURLOPT_POSTFIELDS => $options['form_params']
-        ));
-
-        $response = curl_exec($curl);
-        curl_close($curl);
-
-        return $response;
-    }
-}
-
-$client = new ApiClient(
-    new CurlHttpCLient(),
-    $teamleaderParameters
-);
-```
+Since we are compatible with any httpClient, as it is compatible with the psr7
+standards, you can adjust the httpClient before creating any request to add or
+remove any parameters. See the Guzzle library for details.

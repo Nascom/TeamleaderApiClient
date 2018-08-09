@@ -10,15 +10,6 @@ use Nascom\TeamleaderApiClient\Entity\Entity;
  */
 class Contact extends Entity
 {
-
-    /**
-     * @param array $array
-     */
-    public function __construct(array $array = [])
-    {
-        parent::__construct($array);
-    }
-
     /**
      * @return string
      */
@@ -68,22 +59,6 @@ class Contact extends Entity
     }
 
     /**
-     * @return array
-     */
-    public function getEmails()
-    {
-        return $this->getEntityValue('emails', []);
-    }
-
-    /**
-     * @param array $emails
-     */
-    public function setEmails($emails)
-    {
-        $this->setEntityValue('emails', $emails);
-    }
-
-    /**
      * @return string
      */
     public function getSalutation()
@@ -100,18 +75,58 @@ class Contact extends Entity
     }
 
     /**
-     * @return string
+     * @return Email[]
      */
-    public function getTelephones()
+    public function getEmails()
     {
-        return $this->getEntityValue('telephones', []);
+        $emails = $this->getEntityValue('emails', []);
+        if ($emails === []) {
+            return null;
+        }
+        $emailsRet = [];
+        foreach ($emails as $email) {
+            $emailsRet[] = new Email($email);
+        }
+        return $emailsRet;
     }
 
     /**
-     * @param string $telephones
+     * @param Email[] $emails
+     */
+    public function setEmails($emails)
+    {
+        $emailsPayload = [];
+        foreach ($emails as $email) {
+            $emailsPayload[] = $email->getArrayCopy();
+        }
+        $this->setEntityValue('emails', $emailsPayload);
+    }
+
+    /**
+     * @return Telephone[]|null
+     */
+    public function getTelephones()
+    {
+        $telephones = $this->getEntityValue('telephones', []);
+        if ($telephones === []) {
+            return null;
+        }
+        $telephonesRet = [];
+        foreach ($telephones as $telephone) {
+            $telephonesRet[] = new Telephone($telephone);
+        }
+        return $telephonesRet;
+    }
+
+    /**
+     * @param Telephone[] $telephones
      */
     public function setTelephones($telephones)
     {
+        $telephonesPayload = [];
+        foreach ($telephones as $telephone) {
+            $telephonesPayload[] = $telephone->getArrayCopy();
+        }
         $this->setEntityValue('telephones', $telephones);
     }
 
@@ -129,6 +144,36 @@ class Contact extends Entity
     public function setWebsite($website)
     {
         $this->setEntityValue('website', $website);
+    }
+
+    /**
+     * @return Address[]
+     * This value is not available when getting a list of contactsm only through
+     * contact.info
+     */
+    public function getAddresses()
+    {
+        $addresses = $this->getEntityValue('addresses', []);
+        if ($addresses === []) {
+            return null;
+        }
+        $addressesRet = [];
+        foreach ($addresses as $address) {
+            $addressesRet[] = new Address($address);
+        }
+        return $addressesRet;
+    }
+
+    /**
+     * @param Address[] $addresses
+     */
+    public function setAddresses($addresses)
+    {
+        $addressesPayload = [];
+        foreach ($addresses as $address) {
+            $addressesPayload[] = $address->getArrayCopy();
+        }
+        $this->setEntityValue('addresses', $addressesPayload);
     }
 
     /**
@@ -198,6 +243,22 @@ class Contact extends Entity
     /**
      * @return string
      */
+    public function getCompanies()
+    {
+        return $this->getEntityValue('companies', '');
+    }
+
+    /**
+     * @param string $companies
+     */
+    public function setCompanies($companies)
+    {
+        $this->setEntityValue('companies', $companies);
+    }
+
+    /**
+     * @return string
+     */
     public function getLanguage()
     {
         return $this->getEntityValue('language', '');
@@ -212,83 +273,23 @@ class Contact extends Entity
     }
 
     /**
-     * @return string
+     * @return PaymentTerm|null
      */
     public function getPaymentTerm()
     {
-        return $this->getEntityValue('payment_term', '');
+        $paymentTerm = $this->getEntityValue('payment_term', '');
+        if ($paymentTerm === '') {
+            return null;
+        }
+        return new PaymentTerm($paymentTerm);
     }
 
     /**
-     * @param string $payment_term
+     * @param PaymentTerm $payment_term
      */
-    public function setPaymentTerm($payment_term)
+    public function setPaymentTerm(PaymentTerm $payment_term)
     {
-        $this->setEntityValue('payment_term', $payment_term);
-    }
-
-    /**
-     * @return string
-     */
-    public function getAddedAt()
-    {
-        return $this->getEntityValue('added_at', '');
-    }
-
-    /**
-     * @param string $added_at
-     */
-    public function setAddedAt($added_at)
-    {
-        $this->setEntityValue('added_at', $added_at);
-    }
-
-    /**
-     * @return string
-     */
-    public function getUpdatedAt()
-    {
-        return $this->getEntityValue('updated_at', '');
-    }
-
-    /**
-     * @param string $updated_at
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->setEntityValue('updated_at', $updated_at);
-    }
-
-    /**
-     * @return array
-     */
-    public function getAddresses()
-    {
-        return $this->getEntityValue('addresses', '');
-    }
-
-    /**
-     * @param array $address
-     */
-    public function setAddresses($address)
-    {
-        $this->setEntityValue('addresses', $address);
-    }
-
-    /**
-     * @return array
-     */
-    public function getPrimaryAddress()
-    {
-        return $this->getEntityValue('primary_address', '');
-    }
-
-    /**
-     * @param array $primary_address
-     */
-    public function setPrimaryAddress($primary_address)
-    {
-        $this->setEntityValue('primary_address', $primary_address);
+        $this->setEntityValue('payment_term', $payment_term->getArrayCopy());
     }
 
     /**
@@ -340,18 +341,71 @@ class Contact extends Entity
     }
 
     /**
-     * @return boolean
+     * @return boolean|null
      */
     public function getMarketingMailsConsent()
     {
-        return $this->getEntityValue('marketing_mails_consent', false);
+        return $this->getEntityValue('marketing_mails_consent', null);
     }
 
     /**
      * @param boolean $marketingMailsConsent
      */
-    public function setMarketingMailsConsent(boolean $marketingMailsConsent) {
+    public function setMarketingMailsConsent($marketingMailsConsent) {
         $this->setEntityValue('marketing_mails_consent', $marketingMailsConsent);
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddedAt()
+    {
+        return $this->getEntityValue('added_at', '');
+    }
+
+    /**
+     * @param string $added_at
+     */
+    public function setAddedAt($added_at)
+    {
+        $this->setEntityValue('added_at', $added_at);
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdatedAt()
+    {
+        return $this->getEntityValue('updated_at', '');
+    }
+
+    /**
+     * @param string $updated_at
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->setEntityValue('updated_at', $updated_at);
+    }
+
+    /**
+     * Only available through contact.list
+     * @return Address|null
+     */
+    public function getPrimaryAddress()
+    {
+        $primaryAddress = $this->getEntityValue('primary_address', '');
+        if ($primaryAddress === '') {
+            return null;
+        }
+        return new Address($primaryAddress);
+    }
+
+    /**
+     * @param Address $primaryAddress
+     */
+    public function setPrimaryAddress(Address $primaryAddress)
+    {
+        $this->setEntityValue('primary_address', $primaryAddress->getArrayCopy());
     }
 
 }
