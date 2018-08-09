@@ -2,6 +2,7 @@
 bin/
 vendor/
 docroot
+examples/credentials.json
 
 # Editors
 .idea/

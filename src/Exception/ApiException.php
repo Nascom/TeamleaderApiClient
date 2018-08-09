@@ -7,7 +7,6 @@ namespace Nascom\TeamleaderApiClient\Exception;
  *
  * @package Nascom\TeamleaderApiClient\Exception
  */
-class ApiException extends \RuntimeException
+class ApiException extends \Exception
 {
-    //
 }

@@ -16,7 +16,7 @@ use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
  *
  * @package Nascom\TeamleaderApiClient\Http
  */
-class GuzzleOAuthClient
+class GuzzleOAuthHelper
 {
 
     /** @var string  */
@@ -67,7 +67,8 @@ class GuzzleOAuthClient
         $provider = $this->getProvider();
         // attach our oauth2 middleware
         $bearerMiddleware = new OAuth2Middleware(
-            new Bearer($provider, $this->accessToken), // use the Bearer token type
+            // use the Bearer token type
+            new Bearer($provider, $this->accessToken),
             [ // ignore (do not attempt to authorize) the following URLs
                 $provider->getBaseAuthorizationUrl(),
                 $provider->getBaseAccessTokenUrl([]),
