@@ -8,6 +8,7 @@ use Nascom\TeamleaderApiClient\Attributes\ContactFilter;
 use Nascom\TeamleaderApiClient\Attributes\Page;
 use Nascom\TeamleaderApiClient\Attributes\Sort;
 use Nascom\TeamleaderApiClient\Entity\Contact;
+use Nascom\TeamleaderApiClient\Request\Contact\ContactsInfoRequest;
 use Nascom\TeamleaderApiClient\Request\Contact\ContactsListRequest;
 
 class ContactRepository extends RepositoryBase
@@ -46,5 +47,29 @@ class ContactRepository extends RepositoryBase
         }
 
         return $contacts;
+    }
+
+    /**
+     * Get details for a single contact.
+     *
+     * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.info
+     *
+     * @param string $id
+     *
+     * @return Contact[]
+     */
+    public function getContact($id)
+    {
+        $request = new ContactsInfoRequest($id);
+
+        $response = $this->sendRequest($request);
+        $responseBody = $this->getResponseBody($response);
+
+        $contact = [];
+        if (isset($responseBody['data'])) {
+            $contact = new Contact($responseBody['data']);
+        }
+
+        return $contact;
     }
 }

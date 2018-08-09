@@ -5,6 +5,7 @@ require('../vendor/autoload.php');
 
 use Nascom\TeamleaderApiClient\Attributes\ContactFilter;
 use Nascom\TeamleaderApiClient\Attributes\Email;
+use Nascom\TeamleaderApiClient\Attributes\Page;
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
 use Nascom\TeamleaderApiClient\Http\ApiClient\GuzzleOAuthClient;
 
@@ -14,7 +15,7 @@ use Nascom\TeamleaderApiClient\Http\ApiClient\GuzzleOAuthClient;
 
 $clientId = '';
 $clientSecret = '';
-$redirectUri = 'http://6514aaba.ngrok.io/ContactList.php';
+$redirectUri = 'https://60583853.ngrok.io/examples/ContactList.php';
 
 $guzzleOAuthClient = new GuzzleOAuthClient($clientId, $clientSecret, $redirectUri);
 
@@ -57,6 +58,7 @@ $tlClient = new ApiClient($httpClient);
 //////////////////////////////////////////////////////////
 // Actual code example starts here for ContactList. //////
 //////////////////////////////////////////////////////////
+echo '<a href="https://60583853.ngrok.io/examples/ContactList.php">Retry</a>';
 
 // Get the Teamleader Contact Repository
 $contactRepository = $tlClient->getContactRepository();
@@ -74,5 +76,19 @@ $filter->setEmail($email);
 $contacts = $contactRepository->listContacts($filter);
 
 // Print all contact objects
+//var_dump($contacts);
+
+
+// Get a list of 40 contacts from page 2.
+$page = new Page();
+$page->setSize('40');
+$page->setNumber('2');
+
+$contacts = $contactRepository->listContacts(null, $page);
+
 var_dump($contacts);
 
+
+// Get a single contact.
+$contact = $contactRepository->getContact('6267fb2c-9298-06a5-b266-dd7a9b82d800');
+var_dump($contact);
