@@ -148,3 +148,7 @@ $contact = new Contact($contact_variables);
 $contact = $contactRepository->addContact($contact);
 
 var_dump($contact);
+
+// Delete a contact (the newly created one).
+$contactRepository->deleteContact($contact->getId());
+

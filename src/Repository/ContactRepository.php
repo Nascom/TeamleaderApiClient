@@ -10,6 +10,7 @@ use Nascom\TeamleaderApiClient\Attributes\Sort;
 use Nascom\TeamleaderApiClient\Entity\Contact;
 use Nascom\TeamleaderApiClient\Exception\ApiException;
 use Nascom\TeamleaderApiClient\Request\Contact\ContactsAddRequest;
+use Nascom\TeamleaderApiClient\Request\Contact\ContactsDeleteRequest;
 use Nascom\TeamleaderApiClient\Request\Contact\ContactsInfoRequest;
 use Nascom\TeamleaderApiClient\Request\Contact\ContactsListRequest;
 
@@ -111,5 +112,20 @@ class ContactRepository extends RepositoryBase
 
         return $contact;
 
+    }
+
+    /**
+     * Delete a contact.
+     *
+     * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.delete
+     *
+     * @param string $id
+     *
+     * @throws Nascom\TeamleaderApiClient\Exception\ApiException
+     */
+    public function deleteContact($id) {
+        $request = new ContactsDeleteRequest($id);
+        $response = $this->sendRequest($request);
+        $responseBody = $this->getResponseBody($response);
     }
 }
