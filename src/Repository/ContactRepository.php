@@ -115,6 +115,21 @@ class ContactRepository extends RepositoryBase
     }
 
     /**
+     * Update a contact.
+     *
+     * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.update
+     *
+     * @param Contact $contact
+     *
+     * @throws Nascom\TeamleaderApiClient\Exception\ApiException
+     *
+     * @return Contact
+     */
+    public function updateContact(Contact $contact) {
+        //@TODO.
+    }
+
+    /**
      * Delete a contact.
      *
      * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.delete
@@ -128,4 +143,21 @@ class ContactRepository extends RepositoryBase
         $response = $this->sendRequest($request);
         $responseBody = $this->getResponseBody($response);
     }
+
+    /**
+     * @param string $id
+     * @param array $tags
+     */
+    public function tagContact(string $id, array $tags) {
+        //@TODO.
+    }
+
+    /**
+     * @param string $id
+     * @param array $tags
+     */
+    public function untagContact(string $id, array $tags) {
+        //@TODO.
+    }
+
 }
