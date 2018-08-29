@@ -7,8 +7,7 @@ use Http\Client\HttpClient;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
 use Nascom\OAuth2\Client\Provider\Teamleader;
-use Somoza\OAuth2Middleware\OAuth2Middleware;
-use Somoza\OAuth2Middleware\TokenService\Bearer;
+use Nascom\TeamleaderApiClient\Http\Guzzle\Middleware\AuthenticationMiddleware;
 use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
 /**
@@ -61,17 +60,11 @@ class GuzzleOAuthHelper
      */
     public function getHttpClient()
     {
-        $provider = $this->getProvider();
-        // attach our oauth2 middleware
-        $bearerMiddleware = new OAuth2Middleware(
-            // use the Bearer token type
-            new Bearer($provider, $this->accessToken),
-            [ // ignore (do not attempt to authorize) the following URLs
-                $provider->getBaseAuthorizationUrl(),
-                $provider->getBaseAccessTokenUrl([]),
-            ]
+        $authenticationMiddleware = new AuthenticationMiddleware(
+            $this->getProvider(),
+            $this->getAccessToken()
         );
-        $this->stack->push($bearerMiddleware);
+        $this->stack->push($authenticationMiddleware);
 
         return new GuzzleAdapter($this->guzzleClient);
     }
