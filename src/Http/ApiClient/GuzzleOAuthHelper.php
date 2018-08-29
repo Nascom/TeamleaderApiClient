@@ -2,11 +2,11 @@
 
 namespace Nascom\TeamleaderApiClient\Http\ApiClient;
 
-use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
 use Http\Client\HttpClient;
-use League\OAuth2\Client\Provider\GenericProvider;
+use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
+use Nascom\OAuth2\Client\Provider\Teamleader;
 use Somoza\OAuth2Middleware\OAuth2Middleware;
 use Somoza\OAuth2Middleware\TokenService\Bearer;
 use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
@@ -18,7 +18,6 @@ use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
  */
 class GuzzleOAuthHelper
 {
-
     /** @var string  */
     protected $clientId;
 
@@ -51,9 +50,7 @@ class GuzzleOAuthHelper
         $this->redirectUri = $redirectUri;
         $this->accessToken = $accessToken;
 
-        /** @var \GuzzleHttp\Client $client */
-        $this->stack = new HandlerStack();
-        $this->stack->setHandler(new CurlHandler());
+        $this->stack = HandlerStack::create();
         $this->guzzleClient = new \GuzzleHttp\Client(['handler' => $this->stack, 'headers' => ['Content-Type' => 'application/json;charset=utf-8']]);
     }
 
@@ -80,23 +77,15 @@ class GuzzleOAuthHelper
     }
 
     /**
-     * @return GenericProvider
+     * @return AbstractProvider
      */
     public function getProvider()
     {
-        // instantiate a provider, see league/oauth2-client docs
-        $provider = new GenericProvider(
-            [
-                'clientId' => $this->clientId,
-                'clientSecret' => $this->clientSecret,
-                'urlAuthorize' => ApiClient::URL_AUTHORIZE,
-                'urlAccessToken' => ApiClient::URL_ACCESS_TOKEN,
-                'urlResourceOwnerDetails' => ApiClient::URL_RESOURCE_OWNER_DETAILS,
-                'redirectUri' => $this->redirectUri,
-            ],
-            ['httpClient' => $this->guzzleClient]
-        );
-        return $provider;
+        return new Teamleader([
+            'clientId' => $this->clientId,
+            'clientSecret' => $this->clientSecret,
+            'redirectUri' => $this->redirectUri
+        ]);
     }
 
     /**

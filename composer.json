@@ -39,7 +39,8 @@
     "php-http/message-factory": "^1.0",
     "php-http/discovery": "^1.0",
     "php-http/client-common": "^1.0",
-    "symfony/serializer": "~2.7|^3.2"
+    "symfony/serializer": "~2.7|^3.2",
+    "nascom/oauth2-teamleader": "^0.1"
   },
   "autoload": {
     "psr-4": {
