@@ -3,6 +3,7 @@ bin/
 vendor/
 docroot
 examples/credentials.json
+composer.lock
 
 # Editors
 .idea/
