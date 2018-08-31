@@ -24,17 +24,25 @@ class AuthenticationMiddleware
     private $token;
 
     /**
+     * @var callable
+     */
+    private $refreshTokenCallback;
+
+    /**
      * AuthenticationMiddleware constructor.
      *
      * @param AbstractProvider $provider
      * @param AccessToken $token
+     * @param callable $refreshTokenCallback
      */
     public function __construct(
         AbstractProvider $provider,
-        AccessToken $token
+        AccessToken $token,
+        callable $refreshTokenCallback = null
     ) {
         $this->provider = $provider;
         $this->token = $token;
+        $this->refreshTokenCallback = $refreshTokenCallback;
     }
 
     /**
@@ -44,6 +52,13 @@ class AuthenticationMiddleware
     public function __invoke(callable $handler)
     {
         return function (RequestInterface $request, array $options) use ($handler) {
+            if ($this->token->hasExpired()) {
+                $this->token = $this->provider->getAccessToken('refresh_token', ['refresh_token' => $this->token->getRefreshToken()]);
+                if ($this->refreshTokenCallback) {
+                    call_user_func($this->refreshTokenCallback, $this->token);
+                }
+            }
+
             $authenticatedRequest = $this->provider->getAuthenticatedRequest(
                 $request->getMethod(),
                 $request->getUri(),
