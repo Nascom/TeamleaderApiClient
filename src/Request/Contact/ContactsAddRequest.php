@@ -2,10 +2,6 @@
 namespace Nascom\TeamleaderApiClient\Request\Contact;
 
 use Http\Discovery\MessageFactoryDiscovery;
-use Http\Discovery\StreamFactoryDiscovery;
-use Nascom\TeamleaderApiClient\Attributes\ContactFilter;
-use Nascom\TeamleaderApiClient\Attributes\Page;
-use Nascom\TeamleaderApiClient\Attributes\Sort;
 use Nascom\TeamleaderApiClient\Entity\Contact;
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
 use Nascom\TeamleaderApiClient\Request\AbstractRequest;
@@ -24,23 +20,55 @@ class ContactsAddRequest extends AbstractRequest
     {
         $this->setUri(ApiClient::BASE_API_URL . 'contacts.add');
         $this->request = MessageFactoryDiscovery::find()->createRequest('POST',  $this->uri);
-        $this->setFirstName($contact->getFirstName());
-        $this->setFirstName($contact->getFirstName());
+        // Required fields.
         $this->setLastName($contact->getLastName());
-        $this->setEmails($contact->getEmails());
-        $this->setSalutation($contact->getSalutation());
-        $this->setTelephones($contact->getTelephones());
-        $this->setWebsite($contact->getWebsite());
-        $this->setAddresses($contact->getAddresses());
-        $this->setLanguage($contact->getLanguage());
-        $this->setGender($contact->getGender());
-        $this->setBirthDate($contact->getBirthDate());
-        $this->setIban($contact->getIban());
-        $this->setBic($contact->getBic());
-        $this->setRemarks($contact->getRemarks());
-        $this->setTags($contact->getTags());
-        $this->setCustomFields($contact->getCustomFields());
-        $this->setMarketingMailsConsent($contact->getMarketingMailsConsent());
+
+        // Optional fields.
+        if (!empty($contact->getFirstName())) {
+          $this->setFirstName($contact->getFirstName());
+        }
+        if ($contact->getEmails()) {
+          $this->setEmails($contact->getEmails());
+        }
+        if (!empty($contact->getSalutation())) {
+          $this->setSalutation($contact->getSalutation());
+        }
+        if ($contact->getTelephones()) {
+          $this->setTelephones($contact->getTelephones());
+        }
+        if (!empty($contact->getWebsite())) {
+          $this->setWebsite($contact->getWebsite());
+        }
+        if ($contact->getAddresses()) {
+          $this->setAddresses($contact->getAddresses());
+        }
+        if ($contact->getLanguage()) {
+          $this->setLanguage($contact->getLanguage());
+        }
+        if (!empty($contact->getGender())) {
+          $this->setGender($contact->getGender());
+        }
+        if (!empty($contact->getBirthDate())) {
+          $this->setBirthDate($contact->getBirthDate());
+        }
+        if (!empty($contact->getIban())) {
+          $this->setIban($contact->getIban());
+        }
+        if (!empty($contact->getBic())) {
+          $this->setBic($contact->getBic());
+        }
+        if (!empty($contact->getRemarks())) {
+          $this->setRemarks($contact->getRemarks());
+        }
+        if (!empty($contact->getTags())) {
+          $this->setTags($contact->getTags());
+        }
+        if (!empty($contact->getCustomFields())) {
+          $this->setCustomFields($contact->getCustomFields());
+        }
+        if ($contact->getMarketingMailsConsent()) {
+          $this->setMarketingMailsConsent($contact->getMarketingMailsConsent());
+        }
     }
 
 
