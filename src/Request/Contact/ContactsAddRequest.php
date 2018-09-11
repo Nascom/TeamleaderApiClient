@@ -75,7 +75,7 @@ class ContactsAddRequest extends AbstractRequest
     /**
      * @param string $firstName
      */
-    public function setFirstName(string $firstName)
+    public function setFirstName($firstName)
     {
         $this->requestBody['first_name'] = $firstName;
     }
@@ -83,7 +83,7 @@ class ContactsAddRequest extends AbstractRequest
     /**
      * @param string $lastName
      */
-    public function setLastName(string $lastName)
+    public function setLastName($lastName)
     {
         $this->requestBody['last_name'] = $lastName;
     }
@@ -99,7 +99,7 @@ class ContactsAddRequest extends AbstractRequest
     /**
      * @param string $salutation
      */
-    public function setSalutation(string $salutation)
+    public function setSalutation($salutation)
     {
         $this->requestBody['salutation'] = $salutation;
     }
@@ -115,7 +115,7 @@ class ContactsAddRequest extends AbstractRequest
     /**
      * @param string $website
      */
-    public function setWebsite(string $website)
+    public function setWebsite($website)
     {
         $this->requestBody['website'] = $website;
     }
@@ -131,7 +131,7 @@ class ContactsAddRequest extends AbstractRequest
     /**
      * @param string $language
      */
-    public function setLanguage(string $language)
+    public function setLanguage($language)
     {
         $this->requestBody['language'] = $language;
     }
@@ -139,7 +139,7 @@ class ContactsAddRequest extends AbstractRequest
     /**
      * @param string $gender
      */
-    public function setGender(string $gender)
+    public function setGender($gender)
     {
         $this->requestBody['gender'] = $gender;
     }
@@ -147,7 +147,7 @@ class ContactsAddRequest extends AbstractRequest
     /**
      * @param string $birthdate format yyyy-dd-mm
      */
-    public function setBirthDate(string $birthdate)
+    public function setBirthDate($birthdate)
     {
         $this->requestBody['birthdate'] = $birthdate;
     }
@@ -155,7 +155,7 @@ class ContactsAddRequest extends AbstractRequest
     /**
      * @param string $iban
      */
-    public function setIban(string $iban)
+    public function setIban($iban)
     {
         $this->requestBody['iban'] = $iban;
     }
@@ -163,7 +163,7 @@ class ContactsAddRequest extends AbstractRequest
     /**
      * @param string $bic
      */
-    public function setBic(string $bic)
+    public function setBic($bic)
     {
         $this->requestBody['bic'] = $bic;
     }
@@ -171,7 +171,7 @@ class ContactsAddRequest extends AbstractRequest
     /**
      * @param string $remarks
      */
-    public function setRemarks(string $remarks)
+    public function setRemarks($remarks)
     {
         $this->requestBody['remarks'] = $remarks;
     }
@@ -195,7 +195,7 @@ class ContactsAddRequest extends AbstractRequest
     /**
      * @param boolean $marketingMailsConsent
      */
-    public function  setMarketingMailsConsent(bool $marketingMailsConsent)
+    public function  setMarketingMailsConsent($marketingMailsConsent)
     {
         $this->requestBody['marketing_mails_consent'] = $marketingMailsConsent;
     }

@@ -17,7 +17,7 @@ class ContactsDeleteRequest extends AbstractRequest
      * ContactsInfoRequest constructor.
      * @param string $id
      */
-    public function __construct(string $id)
+    public function __construct($id)
     {
         if (!isset($id)) {
             throw new ApiException('Id is required for getting a contact.');
@@ -30,7 +30,7 @@ class ContactsDeleteRequest extends AbstractRequest
     /**
      * @param string $id
      */
-    public function setID(string $id)
+    public function setID($id)
     {
         $this->requestBody['id'] = $id;
     }
