@@ -1,3 +1,5 @@
+*The updated API client is currently under development at the [v2 branch](https://github.com/Nascom/TeamleaderApiClient/tree/v2)*
+
 # TeamleaderApiClient
 PHP client to connect to the [Teamleader API](http://apidocs.teamleader.be/index.php).
 
