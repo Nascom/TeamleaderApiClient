@@ -20,10 +20,17 @@ class SerializerFactory
      */
     public static function create()
     {
+        $objectMapper = new ObjectMapper();
+
         $normalizers = [
-            new Model\UserDenormalizer(),
+            new ParseDataDenormalizer(),
+            new Model\UserDenormalizer($objectMapper),
+            new Model\ContactDenormalizer($objectMapper),
             new Aggregate\AccountDenormalizer(),
             new Aggregate\TelephoneDenormalizer(),
+            new Aggregate\AddressDenormalizer($objectMapper),
+            new Aggregate\EmailDenormalizer(),
+            new Aggregate\PaymentTermDenormalizer(),
             new ArrayDenormalizer()
         ];
         $encoders = [

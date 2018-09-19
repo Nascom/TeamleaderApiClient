@@ -77,10 +77,18 @@ All available requests can be found [here][request-list].
 <?php
 
 use Nascom\TeamleaderApiClient\Request\General\Users\UsersMeRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsListRequest;
 
 $request = new UsersMeRequest();
 $response = $apiClient->handle($request);
 $userArray = json_decode($response->getBody()->getContents());
+
+// A slightly more complex example involves filtering and sorting.
+$request = new ContactsListRequest($filter);
+$request->getFilter()->addTag('prospect');
+$request->getPageInfo()->setPageNumber(3);
+$request->getSortInfo()->addSort('updated_at');
+$response = $apiClient->handle($request);
 ```
 
 ###  Using the repository classes
@@ -94,6 +102,8 @@ to install [Symfony's Serializer component][symfony-serializer]
 <?php
 
 use Nascom\TeamleaderApiClient\Teamleader;
+use Nascom\TeamleaderApiClient\Request\Attributes\Filter\ContactFilter;
+use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 
 // Instantiate using the default serializer setup.
 $teamleader = Teamleader::withDefaultSerializer($apiClient);
@@ -102,6 +112,15 @@ $teamleader = Teamleader::withDefaultSerializer($apiClient);
 $user = $teamleader->users()->me();
 echo get_class($user); // => 'Nascom\TeamleaderApiClient\Model\User'
 echo $user->getAccount()->getType(); // => 'account'
+
+// Filters, page info and sorting can be passed as arguments when applicable.
+$filter = new ContactFilter();
+$filter->setEmail(new Email('some@email.com', 'primary'));
+$contacts = $teamleader->contacts()->listContacts(
+    $filter,
+    new PageInfo(5),
+    new SortInfo('added_at')
+);
 ```
 
 [teamleader-docs]: https://developer.teamleader.eu

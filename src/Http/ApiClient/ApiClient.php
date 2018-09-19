@@ -31,20 +31,33 @@ class ApiClient implements ApiClientInterface
     private $accessToken;
 
     /**
+     * @var string
+     */
+    private $defaultMethod;
+
+    /**
      * ApiClient constructor.
      *
      * @param AbstractProvider $provider
      * @param HttpClient $httpClient
      * @param AccessToken $accessToken
+     * @param array $options
+     *   An associative array of options. Supports the following values:
+     *   - `default_method`: the default method to use when a requests supports
+     *       multiple methods.
      */
     public function __construct(
         AbstractProvider $provider,
         HttpClient $httpClient,
-        AccessToken $accessToken
+        AccessToken $accessToken,
+        array $options = []
     ) {
         $this->httpClient = $httpClient;
         $this->provider = $provider;
         $this->accessToken = $accessToken;
+        $this->defaultMethod = isset($options['default_method'])
+            ? $options['default_method']
+            : 'GET';
     }
 
     /**
@@ -52,11 +65,17 @@ class ApiClient implements ApiClientInterface
      */
     public function handle(RequestInterface $request)
     {
+        $options = [];
+        $body = $request->getBody();
+        if (!empty($body)) {
+            $options['body'] = json_encode($body);
+        }
+
         $psrRequest = $this->provider->getAuthenticatedRequest(
-            $request->getMethod(),
+            $request->getMethod() ?: $this->defaultMethod,
             Teamleader::API_BASE_URL . $request->getEndpoint(),
             $this->accessToken,
-            $request->getOptions()
+            $options
         );
 
         return $this->httpClient->sendRequest($psrRequest);

@@ -10,10 +10,23 @@ namespace Nascom\TeamleaderApiClient\Request;
 abstract class BaseRequest implements RequestInterface
 {
     /**
+     * @var array
+     */
+    protected $body = [];
+
+    /**
      * @inheritdoc
      */
-    public function getOptions()
+    public function getBody()
     {
-        return [];
+        return $this->body;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getMethod()
+    {
+        return null;
     }
 }

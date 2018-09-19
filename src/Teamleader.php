@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient;
 
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClientInterface;
+use Nascom\TeamleaderApiClient\Repository\ContactRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
 use Nascom\TeamleaderApiClient\Serializer\SerializerFactory;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -43,8 +44,19 @@ class Teamleader
         return new static($apiClient, SerializerFactory::create());
     }
 
+    /**
+     * @return UserRepository
+     */
     public function users()
     {
         return new UserRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return ContactRepository
+     */
+    public function contacts()
+    {
+        return new ContactRepository($this->apiClient, $this->serializer);
     }
 }

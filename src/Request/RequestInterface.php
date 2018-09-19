@@ -10,7 +10,7 @@ namespace Nascom\TeamleaderApiClient\Request;
 interface RequestInterface
 {
     /**
-     * @return string
+     * @return string|null
      */
     public function getMethod();
 
@@ -22,5 +22,5 @@ interface RequestInterface
     /**
      * @return array
      */
-    public function getOptions();
+    public function getBody();
 }

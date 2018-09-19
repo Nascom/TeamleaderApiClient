@@ -5,17 +5,16 @@ namespace Nascom\TeamleaderApiClient\Serializer\Model;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Account;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
 use Nascom\TeamleaderApiClient\Model\User;
+use Nascom\TeamleaderApiClient\Serializer\DenormalizerBase;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 /**
  * Class UserDenormalizer
  *
  * @package Nascom\TeamleaderApiClient\Serializer\Model
  */
-class UserDenormalizer implements
-    DenormalizerInterface,
+class UserDenormalizer extends DenormalizerBase implements
     DenormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
@@ -23,43 +22,24 @@ class UserDenormalizer implements
     /**
      * @inheritdoc
      */
-    public function denormalize(
-        $data,
-        $class,
-        $format = null,
-        array $context = []
-    ) {
-        $data = $data['data'];
-
-        $user = new User();
-        $user->setId($data['id']);
-        $user->setFirstName($data['first_name']);
-        $user->setLastName($data['last_name']);
-        $user->setTimezone($data['time_zone']);
-        $user->setFunction($data['function']);
-        $user->setLanguage($data['language']);
-        $user->setEmail($data['email']);
-
-        $account = $this->denormalizer->denormalize(
+    protected function prepareData($data) {
+        $data['account'] = $this->denormalizer->denormalize(
             $data['account'],
             Account::class
         );
-        $user->setAccount($account);
-
-        $telephones = $this->denormalizer->denormalize(
+        $data['telephones'] = $this->denormalizer->denormalize(
             $data['telephones'],
             Telephone::class . '[]'
         );
-        $user->setTelephones($telephones);
 
-        return $user;
+        return $data;
     }
 
     /**
      * @inheritdoc
      */
-    public function supportsDenormalization($data, $type, $format = null)
+    protected function getTargetClass()
     {
-        return $type === User::class;
+        return User::class;
     }
 }
