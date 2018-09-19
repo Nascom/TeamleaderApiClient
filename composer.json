@@ -47,8 +47,9 @@
     "php-http/message": "^1.0",
     "guzzlehttp/psr7": "^1.0"
   },
-  "sugest": {
-    "symfony/serializer": "Lets you use the Teamleader repository classes"
+  "suggest": {
+    "symfony/serializer": "Lets you use the Teamleader repository classes",
+    "guzzlehttp/guzzle": "To use the default HTTP client"
   },
   "autoload": {
     "psr-4": {

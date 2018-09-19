@@ -1,5 +1,5 @@
 # TeamleaderApiClient
-PHP client to connect to the [Teamleader API](http://apidocs.teamleader.be/index.php).
+PHP client to connect to the [Teamleader API][teamleader-docs].
 
 ## Installation
 The package is available via composer:
@@ -9,61 +9,106 @@ $ composer require nascom/teamleader-api-client
 ```
 
 ## Basic usage
-### Setup
-First, you'll need to provide a client that can make HTTP requests.
-It has to implement the `HttpClientInterface`. A helper class that generates a client using Guzzle
-is already available in the package. This requires installing
-[guzzlehttp/guzzle](https://github.com/guzzle/guzzle).
+
+### Dependencies
+
+This package requires an HTTP client supported by [PHP-HTTP][php-http-homepage].
+A default implementation has been provided if you use [Guzzle][guzzle-homepage]
+(`guzzlehttp/guzzle`).
+
+### Authentication
+
+The Teamleader API uses OAuth2.0 to authenticate requests. We rely on [The PHP
+league's OAuth2 client][league-oauth-homepage], with the third-party
+[Teamleader provider][teamleader-provider] to handle this.
 
 ```php
 <?php
 
-use Nascom\TeamleaderApiClient\Http\ApiClient\GuzzleOAuthHelper;
+use Nascom\OAuth2\Client\Provider\Teamleader;
 
-$clientId = 'my-client-id';
-$clientSecret = 'my-client-secret';
-$redirectUri = 'http://my-uri-that-stores-access-token-and-knows-where-to-go';
-
-// Initialize our OAuth Client.
-// Make sure your Redirect URI is able to store the Access Token in a secure
-// way. We assume it is available in $accessToken variable here.
-// You'll have to provide your Teamleader API credentials as well.
-$guzzleOAuthHelper = new GuzzleOAuthHelper($clientId, $clientSecret, $redirectUri);
-// Set the Access token after OAuth returned
-// See examples/authorize.php how to make this work.
-$guzzleOAuthHelper->setAccessToken($accessToken);
-// Get the HttpClient
-$httpClient = $guzzleOAuthHelper->getHttpClient();
+$provider = new Teamleader([
+    'clientId' => 'your-client-id',
+    'clientSecret' => 'your-client-secret',
+    'redirectUri' => 'http://example.com/your/redirect/uri'
+]);
 ```
 
-You can use this HttpClient to instantiate the actual API client.
+You can use this provider to fetch an access token. See the
+[League documentation][league-usage] for an example.
+
+### Setting up the client
+
+The access token retrieved from the previous step is required to instantiate
+the API client. You'll need an HTTP client as well. If you use guzzle, a
+default factory has been provided.
 
 ```php
 <?php
 
+use Nascom\TeamleaderApiClient\Http\Guzzle\GuzzleApiClientFactory;
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
 
-// Get the TeamleaderClient
-$tlClient = new ApiClient($httpClient);
+// Instantiate the client using the default Guzzle implementation.
+$apiClient = GuzzleApiClientFactory::create(
+    $provider,
+    $accessToken,
+    ['timeout' => 3.0] // Optional extra configuration.
+);
+
+// Alternatively, you can use any other PHP-HTTP compatible client of your
+// choosing to instantiate the API client.
+$apiClient = new ApiClient(
+    $provider,
+    $yourAlternativeHttpClient,
+    $accessToken
+);
 ```
 
 ### Making requests
-Every API endpoint has a corresponding Repository class. They can also be used
-as separate requests.
-All available requests can be found [here](https://github.com/Nascom/TeamleaderApiClient/tree/master/src/Request).
-All available managers can be found [here](https://github.com/Nascom/TeamleaderApiClient/tree/master/src/Repository)
-For example, here is how you could fetch the details of a contact:
+
+Once you have the API client set up, you can start making requests. This is done
+by passing a `Request` object to the client's `handle` method. A PSR-7
+`ResponseInterface` will be returned.
+
+All available requests can be found [here][request-list].
+
 ```php
 <?php
 
-// Get the Teamleader Contact Repository
-$contactRepository = $tlClient->getContactRepository();
-// Get a single contact.
-$contact = $contactRepository->getContact('6267fb2c-9298-06a5-b266-dd7a9b82d800');
+use Nascom\TeamleaderApiClient\Request\General\Users\UsersMeRequest;
+
+$request = new UsersMeRequest();
+$response = $apiClient->handle($request);
+$userArray = json_decode($response->getBody()->getContents());
 ```
 
-## Advanced features
-### Providing extra options
-Since we are compatible with any httpClient, as it is compatible with the psr7
-standards, you can adjust the httpClient before creating any request to add or
-remove any parameters. See the Guzzle library for details.
+###  Using the repository classes
+
+If you want to work with deserialized models, you can make use of the
+`Teamleader` class. This acts as a wrapper for the API. You'll need
+to install [Symfony's Serializer component][symfony-serializer]
+(`symfony/serializer`) for this.
+
+```php
+<?php
+
+use Nascom\TeamleaderApiClient\Teamleader;
+
+// Instantiate using the default serializer setup.
+$teamleader = Teamleader::withDefaultSerializer($apiClient);
+
+// Perform a users.me request
+$user = $teamleader->users()->me();
+echo get_class($user); // => 'Nascom\TeamleaderApiClient\Model\User'
+echo $user->getAccount()->getType(); // => 'account'
+```
+
+[teamleader-docs]: https://developer.teamleader.eu
+[php-http-homepage]: http://docs.php-http.org/en/latest/
+[league-oauth-homepage]: http://oauth2-client.thephpleague.com/
+[teamleader-provider]: https://github.com/Nascom/oauth2-teamleader
+[league-usage]: http://oauth2-client.thephpleague.com/usage/
+[guzzle-homepage]: https://github.com/guzzle/guzzle
+[symfony-serializer]: https://symfony.com/doc/current/components/serializer.html
+[request-list]: https://github.com/Nascom/TeamleaderApiClient/tree/v2/src/Request
