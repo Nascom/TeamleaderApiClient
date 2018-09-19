@@ -1,18 +1,17 @@
 <?php
 
-namespace Nascom\TeamleaderApiClient\Model;
+namespace Nascom\TeamleaderApiClient\Model\Contact;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Address;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
 
 /**
- * Class Contact
+ * Class ContactBase
  *
  * @package Nascom\TeamleaderApiClient\Model
  */
-class Contact
+abstract class ContactBase
 {
     /**
      * @var string
@@ -88,16 +87,6 @@ class Contact
      * @var string|null
      */
     private $updatedAt;
-
-    /**
-     * @var Address|null
-     */
-    private $address;
-
-    /**
-     * @var Address|null
-     */
-    private $primaryAddress;
 
     /**
      * @var string[]
@@ -326,38 +315,6 @@ class Contact
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * @return Address|null
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param Address|null $address
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
-
-    /**
-     * @return Address|null
-     */
-    public function getPrimaryAddress()
-    {
-        return $this->primaryAddress;
-    }
-
-    /**
-     * @param Address|null $primaryAddress
-     */
-    public function setPrimaryAddress($primaryAddress)
-    {
-        $this->primaryAddress = $primaryAddress;
     }
 
     /**

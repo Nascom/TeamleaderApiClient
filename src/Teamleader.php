@@ -8,9 +8,13 @@ use Nascom\TeamleaderApiClient\Repository\UserRepository;
 use Nascom\TeamleaderApiClient\Serializer\SerializerFactory;
 use Symfony\Component\Serializer\SerializerInterface;
 
+/**
+ * Class Teamleader
+ *
+ * @package Nascom\TeamleaderApiClient
+ */
 class Teamleader
 {
-
     /**
      * @var ApiClientInterface
      */

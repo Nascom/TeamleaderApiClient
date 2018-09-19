@@ -25,12 +25,14 @@ class SerializerFactory
         $normalizers = [
             new ParseDataDenormalizer(),
             new Model\UserDenormalizer($objectMapper),
-            new Model\ContactDenormalizer($objectMapper),
+            new Model\Contact\ContactListViewDenormalizer($objectMapper),
+            new Model\Contact\ContactDenormalizer($objectMapper),
             new Aggregate\AccountDenormalizer(),
             new Aggregate\TelephoneDenormalizer(),
             new Aggregate\AddressDenormalizer($objectMapper),
             new Aggregate\EmailDenormalizer(),
             new Aggregate\PaymentTermDenormalizer(),
+            new Aggregate\AddressWIthTypeDenormalizer($objectMapper),
             new ArrayDenormalizer()
         ];
         $encoders = [

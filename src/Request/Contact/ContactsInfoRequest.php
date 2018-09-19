@@ -2,7 +2,6 @@
 namespace Nascom\TeamleaderApiClient\Request\Contact;
 
 use Http\Discovery\MessageFactoryDiscovery;
-use Nascom\TeamleaderApiClient\Attributes\ContactFilter;
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
 use Nascom\TeamleaderApiClient\Request\AbstractRequest;
 
