@@ -7,11 +7,11 @@ use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\RequestInterface;
 
 /**
- * Class AuthenticationMiddleware
+ * Class RefreshTokenMiddleware
  *
  * @package Nascom\TeamleaderApiClient\Http\Guzzle\Middleware
  */
-class AuthenticationMiddleware
+class RefreshTokenMiddleware
 {
     /**
      * @var AbstractProvider
@@ -53,24 +53,22 @@ class AuthenticationMiddleware
     {
         return function (RequestInterface $request, array $options) use ($handler) {
             if ($this->token->hasExpired()) {
-                $this->token = $this->provider->getAccessToken('refresh_token', ['refresh_token' => $this->token->getRefreshToken()]);
-                if ($this->refreshTokenCallback) {
-                    call_user_func($this->refreshTokenCallback, $this->token);
-                }
+                $this->refreshToken();
             }
 
-            $authenticatedRequest = $this->provider->getAuthenticatedRequest(
-                $request->getMethod(),
-                $request->getUri(),
-                $this->token,
-                [
-                    'headers' => $request->getHeaders(),
-                    'body' => $request->getBody()->getContents(),
-                    'protocolVersion' => $request->getProtocolVersion()
-                ]
-            );
-
-            return $handler($authenticatedRequest, $options);
+            return $handler($request, $options);
         };
     }
+
+    private function refreshToken()
+    {
+        $this->token = $this->provider->getAccessToken('refresh_token', [
+            'refresh_token' => $this->token->getRefreshToken()
+        ]);
+
+        if ($this->refreshTokenCallback) {
+            call_user_func($this->refreshTokenCallback, $this->token);
+        }
+    }
+
 }
