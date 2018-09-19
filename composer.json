@@ -41,18 +41,21 @@
     "symfony/serializer": "~2.7|^3.2",
     "nascom/oauth2-teamleader": "^0.1"
   },
+  "require-dev": {
+    "phpspec/phpspec": "^3.2",
+    "php-http/mock-client": "^1.0",
+    "php-http/message": "^1.0",
+    "guzzlehttp/psr7": "^1.0"
+  },
+  "sugest": {
+    "symfony/serializer": "Lets you use the Teamleader repository classes"
+  },
   "autoload": {
     "psr-4": {
       "Nascom\\TeamleaderApiClient\\": [
         "src/"
       ]
     }
-  },
-  "require-dev": {
-    "phpspec/phpspec": "^3.2",
-    "php-http/mock-client": "^1.0",
-    "php-http/message": "^1.0",
-    "guzzlehttp/psr7": "^1.0"
   },
   "config": {
     "bin-dir": "bin"

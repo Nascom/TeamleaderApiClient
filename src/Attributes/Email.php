@@ -10,7 +10,6 @@ use JsonSerializable;
  */
 class Email implements JsonSerializable
 {
-
     /**
      * @var string
      */
@@ -60,8 +59,4 @@ class Email implements JsonSerializable
             'email' => $this->email,
         ]);
     }
-
-
-
-
 }
