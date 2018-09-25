@@ -33,6 +33,24 @@ class Contact extends ContactBase
     private $addresses = [];
 
     /**
+     * @var array
+     * @todo
+     */
+    private $customFields = [];
+
+    /**
+     * @param string $lastName
+     * @return Contact
+     */
+    public static function create($lastName)
+    {
+        $contact = new static;
+        $contact->setLastName($lastName);
+
+        return $contact;
+    }
+
+    /**
      * @return string
      */
     public function getRemarks()
@@ -51,7 +69,7 @@ class Contact extends ContactBase
     /**
      * @return bool
      */
-    public function isMarketingMailsConsent()
+    public function hasMarketingMailsConsent()
     {
         return $this->marketingMailsConsent;
     }

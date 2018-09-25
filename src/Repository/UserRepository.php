@@ -2,9 +2,14 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-use Nascom\TeamleaderApiClient\Model\User;
+use Nascom\TeamleaderApiClient\Model\User\User;
 use Nascom\TeamleaderApiClient\Request\General\Users\UsersMeRequest;
 
+/**
+ * Class UserRepository
+ *
+ * @package Nascom\TeamleaderApiClient\Repository
+ */
 class UserRepository extends RepositoryBase
 {
     /**

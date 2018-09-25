@@ -22,10 +22,10 @@ class Email
     /**
      * Email constructor.
      *
-     * @param $email
-     * @param $type
+     * @param null $email
+     * @param null $type
      */
-    public function __construct($email, $type)
+    public function __construct($email = null, $type = null)
     {
         $this->email = $email;
         $this->type = $type;

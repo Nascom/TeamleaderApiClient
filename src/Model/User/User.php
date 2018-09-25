@@ -1,10 +1,15 @@
 <?php
 
-namespace Nascom\TeamleaderApiClient\Model;
+namespace Nascom\TeamleaderApiClient\Model\User;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\Account;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
 
+/**
+ * Class User
+ *
+ * @package Nascom\TeamleaderApiClient\Model\User
+ */
 class User
 {
     /**

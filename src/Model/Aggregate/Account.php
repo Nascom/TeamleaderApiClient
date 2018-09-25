@@ -15,18 +15,6 @@ class Account
     private $type;
 
     /**
-     * Account constructor.
-     *
-     * @param string $id
-     * @param string $type
-     */
-    public function __construct($id, $type = 'account')
-    {
-        $this->id = $id;
-        $this->type = $type;
-    }
-
-    /**
      * @return string
      */
     public function getId()

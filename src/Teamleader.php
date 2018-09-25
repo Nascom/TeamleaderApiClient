@@ -21,7 +21,7 @@ class Teamleader
     private $apiClient;
 
     /**
-     * @var SerializerInterface
+     * @var SerializerInterface&NormalizerInterface
      */
     private $serializer;
 
@@ -29,7 +29,7 @@ class Teamleader
      * Teamleader constructor.
      *
      * @param ApiClientInterface $apiClient
-     * @param SerializerInterface $serializer
+     * @param SerializerInterface&NormalizerInterface $serializer
      */
     public function __construct(
         ApiClientInterface $apiClient,

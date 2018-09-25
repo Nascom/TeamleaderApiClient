@@ -2,10 +2,11 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer;
 
-use Nascom\TeamleaderApiClient\Serializer\Model;
-use Nascom\TeamleaderApiClient\Serializer\Model\Aggregate;
+use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionDenormalizer;
+use Nascom\TeamleaderApiClient\Serializer\FieldDescription;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 /**
@@ -20,19 +21,24 @@ class SerializerFactory
      */
     public static function create()
     {
-        $objectMapper = new ObjectMapper();
+        $fieldDescriptionDenormalizer = new FieldDescriptionDenormalizer([
+            // Models
+            new FieldDescription\Model\User\UserFieldDescription(),
+            new FieldDescription\Model\Contact\ContactListViewFieldDescription(),
+            new FieldDescription\Model\Contact\ContactFieldDescription(),
+
+            // Aggregates
+            new FieldDescription\Model\Aggregate\AccountFieldDescription(),
+            new FieldDescription\Model\Aggregate\TelephoneFieldDescription(),
+            new FieldDescription\Model\Aggregate\EmailFieldDescription(),
+            new FieldDescription\Model\Aggregate\AddressFieldDescription(),
+            new FieldDescription\Model\Aggregate\AddressWithTypeFieldDescription()
+        ]);
 
         $normalizers = [
+            new DateTimeNormalizer(),
             new ParseDataDenormalizer(),
-            new Model\UserDenormalizer($objectMapper),
-            new Model\Contact\ContactListViewDenormalizer($objectMapper),
-            new Model\Contact\ContactDenormalizer($objectMapper),
-            new Aggregate\AccountDenormalizer(),
-            new Aggregate\TelephoneDenormalizer(),
-            new Aggregate\AddressDenormalizer($objectMapper),
-            new Aggregate\EmailDenormalizer(),
-            new Aggregate\PaymentTermDenormalizer(),
-            new Aggregate\AddressWIthTypeDenormalizer($objectMapper),
+            $fieldDescriptionDenormalizer,
             new ArrayDenormalizer()
         ];
         $encoders = [

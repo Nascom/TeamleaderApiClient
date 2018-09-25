@@ -54,7 +54,7 @@ abstract class ContactBase
     private $gender;
 
     /**
-     * @var string|null
+     * @var \DateTime|null
      */
     private $birthdate;
 
@@ -79,12 +79,12 @@ abstract class ContactBase
     private $paymentTerm;
 
     /**
-     * @var string|null
+     * @var \DateTime|null
      */
     private $addedAt;
 
     /**
-     * @var string|null
+     * @var \DateTime|null
      */
     private $updatedAt;
 
@@ -92,6 +92,11 @@ abstract class ContactBase
      * @var string[]
      */
     private $tags;
+
+    /**
+     * @var string
+     */
+    private $webUrl;
 
     /**
      * @return string
@@ -206,7 +211,7 @@ abstract class ContactBase
     }
 
     /**
-     * @return null|string
+     * @return null|\DateTime
      */
     public function getBirthdate()
     {
@@ -214,9 +219,9 @@ abstract class ContactBase
     }
 
     /**
-     * @param null|string $birthdate
+     * @param null|\DateTime $birthdate
      */
-    public function setBirthdate($birthdate)
+    public function setBirthdate(\DateTime $birthdate)
     {
         $this->birthdate = $birthdate;
     }
@@ -286,7 +291,7 @@ abstract class ContactBase
     }
 
     /**
-     * @return null|string
+     * @return null|\DateTime
      */
     public function getAddedAt()
     {
@@ -294,15 +299,15 @@ abstract class ContactBase
     }
 
     /**
-     * @param null|string $addedAt
+     * @param null|\DateTime $addedAt
      */
-    public function setAddedAt($addedAt)
+    public function setAddedAt(\DateTime$addedAt)
     {
         $this->addedAt = $addedAt;
     }
 
     /**
-     * @return null|string
+     * @return null|\DateTime
      */
     public function getUpdatedAt()
     {
@@ -310,9 +315,9 @@ abstract class ContactBase
     }
 
     /**
-     * @param null|string $updatedAt
+     * @param null|\DateTime $updatedAt
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }
@@ -347,5 +352,21 @@ abstract class ContactBase
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebUrl()
+    {
+        return $this->webUrl;
+    }
+
+    /**
+     * @param string $webUrl
+     */
+    public function setWebUrl($webUrl)
+    {
+        $this->webUrl = $webUrl;
     }
 }

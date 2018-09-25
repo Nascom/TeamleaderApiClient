@@ -19,7 +19,7 @@ abstract class RepositoryBase
     protected $apiClient;
 
     /**
-     * @var SerializerInterface
+     * @var SerializerInterface&NormalizerInterface
      */
     protected $serializer;
 
@@ -27,7 +27,7 @@ abstract class RepositoryBase
      * RepositoryBase constructor.
      *
      * @param ApiClientInterface $apiClient
-     * @param SerializerInterface $serializer
+     * @param SerializerInterface&NormalizerInterface $serializer
      */
     public function __construct(
         ApiClientInterface $apiClient,
@@ -45,6 +45,16 @@ abstract class RepositoryBase
     protected function deserialize($data, $type)
     {
         return $this->serializer->deserialize($data, $type, 'json');
+    }
+
+    /**
+     * @param $data
+     * @param array $context
+     * @return string
+     */
+    protected function normalize($data, $context = array())
+    {
+        return $this->serializer->normalize($data, 'json', $context);
     }
 
     /**

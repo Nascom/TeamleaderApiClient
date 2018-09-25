@@ -8,6 +8,7 @@ use Nascom\TeamleaderApiClient\Request\Attributes\Filter\ContactFilter;
 use Nascom\TeamleaderApiClient\Request\Attributes\PageInfo;
 use Nascom\TeamleaderApiClient\Request\Attributes\SortInfo;
 use Nascom\TeamleaderApiClient\Model\Contact\Contact;
+use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsAddRequest;
 use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsInfoRequest;
 use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsListRequest;
 
@@ -53,5 +54,16 @@ class ContactRepository extends RepositoryBase
             new ContactsInfoRequest($id),
             Contact::class
         );
+    }
+
+    /**
+     * @param Contact $contact
+     * @throws \Http\Client\Exception
+     */
+    public function addContact(Contact $contact)
+    {
+        $contactArray = $this->normalize($contact);
+        $contactAddRequest = new ContactsAddRequest($contactArray);
+        $this->apiClient->handle($contactAddRequest);
     }
 }

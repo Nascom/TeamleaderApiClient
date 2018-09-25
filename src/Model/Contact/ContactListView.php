@@ -14,28 +14,7 @@ class ContactListView extends ContactBase
     /**
      * @var Address|null
      */
-    private $address;
-
-    /**
-     * @var Address|null
-     */
     private $primaryAddress;
-
-    /**
-     * @return Address|null
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param Address|null $address
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
 
     /**
      * @return Address|null
