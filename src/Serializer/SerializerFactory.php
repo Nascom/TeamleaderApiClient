@@ -23,15 +23,17 @@ class SerializerFactory
     {
         $fieldDescriptionDenormalizer = new FieldDescriptionDenormalizer([
             // Models
+            // General
             new FieldDescription\Model\User\UserFieldDescription(),
             new FieldDescription\Model\User\UserListViewFieldDescription(),
-            new FieldDescription\Model\Contact\ContactListViewFieldDescription(),
-            new FieldDescription\Model\Contact\ContactFieldDescription(),
             new FieldDescription\Model\Department\DepartmentFieldDescription(),
             new FieldDescription\Model\Department\DepartmentListViewFieldDescription(),
             new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionFieldDescription(),
             new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionListViewFieldDescription(),
             new FieldDescription\Model\WorkType\WorkTypeFieldDescription(),
+            // CRM
+            new FieldDescription\Model\Contact\ContactListViewFieldDescription(),
+            new FieldDescription\Model\Contact\ContactFieldDescription(),
 
             // Aggregates
             new FieldDescription\Model\Aggregate\AccountFieldDescription(),

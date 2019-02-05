@@ -1,5 +1,5 @@
 <?php
-namespace Nascom\TeamleaderApiClient\Request\Contact;
+namespace Nascom\TeamleaderApiClient\Request\Old_Contact;
 
 use Http\Discovery\MessageFactoryDiscovery;
 use Nascom\TeamleaderApiClient\Entity\Contact;

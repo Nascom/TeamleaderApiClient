@@ -31,7 +31,7 @@ class UserRepository extends RepositoryBase
      * @return User
      * @throws \Http\Client\Exception
      */
-    public function info($id)
+    public function getUser($id)
     {
         $request = new UsersInfoRequest($id);
 

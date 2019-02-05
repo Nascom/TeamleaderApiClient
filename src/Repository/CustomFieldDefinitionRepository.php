@@ -20,7 +20,7 @@ class CustomFieldDefinitionRepository extends RepositoryBase
      * @return CustomFieldDefinition
      * @throws \Http\Client\Exception
      */
-    public function info($id)
+    public function getCustomFieldDefinition($id)
     {
         $request = new CustomFieldDefinitionInfoRequest($id);
 
@@ -31,7 +31,7 @@ class CustomFieldDefinitionRepository extends RepositoryBase
      * @return CustomFieldDefinitionListView
      * @throws \Http\Client\Exception
      */
-    public function listCustomFieldDefinition()
+    public function listCustomFieldDefinitions()
     {
         $request = new CustomFieldDefinitionListRequest();
 

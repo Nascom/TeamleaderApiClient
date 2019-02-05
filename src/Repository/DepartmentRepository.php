@@ -19,7 +19,7 @@ class DepartmentRepository extends RepositoryBase
      * @return Department
      * @throws \Http\Client\Exception
      */
-    public function info($id)
+    public function getDepartment($id)
     {
         $request = new DepartmentsInfoRequest($id);
 
