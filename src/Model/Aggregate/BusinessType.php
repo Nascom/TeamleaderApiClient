@@ -3,11 +3,10 @@
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
- * Class PaymentTerm
- *
+ * Class BusinessType
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
-class PaymentTerm
+class BusinessType
 {
     /**
      * @var string
@@ -15,14 +14,9 @@ class PaymentTerm
     private $type;
 
     /**
-     * PaymentTerm constructor.
-     *
-     * @param string $type
+     * @var string
      */
-    public function __construct($type = null)
-    {
-        $this->type = $type;
-    }
+    private $id;
 
     /**
      * @return string
@@ -39,4 +33,22 @@ class PaymentTerm
     {
         $this->type = $type;
     }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
 }

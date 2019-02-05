@@ -3,11 +3,10 @@
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
- * Class PaymentTerm
- *
+ * Class Addresses
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
-class PaymentTerm
+class Addresses
 {
     /**
      * @var string
@@ -15,14 +14,9 @@ class PaymentTerm
     private $type;
 
     /**
-     * PaymentTerm constructor.
-     *
-     * @param string $type
+     * @var AddressWithAddressee
      */
-    public function __construct($type = null)
-    {
-        $this->type = $type;
-    }
+    private $address;
 
     /**
      * @return string
@@ -38,5 +32,21 @@ class PaymentTerm
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return AddressWithAddressee
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param AddressWithAddressee $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
     }
 }

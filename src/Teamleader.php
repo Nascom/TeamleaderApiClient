@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient;
 
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClientInterface;
+use Nascom\TeamleaderApiClient\Repository\CompanyRepository;
 use Nascom\TeamleaderApiClient\Repository\ContactRepository;
 use Nascom\TeamleaderApiClient\Repository\CustomFieldDefinitionRepository;
 use Nascom\TeamleaderApiClient\Repository\DepartmentRepository;
@@ -86,5 +87,12 @@ class Teamleader
     public function contacts()
     {
         return new ContactRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return CompanyRepository
+     */
+    public function companies() {
+        return new CompanyRepository($this->apiClient, $this->serializer);
     }
 }

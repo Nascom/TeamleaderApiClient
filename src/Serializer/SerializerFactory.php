@@ -34,6 +34,8 @@ class SerializerFactory
             // CRM
             new FieldDescription\Model\Contact\ContactListViewFieldDescription(),
             new FieldDescription\Model\Contact\ContactFieldDescription(),
+            new FieldDescription\Model\Company\CompanyFieldDescription(),
+            new FieldDescription\Model\Company\CompanyListViewFieldDescription(),
 
             // Aggregates
             new FieldDescription\Model\Aggregate\AccountFieldDescription(),
@@ -41,7 +43,12 @@ class SerializerFactory
             new FieldDescription\Model\Aggregate\EmailFieldDescription(),
             new FieldDescription\Model\Aggregate\AddressFieldDescription(),
             new FieldDescription\Model\Aggregate\AddressWithTypeFieldDescription(),
-            new FieldDescription\Model\Aggregate\ConfigurationFieldDescription()
+            new FieldDescription\Model\Aggregate\ConfigurationFieldDescription(),
+            new FieldDescription\Model\Aggregate\BusinessTypeFieldDescription(),
+            new FieldDescription\Model\Aggregate\InvoicingPreferenceFieldDescription(),
+            new FieldDescription\Model\Aggregate\PaymentTermFieldDescription(),
+            new FieldDescription\Model\Aggregate\AddressesFieldDescription(),
+            new FieldDescription\Model\Aggregate\AddressWithAddresseeFieldDescription(),
         ]);
 
         $normalizers = [
