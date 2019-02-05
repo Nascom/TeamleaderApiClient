@@ -1,25 +1,28 @@
 <?php
 
+namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Department;
+
 use Nascom\TeamleaderApiClient\Model\Aggregate\Address;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
+use Nascom\TeamleaderApiClient\Model\Department\Department;
 
 /**
- * Created by PhpStorm.
- * User: yoeri
- * Date: 04.02.19
- * Time: 14:53
+ * Class DepartmentFieldDescription
+ * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Department
  */
-class DepartmentFieldDescription extends DepartmentFieldDescriptionBase {
-
-
+class DepartmentFieldDescription extends DepartmentFieldDescriptionBase
+{
+    /**
+     * @inheritdoc
+     */
     protected function getFieldMapping()
     {
         $parentFields = parent::getFieldMapping();
         $additionalFields = [
-            'address' => ['target_class' => Address::class . '[]'],
-            'emails' => ['target_class' => Email::class . '[]'],
-            'telephones' => ['target_class' => Telephone::class . '[]'],
+            'address' => ['target_class' => Address::class.'[]'],
+            'emails' => ['target_class' => Email::class.'[]'],
+            'telephones' => ['target_class' => Telephone::class.'[]'],
             'website',
             'iban',
             'bic',
@@ -30,7 +33,7 @@ class DepartmentFieldDescription extends DepartmentFieldDescriptionBase {
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

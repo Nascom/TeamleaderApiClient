@@ -2,26 +2,20 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\User;
 
-use Nascom\TeamleaderApiClient\Model\User\User;
+use Nascom\TeamleaderApiClient\Model\User\UserListView;
 
 /**
- * Class UserFieldDescription
- *
+ * Class UserListViewFieldDescription
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\User
  */
-class UserFieldDescription extends UserFieldDescriptionBase
+class UserListViewFieldDescription extends UserFieldDescriptionBase
 {
     /**
      * @inheritdoc
      */
     protected function getFieldMapping()
     {
-        $parentFields = parent::getFieldMapping();
-        $additionalFields = [
-            'time_zone',
-        ];
-
-        return array_merge($parentFields, $additionalFields);
+        return parent::getFieldMapping();
     }
 
     /**
@@ -29,6 +23,6 @@ class UserFieldDescription extends UserFieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return User::class;
+        return UserListView::class;
     }
 }

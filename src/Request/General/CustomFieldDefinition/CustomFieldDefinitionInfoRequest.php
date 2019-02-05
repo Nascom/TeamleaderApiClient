@@ -1,18 +1,18 @@
 <?php
 
-namespace Nascom\TeamleaderApiClient\Request\General\Departments;
+namespace Nascom\TeamleaderApiClient\Request\General\CustomFieldDefinition;
 
 use Nascom\TeamleaderApiClient\Request\GetRequest;
 
 /**
- * Class DepartmentsInfoRequest
+ * Class CustomFieldDefinitionInfoRequest
  *
  * @package Nascom\TeamleaderApiClient\Request\General\Departments
  */
-class DepartmentsInfoRequest extends GetRequest
+class CustomFieldDefinitionInfoRequest extends GetRequest
 {
     /**
-     * DepartmentsInfoRequest constructor.
+     * CustomFieldDefinitionInfoRequest constructor.
      * @param string $id
      */
     public function __construct($id)
@@ -25,6 +25,6 @@ class DepartmentsInfoRequest extends GetRequest
      */
     public function getEndpoint()
     {
-        return 'departments.info';
+        return 'customFieldDefinitions.info';
     }
 }

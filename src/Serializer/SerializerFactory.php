@@ -24,15 +24,22 @@ class SerializerFactory
         $fieldDescriptionDenormalizer = new FieldDescriptionDenormalizer([
             // Models
             new FieldDescription\Model\User\UserFieldDescription(),
+            new FieldDescription\Model\User\UserListViewFieldDescription(),
             new FieldDescription\Model\Contact\ContactListViewFieldDescription(),
             new FieldDescription\Model\Contact\ContactFieldDescription(),
+            new FieldDescription\Model\Department\DepartmentFieldDescription(),
+            new FieldDescription\Model\Department\DepartmentListViewFieldDescription(),
+            new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionFieldDescription(),
+            new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionListViewFieldDescription(),
+            new FieldDescription\Model\WorkType\WorkTypeFieldDescription(),
 
             // Aggregates
             new FieldDescription\Model\Aggregate\AccountFieldDescription(),
             new FieldDescription\Model\Aggregate\TelephoneFieldDescription(),
             new FieldDescription\Model\Aggregate\EmailFieldDescription(),
             new FieldDescription\Model\Aggregate\AddressFieldDescription(),
-            new FieldDescription\Model\Aggregate\AddressWithTypeFieldDescription()
+            new FieldDescription\Model\Aggregate\AddressWithTypeFieldDescription(),
+            new FieldDescription\Model\Aggregate\ConfigurationFieldDescription()
         ]);
 
         $normalizers = [

@@ -39,13 +39,15 @@
     "php-http/discovery": "^1.0",
     "php-http/client-common": "^1.0",
     "symfony/serializer": "~2.7|^3.2",
-    "nascom/oauth2-teamleader": "^0.1"
+    "nascom/oauth2-teamleader": "^0.1",
+    "php-http/guzzle6-adapter": "^1.0"
   },
   "require-dev": {
     "phpspec/phpspec": "^3.2",
     "php-http/mock-client": "^1.0",
     "php-http/message": "^1.0",
-    "guzzlehttp/psr7": "^1.0"
+    "guzzlehttp/psr7": "^1.0",
+    "symfony/var-dumper": "^4.2"
   },
   "suggest": {
     "symfony/serializer": "Lets you use the Teamleader repository classes",

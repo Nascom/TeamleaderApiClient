@@ -1,11 +1,17 @@
 <?php
 
+namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Department;
+
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
+/**
+ * Class DepartmentFieldDescriptionBase
+ * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Department
+ */
 abstract class DepartmentFieldDescriptionBase extends FieldDescriptionBase
 {
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {

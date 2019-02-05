@@ -24,8 +24,8 @@ abstract class ContactFieldDescriptionBase extends FieldDescriptionBase
             'first_name',
             'last_name',
             'salutation',
-            'emails' => ['target_class' => Email::class . '[]'],
-            'telephones' => ['target_class' => Telephone::class . '[]'],
+            'emails' => ['target_class' => Email::class.'[]'],
+            'telephones' => ['target_class' => Telephone::class.'[]'],
             'website',
             'gender',
             'birthdate' => ['target_class' => \DateTime::class],
@@ -36,7 +36,7 @@ abstract class ContactFieldDescriptionBase extends FieldDescriptionBase
             'tags',
             'added_at' => ['target_class' => \DateTime::class],
             'updated_at' => ['target_class' => \DateTime::class],
-            'web_url'
+            'web_url',
         ];
     }
 }

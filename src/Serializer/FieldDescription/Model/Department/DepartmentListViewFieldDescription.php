@@ -1,26 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yoeri
- * Date: 04.02.19
- * Time: 16:05
- */
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Department;
 
+use Nascom\TeamleaderApiClient\Model\Department\DepartmentListView;
 
-use DepartmentFieldDescriptionBase;
-use DepartmentListView;
-
+/**
+ * Class DepartmentListViewFieldDescription
+ * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Department
+ */
 class DepartmentListViewFieldDescription extends DepartmentFieldDescriptionBase
 {
+    /**
+     * @inheritdoc
+     */
     public function getFields()
     {
         return parent::getFields();
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

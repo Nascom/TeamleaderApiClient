@@ -2,15 +2,14 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
+use Nascom\TeamleaderApiClient\Model\Aggregate\Configuration;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class TelephoneFieldDescription
- *
+ * Class ConfigurationFieldDescription
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
-class TelephoneFieldDescription extends FieldDescriptionBase
+class ConfigurationFieldDescription extends FieldDescriptionBase
 {
     /**
      * @inheritdoc
@@ -18,8 +17,7 @@ class TelephoneFieldDescription extends FieldDescriptionBase
     protected function getFieldMapping()
     {
         return [
-            'number',
-            'type',
+            'options',
         ];
     }
 
@@ -28,6 +26,6 @@ class TelephoneFieldDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return Telephone::class;
+        return Configuration::class;
     }
 }

@@ -67,7 +67,6 @@ class FieldDescriptionDenormalizer implements
 
             $object->{$field->getSetter()}($value);
         }
-
         return $object;
     }
 

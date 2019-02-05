@@ -67,6 +67,7 @@ abstract class RepositoryBase
     {
         $response = $this->apiClient->handle($request);
         $responseBody = $response->getBody()->getContents();
+
         return $this->deserialize($responseBody, $responseClass);
     }
 }

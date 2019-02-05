@@ -16,11 +16,11 @@ class ContactFieldDescription extends ContactFieldDescriptionBase
     {
         $parentFields = parent::getFieldMapping();
         $additionalFields = [
-            'addresses' => ['target_class' => AddressWithType::class . '[]'],
+            'addresses' => ['target_class' => AddressWithType::class.'[]'],
 //            'companies' => ['target_class' => '@todo']
             'remarks',
 //            'custom_fields' => ['target_class' => '@todo']
-            'marketing_mails_consent' => ['getter' => 'hasMarketingMailsConsent']
+            'marketing_mails_consent' => ['getter' => 'hasMarketingMailsConsent'],
         ];
 
         return array_merge($parentFields, $additionalFields);

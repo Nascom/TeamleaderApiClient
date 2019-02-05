@@ -19,7 +19,7 @@ class ContactListViewFieldDescription extends ContactFieldDescriptionBase
     {
         $parentFields = parent::getFieldMapping();
         $additionalFields = [
-            'primary_address' => ['target_class' => Address::class]
+            'primary_address' => ['target_class' => Address::class],
         ];
 
         return array_merge($parentFields, $additionalFields);

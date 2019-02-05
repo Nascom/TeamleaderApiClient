@@ -1,5 +1,7 @@
 <?php
 
+namespace Nascom\TeamleaderApiClient\Model\Department;
+
 use Nascom\TeamleaderApiClient\Model\Aggregate\Address;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;

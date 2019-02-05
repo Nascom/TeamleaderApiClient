@@ -19,7 +19,7 @@ class EmailFieldDescription extends FieldDescriptionBase
     {
         return [
             'email',
-            'type'
+            'type',
         ];
     }
 
