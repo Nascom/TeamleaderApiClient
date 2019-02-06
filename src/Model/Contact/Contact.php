@@ -3,6 +3,9 @@
 namespace Nascom\TeamleaderApiClient\Model\Contact;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\AddressWithType;
+use Nascom\TeamleaderApiClient\Model\Aggregate\CustomFieldDefinition;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCompany;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 
 /**
  * Class Contact
@@ -21,11 +24,6 @@ class Contact extends ContactBase
      */
     private $marketingMailsConsent;
 
-    /**
-     * @var array
-     * @todo
-     */
-    private $companies = [];
 
     /**
      * @var AddressWithType[]
@@ -33,10 +31,14 @@ class Contact extends ContactBase
     private $addresses = [];
 
     /**
-     * @var array
-     * @todo
+     * @var LinkedCustomField
      */
     private $customFields = [];
+
+    /**
+     * @var LinkedCompany
+     */
+    private $companies = [];
 
     /**
      * @param string $lastName
@@ -96,5 +98,37 @@ class Contact extends ContactBase
     public function setAddresses($addresses)
     {
         $this->addresses = $addresses;
+    }
+
+    /**
+     * @return LinkedCustomField
+     */
+    public function getCustomFields()
+    {
+        return $this->customFields;
+    }
+
+    /**
+     * @param LinkedCustomField $customFields
+     */
+    public function setCustomFields($customFields)
+    {
+        $this->customFields = $customFields;
+    }
+
+    /**
+     * @return LinkedCompany
+     */
+    public function getCompanies()
+    {
+        return $this->companies;
+    }
+
+    /**
+     * @param LinkedCompany $companies
+     */
+    public function setCompanies($companies)
+    {
+        $this->companies = $companies;
     }
 }

@@ -49,6 +49,9 @@ class SerializerFactory
             new FieldDescription\Model\Aggregate\PaymentTermFieldDescription(),
             new FieldDescription\Model\Aggregate\AddressesFieldDescription(),
             new FieldDescription\Model\Aggregate\AddressWithAddresseeFieldDescription(),
+            new FieldDescription\Model\Aggregate\LinkedCustomFieldDescription(),
+            new FieldDescription\Model\Aggregate\LinkedDefinitionDescription(),
+            new FieldDescription\Model\Aggregate\LinkedCompanyDescription(),
         ]);
 
         $normalizers = [

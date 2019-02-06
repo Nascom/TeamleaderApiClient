@@ -2,14 +2,14 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedDefinition;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class PaymentTermFieldDescription
+ * Class LinkedDefinitionDescription
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
-class PaymentTermFieldDescription extends FieldDescriptionBase
+class LinkedDefinitionDescription extends FieldDescriptionBase
 {
     /**
      * @return array
@@ -18,7 +18,7 @@ class PaymentTermFieldDescription extends FieldDescriptionBase
     {
         return [
             'type',
-            'days',
+            'id',
         ];
     }
 
@@ -27,6 +27,6 @@ class PaymentTermFieldDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return PaymentTerm::class;
+        return LinkedDefinition::class;
     }
 }

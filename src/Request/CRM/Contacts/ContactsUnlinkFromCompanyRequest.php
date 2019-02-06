@@ -18,7 +18,7 @@ class ContactsUnlinkFromCompanyRequest extends PostRequest
     public function __construct($id, $companyId)
     {
         $this->body['id'] = $id;
-        $this->body['company_ id'] = $companyId;
+        $this->body['company_id'] = $companyId;
     }
 
     /**

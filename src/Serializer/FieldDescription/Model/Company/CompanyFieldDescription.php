@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Company;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 use Nascom\TeamleaderApiClient\Model\Company\Company;
 use Nascom\TeamleaderApiClient\Model\CustomFieldDefinition\CustomFieldDefinition;
 
@@ -18,7 +19,7 @@ class CompanyFieldDescription extends CompanyFieldDescriptionBase
         $additionalFields = [
             'addresses' => ['target_class' => Addresses::class.'[]'],
             'remarks',
-            'custom_fields' => ['target_class' => CustomFieldDefinition::class.'[]'], // TODO Not Properly working
+            'custom_fields' => ['target_class' => LinkedCustomField::class.'[]'],
             'marketing_mails_consent',
         ];
         return array_merge($parentFields, $additionalFields);

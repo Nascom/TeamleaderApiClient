@@ -2,12 +2,8 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
-/**
- * Class PaymentTerm
- *
- * @package Nascom\TeamleaderApiClient\Model\Aggregate
- */
-class PaymentTerm
+
+class LinkedDefinition
 {
     /**
      * @var string
@@ -17,17 +13,7 @@ class PaymentTerm
     /**
      * @var string
      */
-    private $days;
-
-    /**
-     * PaymentTerm constructor.
-     *
-     * @param string $type
-     */
-    public function __construct($type = null)
-    {
-        $this->type = $type;
-    }
+    private $id;
 
     /**
      * @return string
@@ -48,18 +34,15 @@ class PaymentTerm
     /**
      * @return string
      */
-    public function getDays()
+    public function getId()
     {
-        return $this->days;
+        return $this->id;
     }
-
     /**
-     * @param string $days
+     * @param string $id
      */
-    public function setDays($days)
+    public function setId($id)
     {
-        $this->days = $days;
+        $this->id = $id;
     }
-
-
 }
