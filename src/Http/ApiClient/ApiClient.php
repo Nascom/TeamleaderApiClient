@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Http\ApiClient;
 
+use GuzzleHttp\Exception\ClientException;
 use Http\Client\HttpClient;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
@@ -65,6 +66,7 @@ class ApiClient implements ApiClientInterface
      */
     public function handle(RequestInterface $request)
     {
+        dump($request);
         $options = [];
         $body = $request->getBody();
         if (!empty($body)) {
@@ -77,7 +79,11 @@ class ApiClient implements ApiClientInterface
             $this->accessToken,
             $options
         );
+        try {
+            return $this->httpClient->sendRequest($psrRequest);
+        }       catch (\Exception $exception) {
+            dump(json_decode($exception->getResponse()->getBody()->getContents()));
+        }
 
-        return $this->httpClient->sendRequest($psrRequest);
     }
 }

@@ -4,10 +4,10 @@ namespace Nascom\TeamleaderApiClient\Repository;
 
 
 use Nascom\TeamleaderApiClient\Model\Contact\ContactListView;
+use Nascom\TeamleaderApiClient\Model\Contact\Contact;
 use Nascom\TeamleaderApiClient\Request\Attributes\Filter\ContactFilter;
 use Nascom\TeamleaderApiClient\Request\Attributes\PageInfo;
 use Nascom\TeamleaderApiClient\Request\Attributes\SortInfo;
-use Nascom\TeamleaderApiClient\Model\Contact\Contact;
 use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsAddRequest;
 use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsDeleteRequest;
 use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsInfoRequest;

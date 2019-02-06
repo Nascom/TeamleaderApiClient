@@ -18,7 +18,9 @@ class ContactsAddRequest extends PostRequest
      */
     public function __construct(array $contact)
     {
-        $this->body = $contact;
+        $this->body = array_filter($contact, function ($value) {
+            return !empty($value);
+        });
     }
 
     /**
