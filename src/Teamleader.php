@@ -3,12 +3,15 @@
 namespace Nascom\TeamleaderApiClient;
 
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClientInterface;
+use Nascom\TeamleaderApiClient\Repository\BusinessTypeRepository;
 use Nascom\TeamleaderApiClient\Repository\CompanyRepository;
 use Nascom\TeamleaderApiClient\Repository\ContactRepository;
 use Nascom\TeamleaderApiClient\Repository\CustomFieldDefinitionRepository;
 use Nascom\TeamleaderApiClient\Repository\DepartmentRepository;
+use Nascom\TeamleaderApiClient\Repository\TagRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
 use Nascom\TeamleaderApiClient\Repository\WorkTypeRepository;
+use Nascom\TeamleaderApiClient\Request\CRM\BusinessTypes\BusinessTypesListRequest;
 use Nascom\TeamleaderApiClient\Serializer\SerializerFactory;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -94,5 +97,19 @@ class Teamleader
      */
     public function companies() {
         return new CompanyRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return BusinessTypeRepository
+     */
+    public function businessTypes() {
+        return new BusinessTypeRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return TagRepository
+     */
+    public function tags() {
+        return new TagRepository($this->apiClient, $this->serializer);
     }
 }

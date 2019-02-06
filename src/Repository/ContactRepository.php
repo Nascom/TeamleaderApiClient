@@ -124,7 +124,7 @@ class ContactRepository extends RepositoryBase
      * @throws \Http\Client\Exception
      */
     public function linkContactToCompany($id, $companyId, $position, $decisionMaker)
-    { // TODO Testing
+    {
         $request = new ContactsLinkToCompanyRequest($id, $companyId, $position, $decisionMaker);
         $this->apiClient->handle($request);
     }
@@ -135,7 +135,7 @@ class ContactRepository extends RepositoryBase
      * @throws \Http\Client\Exception
      */
     public function unlinkContactFromCompany($id, $companyId)
-    { // TODO Testing
+    {
         $request = new ContactsUnlinkFromCompanyRequest($id, $companyId);
         $this->apiClient->handle($request);
     }

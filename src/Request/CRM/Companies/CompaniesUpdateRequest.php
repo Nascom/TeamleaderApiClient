@@ -2,14 +2,13 @@
 
 namespace Nascom\TeamleaderApiClient\Request\CRM\Companies;
 
-use Nascom\TeamleaderApiClient\Model\Company\Company;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
- * Class CompaniesAddRequest
+ * Class CompaniesUpdateRequest
  * @package Nascom\TeamleaderApiClient\Request\CRM\Companies
  */
-class CompaniesAddRequest extends PostRequest
+class CompaniesUpdateRequest extends PostRequest
 {
     public function __construct(array $company)
     {
@@ -20,9 +19,7 @@ class CompaniesAddRequest extends PostRequest
         unset($company['business_type']);
         unset($company['custom_fields']);
 
-        $this->body = array_filter($company, function ($value) {
-            return !empty($value);
-        });
+        $this->body = $company;
     }
 
     /**
@@ -30,6 +27,6 @@ class CompaniesAddRequest extends PostRequest
      */
     public function getEndpoint()
     {
-        return 'companies.add';
+        return 'companies.update';
     }
 }

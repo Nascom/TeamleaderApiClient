@@ -6,7 +6,7 @@ namespace Nascom\TeamleaderApiClient\Model\WorkTypes;
  * Class WorkTypes
  * @package Nascom\TeamleaderApiClient\Model\WorkTypes
  */
-class WorkTypes
+class WorkType
 {
     /**
      * @var string

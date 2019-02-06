@@ -75,15 +75,12 @@ class ApiClient implements ApiClientInterface
 
         $psrRequest = $this->provider->getAuthenticatedRequest(
             $request->getMethod() ?: $this->defaultMethod,
-            Teamleader::API_BASE_URL . $request->getEndpoint(),
+            Teamleader::API_BASE_URL.$request->getEndpoint(),
             $this->accessToken,
             $options
         );
-        try {
-            return $this->httpClient->sendRequest($psrRequest);
-        }       catch (\Exception $exception) {
-            dump(json_decode($exception->getResponse()->getBody()->getContents()));
-        }
+
+        return $this->httpClient->sendRequest($psrRequest);
 
     }
 }

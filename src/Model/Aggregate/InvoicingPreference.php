@@ -16,7 +16,7 @@ class InvoicingPreference
     /**
      * @return bool
      */
-    public function isElectronicInvoicingAddress()
+    public function getElectronicInvoicingAddress()
     {
         return $this->electronicInvoicingAddress;
     }

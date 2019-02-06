@@ -2,8 +2,8 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-use Nascom\TeamleaderApiClient\Model\WorkTypes\WorkTypes;
-use Nascom\TeamleaderApiClient\Request\General\WorkType\WorkTypesListRequest;
+use Nascom\TeamleaderApiClient\Model\WorkTypes\WorkType;
+use Nascom\TeamleaderApiClient\Request\General\WorkTypes\WorkTypesListRequest;
 
 /**
  * Class WorkTypeRepository
@@ -12,13 +12,13 @@ use Nascom\TeamleaderApiClient\Request\General\WorkType\WorkTypesListRequest;
 class WorkTypeRepository extends RepositoryBase
 {
     /**
-     * @return WorkTypes
+     * @return WorkType
      * @throws \Http\Client\Exception
      */
     public function listWorkTypes()
     {
         $request = new WorkTypesListRequest();
 
-        return $this->handleRequest($request, WorkTypes::class.'[]');
+        return $this->handleRequest($request, WorkType::class.'[]');
     }
 }

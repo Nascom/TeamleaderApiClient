@@ -1,13 +1,13 @@
 <?php
 
-namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\WorkType;
+namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\WorkTypes;
 
-use Nascom\TeamleaderApiClient\Model\WorkTypes\WorkTypes;
+use Nascom\TeamleaderApiClient\Model\WorkTypes\WorkType;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class WorkTypeFieldDescription
- * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\WorkType
+ * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\WorkTypes
  */
 class WorkTypeFieldDescription extends FieldDescriptionBase
 {
@@ -27,6 +27,6 @@ class WorkTypeFieldDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return WorkTypes::class;
+        return WorkType::class;
     }
 }

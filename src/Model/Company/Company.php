@@ -82,7 +82,7 @@ class Company extends CompanyBase
     /**
      * @return bool
      */
-    public function isMarketingMailsConsent()
+    public function getMarketingMailsConsent()
     {
         return $this->marketingMailsConsent;
     }

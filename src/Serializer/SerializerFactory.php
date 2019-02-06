@@ -30,13 +30,15 @@ class SerializerFactory
             new FieldDescription\Model\Department\DepartmentListViewFieldDescription(),
             new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionFieldDescription(),
             new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionListViewFieldDescription(),
-            new FieldDescription\Model\WorkType\WorkTypeFieldDescription(),
+            new FieldDescription\Model\WorkTypes\WorkTypeFieldDescription(),
             // CRM
             new FieldDescription\Model\Contact\ContactListViewFieldDescription(),
             new FieldDescription\Model\Contact\ContactFieldDescription(),
             new FieldDescription\Model\Contact\ContactPostFieldDescription(),
             new FieldDescription\Model\Company\CompanyFieldDescription(),
             new FieldDescription\Model\Company\CompanyListViewFieldDescription(),
+            new FieldDescription\Model\BusinessType\BusinessTypeFieldDescription(),
+            new FieldDescription\Model\Tag\TagFieldDescription(),
 
             // Aggregates
             new FieldDescription\Model\Aggregate\AccountFieldDescription(),

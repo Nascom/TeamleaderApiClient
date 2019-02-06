@@ -18,7 +18,7 @@ class CustomField
      */
     private $value;
 
-    public function __construct($value, $id = null)
+    public function __construct($id, $value)
     {
         $this->id = $id;
         $this->value = $value;;
