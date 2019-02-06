@@ -66,7 +66,7 @@ class ApiClient implements ApiClientInterface
      */
     public function handle(RequestInterface $request)
     {
-        dump($request);
+//        dump($request);
         $options = [];
         $body = $request->getBody();
         if (!empty($body)) {

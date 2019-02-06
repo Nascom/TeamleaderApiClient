@@ -47,7 +47,6 @@ class FieldDescriptionDenormalizer implements
         $format = null,
         array $context = []
     ) {
-        dump($data);
         $fieldDescription = $this->getFieldDescriptionByClassName($class);
         $className = $fieldDescription->getTargetClass();
         $object = new $className;
