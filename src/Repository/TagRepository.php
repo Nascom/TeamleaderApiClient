@@ -2,7 +2,8 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-use Nascom\TeamleaderApiClient\Model\Tag\Tag;
+use Nascom\TeamleaderApiClient\Model\Tag\TagBase;
+use Nascom\TeamleaderApiClient\Model\Tag\TagListView;
 use Nascom\TeamleaderApiClient\Request\CRM\Tags\TagsListRequest;
 
 /**
@@ -19,6 +20,6 @@ class TagRepository extends RepositoryBase
     {
         $request = new TagsListRequest();
 
-        return $this->handleRequest($request, Tag::class.'[]');
+        return $this->handleRequest($request, TagListView::class.'[]');
     }
 }

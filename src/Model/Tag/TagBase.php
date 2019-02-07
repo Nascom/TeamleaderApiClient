@@ -3,10 +3,10 @@
 namespace Nascom\TeamleaderApiClient\Model\Tag;
 
 /**
- * Class Tag
- * @package Nascom\TeamleaderApiClient\Model\Tag
+ * Class TagBase
+ * @package Nascom\TeamleaderApiClient\Model\TagBase
  */
-class Tag
+abstract class TagBase
 {
     /**
      * @var string

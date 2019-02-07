@@ -2,14 +2,14 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Tag;
 
-use Nascom\TeamleaderApiClient\Model\Tag\Tag;
+use Nascom\TeamleaderApiClient\Model\Tag\TagBase;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class TagFieldDescription
- * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Tag
+ * Class TagFieldDescriptionBase
+ * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\TagBase
  */
-class TagFieldDescription extends FieldDescriptionBase
+abstract class TagFieldDescriptionBase extends FieldDescriptionBase
 {
 
     /**
@@ -27,6 +27,6 @@ class TagFieldDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return Tag::class;
+        return TagBase::class;
     }
 }

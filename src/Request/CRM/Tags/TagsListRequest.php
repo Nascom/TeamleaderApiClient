@@ -10,7 +10,6 @@ use Nascom\TeamleaderApiClient\Request\GetRequest;
  */
 class TagsListRequest extends GetRequest
 {
-
     /**
      * @return string
      */

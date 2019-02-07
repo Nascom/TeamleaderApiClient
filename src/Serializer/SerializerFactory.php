@@ -37,7 +37,7 @@ class SerializerFactory
             new FieldDescription\Model\Company\CompanyFieldDescription(),
             new FieldDescription\Model\Company\CompanyListViewFieldDescription(),
             new FieldDescription\Model\BusinessType\BusinessTypeListViewFieldDescription(),
-            new FieldDescription\Model\Tag\TagFieldDescription(),
+            new FieldDescription\Model\Tag\TagListViewFieldDescription(),
 
             // Aggregates
             new FieldDescription\Model\Aggregate\AccountFieldDescription(),
