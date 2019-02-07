@@ -8,18 +8,14 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 use Nascom\TeamleaderApiClient\Model\Aggregate\InvoicingPreference;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
+use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class CompanyBase
  * @package Nascom\TeamleaderApiClient\Model\Company
  */
-class CompanyBase
+abstract class CompanyBase extends ModelBase
 {
-    /**
-     * @var string
-     */
-    private $id;
-
     /**
      * @var string
      */
@@ -109,22 +105,6 @@ class CompanyBase
      * @var string[]
      */
     private $tags;
-
-    /**
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return string
