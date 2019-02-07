@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Company;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\Address;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 
 /**
  * Class Company
@@ -22,7 +23,7 @@ class Company extends CompanyBase
     private $remarks;
 
     /**
-     * @var array
+     * @var LinkedCustomField[]
      */
     private $customFields = [];
 

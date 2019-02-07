@@ -7,6 +7,7 @@ use Nascom\TeamleaderApiClient\Repository\BusinessTypeRepository;
 use Nascom\TeamleaderApiClient\Repository\CompanyRepository;
 use Nascom\TeamleaderApiClient\Repository\ContactRepository;
 use Nascom\TeamleaderApiClient\Repository\CustomFieldDefinitionRepository;
+use Nascom\TeamleaderApiClient\Repository\DealRepository;
 use Nascom\TeamleaderApiClient\Repository\DepartmentRepository;
 use Nascom\TeamleaderApiClient\Repository\TagRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
@@ -58,7 +59,8 @@ class Teamleader
     /**
      * @return DepartmentRepository
      */
-    public function departments() {
+    public function departments()
+    {
         return new DepartmentRepository($this->apiClient, $this->serializer);
     }
 
@@ -73,14 +75,16 @@ class Teamleader
     /**
      * @return CustomFieldDefinitionRepository
      */
-    public function customFieldDefinition() {
+    public function customFieldDefinition()
+    {
         return new CustomFieldDefinitionRepository($this->apiClient, $this->serializer);
     }
 
     /**
      * @return WorkTypesRepository
      */
-    public function workTypes() {
+    public function workTypes()
+    {
         return new WorkTypesRepository($this->apiClient, $this->serializer);
     }
 
@@ -95,21 +99,32 @@ class Teamleader
     /**
      * @return CompanyRepository
      */
-    public function companies() {
+    public function companies()
+    {
         return new CompanyRepository($this->apiClient, $this->serializer);
     }
 
     /**
      * @return BusinessTypeRepository
      */
-    public function businessTypes() {
+    public function businessTypes()
+    {
         return new BusinessTypeRepository($this->apiClient, $this->serializer);
     }
 
     /**
      * @return TagRepository
      */
-    public function tags() {
+    public function tags()
+    {
         return new TagRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return DealRepository
+     */
+    public function deals()
+    {
+        return new DealRepository($this->apiClient, $this->serializer);
     }
 }

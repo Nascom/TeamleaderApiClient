@@ -9,7 +9,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 class EstimatedValue
 {
     /**
-     * @var double
+     * @var float
      */
     private $amount;
 

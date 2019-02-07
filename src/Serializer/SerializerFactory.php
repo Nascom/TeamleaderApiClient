@@ -21,50 +21,64 @@ class SerializerFactory
      */
     public static function create()
     {
-        $fieldDescriptionDenormalizer = new FieldDescriptionDenormalizer([
-            // Models
-            // General
-            new FieldDescription\Model\User\UserFieldDescription(),
-            new FieldDescription\Model\User\UserListViewFieldDescription(),
-            new FieldDescription\Model\Department\DepartmentFieldDescription(),
-            new FieldDescription\Model\Department\DepartmentListViewFieldDescription(),
-            new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionFieldDescription(),
-            new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionListViewFieldDescription(),
-            new FieldDescription\Model\WorkType\WorkTypeListViewFieldDescription(),
-            // CRM
-            new FieldDescription\Model\Contact\ContactListViewFieldDescription(),
-            new FieldDescription\Model\Contact\ContactFieldDescription(),
-            new FieldDescription\Model\Company\CompanyFieldDescription(),
-            new FieldDescription\Model\Company\CompanyListViewFieldDescription(),
-            new FieldDescription\Model\BusinessType\BusinessTypeListViewFieldDescription(),
-            new FieldDescription\Model\Tag\TagListViewFieldDescription(),
+        $fieldDescriptionDenormalizer = new FieldDescriptionDenormalizer(
+            [
+                // Models
+                // General
+                new FieldDescription\Model\User\UserFieldDescription(),
+                new FieldDescription\Model\User\UserListViewFieldDescription(),
+                new FieldDescription\Model\Department\DepartmentFieldDescription(),
+                new FieldDescription\Model\Department\DepartmentListViewFieldDescription(),
+                new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionFieldDescription(),
+                new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionListViewFieldDescription(),
+                new FieldDescription\Model\WorkType\WorkTypeListViewFieldDescription(),
+                // CRM
+                new FieldDescription\Model\Contact\ContactListViewFieldDescription(),
+                new FieldDescription\Model\Contact\ContactFieldDescription(),
+                new FieldDescription\Model\Company\CompanyFieldDescription(),
+                new FieldDescription\Model\Company\CompanyListViewFieldDescription(),
+                new FieldDescription\Model\BusinessType\BusinessTypeListViewFieldDescription(),
+                new FieldDescription\Model\Tag\TagListViewFieldDescription(),
+                // Deals
+                new FieldDescription\Model\Deal\DealListViewFieldDescription(),
+                new FieldDescription\Model\Deal\DealFieldDescription(),
 
-            // Aggregates
-            new FieldDescription\Model\Aggregate\AccountFieldDescription(),
-            new FieldDescription\Model\Aggregate\TelephoneFieldDescription(),
-            new FieldDescription\Model\Aggregate\EmailFieldDescription(),
-            new FieldDescription\Model\Aggregate\AddressFieldDescription(),
-            new FieldDescription\Model\Aggregate\AddressWithTypeFieldDescription(),
-            new FieldDescription\Model\Aggregate\ConfigurationFieldDescription(),
-            new FieldDescription\Model\Aggregate\BusinessTypeFieldDescription(),
-            new FieldDescription\Model\Aggregate\InvoicingPreferenceFieldDescription(),
-            new FieldDescription\Model\Aggregate\PaymentTermFieldDescription(),
-            new FieldDescription\Model\Aggregate\AddressesFieldDescription(),
-            new FieldDescription\Model\Aggregate\AddressWithAddresseeFieldDescription(),
-            new FieldDescription\Model\Aggregate\LinkedCustomFieldDescription(),
-            new FieldDescription\Model\Aggregate\LinkedDefinitionDescription(),
-            new FieldDescription\Model\Aggregate\LinkedCompanyDescription(),
-            new FieldDescription\Model\Aggregate\CustomFieldDescription(),
-        ]);
+                // Aggregates
+                new FieldDescription\Model\Aggregate\AccountFieldDescription(),
+                new FieldDescription\Model\Aggregate\TelephoneFieldDescription(),
+                new FieldDescription\Model\Aggregate\EmailFieldDescription(),
+                new FieldDescription\Model\Aggregate\AddressFieldDescription(),
+                new FieldDescription\Model\Aggregate\AddressWithTypeFieldDescription(),
+                new FieldDescription\Model\Aggregate\ConfigurationFieldDescription(),
+                new FieldDescription\Model\Aggregate\BusinessTypeFieldDescription(),
+                new FieldDescription\Model\Aggregate\InvoicingPreferenceFieldDescription(),
+                new FieldDescription\Model\Aggregate\PaymentTermFieldDescription(),
+                new FieldDescription\Model\Aggregate\AddressesFieldDescription(),
+                new FieldDescription\Model\Aggregate\AddressWithAddresseeFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedCustomFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedDefinitionDescription(),
+                new FieldDescription\Model\Aggregate\LinkedCompanyDescription(),
+                new FieldDescription\Model\Aggregate\CustomFieldDescription(),
+                new FieldDescription\Model\Aggregate\LeadFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedCustomerFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedContactFieldDescription(),
+                new FieldDescription\Model\Aggregate\PhaseFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedDepartmentFieldDescription(),
+                new FieldDescription\Model\Aggregate\EstimatedValueFieldDescription(),
+                new FieldDescription\Model\Aggregate\SourceFieldDescription(),
+                new FieldDescription\Model\Aggregate\PhaseHistoryFieldDescription(),
+                new FieldDescription\Model\Aggregate\QuotationFieldDescription(),
+            ]
+        );
 
         $normalizers = [
             new DateTimeNormalizer(),
             new ParseDataDenormalizer(),
             $fieldDescriptionDenormalizer,
-            new ArrayDenormalizer()
+            new ArrayDenormalizer(),
         ];
         $encoders = [
-            new JsonEncoder()
+            new JsonEncoder(),
         ];
 
         return new Serializer($normalizers, $encoders);

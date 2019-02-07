@@ -5,10 +5,10 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 use Nascom\TeamleaderApiClient\Model\RelationBase;
 
 /**
- * Class Phase
+ * Class LinkedContact
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
-class Phase extends RelationBase
+class LinkedContact extends RelationBase
 {
 
 }
