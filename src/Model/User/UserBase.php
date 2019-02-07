@@ -8,17 +8,16 @@
 
 namespace Nascom\TeamleaderApiClient\Model\User;
 
+use Nascom\TeamleaderApiClient\Model\Aggregate\Account;
+use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
+use Nascom\TeamleaderApiClient\Model\ModelBase;
+
 /**
  * Class UserBase
  * @package Nascom\TeamleaderApiClient\Model\User
  */
-class UserBase
+class UserBase extends ModelBase
 {
-    /**
-     * @var string
-     */
-    private $id;
-
     /**
      * @var Account
      */
@@ -53,22 +52,6 @@ class UserBase
      * @var Telephone[]
      */
     private $telephones = [];
-
-    /**
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return string

@@ -30,11 +30,10 @@ class SerializerFactory
             new FieldDescription\Model\Department\DepartmentListViewFieldDescription(),
             new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionFieldDescription(),
             new FieldDescription\Model\CustomFieldDefinition\CustomFieldDefinitionListViewFieldDescription(),
-            new FieldDescription\Model\WorkTypes\WorkTypeFieldDescription(),
+            new FieldDescription\Model\WorkType\WorkTypeListViewFieldDescription(),
             // CRM
             new FieldDescription\Model\Contact\ContactListViewFieldDescription(),
             new FieldDescription\Model\Contact\ContactFieldDescription(),
-            new FieldDescription\Model\Contact\ContactPostFieldDescription(),
             new FieldDescription\Model\Company\CompanyFieldDescription(),
             new FieldDescription\Model\Company\CompanyListViewFieldDescription(),
             new FieldDescription\Model\BusinessType\BusinessTypeFieldDescription(),

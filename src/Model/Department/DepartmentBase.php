@@ -5,19 +5,15 @@ namespace Nascom\TeamleaderApiClient\Model\Department;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Address;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
+use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class DepartmentBase
  *
  * @package Nascom\TeamleaderApiClient\Model
  */
-class DepartmentBase
+class DepartmentBase extends ModelBase
 {
-    /**
-     * @var string
-     */
-    private $id;
-
     /**
      * @var string
      */
@@ -32,22 +28,6 @@ class DepartmentBase
      * @var string
      */
     private $currency;
-
-    /**
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return string

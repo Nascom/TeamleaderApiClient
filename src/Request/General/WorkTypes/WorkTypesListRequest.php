@@ -6,7 +6,7 @@ use Nascom\TeamleaderApiClient\Request\BaseRequest;
 
 /**
  * Class WorkTypesListRequest
- * @package Nascom\TeamleaderApiClient\Request\General\WorkTypes
+ * @package Nascom\TeamleaderApiClient\Request\General\WorkType
  */
 class WorkTypesListRequest extends BaseRequest
 {

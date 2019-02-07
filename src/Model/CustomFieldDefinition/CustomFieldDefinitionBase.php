@@ -3,18 +3,14 @@
 namespace Nascom\TeamleaderApiClient\Model\CustomFieldDefinition;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\Configuration;
+use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class CustomFieldDefinitionBase
  * @package Nascom\TeamleaderApiClient\Model\CustomFieldDefinition
  */
-class CustomFieldDefinitionBase
+class CustomFieldDefinitionBase extends ModelBase
 {
-    /**
-     * @var string
-     */
-    private $id;
-
     /**
      * @var string
      */
@@ -44,22 +40,6 @@ class CustomFieldDefinitionBase
      * @var Configuration
      */
     private $configuration = [];
-
-    /**
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return string

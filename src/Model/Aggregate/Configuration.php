@@ -8,10 +8,13 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
  */
 class Configuration
 {
-    private $options = [];
+    /**
+     * @var string[]
+     */
+    private $options;
 
     /**
-     * @return mixed
+     * @return string[]
      */
     public function getOptions()
     {
@@ -19,7 +22,7 @@ class Configuration
     }
 
     /**
-     * @param mixed $options
+     * @param string[] $options
      */
     public function setOptions($options)
     {
