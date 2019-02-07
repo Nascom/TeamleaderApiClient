@@ -6,7 +6,7 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\BusinessType;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class BusinessTypeFieldDescription
+ * Class BusinessTypeFieldDescriptionBase
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
 class BusinessTypeFieldDescription extends FieldDescriptionBase

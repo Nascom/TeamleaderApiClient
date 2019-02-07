@@ -2,8 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\BusinessType;
-use Nascom\TeamleaderApiClient\Model\BusinessTypes\BusinessTypes;
+use Nascom\TeamleaderApiClient\Model\BusinessType\BusinessTypeListView;
 use Nascom\TeamleaderApiClient\Request\CRM\BusinessTypes\BusinessTypesListRequest;
 
 /**
@@ -20,6 +19,6 @@ class BusinessTypeRepository extends RepositoryBase
     {
         $request = new BusinessTypesListRequest();
 
-        return $this->handleRequest($request, BusinessTypes::class.'[]');
+        return $this->handleRequest($request, BusinessTypeListView::class.'[]');
     }
 }

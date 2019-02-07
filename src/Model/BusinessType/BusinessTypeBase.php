@@ -1,18 +1,15 @@
 <?php
 
-namespace Nascom\TeamleaderApiClient\Model\BusinessTypes;
+namespace Nascom\TeamleaderApiClient\Model\BusinessType;
+
+use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
- * Class BusinessTypes
- * @package Nascom\TeamleaderApiClient\Model\BusinessTypes
+ * Class BusinessType
+ * @package Nascom\TeamleaderApiClient\Model\BusinessType
  */
-class BusinessTypes
+abstract class BusinessTypeBase extends ModelBase
 {
-    /**
-     * @var string
-     */
-    private $id;
-
     /**
      * @var string
      */
@@ -22,22 +19,6 @@ class BusinessTypes
      * @var string
      */
     private $country;
-
-    /**
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return string

@@ -6,7 +6,7 @@ use Nascom\TeamleaderApiClient\Request\GetRequest;
 
 /**
  * Class BusinessTypesListRequest
- * @package Nascom\TeamleaderApiClient\Request\CRM\BusinessTypes
+ * @package Nascom\TeamleaderApiClient\Request\CRM\BusinessType
  */
 class BusinessTypesListRequest extends GetRequest
 {

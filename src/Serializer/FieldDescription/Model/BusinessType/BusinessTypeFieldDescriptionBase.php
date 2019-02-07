@@ -2,14 +2,14 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\BusinessType;
 
-use Nascom\TeamleaderApiClient\Model\BusinessTypes\BusinessTypes;
+use Nascom\TeamleaderApiClient\Model\BusinessType\BusinessTypeBase;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class BusinessTypeFieldDescription
+ * Class BusinessTypeFieldDescriptionBase
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\BusinessType
  */
-class BusinessTypeFieldDescription extends FieldDescriptionBase
+abstract class BusinessTypeFieldDescriptionBase extends FieldDescriptionBase
 {
     /**
      * @return array
@@ -28,6 +28,6 @@ class BusinessTypeFieldDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return BusinessTypes::class;
+        return BusinessTypeBase::class;
     }
 }
