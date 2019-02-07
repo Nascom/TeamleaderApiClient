@@ -8,7 +8,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
  * Class WorkType
  * @package Nascom\TeamleaderApiClient\Model\WorkType
  */
-class WorkTypeBase extends ModelBase
+abstract class WorkTypeBase extends ModelBase
 {
     /**
      * @var string

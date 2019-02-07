@@ -18,6 +18,7 @@ class AddressFieldDescription extends FieldDescriptionBase
     protected function getFieldMapping()
     {
         return [
+//            'addressee',
             'line_1',
             'postal_code',
             'city',

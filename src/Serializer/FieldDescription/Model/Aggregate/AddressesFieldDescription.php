@@ -2,8 +2,8 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
+use Nascom\TeamleaderApiClient\Model\Aggregate\Address;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
-use Nascom\TeamleaderApiClient\Model\Aggregate\AddressWithAddressee;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
@@ -19,7 +19,7 @@ class AddressesFieldDescription extends FieldDescriptionBase
     {
         return [
             'type',
-            'address' => ['target_class' => AddressWithAddressee::class]
+            'address' => ['target_class' => Address::class]
         ];
     }
 

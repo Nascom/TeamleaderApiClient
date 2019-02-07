@@ -6,7 +6,7 @@ namespace Nascom\TeamleaderApiClient\Model;
  * Class ModelBase
  * @package Nascom\TeamleaderApiClient\Model
  */
-class ModelBase
+abstract class ModelBase
 {
     /**
      * @var string

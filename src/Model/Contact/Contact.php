@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Contact;
 
+use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
 use Nascom\TeamleaderApiClient\Model\Aggregate\AddressWithType;
 use Nascom\TeamleaderApiClient\Model\Aggregate\CustomField;
 use Nascom\TeamleaderApiClient\Model\Aggregate\CustomFieldDefinition;
@@ -25,9 +26,8 @@ class Contact extends ContactBase
      */
     private $marketingMailsConsent;
 
-
     /**
-     * @var AddressWithType[]
+     * @var Addresses[]
      */
     private $addresses = [];
 

@@ -12,7 +12,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
  *
  * @package Nascom\TeamleaderApiClient\Model
  */
-class DepartmentBase extends ModelBase
+abstract class DepartmentBase extends ModelBase
 {
     /**
      * @var string

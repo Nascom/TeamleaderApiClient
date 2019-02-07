@@ -6,7 +6,7 @@ namespace Nascom\TeamleaderApiClient\Model;
  * Class RelationBase
  * @package Nascom\TeamleaderApiClient\Model
  */
-class RelationBase extends ModelBase
+abstract class RelationBase extends ModelBase
 {
     private $type;
 

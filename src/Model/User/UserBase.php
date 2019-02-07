@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yoeri
- * Date: 05.02.19
- * Time: 08:14
- */
 
 namespace Nascom\TeamleaderApiClient\Model\User;
 
@@ -16,7 +10,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
  * Class UserBase
  * @package Nascom\TeamleaderApiClient\Model\User
  */
-class UserBase extends ModelBase
+abstract class UserBase extends ModelBase
 {
     /**
      * @var Account

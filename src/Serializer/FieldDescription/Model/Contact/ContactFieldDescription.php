@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Contact;
 
+use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
 use Nascom\TeamleaderApiClient\Model\Aggregate\AddressWithType;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCompany;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
@@ -18,7 +19,7 @@ class ContactFieldDescription extends ContactFieldDescriptionBase
     {
         $parentFields = parent::getFieldMapping();
         $additionalFields = [
-            'addresses' => ['target_class' => AddressWithType::class.'[]'],
+            'addresses' => ['target_class' => Addresses::class.'[]'],
             'companies' => ['target_class' => LinkedCompany::class.'[]'],
             'remarks',
             'custom_fields' => ['target_class' => LinkedCustomField::class.'[]'],

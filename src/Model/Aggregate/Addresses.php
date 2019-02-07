@@ -14,7 +14,7 @@ class Addresses
     private $type;
 
     /**
-     * @var AddressWithAddressee
+     * @var Address
      */
     private $address;
 
@@ -35,7 +35,7 @@ class Addresses
     }
 
     /**
-     * @return AddressWithAddressee
+     * @return Address
      */
     public function getAddress()
     {
@@ -43,7 +43,7 @@ class Addresses
     }
 
     /**
-     * @param AddressWithAddressee $address
+     * @param Address $address
      */
     public function setAddress($address)
     {

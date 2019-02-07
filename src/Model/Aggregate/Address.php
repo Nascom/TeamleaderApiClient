@@ -10,6 +10,12 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 class Address
 {
     /**
+     * @var string
+     * TODO Seems unsupported by teamleader
+     */
+//    private $addressee;
+
+    /**
      * @var string|null
      */
     private $line1;
@@ -92,4 +98,20 @@ class Address
     {
         $this->country = $country;
     }
+
+    /**
+     * @return string
+     */
+//    public function getAddressee()
+//    {
+//        return $this->addressee;
+//    }
+
+    /**
+     * @param string $addressee
+     */
+//    public function setAddressee($addressee)
+//    {
+//        $this->addressee = $addressee;
+//    }
 }

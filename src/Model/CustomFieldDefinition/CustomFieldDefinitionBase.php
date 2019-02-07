@@ -9,7 +9,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
  * Class CustomFieldDefinitionBase
  * @package Nascom\TeamleaderApiClient\Model\CustomFieldDefinition
  */
-class CustomFieldDefinitionBase extends ModelBase
+abstract class CustomFieldDefinitionBase extends ModelBase
 {
     /**
      * @var string

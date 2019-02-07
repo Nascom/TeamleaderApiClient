@@ -6,10 +6,10 @@ use Nascom\TeamleaderApiClient\Model\WorkType\WorkTypeListView;
 use Nascom\TeamleaderApiClient\Request\General\WorkTypes\WorkTypesListRequest;
 
 /**
- * Class WorkTypeRepository
+ * Class WorkTypesRepository
  * @package Nascom\TeamleaderApiClient\Repository
  */
-class WorkTypeRepository extends RepositoryBase
+class WorkTypesRepository extends RepositoryBase
 {
     /**
      * @return WorkTypeBase

@@ -10,7 +10,7 @@ use Nascom\TeamleaderApiClient\Repository\CustomFieldDefinitionRepository;
 use Nascom\TeamleaderApiClient\Repository\DepartmentRepository;
 use Nascom\TeamleaderApiClient\Repository\TagRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
-use Nascom\TeamleaderApiClient\Repository\WorkTypeRepository;
+use Nascom\TeamleaderApiClient\Repository\WorkTypesRepository;
 use Nascom\TeamleaderApiClient\Request\CRM\BusinessTypes\BusinessTypesListRequest;
 use Nascom\TeamleaderApiClient\Serializer\SerializerFactory;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -78,10 +78,10 @@ class Teamleader
     }
 
     /**
-     * @return WorkTypeRepository
+     * @return WorkTypesRepository
      */
     public function workTypes() {
-        return new WorkTypeRepository($this->apiClient, $this->serializer);
+        return new WorkTypesRepository($this->apiClient, $this->serializer);
     }
 
     /**

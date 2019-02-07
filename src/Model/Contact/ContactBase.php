@@ -6,19 +6,15 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCompany;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
+use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class ContactBase
  *
  * @package Nascom\TeamleaderApiClient\Model
  */
-abstract class ContactBase
+abstract class ContactBase extends ModelBase
 {
-    /**
-     * @var string
-     */
-    private $id;
-
     /**
      * @var string|null
      */
@@ -98,22 +94,6 @@ abstract class ContactBase
      * @var string
      */
     private $webUrl;
-
-    /**
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return null|string
