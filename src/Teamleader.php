@@ -3,7 +3,9 @@
 namespace Nascom\TeamleaderApiClient;
 
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClientInterface;
+use Nascom\TeamleaderApiClient\Repository\ActivityTypeRepository;
 use Nascom\TeamleaderApiClient\Repository\BusinessTypeRepository;
+use Nascom\TeamleaderApiClient\Repository\CalendarRepository;
 use Nascom\TeamleaderApiClient\Repository\CompanyRepository;
 use Nascom\TeamleaderApiClient\Repository\ContactRepository;
 use Nascom\TeamleaderApiClient\Repository\CustomFieldDefinitionRepository;
@@ -153,5 +155,19 @@ class Teamleader
      */
     public function quotations() {
         return new QuotationRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return CalendarRepository
+     */
+    public function calendarEvents() {
+        return new CalendarRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return ActivityTypeRepository
+     */
+    public function activityTypes() {
+        return new ActivityTypeRepository($this->apiClient, $this->serializer);
     }
 }

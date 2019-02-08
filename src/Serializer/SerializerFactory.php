@@ -47,6 +47,10 @@ class SerializerFactory
                 new FieldDescription\Model\DealPhase\DealPhaseListViewFieldDescription(),
                 new FieldDescription\Model\DealSource\DealSourceListViewFieldDescription(),
                 new FieldDescription\Model\Quotation\QuotationFieldDescription(),
+                // CalendarEvent
+                new FieldDescription\Model\Calendar\CalendarListViewEventFieldDescription(),
+                new FieldDescription\Model\Calendar\CalendarEventFieldDefinition(),
+                new FieldDescription\Model\ActivityType\ActivityTypeListViewFieldDescription(),
 
                 // Aggregates
                 new FieldDescription\Model\Aggregate\AccountFieldDescription(),
@@ -84,6 +88,8 @@ class SerializerFactory
                 new FieldDescription\Model\Aggregate\TotalFieldDescription(),
                 new FieldDescription\Model\Aggregate\TaxCalculatedFieldDescription(),
                 new FieldDescription\Model\Aggregate\DownloadedQuotationFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedTodoFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedActivityTypeFieldDescription(),
             ]
         );
 
