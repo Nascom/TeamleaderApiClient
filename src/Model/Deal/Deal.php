@@ -5,7 +5,7 @@ namespace Nascom\TeamleaderApiClient\Model\Deal;
 use Nascom\TeamleaderApiClient\Model\Aggregate\CustomField;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PhaseHistory;
-use Nascom\TeamleaderApiClient\Model\Aggregate\Quotation;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedQuotation;
 
 /**
  * Class Deal
@@ -19,7 +19,7 @@ class Deal extends DealBase
     private $phaseHistory = [];
 
     /**
-     * @var Quotation[]
+     * @var LinkedQuotation[]
      */
     private $quotations;
 
@@ -45,7 +45,7 @@ class Deal extends DealBase
     }
 
     /**
-     * @return Quotation[]
+     * @return LinkedQuotation[]
      */
     public function getQuotations()
     {
@@ -53,7 +53,7 @@ class Deal extends DealBase
     }
 
     /**
-     * @param Quotation[] $quotations
+     * @param LinkedQuotation[] $quotations
      */
     public function setQuotations($quotations)
     {

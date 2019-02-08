@@ -2,6 +2,8 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer;
 
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedProduct;
+use Nascom\TeamleaderApiClient\Model\Quotation\Quotation;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionDenormalizer;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -42,6 +44,9 @@ class SerializerFactory
                 // Deals
                 new FieldDescription\Model\Deal\DealListViewFieldDescription(),
                 new FieldDescription\Model\Deal\DealFieldDescription(),
+                new FieldDescription\Model\DealPhase\DealPhaseListViewFieldDescription(),
+                new FieldDescription\Model\DealSource\DealSourceListViewFieldDescription(),
+                new FieldDescription\Model\Quotation\QuotationFieldDescription(),
 
                 // Aggregates
                 new FieldDescription\Model\Aggregate\AccountFieldDescription(),
@@ -67,7 +72,18 @@ class SerializerFactory
                 new FieldDescription\Model\Aggregate\EstimatedValueFieldDescription(),
                 new FieldDescription\Model\Aggregate\SourceFieldDescription(),
                 new FieldDescription\Model\Aggregate\PhaseHistoryFieldDescription(),
-                new FieldDescription\Model\Aggregate\QuotationFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedQuotationFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedDealFieldDescription(),
+                new FieldDescription\Model\Aggregate\GroupedLineFieldDescription(),
+                new FieldDescription\Model\Aggregate\SectionFieldDescription(),
+                new FieldDescription\Model\Aggregate\LineItemFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedProductFieldDescription(),
+                new FieldDescription\Model\Aggregate\UnitPriceFieldDescription(),
+                new FieldDescription\Model\Aggregate\TaxFieldDescription(),
+                new FieldDescription\Model\Aggregate\DiscountFieldDescription(),
+                new FieldDescription\Model\Aggregate\TotalFieldDescription(),
+                new FieldDescription\Model\Aggregate\TaxCalculatedFieldDescription(),
+                new FieldDescription\Model\Aggregate\DownloadedQuotationFieldDescription(),
             ]
         );
 

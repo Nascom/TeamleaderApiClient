@@ -5,10 +5,10 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 use Nascom\TeamleaderApiClient\Model\RelationBase;
 
 /**
- * Class Quotation
+ * Class LinkedQuotation
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
-class Quotation extends RelationBase
+class LinkedQuotation extends RelationBase
 {
 
 }

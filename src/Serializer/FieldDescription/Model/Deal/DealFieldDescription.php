@@ -4,7 +4,7 @@ namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Deal;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PhaseHistory;
-use Nascom\TeamleaderApiClient\Model\Aggregate\Quotation;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedQuotation;
 use Nascom\TeamleaderApiClient\Model\Deal\Deal;
 
 /**
@@ -21,7 +21,7 @@ class DealFieldDescription extends DealFieldDescriptionBase
         $parentFields = parent::getFieldMapping();
         $additionalFields = [
             'phase_history' => ['target_class' => PhaseHistory::class.'[]'],
-            'quotations' => ['target_class' => Quotation::class.'[]'],
+            'quotations' => ['target_class' => LinkedQuotation::class.'[]'],
             'custom_fields' => ['target_class' => LinkedCustomField::class.'[]'],
         ];
 

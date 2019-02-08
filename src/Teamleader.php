@@ -7,12 +7,16 @@ use Nascom\TeamleaderApiClient\Repository\BusinessTypeRepository;
 use Nascom\TeamleaderApiClient\Repository\CompanyRepository;
 use Nascom\TeamleaderApiClient\Repository\ContactRepository;
 use Nascom\TeamleaderApiClient\Repository\CustomFieldDefinitionRepository;
+use Nascom\TeamleaderApiClient\Repository\DealPhaseRepository;
 use Nascom\TeamleaderApiClient\Repository\DealRepository;
+use Nascom\TeamleaderApiClient\Repository\DealSourceRepository;
 use Nascom\TeamleaderApiClient\Repository\DepartmentRepository;
+use Nascom\TeamleaderApiClient\Repository\QuotationRepository;
 use Nascom\TeamleaderApiClient\Repository\TagRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
 use Nascom\TeamleaderApiClient\Repository\WorkTypesRepository;
 use Nascom\TeamleaderApiClient\Request\CRM\BusinessTypes\BusinessTypesListRequest;
+use Nascom\TeamleaderApiClient\Request\Deals\DealPhases\DealPhasesListRequest;
 use Nascom\TeamleaderApiClient\Serializer\SerializerFactory;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -126,5 +130,28 @@ class Teamleader
     public function deals()
     {
         return new DealRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return DealPhaseRepository
+     */
+    public function dealPhases()
+    {
+        return new DealPhaseRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return DealSourceRepository
+     */
+    public function dealSources()
+    {
+        return new DealSourceRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return QuotationRepository
+     */
+    public function quotations() {
+        return new QuotationRepository($this->apiClient, $this->serializer);
     }
 }

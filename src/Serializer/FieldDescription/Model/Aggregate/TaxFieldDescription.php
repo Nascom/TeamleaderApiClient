@@ -2,23 +2,23 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Quotation;
+use Nascom\TeamleaderApiClient\Model\Aggregate\Tax;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class QuotationFieldDescription
+ * Class TaxFieldDescription
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
-class QuotationFieldDescription extends FieldDescriptionBase
+class TaxFieldDescription extends FieldDescriptionBase
 {
+
     /**
      * @return array
      */
     protected function getFieldMapping()
     {
         return [
-            'id',
-            'type',
+            'rate',
         ];
     }
 
@@ -27,6 +27,6 @@ class QuotationFieldDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return Quotation::class;
+        return Tax::class;
     }
 }
