@@ -24,6 +24,23 @@ class UnitPrice
     private $tax;
 
     /**
+     * UnitPrice constructor.
+     * @param float|null $amount
+     * @param string|null $currency
+     * @param string|null $tax
+     */
+    public function __construct
+    (
+        $amount = null,
+        $currency = null,
+        $tax = null
+    ) {
+        $this->amount = $amount;
+        $this->currency = $currency;
+        $this->tax = $tax;
+    }
+
+    /**
      * @return float
      */
     public function getAmount()

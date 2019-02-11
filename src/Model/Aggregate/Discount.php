@@ -19,6 +19,20 @@ class Discount
     private $value;
 
     /**
+     * Discount constructor.
+     * @param string|null $value
+     * @param string|null $type
+     */
+    public function __construct
+    (
+        $value = null,
+        $type = null
+    ) {
+        $this->value = $value;
+        $this->type = $type;
+    }
+
+    /**
      * @return string
      */
     public function getType()

@@ -44,9 +44,83 @@ class LineItem
     private $discount = [];
 
     /**
-     * @var Total
+     * @var CalculatedTotal
      */
     private $total = [];
+
+    /**
+     * @var string
+     */
+    private $taxRateId;
+
+    /**
+     * @var string
+     */
+    private $withholdingTaxRateId;
+
+    /**
+     * LineItem constructor.
+     * @param integer|null $quantity
+     * @param string|null $description
+     * @param string|null $extendedDescription
+     * @param UnitPrice|null $unitPrice
+     * @param string|null $taxRateId
+     * @param string|null $withholdingTaxRateId
+     * @param Discount|null $discount
+     * @param LinkedProduct|null $linkedProduct
+     */
+    public function __construct
+    (
+        $quantity = null,
+        $description = null,
+        $extendedDescription = null,
+        UnitPrice $unitPrice = null,
+        $taxRateId = null,
+        $withholdingTaxRateId = null,
+        Discount $discount = null,
+        LinkedProduct $linkedProduct = null
+    ) {
+        $this->quantity = $quantity;
+        $this->description = $description;
+        $this->extendedDescription = $extendedDescription;
+        $this->unitPrice = $unitPrice;
+        $this->taxRateId = $taxRateId;
+        $this->withholdingTaxRateId = $withholdingTaxRateId;
+        $this->discount = $discount;
+        $this->product = $linkedProduct;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTaxRateId()
+    {
+        return $this->taxRateId;
+    }
+
+    /**
+     * @param string $taxRateId
+     */
+    public function setTaxRateId($taxRateId)
+    {
+        $this->taxRateId = $taxRateId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWithholdingTaxRateId()
+    {
+        return $this->withholdingTaxRateId;
+    }
+
+    /**
+     * @param string $withholdingTaxRateId
+     */
+    public function setWithholdingTaxRateId($withholdingTaxRateId)
+    {
+        $this->withholdingTaxRateId = $withholdingTaxRateId;
+    }
 
     /**
      * @return LinkedProduct
@@ -161,7 +235,7 @@ class LineItem
     }
 
     /**
-     * @return Total
+     * @return CalculatedTotal
      */
     public function getTotal()
     {
@@ -169,7 +243,7 @@ class LineItem
     }
 
     /**
-     * @param Total $total
+     * @param CalculatedTotal $total
      */
     public function setTotal($total)
     {

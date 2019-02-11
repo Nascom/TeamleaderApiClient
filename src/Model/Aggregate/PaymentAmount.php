@@ -3,10 +3,10 @@
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
- * Class TaxCalculated
+ * Class PaymentAmount
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
-class TaxCalculated
+class PaymentAmount
 {
     /**
      * @var float

@@ -2,9 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Model\User;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Account;
-use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
-
 /**
  * Class User
  *

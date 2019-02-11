@@ -2,7 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Deal;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\CustomField;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PhaseHistory;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedQuotation;

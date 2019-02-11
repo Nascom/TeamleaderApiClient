@@ -3,11 +3,9 @@
 namespace Nascom\TeamleaderApiClient\Repository;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\DownloadedQuotation;
-use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedQuotation;
 use Nascom\TeamleaderApiClient\Model\Quotation\Quotation;
 use Nascom\TeamleaderApiClient\Request\Deals\Quotations\QuotationsDownloadRequest;
 use Nascom\TeamleaderApiClient\Request\Deals\Quotations\QuotationsInfoRequest;
-use phpDocumentor\Reflection\DocBlock\Tags\Formatter;
 
 /**
  * Class QuotationRepository

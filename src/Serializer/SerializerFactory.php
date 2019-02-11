@@ -2,8 +2,9 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedProduct;
-use Nascom\TeamleaderApiClient\Model\Quotation\Quotation;
+use Nascom\TeamleaderApiClient\Model\Aggregate\ContactWithName;
+use Nascom\TeamleaderApiClient\Model\Aggregate\DownloadedInvoice;
+use Nascom\TeamleaderApiClient\Model\WithholdingTaxRate\WithholdingTaxRateListView;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionDenormalizer;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -47,10 +48,16 @@ class SerializerFactory
                 new FieldDescription\Model\DealPhase\DealPhaseListViewFieldDescription(),
                 new FieldDescription\Model\DealSource\DealSourceListViewFieldDescription(),
                 new FieldDescription\Model\Quotation\QuotationFieldDescription(),
-                // CalendarEvent
+                // Calendar
                 new FieldDescription\Model\Calendar\CalendarListViewEventFieldDescription(),
                 new FieldDescription\Model\Calendar\CalendarEventFieldDefinition(),
                 new FieldDescription\Model\ActivityType\ActivityTypeListViewFieldDescription(),
+                // Invoicing
+                new FieldDescription\Model\Invoice\InvoiceListViewFieldDescription(),
+                new FieldDescription\Model\Invoice\InvoiceFieldDescription(),
+
+                new FieldDescription\Model\TaxRate\TaxRateListViewFieldDescription(),
+                new FieldDescription\Model\WithholdingTaxRate\WithholdingTaxRateListViewFieldDescription(),
 
                 // Aggregates
                 new FieldDescription\Model\Aggregate\AccountFieldDescription(),
@@ -85,11 +92,20 @@ class SerializerFactory
                 new FieldDescription\Model\Aggregate\UnitPriceFieldDescription(),
                 new FieldDescription\Model\Aggregate\TaxFieldDescription(),
                 new FieldDescription\Model\Aggregate\DiscountFieldDescription(),
-                new FieldDescription\Model\Aggregate\TotalFieldDescription(),
-                new FieldDescription\Model\Aggregate\TaxCalculatedFieldDescription(),
+                new FieldDescription\Model\Aggregate\CalculatedTotalFieldDescription(),
+                new FieldDescription\Model\Aggregate\PaymentAmountFieldDescription(),
                 new FieldDescription\Model\Aggregate\DownloadedQuotationFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedTodoFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedActivityTypeFieldDescription(),
+                new FieldDescription\Model\Aggregate\InvoiceeFieldDescription(),
+                new FieldDescription\Model\Aggregate\TotalFieldDescription(),
+                new FieldDescription\Model\Aggregate\ContactWithNameFieldDescription(),
+                new FieldDescription\Model\Aggregate\InvoiceTaxFieldDescription(),
+                new FieldDescription\Model\Aggregate\InvoiceeExtendedFieldDescription(),
+                new FieldDescription\Model\Aggregate\DownloadedInvoiceFieldDescription(),
+                new FieldDescription\Model\Aggregate\DiscountWithDescriptionFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedInvoiceFieldDescription(),
+                new FieldDescription\Model\Aggregate\PaymentWithDateFieldDescription(),
             ]
         );
 

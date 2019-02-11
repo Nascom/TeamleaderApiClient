@@ -2,43 +2,18 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
+use Nascom\TeamleaderApiClient\Model\ModelBase;
+
 /**
  * Class CustomField
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
-class CustomField
+class CustomField extends ModelBase
 {
     /**
      * @var
      */
-    private $id;
-
-    /**
-     * @var
-     */
     private $value;
-
-    public function __construct($id, $value)
-    {
-        $this->id = $id;
-        $this->value = $value;;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return mixed

@@ -27,6 +27,6 @@ class LinkedDepartmentFieldDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return LinkedDepartment::class;;
+        return LinkedDepartment::class;
     }
 }

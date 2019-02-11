@@ -2,7 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-use Nascom\TeamleaderApiClient\Model\Tag\TagBase;
 use Nascom\TeamleaderApiClient\Model\Tag\TagListView;
 use Nascom\TeamleaderApiClient\Request\CRM\Tags\TagsListRequest;
 

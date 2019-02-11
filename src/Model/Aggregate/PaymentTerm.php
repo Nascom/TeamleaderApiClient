@@ -24,9 +24,10 @@ class PaymentTerm
      *
      * @param string $type
      */
-    public function __construct($type = null)
+    public function __construct($type = null, $days = null)
     {
         $this->type = $type;
+        $this->days = $days;
     }
 
     /**

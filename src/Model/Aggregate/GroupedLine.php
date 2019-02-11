@@ -11,12 +11,23 @@ class GroupedLine
     /**
      * @var Section
      */
-    private $section;
+    private $section = [];
 
     /**
      * @var LineItem
      */
     private $lineItems = [];
+
+    /**
+     * GroupedLine constructor.
+     * @param Section|null $section
+     * @param LineItem[]|null $lineItems
+     */
+    public function __construct(Section $section = null, array $lineItems = null)
+    {
+        $this->section = $section;
+        $this->lineItems = $lineItems;
+    }
 
     /**
      * @return Section

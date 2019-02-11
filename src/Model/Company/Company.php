@@ -2,7 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Company;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Address;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 

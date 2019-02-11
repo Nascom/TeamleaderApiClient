@@ -2,7 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Deals\Deals;
 
-use Nascom\TeamleaderApiClient\Model\Deal\Deal;
 use Nascom\TeamleaderApiClient\Request\GetRequest;
 
 /**

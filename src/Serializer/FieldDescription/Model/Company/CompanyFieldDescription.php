@@ -5,7 +5,6 @@ namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Company;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 use Nascom\TeamleaderApiClient\Model\Company\Company;
-use Nascom\TeamleaderApiClient\Model\CustomFieldDefinition\CustomFieldDefinition;
 
 /**
  * Class CompanyFieldDescription

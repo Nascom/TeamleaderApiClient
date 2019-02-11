@@ -4,7 +4,6 @@ namespace Nascom\TeamleaderApiClient\Repository;
 
 use Nascom\TeamleaderApiClient\Model\CustomFieldDefinition\CustomFieldDefinition;
 use Nascom\TeamleaderApiClient\Model\CustomFieldDefinition\CustomFieldDefinitionListView;
-use Nascom\TeamleaderApiClient\Model\Department\DepartmentListView;
 use Nascom\TeamleaderApiClient\Request\General\CustomFieldDefinition\CustomFieldDefinitionInfoRequest;
 use Nascom\TeamleaderApiClient\Request\General\CustomFieldDefinition\CustomFieldDefinitionListRequest;
 

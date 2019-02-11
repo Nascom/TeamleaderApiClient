@@ -11,6 +11,17 @@ abstract class RelationBase extends ModelBase
     private $type;
 
     /**
+     * RelationBase constructor.
+     * @param string|null $type
+     * @param string|null $id
+     */
+    public function __construct($type = null, $id = null)
+    {
+        $this->type = $type;
+        $this->setId($id);
+    }
+
+    /**
      * @return mixed
      */
     public function getType()

@@ -2,24 +2,24 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\TaxCalculated;
+use Nascom\TeamleaderApiClient\Model\Aggregate\ContactWithName;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedContact;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class TaxCalculatedFieldDescription
+ * Class ContactWithNameFieldDescription
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
-class TaxCalculatedFieldDescription extends FieldDescriptionBase
+class ContactWithNameFieldDescription extends FieldDescriptionBase
 {
-
     /**
      * @return array
      */
     protected function getFieldMapping()
     {
         return [
-            'amount',
-            'currency',
+            'name',
+            'contact' => ['target_class' => LinkedContact::class],
         ];
     }
 
@@ -28,6 +28,6 @@ class TaxCalculatedFieldDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return TaxCalculated::class;
+        return ContactWithName::class;
     }
 }

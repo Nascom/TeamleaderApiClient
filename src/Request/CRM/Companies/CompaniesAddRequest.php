@@ -2,7 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Request\CRM\Companies;
 
-use Nascom\TeamleaderApiClient\Model\Company\Company;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**

@@ -2,7 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedWorkType;
 use Nascom\TeamleaderApiClient\Model\CalendarEvents\CalendarEvent;
 use Nascom\TeamleaderApiClient\Model\CalendarEvents\CalendarEventListView;
 use Nascom\TeamleaderApiClient\Request\Calendar\CalendarEvents\CalendarEventsCancelRequest;

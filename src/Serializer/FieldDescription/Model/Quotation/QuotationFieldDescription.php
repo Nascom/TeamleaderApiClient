@@ -15,6 +15,6 @@ class QuotationFieldDescription extends QuotationFieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return Quotation::class;;
+        return Quotation::class;
     }
 }

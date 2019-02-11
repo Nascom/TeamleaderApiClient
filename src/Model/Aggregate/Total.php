@@ -9,27 +9,32 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 class Total
 {
     /**
-     * @var TaxCalculated
+     * @var PaymentAmount
      */
     private $taxExclusive = [];
 
     /**
-     * @var TaxCalculated
-     */
-    private $taxExclusiveBeforeDiscount = [];
-
-    /**
-     * @var TaxCalculated
+     * @var PaymentAmount
      */
     private $taxInclusive = [];
 
     /**
-     * @var TaxCalculated
+     * @var PaymentAmount
      */
-    private $taxInclusiveBeforeDiscount = [];
+    private $payable = [];
 
     /**
-     * @return TaxCalculated
+     * @var InvoiceTax[]
+     */
+    private $taxes = [];
+
+    /**
+     * @var PaymentAmount
+     */
+    private $due;
+
+    /**
+     * @return PaymentAmount
      */
     public function getTaxExclusive()
     {
@@ -37,7 +42,7 @@ class Total
     }
 
     /**
-     * @param TaxCalculated $taxExclusive
+     * @param PaymentAmount $taxExclusive
      */
     public function setTaxExclusive($taxExclusive)
     {
@@ -45,23 +50,7 @@ class Total
     }
 
     /**
-     * @return TaxCalculated
-     */
-    public function getTaxExclusiveBeforeDiscount()
-    {
-        return $this->taxExclusiveBeforeDiscount;
-    }
-
-    /**
-     * @param TaxCalculated $taxExclusiveBeforeDiscount
-     */
-    public function setTaxExclusiveBeforeDiscount($taxExclusiveBeforeDiscount)
-    {
-        $this->taxExclusiveBeforeDiscount = $taxExclusiveBeforeDiscount;
-    }
-
-    /**
-     * @return TaxCalculated
+     * @return PaymentAmount
      */
     public function getTaxInclusive()
     {
@@ -69,7 +58,7 @@ class Total
     }
 
     /**
-     * @param TaxCalculated $taxInclusive
+     * @param PaymentAmount $taxInclusive
      */
     public function setTaxInclusive($taxInclusive)
     {
@@ -77,18 +66,50 @@ class Total
     }
 
     /**
-     * @return TaxCalculated
+     * @return PaymentAmount
      */
-    public function getTaxInclusiveBeforeDiscount()
+    public function getPayable()
     {
-        return $this->taxInclusiveBeforeDiscount;
+        return $this->payable;
     }
 
     /**
-     * @param TaxCalculated $taxInclusiveBeforeDiscount
+     * @param PaymentAmount $payable
      */
-    public function setTaxInclusiveBeforeDiscount($taxInclusiveBeforeDiscount)
+    public function setPayable($payable)
     {
-        $this->taxInclusiveBeforeDiscount = $taxInclusiveBeforeDiscount;
+        $this->payable = $payable;
+    }
+
+    /**
+     * @return InvoiceTax[]
+     */
+    public function getTaxes()
+    {
+        return $this->taxes;
+    }
+
+    /**
+     * @param InvoiceTax[] $taxes
+     */
+    public function setTaxes($taxes)
+    {
+        $this->taxes = $taxes;
+    }
+
+    /**
+     * @return PaymentAmount
+     */
+    public function getDue()
+    {
+        return $this->due;
+    }
+
+    /**
+     * @param PaymentAmount $due
+     */
+    public function setDue($due)
+    {
+        $this->due = $due;
     }
 }

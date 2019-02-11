@@ -12,7 +12,6 @@ use Nascom\TeamleaderApiClient\Request\Deals\Deals\DealsLoseRequest;
 use Nascom\TeamleaderApiClient\Request\Deals\Deals\DealsMoveRequest;
 use Nascom\TeamleaderApiClient\Request\Deals\Deals\DealsUpdateRequest;
 use Nascom\TeamleaderApiClient\Request\Deals\Deals\DealsWinRequest;
-use spec\PhpSpec\CodeAnalysis\MagicAwareAccessInspectorSpec;
 
 /**
  * Class DealRepository

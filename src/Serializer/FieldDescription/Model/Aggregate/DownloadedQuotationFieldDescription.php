@@ -9,20 +9,8 @@ use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
  * Class DownloadedQuotationFieldDescription
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
-class DownloadedQuotationFieldDescription extends FieldDescriptionBase
+class DownloadedQuotationFieldDescription extends DownloadedFieldDescriptionBase
 {
-
-    /**
-     * @return array
-     */
-    protected function getFieldMapping()
-    {
-        return [
-            'location',
-            'expires' => ['target_class' => \DateTime::class],
-        ];
-    }
-
     /**
      * @return string
      */

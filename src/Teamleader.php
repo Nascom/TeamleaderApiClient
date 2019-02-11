@@ -13,12 +13,14 @@ use Nascom\TeamleaderApiClient\Repository\DealPhaseRepository;
 use Nascom\TeamleaderApiClient\Repository\DealRepository;
 use Nascom\TeamleaderApiClient\Repository\DealSourceRepository;
 use Nascom\TeamleaderApiClient\Repository\DepartmentRepository;
+use Nascom\TeamleaderApiClient\Repository\InvoiceRepository;
 use Nascom\TeamleaderApiClient\Repository\QuotationRepository;
 use Nascom\TeamleaderApiClient\Repository\TagRepository;
+use Nascom\TeamleaderApiClient\Repository\TaxRateRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
+use Nascom\TeamleaderApiClient\Repository\WithholdingTaxRateRepository;
 use Nascom\TeamleaderApiClient\Repository\WorkTypesRepository;
-use Nascom\TeamleaderApiClient\Request\CRM\BusinessTypes\BusinessTypesListRequest;
-use Nascom\TeamleaderApiClient\Request\Deals\DealPhases\DealPhasesListRequest;
+use Nascom\TeamleaderApiClient\Request\Invoicing\WithholdingTaxRates\WithholdingTaxRatesListRequest;
 use Nascom\TeamleaderApiClient\Serializer\SerializerFactory;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -169,5 +171,26 @@ class Teamleader
      */
     public function activityTypes() {
         return new ActivityTypeRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return InvoiceRepository
+     */
+    public function invoices() {
+        return new InvoiceRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return TaxRateRepository
+     */
+    public function taxRates() {
+        return new TaxRateRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return WithholdingTaxRateRepository
+     */
+    public function withholdingTaxRates() {
+        return new WithholdingTaxRateRepository($this->apiClient, $this->serializer);
     }
 }

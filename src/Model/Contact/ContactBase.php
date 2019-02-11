@@ -3,7 +3,6 @@
 namespace Nascom\TeamleaderApiClient\Model\Contact;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
-use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCompany;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
 use Nascom\TeamleaderApiClient\Model\ModelBase;
