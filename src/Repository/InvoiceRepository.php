@@ -9,14 +9,17 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\GroupedLine;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Invoicee;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedInvoice;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
+use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentWithDate;
 use Nascom\TeamleaderApiClient\Model\Invoice\Invoice;
 use Nascom\TeamleaderApiClient\Model\Invoice\InvoiceListView;
 use Nascom\TeamleaderApiClient\Request\Invoicing\Invoices\InvoicesBookRequest;
 use Nascom\TeamleaderApiClient\Request\Invoicing\Invoices\InvoicesCopyRequest;
+use Nascom\TeamleaderApiClient\Request\Invoicing\Invoices\InvoicesDeleteRequest;
 use Nascom\TeamleaderApiClient\Request\Invoicing\Invoices\InvoicesDownloadRequest;
 use Nascom\TeamleaderApiClient\Request\Invoicing\Invoices\InvoicesDraftRequest;
 use Nascom\TeamleaderApiClient\Request\Invoicing\Invoices\InvoicesInfoRequest;
 use Nascom\TeamleaderApiClient\Request\Invoicing\Invoices\InvoicesListRequest;
+use Nascom\TeamleaderApiClient\Request\Invoicing\Invoices\InvoicesRegisterPaymentRequest;
 use Nascom\TeamleaderApiClient\Request\Invoicing\Invoices\InvoicesUpdateRequest;
 
 /**
@@ -105,5 +108,20 @@ class InvoiceRepository extends RepositoryBase
         $this->apiClient->handle(new InvoicesBookRequest($id, $on));
     }
 
-    // TODO delete, registerPayment
+    /**
+     * @param string $id
+     * @throws \Http\Client\Exception
+     */
+    public function deleteInvoice($id) {
+        $this->apiClient->handle(new InvoicesDeleteRequest($id));
+    }
+
+    /**
+     * @param string $id
+     * @param PaymentWithDate $paymentWithDate
+     * @throws \Http\Client\Exception
+     */
+    public function registerPayment($id, PaymentWithDate $paymentWithDate) {
+        $this->apiClient->handle(new InvoicesRegisterPaymentRequest($id, $this->normalize($paymentWithDate)));
+    }
 }

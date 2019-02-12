@@ -19,6 +19,17 @@ class PaymentWithDate
     private $payment;
 
     /**
+     * PaymentWithDate constructor.
+     * @param \DateTime|null $paidAt
+     * @param PaymentAmount|null $payment
+     */
+    public function __construct(\DateTime $paidAt = null, PaymentAmount $payment = null)
+    {
+        $this->paidAt = $paidAt;
+        $this->payment = $payment;
+    }
+
+    /**
      * @return \DateTime
      */
     public function getPaidAt()

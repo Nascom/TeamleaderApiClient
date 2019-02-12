@@ -19,6 +19,17 @@ class PaymentAmount
     private $currency;
 
     /**
+     * PaymentAmount constructor.
+     * @param float|null $amount
+     * @param string|null $currency
+     */
+    public function __construct($amount = null, $currency = null)
+    {
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
+
+    /**
      * @return float
      */
     public function getAmount()
