@@ -4,7 +4,7 @@ namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Invoice;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\Invoicee;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedDepartment;
-use Nascom\TeamleaderApiClient\Model\Aggregate\Total;
+use Nascom\TeamleaderApiClient\Model\Aggregate\TotalWithDue;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
@@ -27,7 +27,7 @@ abstract class InvoiceFieldDescriptionBase extends FieldDescriptionBase
             'due_on',
             'paid',
             'paid_at' => ['target_class' => \DateTime::class],
-            'total' => ['target_class' => Total::class],
+            'total' => ['target_class' => TotalWithDue::class],
             'created_at' => ['target_class' => \DateTime::class],
             'updated_at'=> ['target_class' => \DateTime::class],
         ];

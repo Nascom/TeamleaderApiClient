@@ -14,6 +14,11 @@ class LineItem
     private $product = [];
 
     /**
+     * @var LinkedProductCategory
+     */
+    private $productCategory;
+
+    /**
      * @var integer
      */
     private $quantity;
@@ -68,6 +73,7 @@ class LineItem
      * @param string|null $withholdingTaxRateId
      * @param Discount|null $discount
      * @param LinkedProduct|null $linkedProduct
+     * @param LinkedProductCategory|null $linkedProductCategory
      */
     public function __construct
     (
@@ -78,7 +84,8 @@ class LineItem
         $taxRateId = null,
         $withholdingTaxRateId = null,
         Discount $discount = null,
-        LinkedProduct $linkedProduct = null
+        LinkedProduct $linkedProduct = null,
+        LinkedProductCategory $linkedProductCategory = null
     ) {
         $this->quantity = $quantity;
         $this->description = $description;
@@ -88,6 +95,7 @@ class LineItem
         $this->withholdingTaxRateId = $withholdingTaxRateId;
         $this->discount = $discount;
         $this->product = $linkedProduct;
+        $this->productCategory = $linkedProductCategory;
     }
 
     /**
@@ -248,5 +256,21 @@ class LineItem
     public function setTotal($total)
     {
         $this->total = $total;
+    }
+
+    /**
+     * @return LinkedProductCategory
+     */
+    public function getProductCategory()
+    {
+        return $this->productCategory;
+    }
+
+    /**
+     * @param LinkedProductCategory $productCategory
+     */
+    public function setProductCategory($productCategory)
+    {
+        $this->productCategory = $productCategory;
     }
 }

@@ -2,9 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\ContactWithName;
-use Nascom\TeamleaderApiClient\Model\Aggregate\DownloadedInvoice;
-use Nascom\TeamleaderApiClient\Model\WithholdingTaxRate\WithholdingTaxRateListView;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionDenormalizer;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -55,7 +52,8 @@ class SerializerFactory
                 // Invoicing
                 new FieldDescription\Model\Invoice\InvoiceListViewFieldDescription(),
                 new FieldDescription\Model\Invoice\InvoiceFieldDescription(),
-
+                new FieldDescription\Model\CreditNote\CreditNoteListViewFieldDescription(),
+                new FieldDescription\Model\CreditNote\CreditNoteFieldDescription(),
                 new FieldDescription\Model\TaxRate\TaxRateListViewFieldDescription(),
                 new FieldDescription\Model\WithholdingTaxRate\WithholdingTaxRateListViewFieldDescription(),
 
@@ -98,7 +96,7 @@ class SerializerFactory
                 new FieldDescription\Model\Aggregate\LinkedTodoFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedActivityTypeFieldDescription(),
                 new FieldDescription\Model\Aggregate\InvoiceeFieldDescription(),
-                new FieldDescription\Model\Aggregate\TotalFieldDescription(),
+                new FieldDescription\Model\Aggregate\TotalWithDueFieldDescription(),
                 new FieldDescription\Model\Aggregate\ContactWithNameFieldDescription(),
                 new FieldDescription\Model\Aggregate\InvoiceTaxFieldDescription(),
                 new FieldDescription\Model\Aggregate\InvoiceeExtendedFieldDescription(),
@@ -106,6 +104,11 @@ class SerializerFactory
                 new FieldDescription\Model\Aggregate\DiscountWithDescriptionFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedInvoiceFieldDescription(),
                 new FieldDescription\Model\Aggregate\PaymentWithDateFieldDescription(),
+                new FieldDescription\Model\Aggregate\DownloadedInvoiceFieldDescription(),
+                new FieldDescription\Model\Aggregate\TotalFieldDescription(),
+                new FieldDescription\Model\Aggregate\InvoiceeMinimalFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedProductCategoryFieldDescription(),
+                new FieldDescription\Model\Aggregate\DownloadedCreditNoteFieldDescription(),
             ]
         );
 

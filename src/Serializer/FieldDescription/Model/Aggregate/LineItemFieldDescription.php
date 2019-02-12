@@ -5,6 +5,7 @@ namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
 use Nascom\TeamleaderApiClient\Model\Aggregate\Discount;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LineItem;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedProduct;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedProductCategory;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Tax;
 use Nascom\TeamleaderApiClient\Model\Aggregate\CalculatedTotal;
 use Nascom\TeamleaderApiClient\Model\Aggregate\UnitPrice;
@@ -24,6 +25,7 @@ class LineItemFieldDescription extends FieldDescriptionBase
     {
         return [
             'product' => ['target_class' => LinkedProduct::class],
+            'product_category' => ['target_class' => LinkedProductCategory::class],
             'quantity',
             'description',
             'extended_description',

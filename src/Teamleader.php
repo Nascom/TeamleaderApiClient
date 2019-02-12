@@ -8,6 +8,7 @@ use Nascom\TeamleaderApiClient\Repository\BusinessTypeRepository;
 use Nascom\TeamleaderApiClient\Repository\CalendarRepository;
 use Nascom\TeamleaderApiClient\Repository\CompanyRepository;
 use Nascom\TeamleaderApiClient\Repository\ContactRepository;
+use Nascom\TeamleaderApiClient\Repository\CreditNoteRepository;
 use Nascom\TeamleaderApiClient\Repository\CustomFieldDefinitionRepository;
 use Nascom\TeamleaderApiClient\Repository\DealPhaseRepository;
 use Nascom\TeamleaderApiClient\Repository\DealRepository;
@@ -178,6 +179,13 @@ class Teamleader
      */
     public function invoices() {
         return new InvoiceRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return CreditNoteRepository
+     */
+    public function creditNotes() {
+        return new CreditNoteRepository($this->apiClient, $this->serializer);
     }
 
     /**

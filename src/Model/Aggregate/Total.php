@@ -29,11 +29,6 @@ class Total
     private $taxes = [];
 
     /**
-     * @var PaymentAmount
-     */
-    private $due;
-
-    /**
      * @return PaymentAmount
      */
     public function getTaxExclusive()
@@ -95,21 +90,5 @@ class Total
     public function setTaxes($taxes)
     {
         $this->taxes = $taxes;
-    }
-
-    /**
-     * @return PaymentAmount
-     */
-    public function getDue()
-    {
-        return $this->due;
-    }
-
-    /**
-     * @param PaymentAmount $due
-     */
-    public function setDue($due)
-    {
-        $this->due = $due;
     }
 }

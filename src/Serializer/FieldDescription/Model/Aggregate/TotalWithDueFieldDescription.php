@@ -4,26 +4,26 @@ namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\InvoiceTax;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentAmount;
-use Nascom\TeamleaderApiClient\Model\Aggregate\Total;
+use Nascom\TeamleaderApiClient\Model\Aggregate\TotalWithDue;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class TotalFieldDescription
+ * Class TotalWithDueFieldDescription
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
-class TotalFieldDescription extends FieldDescriptionBase
+class TotalWithDueFieldDescription extends TotalFieldDescription
 {
     /**
      * @return array
      */
     protected function getFieldMapping()
     {
-        return [
-            'tax_exclusive' => ['target_class' => PaymentAmount::class],
-            'tax_inclusive' => ['target_class' => PaymentAmount::class],
-            'payable' => ['target_class' => PaymentAmount::class],
-            'taxes' => ['target_class' => InvoiceTax::class.'[]'],
-        ];
+        return array_merge(
+            parent::getFieldMapping(),
+            [
+                'due' => ['target_class' => PaymentAmount::class],
+            ]
+        );
     }
 
     /**
@@ -31,6 +31,6 @@ class TotalFieldDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return Total::class;
+        return TotalWithDue::class;
     }
 }
