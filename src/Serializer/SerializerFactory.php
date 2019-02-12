@@ -55,6 +55,7 @@ class SerializerFactory
                 new FieldDescription\Model\CreditNote\CreditNoteListViewFieldDescription(),
                 new FieldDescription\Model\CreditNote\CreditNoteFieldDescription(),
                 new FieldDescription\Model\TaxRate\TaxRateListViewFieldDescription(),
+                new FieldDescription\Model\PaymentTerm\PaymentTypeListViewFieldDescription(),
                 new FieldDescription\Model\WithholdingTaxRate\WithholdingTaxRateListViewFieldDescription(),
 
                 // Aggregates

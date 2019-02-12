@@ -15,12 +15,14 @@ use Nascom\TeamleaderApiClient\Repository\DealRepository;
 use Nascom\TeamleaderApiClient\Repository\DealSourceRepository;
 use Nascom\TeamleaderApiClient\Repository\DepartmentRepository;
 use Nascom\TeamleaderApiClient\Repository\InvoiceRepository;
+use Nascom\TeamleaderApiClient\Repository\PaymentTermRepository;
 use Nascom\TeamleaderApiClient\Repository\QuotationRepository;
 use Nascom\TeamleaderApiClient\Repository\TagRepository;
 use Nascom\TeamleaderApiClient\Repository\TaxRateRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
 use Nascom\TeamleaderApiClient\Repository\WithholdingTaxRateRepository;
 use Nascom\TeamleaderApiClient\Repository\WorkTypesRepository;
+use Nascom\TeamleaderApiClient\Request\Invoicing\PaymentTerms\PaymentTermsListRequest;
 use Nascom\TeamleaderApiClient\Request\Invoicing\WithholdingTaxRates\WithholdingTaxRatesListRequest;
 use Nascom\TeamleaderApiClient\Serializer\SerializerFactory;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -186,6 +188,13 @@ class Teamleader
      */
     public function creditNotes() {
         return new CreditNoteRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return PaymentTermRepository
+     */
+    public function paymentTerms() {
+        return new PaymentTermRepository($this->apiClient, $this->serializer);
     }
 
     /**
