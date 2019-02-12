@@ -57,6 +57,9 @@ class SerializerFactory
                 new FieldDescription\Model\TaxRate\TaxRateListViewFieldDescription(),
                 new FieldDescription\Model\PaymentTerm\PaymentTypeListViewFieldDescription(),
                 new FieldDescription\Model\WithholdingTaxRate\WithholdingTaxRateListViewFieldDescription(),
+                // Products
+                new FieldDescription\Model\ProductCategory\ProductCategoryListViewFieldDescription(),
+                new FieldDescription\Model\Product\ProductListViewFieldDescription(),
 
                 // Aggregates
                 new FieldDescription\Model\Aggregate\AccountFieldDescription(),
@@ -110,6 +113,8 @@ class SerializerFactory
                 new FieldDescription\Model\Aggregate\InvoiceeMinimalFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedProductCategoryFieldDescription(),
                 new FieldDescription\Model\Aggregate\DownloadedCreditNoteFieldDescription(),
+                new FieldDescription\Model\Aggregate\LedgerFieldDescription(),
+                new FieldDescription\Model\Aggregate\TranslationFieldDescription(),
             ]
         );
 

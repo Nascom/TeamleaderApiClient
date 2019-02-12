@@ -16,6 +16,8 @@ use Nascom\TeamleaderApiClient\Repository\DealSourceRepository;
 use Nascom\TeamleaderApiClient\Repository\DepartmentRepository;
 use Nascom\TeamleaderApiClient\Repository\InvoiceRepository;
 use Nascom\TeamleaderApiClient\Repository\PaymentTermRepository;
+use Nascom\TeamleaderApiClient\Repository\ProductCategoryRepository;
+use Nascom\TeamleaderApiClient\Repository\ProductRepository;
 use Nascom\TeamleaderApiClient\Repository\QuotationRepository;
 use Nascom\TeamleaderApiClient\Repository\TagRepository;
 use Nascom\TeamleaderApiClient\Repository\TaxRateRepository;
@@ -158,56 +160,80 @@ class Teamleader
     /**
      * @return QuotationRepository
      */
-    public function quotations() {
+    public function quotations()
+    {
         return new QuotationRepository($this->apiClient, $this->serializer);
     }
 
     /**
      * @return CalendarRepository
      */
-    public function calendarEvents() {
+    public function calendarEvents()
+    {
         return new CalendarRepository($this->apiClient, $this->serializer);
     }
 
     /**
      * @return ActivityTypeRepository
      */
-    public function activityTypes() {
+    public function activityTypes()
+    {
         return new ActivityTypeRepository($this->apiClient, $this->serializer);
     }
 
     /**
      * @return InvoiceRepository
      */
-    public function invoices() {
+    public function invoices()
+    {
         return new InvoiceRepository($this->apiClient, $this->serializer);
     }
 
     /**
      * @return CreditNoteRepository
      */
-    public function creditNotes() {
+    public function creditNotes()
+    {
         return new CreditNoteRepository($this->apiClient, $this->serializer);
     }
 
     /**
      * @return PaymentTermRepository
      */
-    public function paymentTerms() {
+    public function paymentTerms()
+    {
         return new PaymentTermRepository($this->apiClient, $this->serializer);
     }
 
     /**
      * @return TaxRateRepository
      */
-    public function taxRates() {
+    public function taxRates()
+    {
         return new TaxRateRepository($this->apiClient, $this->serializer);
     }
 
     /**
      * @return WithholdingTaxRateRepository
      */
-    public function withholdingTaxRates() {
+    public function withholdingTaxRates()
+    {
         return new WithholdingTaxRateRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return ProductCategoryRepository
+     */
+    public function productCategories()
+    {
+        return new ProductCategoryRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return ProductRepository
+     */
+    public function products()
+    {
+        return new ProductRepository($this->apiClient, $this->serializer);
     }
 }
