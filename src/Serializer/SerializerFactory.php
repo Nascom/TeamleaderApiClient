@@ -60,6 +60,11 @@ class SerializerFactory
                 // Products
                 new FieldDescription\Model\ProductCategory\ProductCategoryListViewFieldDescription(),
                 new FieldDescription\Model\Product\ProductListViewFieldDescription(),
+                // Projects
+                new FieldDescription\Model\Project\ProjectListViewFieldDescription(),
+                new FieldDescription\Model\Project\ProjectFieldDescription(),
+                new FieldDescription\Model\Milestone\MilestoneFieldDescription(),
+                new FieldDescription\Model\Milestone\MilestoneListViewFieldDescription(),
 
                 // Aggregates
                 new FieldDescription\Model\Aggregate\AccountFieldDescription(),
@@ -115,6 +120,10 @@ class SerializerFactory
                 new FieldDescription\Model\Aggregate\DownloadedCreditNoteFieldDescription(),
                 new FieldDescription\Model\Aggregate\LedgerFieldDescription(),
                 new FieldDescription\Model\Aggregate\TranslationFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedMileStoneFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedParticipantWithRoleFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedParticipantFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedProjectFieldDescription(),
             ]
         );
 

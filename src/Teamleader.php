@@ -15,9 +15,11 @@ use Nascom\TeamleaderApiClient\Repository\DealRepository;
 use Nascom\TeamleaderApiClient\Repository\DealSourceRepository;
 use Nascom\TeamleaderApiClient\Repository\DepartmentRepository;
 use Nascom\TeamleaderApiClient\Repository\InvoiceRepository;
+use Nascom\TeamleaderApiClient\Repository\MilestoneRepository;
 use Nascom\TeamleaderApiClient\Repository\PaymentTermRepository;
 use Nascom\TeamleaderApiClient\Repository\ProductCategoryRepository;
 use Nascom\TeamleaderApiClient\Repository\ProductRepository;
+use Nascom\TeamleaderApiClient\Repository\ProjectRepository;
 use Nascom\TeamleaderApiClient\Repository\QuotationRepository;
 use Nascom\TeamleaderApiClient\Repository\TagRepository;
 use Nascom\TeamleaderApiClient\Repository\TaxRateRepository;
@@ -235,5 +237,20 @@ class Teamleader
     public function products()
     {
         return new ProductRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return ProjectRepository
+     */
+    public function projects()
+    {
+        return new ProjectRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return MilestoneRepository
+     */
+    public function milestones() {
+        return new MilestoneRepository($this->apiClient, $this->serializer);
     }
 }
