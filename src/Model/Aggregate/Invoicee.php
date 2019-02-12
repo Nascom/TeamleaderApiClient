@@ -2,8 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
-use Nascom\TeamleaderApiClient\Model\Invoice\InvoiceBase;
-
 /**
  * Class Invoicee
  * @package Nascom\TeamleaderApiClient\Model\Aggregate

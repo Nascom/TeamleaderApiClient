@@ -2,7 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-use function GuzzleHttp\Psr7\normalize_header;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedMileStone;
 use Nascom\TeamleaderApiClient\Model\Milestone\Milestone;
 use Nascom\TeamleaderApiClient\Model\Milestone\MilestoneListView;

@@ -60,6 +60,9 @@ class RefreshTokenMiddleware
         };
     }
 
+    /**
+     * @throws \League\OAuth2\Client\Provider\Exception\IdentityProviderException
+     */
     private function refreshToken()
     {
         $this->token = $this->provider->getAccessToken('refresh_token', [

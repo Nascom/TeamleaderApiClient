@@ -3,7 +3,6 @@
 namespace Nascom\TeamleaderApiClient\Model\PaymentTerm;
 
 use Nascom\TeamleaderApiClient\Model\ModelBase;
-use Nascom\TeamleaderApiClient\Model\RelationBase;
 
 /**
  * Class PaymentTermBase

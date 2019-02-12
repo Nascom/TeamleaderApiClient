@@ -21,8 +21,8 @@ class PaymentTerm
 
     /**
      * PaymentTerm constructor.
-     *
-     * @param string $type
+     * @param string|null $type
+     * @param string|null $days
      */
     public function __construct($type = null, $days = null)
     {

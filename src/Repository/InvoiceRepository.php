@@ -2,13 +2,8 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-use function GuzzleHttp\Psr7\normalize_header;
-use Nascom\TeamleaderApiClient\Model\Aggregate\Discount;
 use Nascom\TeamleaderApiClient\Model\Aggregate\DownloadedInvoice;
-use Nascom\TeamleaderApiClient\Model\Aggregate\GroupedLine;
-use Nascom\TeamleaderApiClient\Model\Aggregate\Invoicee;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedInvoice;
-use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentWithDate;
 use Nascom\TeamleaderApiClient\Model\Invoice\Invoice;
 use Nascom\TeamleaderApiClient\Model\Invoice\InvoiceListView;

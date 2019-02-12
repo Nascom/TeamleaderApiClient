@@ -3,7 +3,6 @@
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\InvoiceeExtended;
-use Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Invoice\InvoiceFieldDescriptionBase;
 
 /**
  * Class InvoiceeExtendedFieldDescription

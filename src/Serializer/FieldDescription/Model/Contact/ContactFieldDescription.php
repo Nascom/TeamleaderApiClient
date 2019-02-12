@@ -3,7 +3,6 @@
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Contact;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
-use Nascom\TeamleaderApiClient\Model\Aggregate\AddressWithType;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCompany;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 use Nascom\TeamleaderApiClient\Model\Contact\Contact;

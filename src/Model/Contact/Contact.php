@@ -3,9 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Model\Contact;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
-use Nascom\TeamleaderApiClient\Model\Aggregate\AddressWithType;
 use Nascom\TeamleaderApiClient\Model\Aggregate\CustomField;
-use Nascom\TeamleaderApiClient\Model\Aggregate\CustomFieldDefinition;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCompany;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 
@@ -86,7 +84,7 @@ class Contact extends ContactBase
     }
 
     /**
-     * @return AddressWithType[]
+     * @return Addresses[]
      */
     public function getAddresses()
     {
@@ -94,7 +92,7 @@ class Contact extends ContactBase
     }
 
     /**
-     * @param AddressWithType[] $addresses
+     * @param Addresses[] $addresses
      */
     public function setAddresses($addresses)
     {

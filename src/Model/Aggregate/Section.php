@@ -2,8 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
-use phpDocumentor\Reflection\Types\Iterable_;
-
 class Section
 {
     /**

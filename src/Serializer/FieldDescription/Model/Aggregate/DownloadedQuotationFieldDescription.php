@@ -3,7 +3,6 @@
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\DownloadedQuotation;
-use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class DownloadedQuotationFieldDescription

@@ -12,7 +12,7 @@ use Nascom\TeamleaderApiClient\Request\General\WorkTypes\WorkTypesListRequest;
 class WorkTypesRepository extends RepositoryBase
 {
     /**
-     * @return WorkTypeBase
+     * @return WorkTypeListView[]
      * @throws \Http\Client\Exception
      */
     public function listWorkTypes()

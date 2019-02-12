@@ -13,7 +13,6 @@ use Nascom\TeamleaderApiClient\Request\Projects\Projects\ProjectsInfoRequest;
 use Nascom\TeamleaderApiClient\Request\Projects\Projects\ProjectsListRequest;
 use Nascom\TeamleaderApiClient\Request\Projects\Projects\ProjectsUpdateParticipantRequest;
 use Nascom\TeamleaderApiClient\Request\Projects\Projects\ProjectsUpdateRequest;
-use Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Project\ProjectFieldDescription;
 
 /**
  * Class ProjectRepository

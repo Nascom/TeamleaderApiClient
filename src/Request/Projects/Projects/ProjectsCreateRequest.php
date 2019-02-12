@@ -9,7 +9,7 @@ use Nascom\TeamleaderApiClient\Request\PostRequest;
  * @package Nascom\TeamleaderApiClient\Request\Projects\Projects
  */
 class ProjectsCreateRequest extends PostRequest
-{ // TODO participant type must be user -> all users have type account!
+{
     /**
      * ProjectsCreateRequest constructor.
      * @param array $project

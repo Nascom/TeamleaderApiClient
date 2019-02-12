@@ -2,10 +2,8 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\InvoiceTax;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentAmount;
 use Nascom\TeamleaderApiClient\Model\Aggregate\TotalWithDue;
-use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class TotalWithDueFieldDescription

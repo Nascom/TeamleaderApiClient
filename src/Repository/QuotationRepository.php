@@ -25,6 +25,12 @@ class QuotationRepository extends RepositoryBase
         );
     }
 
+    /**
+     * @param string $id
+     * @param string $format
+     * @return DownloadedQuotation
+     * @throws \Http\Client\Exception
+     */
     public function downloadQuotation($id, $format) {
         return $this->handleRequest(
             new QuotationsDownloadRequest($id, $format),

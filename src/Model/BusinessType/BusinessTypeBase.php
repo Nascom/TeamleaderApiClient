@@ -45,7 +45,7 @@ abstract class BusinessTypeBase extends ModelBase
     }
 
     /**
-     * @param string $county
+     * @param string $country
      */
     public function setCountry($country)
     {

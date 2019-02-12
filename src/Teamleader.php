@@ -26,8 +26,6 @@ use Nascom\TeamleaderApiClient\Repository\TaxRateRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
 use Nascom\TeamleaderApiClient\Repository\WithholdingTaxRateRepository;
 use Nascom\TeamleaderApiClient\Repository\WorkTypesRepository;
-use Nascom\TeamleaderApiClient\Request\Invoicing\PaymentTerms\PaymentTermsListRequest;
-use Nascom\TeamleaderApiClient\Request\Invoicing\WithholdingTaxRates\WithholdingTaxRatesListRequest;
 use Nascom\TeamleaderApiClient\Serializer\SerializerFactory;
 use Symfony\Component\Serializer\SerializerInterface;
 

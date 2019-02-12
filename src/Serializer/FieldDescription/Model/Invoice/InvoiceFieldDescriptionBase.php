@@ -2,7 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Invoice;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Invoicee;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedDepartment;
 use Nascom\TeamleaderApiClient\Model\Aggregate\TotalWithDue;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
