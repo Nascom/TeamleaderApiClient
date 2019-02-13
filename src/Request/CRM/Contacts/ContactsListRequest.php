@@ -2,26 +2,20 @@
 
 namespace Nascom\TeamleaderApiClient\Request\CRM\Contacts;
 
-use Nascom\TeamleaderApiClient\Request\BaseListRequest;
-use Nascom\TeamleaderApiClient\Request\Attributes\Filter\ContactFilter;
+use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class ContactsListRequest
  *
  * @package Nascom\TeamleaderApiClient\Request\CRM\Contacts
  */
-class ContactsListRequest extends BaseListRequest
+class ContactsListRequest extends GetRequest
 {
-    /**
-     * @param ContactFilter $filter
-     */
-    public function setFilter(ContactFilter $filter)
-    {
-        $this->filter = $filter;
-    }
+    use MultipleMethodsTrait;
 
     /**
-     * @inheritdock
+     * @inheritdoc
      */
     public function getEndpoint()
     {

@@ -6,12 +6,14 @@ use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class ContactsUnlinkFromCompanyRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\CRM\Contacts
  */
 class ContactsUnlinkFromCompanyRequest extends PostRequest
 {
     /**
      * ContactsUnlinkFromCompanyRequest constructor.
+     *
      * @param string $id
      * @param string $companyId
      */

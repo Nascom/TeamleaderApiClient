@@ -6,12 +6,14 @@ use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class ContactsUntagRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\CRM\Contacts
  */
 class ContactsUntagRequest extends PostRequest
 {
     /**
      * ContactsUntagRequest constructor.
+     *
      * @param string $id
      * @param array $tags
      */

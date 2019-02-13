@@ -7,12 +7,13 @@ use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class DownloadedCreditNoteFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
 class DownloadedCreditNoteFieldDescription extends FieldDescriptionBase
 {
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
@@ -23,7 +24,7 @@ class DownloadedCreditNoteFieldDescription extends FieldDescriptionBase
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

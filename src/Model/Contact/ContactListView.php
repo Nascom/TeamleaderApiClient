@@ -12,12 +12,12 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\Address;
 class ContactListView extends ContactBase
 {
     /**
-     * @var Address|null
+     * @var Address
      */
     private $primaryAddress;
 
     /**
-     * @return Address|null
+     * @return Address
      */
     public function getPrimaryAddress()
     {
@@ -25,7 +25,7 @@ class ContactListView extends ContactBase
     }
 
     /**
-     * @param Address|null $primaryAddress
+     * @param Address $primaryAddress
      */
     public function setPrimaryAddress($primaryAddress)
     {

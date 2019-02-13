@@ -12,12 +12,16 @@ class ContactsUpdateRequest extends PostRequest
 {
     /**
      * ContactsUpdateRequest constructor.
+     *
      * @param array $contact
      */
     public function __construct(array $contact)
     {
-        unset($contact['added_at']);
-        unset($contact['updated_at']);
+        unset(
+            $contact['added_at'],
+            $contact['updated_at'],
+            $contact['web_url']
+        );
 
         $customFields = $contact['custom_fields'];
         $contact['custom_fields'] = [];

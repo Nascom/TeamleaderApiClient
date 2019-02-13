@@ -16,72 +16,72 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 abstract class ContactBase extends ModelBase
 {
     /**
-     * @var string|null
+     * @var string
      */
     private $firstName;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $lastName;
 
     /**
      * @var Email[]
      */
-    private $emails = [];
+    private $emails;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $salutation;
 
     /**
      * @var Telephone[]
      */
-    private $telephones = [];
+    private $telephones;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $website;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $gender;
 
     /**
-     * @var DateTime|null
+     * @var DateTime
      */
     private $birthdate;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $iban;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $bic;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $language;
 
     /**
-     * @var PaymentTerm|null
+     * @var PaymentTerm
      */
     private $paymentTerm;
 
     /**
-     * @var DateTime|null
+     * @var DateTime
      */
     private $addedAt;
 
     /**
-     * @var DateTime|null
+     * @var DateTime
      */
     private $updatedAt;
 
@@ -96,7 +96,7 @@ abstract class ContactBase extends ModelBase
     private $webUrl;
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getFirstName()
     {
@@ -104,7 +104,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|string $firstName
+     * @param string $firstName
      */
     public function setFirstName($firstName)
     {
@@ -128,7 +128,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getSalutation()
     {
@@ -136,7 +136,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|string $salutation
+     * @param string $salutation
      */
     public function setSalutation($salutation)
     {
@@ -160,7 +160,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getWebsite()
     {
@@ -168,7 +168,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|string $website
+     * @param string $website
      */
     public function setWebsite($website)
     {
@@ -176,7 +176,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getGender()
     {
@@ -184,7 +184,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|string $gender
+     * @param string $gender
      */
     public function setGender($gender)
     {
@@ -192,7 +192,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|DateTime
+     * @return DateTime
      */
     public function getBirthdate()
     {
@@ -200,7 +200,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|DateTime $birthdate
+     * @param DateTime $birthdate
      */
     public function setBirthdate(DateTime $birthdate)
     {
@@ -208,7 +208,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getIban()
     {
@@ -216,7 +216,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|string $iban
+     * @param string $iban
      */
     public function setIban($iban)
     {
@@ -224,7 +224,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getBic()
     {
@@ -232,7 +232,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|string $bic
+     * @param string $bic
      */
     public function setBic($bic)
     {
@@ -240,7 +240,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getLanguage()
     {
@@ -248,7 +248,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|string $language
+     * @param string $language
      */
     public function setLanguage($language)
     {
@@ -272,7 +272,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|DateTime
+     * @return DateTime
      */
     public function getAddedAt()
     {
@@ -280,7 +280,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|DateTime $addedAt
+     * @param DateTime $addedAt
      */
     public function setAddedAt(DateTime $addedAt)
     {
@@ -288,7 +288,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|DateTime
+     * @return DateTime
      */
     public function getUpdatedAt()
     {
@@ -296,7 +296,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|DateTime $updatedAt
+     * @param DateTime $updatedAt
      */
     public function setUpdatedAt(DateTime $updatedAt)
     {
@@ -320,7 +320,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getLastName()
     {
@@ -328,7 +328,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|string $lastName
+     * @param string $lastName
      */
     public function setLastName($lastName)
     {

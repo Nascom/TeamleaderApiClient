@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Contact;
 
+use DateTime;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
@@ -28,14 +29,14 @@ abstract class ContactFieldDescriptionBase extends FieldDescriptionBase
             'telephones' => ['target_class' => Telephone::class.'[]'],
             'website',
             'gender',
-            'birthdate' => ['target_class' => \DateTime::class],
+            'birthdate' => ['target_class' => DateTime::class],
             'iban',
             'bic',
             'language',
             'payment_term' => ['target_class' => PaymentTerm::class],
             'tags',
-            'added_at' => ['target_class' => \DateTime::class],
-            'updated_at' => ['target_class' => \DateTime::class],
+            'added_at' => ['target_class' => DateTime::class],
+            'updated_at' => ['target_class' => DateTime::class],
             'web_url',
         ];
     }

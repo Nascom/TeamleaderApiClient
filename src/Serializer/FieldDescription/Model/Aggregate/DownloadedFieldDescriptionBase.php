@@ -6,13 +6,13 @@ use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class DownloadedFieldDescriptionBase
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
 abstract class DownloadedFieldDescriptionBase extends FieldDescriptionBase
 {
-
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {

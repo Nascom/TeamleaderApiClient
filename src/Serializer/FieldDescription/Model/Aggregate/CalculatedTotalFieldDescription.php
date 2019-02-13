@@ -8,13 +8,13 @@ use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class CalculatedTotalFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
 class CalculatedTotalFieldDescription extends FieldDescriptionBase
 {
-
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
@@ -27,7 +27,7 @@ class CalculatedTotalFieldDescription extends FieldDescriptionBase
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

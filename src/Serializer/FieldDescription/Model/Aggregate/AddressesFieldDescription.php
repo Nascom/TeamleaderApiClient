@@ -8,6 +8,7 @@ use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class AddressesFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
 class AddressesFieldDescription extends FieldDescriptionBase

@@ -39,7 +39,7 @@ class LinkedCompany
     /**
      * @return bool
      */
-    public function isDecisionMaker()
+    public function getDecisionMaker()
     {
         return $this->decisionMaker;
     }

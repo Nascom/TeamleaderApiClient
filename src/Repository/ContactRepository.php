@@ -2,13 +2,9 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedContact;
 use Nascom\TeamleaderApiClient\Model\Contact\ContactListView;
 use Nascom\TeamleaderApiClient\Model\Contact\Contact;
-use Nascom\TeamleaderApiClient\Request\Attributes\Filter\ContactFilter;
-use Nascom\TeamleaderApiClient\Request\Attributes\PageInfo;
-use Nascom\TeamleaderApiClient\Request\Attributes\SortInfo;
 use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsAddRequest;
 use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsDeleteRequest;
 use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsInfoRequest;
@@ -27,22 +23,12 @@ use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsUpdateRequest;
 class ContactRepository extends RepositoryBase
 {
     /**
-     * @param ContactFilter|null $filter
-     * @param PageInfo|null $pageInfo
-     * @param SortInfo|null $sortInfo
      * @return ContactListView[]
      * @throws \Http\Client\Exception
      */
-    public function listContacts(
-        ContactFilter $filter = null,
-        PageInfo $pageInfo = null,
-        SortInfo $sortInfo = null
-    ) {
-        $contactsListRequest = new ContactsListRequest(
-            $filter,
-            $pageInfo,
-            $sortInfo
-        );
+    public function listContacts()
+    {
+        $contactsListRequest = new ContactsListRequest();
 
         return $this->handleRequest(
             $contactsListRequest,
@@ -156,7 +142,11 @@ class ContactRepository extends RepositoryBase
      */
     public function unlinkContactFromCompany($id, $companyId)
     {
-        $request = new ContactsUnlinkFromCompanyRequest($id, $companyId);
+        $request = new ContactsUnlinkFromCompanyRequest(
+            $id,
+            $companyId
+        );
+
         $this->apiClient->handle($request);
     }
 }

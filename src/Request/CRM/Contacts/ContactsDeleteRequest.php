@@ -6,12 +6,14 @@ use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class ContactsDeleteRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\CRM\Contacts
  */
 class ContactsDeleteRequest extends PostRequest
 {
     /**
      * ContactsDeleteRequest constructor.
+     *
      * @param string $id
      */
     public function __construct($id)

@@ -7,13 +7,13 @@ use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class DiscountFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
 class DiscountFieldDescription extends FieldDescriptionBase
 {
-
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
@@ -24,7 +24,7 @@ class DiscountFieldDescription extends FieldDescriptionBase
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

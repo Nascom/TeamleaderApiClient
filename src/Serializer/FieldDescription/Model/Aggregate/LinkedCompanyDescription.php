@@ -8,13 +8,13 @@ use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class LinkedCompanyDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
 class LinkedCompanyDescription extends FieldDescriptionBase
 {
-
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
@@ -26,7 +26,7 @@ class LinkedCompanyDescription extends FieldDescriptionBase
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

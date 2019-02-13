@@ -6,12 +6,14 @@ use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class ContactsTagRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\CRM\Contacts
  */
 class ContactsTagRequest extends PostRequest
 {
     /**
      * ContactsTagRequest constructor.
+     *
      * @param string $id
      * @param array $tags
      */

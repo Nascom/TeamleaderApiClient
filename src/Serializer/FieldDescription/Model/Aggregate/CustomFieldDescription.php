@@ -7,13 +7,13 @@ use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class CustomFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\CustomFieldDefinition
  */
 class CustomFieldDescription extends FieldDescriptionBase
 {
-
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
@@ -24,7 +24,7 @@ class CustomFieldDescription extends FieldDescriptionBase
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

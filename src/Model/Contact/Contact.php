@@ -27,17 +27,24 @@ class Contact extends ContactBase
     /**
      * @var Addresses[]
      */
-    private $addresses = [];
+    private $addresses;
 
     /**
      * @var LinkedCustomField|CustomField
      */
-    private $customFields = [];
+    private $customFields;
 
     /**
      * @var LinkedCompany
      */
-    private $companies = [];
+    private $companies;
+
+    /**
+     * @param string $lastName
+     */
+    public function create($lastName) {
+        $this->setLastName($lastName);
+    }
 
     /**
      * @return string
