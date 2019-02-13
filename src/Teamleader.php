@@ -26,6 +26,7 @@ use Nascom\TeamleaderApiClient\Repository\TaxRateRepository;
 use Nascom\TeamleaderApiClient\Repository\TimerRepository;
 use Nascom\TeamleaderApiClient\Repository\TimeTrackingRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
+use Nascom\TeamleaderApiClient\Repository\WebhookRepository;
 use Nascom\TeamleaderApiClient\Repository\WithholdingTaxRateRepository;
 use Nascom\TeamleaderApiClient\Repository\WorkTypesRepository;
 use Nascom\TeamleaderApiClient\Serializer\SerializerFactory;
@@ -269,5 +270,9 @@ class Teamleader
     public function timers()
     {
         return new TimerRepository($this->apiClient, $this->serializer);
+    }
+
+    public function webhooks() {
+        return new WebhookRepository($this->apiClient, $this->serializer);
     }
 }
