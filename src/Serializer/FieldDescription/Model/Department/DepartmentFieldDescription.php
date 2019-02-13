@@ -9,6 +9,7 @@ use Nascom\TeamleaderApiClient\Model\Department\Department;
 
 /**
  * Class DepartmentFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Department
  */
 class DepartmentFieldDescription extends DepartmentFieldDescriptionBase

@@ -5,6 +5,11 @@ namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\CustomFie
 use Nascom\TeamleaderApiClient\Model\Aggregate\Configuration;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
+/**
+ * Class CustomFieldDefinitionFieldDescriptionBase
+ *
+ * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\CustomFieldDefinition
+ */
 abstract class CustomFieldDefinitionFieldDescriptionBase extends FieldDescriptionBase
 {
     /**

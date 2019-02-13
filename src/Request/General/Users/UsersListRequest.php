@@ -1,21 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yoeri
- * Date: 05.02.19
- * Time: 09:04
- */
 
 namespace Nascom\TeamleaderApiClient\Request\General\Users;
 
-
 use Nascom\TeamleaderApiClient\Request\GetRequest;
 
+/**
+ * Class UsersListRequest
+ *
+ * @package Nascom\TeamleaderApiClient\Request\General\Users
+ */
 class UsersListRequest extends GetRequest
 {
-
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

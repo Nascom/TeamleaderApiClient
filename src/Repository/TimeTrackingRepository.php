@@ -80,8 +80,7 @@ class TimeTrackingRepository extends RepositoryBase
      */
     public function resumeTimeTracking($id, $startedAt = null)
     {
-        return $this->handleRequest
-        (
+        return $this->handleRequest(
             new TimeTrackingResumeRequest($id, $startedAt),
             LinkedTimer::class
         );

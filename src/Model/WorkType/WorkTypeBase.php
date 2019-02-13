@@ -6,6 +6,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class WorkType
+ *
  * @package Nascom\TeamleaderApiClient\Model\WorkType
  */
 abstract class WorkTypeBase extends ModelBase

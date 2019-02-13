@@ -4,16 +4,13 @@ namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\CustomFie
 
 use Nascom\TeamleaderApiClient\Model\CustomFieldDefinition\CustomFieldDefinitionListView;
 
+/**
+ * Class CustomFieldDefinitionListViewFieldDescription
+ *
+ * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\CustomFieldDefinition
+ */
 class CustomFieldDefinitionListViewFieldDescription extends CustomFieldDefinitionFieldDescriptionBase
 {
-    /**
-     * @inheritdoc
-     */
-    public function getFieldMapping()
-    {
-        return parent::getFieldMapping();
-    }
-
     /**
      * @inheritdoc
      */

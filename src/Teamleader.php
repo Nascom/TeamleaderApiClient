@@ -28,8 +28,9 @@ use Nascom\TeamleaderApiClient\Repository\TimeTrackingRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
 use Nascom\TeamleaderApiClient\Repository\WebhookRepository;
 use Nascom\TeamleaderApiClient\Repository\WithholdingTaxRateRepository;
-use Nascom\TeamleaderApiClient\Repository\WorkTypesRepository;
+use Nascom\TeamleaderApiClient\Repository\WorkTypeRepository;
 use Nascom\TeamleaderApiClient\Serializer\SerializerFactory;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
@@ -97,11 +98,11 @@ class Teamleader
     }
 
     /**
-     * @return WorkTypesRepository
+     * @return WorkTypeRepository
      */
     public function workTypes()
     {
-        return new WorkTypesRepository($this->apiClient, $this->serializer);
+        return new WorkTypeRepository($this->apiClient, $this->serializer);
     }
 
     /**

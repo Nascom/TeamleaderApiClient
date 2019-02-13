@@ -16,12 +16,12 @@ class Department extends DepartmentBase
     /**
      * @var Email[]
      */
-    private $emails = [];
+    private $emails;
 
     /**
      * @var Telephone[]
      */
-    private $telephones = [];
+    private $telephones;
 
     /**
      * @var string
@@ -44,21 +44,9 @@ class Department extends DepartmentBase
     private $fiscalRegime;
 
     /**
-     * @var Address[]
+     * @var Address
      */
-    private $address = [];
-
-    /**
-     * @param string $name
-     * @return Department
-     */
-    public static function create($name)
-    {
-        $department = new static;
-        $department->setName($name);
-
-        return $department;
-    }
+    private $address;
 
     /**
      * @return Email[]
@@ -157,7 +145,7 @@ class Department extends DepartmentBase
     }
 
     /**
-     * @return Address[]
+     * @return Address
      */
     public function getAddress()
     {
@@ -165,7 +153,7 @@ class Department extends DepartmentBase
     }
 
     /**
-     * @param Address[] $address
+     * @param Address $address
      */
     public function setAddress($address)
     {

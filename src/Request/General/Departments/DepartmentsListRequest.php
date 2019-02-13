@@ -9,8 +9,8 @@ use Nascom\TeamleaderApiClient\Request\GetRequest;
  *
  * @package Nascom\TeamleaderApiClient\Request\General\Departments
  */
-class DepartmentsListRequest extends GetRequest {
-
+class DepartmentsListRequest extends GetRequest
+{
     /**
      * @inheritdoc
      */

@@ -9,34 +9,35 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
  */
 class Address
 {
-    /**
-     * @var string
-     * TODO Seems unsupported by teamleader
-     */
+//    /**
+//     * Seems unsupported by teamleader
+//     *
+//     * @var string
+//     */
 //    private $addressee;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $line1;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $postalCode;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $city;
 
     /**
-     * @var string|null
+     * @var string
      */
     private $country;
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getLine1()
     {
@@ -52,7 +53,7 @@ class Address
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getPostalCode()
     {
@@ -68,7 +69,7 @@ class Address
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getCity()
     {
@@ -84,7 +85,7 @@ class Address
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getCountry()
     {
@@ -99,17 +100,17 @@ class Address
         $this->country = $country;
     }
 
-    /**
-     * @return string
-     */
+//    /**
+//     * @return string
+//     */
 //    public function getAddressee()
 //    {
 //        return $this->addressee;
 //    }
 
-    /**
-     * @param string $addressee
-     */
+//    /**
+//     * @param string $addressee
+//     */
 //    public function setAddressee($addressee)
 //    {
 //        $this->addressee = $addressee;

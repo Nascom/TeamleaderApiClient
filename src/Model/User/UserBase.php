@@ -45,7 +45,7 @@ abstract class UserBase extends ModelBase
     /**
      * @var Telephone[]
      */
-    private $telephones = [];
+    private $telephones;
 
     /**
      * @return string

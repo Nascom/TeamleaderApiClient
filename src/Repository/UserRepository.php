@@ -23,7 +23,10 @@ class UserRepository extends RepositoryBase
     {
         $request = new UsersMeRequest();
 
-        return $this->handleRequest($request, User::class);
+        return $this->handleRequest(
+            $request,
+            User::class
+        );
     }
 
     /**
@@ -35,7 +38,10 @@ class UserRepository extends RepositoryBase
     {
         $request = new UsersInfoRequest($id);
 
-        return $this->handleRequest($request, User::class);
+        return $this->handleRequest(
+            $request,
+            User::class
+        );
     }
 
     /**
@@ -46,6 +52,9 @@ class UserRepository extends RepositoryBase
     {
         $request = new UsersListRequest();
 
-        return $this->handleRequest($request, UserListView::class.'[]');
+        return $this->handleRequest(
+            $request,
+            UserListView::class.'[]'
+        );
     }
 }

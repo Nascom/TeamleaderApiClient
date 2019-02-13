@@ -13,6 +13,7 @@ class CustomFieldDefinitionInfoRequest extends GetRequest
 {
     /**
      * CustomFieldDefinitionInfoRequest constructor.
+     *
      * @param string $id
      */
     public function __construct($id)

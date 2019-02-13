@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model;
 
 /**
  * Class ModelBase
+ *
  * @package Nascom\TeamleaderApiClient\Model
  */
 abstract class ModelBase

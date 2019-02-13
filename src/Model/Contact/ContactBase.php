@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Contact;
 
+use DateTime;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
@@ -50,7 +51,7 @@ abstract class ContactBase extends ModelBase
     private $gender;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     private $birthdate;
 
@@ -75,12 +76,12 @@ abstract class ContactBase extends ModelBase
     private $paymentTerm;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     private $addedAt;
 
     /**
-     * @var \DateTime|null
+     * @var DateTime|null
      */
     private $updatedAt;
 
@@ -191,7 +192,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|\DateTime
+     * @return null|DateTime
      */
     public function getBirthdate()
     {
@@ -199,9 +200,9 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|\DateTime $birthdate
+     * @param null|DateTime $birthdate
      */
-    public function setBirthdate(\DateTime $birthdate)
+    public function setBirthdate(DateTime $birthdate)
     {
         $this->birthdate = $birthdate;
     }
@@ -271,7 +272,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return null|\DateTime
+     * @return null|DateTime
      */
     public function getAddedAt()
     {
@@ -279,15 +280,15 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|\DateTime $addedAt
+     * @param null|DateTime $addedAt
      */
-    public function setAddedAt(\DateTime$addedAt)
+    public function setAddedAt(DateTime $addedAt)
     {
         $this->addedAt = $addedAt;
     }
 
     /**
-     * @return null|\DateTime
+     * @return null|DateTime
      */
     public function getUpdatedAt()
     {
@@ -295,9 +296,9 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param null|\DateTime $updatedAt
+     * @param null|DateTime $updatedAt
      */
-    public function setUpdatedAt(\DateTime $updatedAt)
+    public function setUpdatedAt(DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }

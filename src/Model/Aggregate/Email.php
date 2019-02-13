@@ -22,8 +22,8 @@ class Email
     /**
      * Email constructor.
      *
-     * @param null $email
-     * @param null $type
+     * @param string|null $email
+     * @param string|null $type
      */
     public function __construct($email = null, $type = null)
     {

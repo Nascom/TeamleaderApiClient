@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Repository;
 
 
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedContact;
 use Nascom\TeamleaderApiClient\Model\Contact\ContactListView;
 use Nascom\TeamleaderApiClient\Model\Contact\Contact;
 use Nascom\TeamleaderApiClient\Request\Attributes\Filter\ContactFilter;
@@ -56,21 +57,27 @@ class ContactRepository extends RepositoryBase
      */
     public function getContact($id)
     {
+        $request = new ContactsInfoRequest($id);
+
         return $this->handleRequest(
-            new ContactsInfoRequest($id),
+            $request,
             Contact::class
         );
     }
 
     /**
      * @param Contact $contact
+     * @return LinkedContact
      * @throws \Http\Client\Exception
      */
     public function addContact(Contact $contact)
     {
-        $contactArray = $this->normalize($contact);
-        $contactAddRequest = new ContactsAddRequest($contactArray);
-        $this->apiClient->handle($contactAddRequest);
+        $request = new ContactsAddRequest($this->normalize($contact));
+
+        return $this->handleRequest(
+            $request,
+            LinkedContact::class
+        );
     }
 
     /**
@@ -79,9 +86,9 @@ class ContactRepository extends RepositoryBase
      */
     public function updateContact(Contact $contact)
     {
-        $contactArray = $this->normalize($contact);
-        $contactAddRequest = new ContactsUpdateRequest($contactArray);
-        $this->apiClient->handle($contactAddRequest);
+        $request = new ContactsUpdateRequest($this->normalize($contact));
+
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -91,6 +98,7 @@ class ContactRepository extends RepositoryBase
     public function deleteContact($id)
     {
         $request = new ContactsDeleteRequest($id);
+
         $this->apiClient->handle($request);
     }
 
@@ -102,6 +110,7 @@ class ContactRepository extends RepositoryBase
     public function tagContact($id, array $tags)
     {
         $request = new ContactsTagRequest($id, $tags);
+
         $this->apiClient->handle($request);
     }
 
@@ -113,6 +122,7 @@ class ContactRepository extends RepositoryBase
     public function untagContact($id, array $tags)
     {
         $request = new ContactsUntagRequest($id, $tags);
+
         $this->apiClient->handle($request);
     }
 
@@ -123,9 +133,19 @@ class ContactRepository extends RepositoryBase
      * @param boolean $decisionMaker
      * @throws \Http\Client\Exception
      */
-    public function linkContactToCompany($id, $companyId, $position, $decisionMaker)
-    {
-        $request = new ContactsLinkToCompanyRequest($id, $companyId, $position, $decisionMaker);
+    public function linkContactToCompany(
+        $id,
+        $companyId,
+        $position,
+        $decisionMaker
+    ) {
+        $request = new ContactsLinkToCompanyRequest(
+            $id,
+            $companyId,
+            $position,
+            $decisionMaker
+        );
+
         $this->apiClient->handle($request);
     }
 

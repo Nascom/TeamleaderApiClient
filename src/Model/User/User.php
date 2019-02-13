@@ -29,5 +29,4 @@ class User extends UserBase
     {
         $this->timezone = $timezone;
     }
-
 }

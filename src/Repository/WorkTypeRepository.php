@@ -6,10 +6,11 @@ use Nascom\TeamleaderApiClient\Model\WorkType\WorkTypeListView;
 use Nascom\TeamleaderApiClient\Request\General\WorkTypes\WorkTypesListRequest;
 
 /**
- * Class WorkTypesRepository
+ * Class WorkTypeRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
-class WorkTypesRepository extends RepositoryBase
+class WorkTypeRepository extends RepositoryBase
 {
     /**
      * @return WorkTypeListView[]
@@ -19,6 +20,9 @@ class WorkTypesRepository extends RepositoryBase
     {
         $request = new WorkTypesListRequest();
 
-        return $this->handleRequest($request, WorkTypeListView::class.'[]');
+        return $this->handleRequest(
+            $request,
+            WorkTypeListView::class.'[]'
+        );
     }
 }

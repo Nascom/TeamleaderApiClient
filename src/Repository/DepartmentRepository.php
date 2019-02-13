@@ -23,7 +23,10 @@ class DepartmentRepository extends RepositoryBase
     {
         $request = new DepartmentsInfoRequest($id);
 
-        return $this->handleRequest($request, Department::class);
+        return $this->handleRequest(
+            $request,
+            Department::class
+        );
     }
 
     /**
@@ -34,6 +37,9 @@ class DepartmentRepository extends RepositoryBase
     {
         $request = new DepartmentsListRequest();
 
-        return $this->handleRequest($request, DepartmentListView::class.'[]');
+        return $this->handleRequest(
+            $request,
+            DepartmentListView::class.'[]'
+        );
     }
 }

@@ -23,7 +23,10 @@ class CustomFieldDefinitionRepository extends RepositoryBase
     {
         $request = new CustomFieldDefinitionInfoRequest($id);
 
-        return $this->handleRequest($request, CustomFieldDefinition::class);
+        return $this->handleRequest(
+            $request,
+            CustomFieldDefinition::class
+        );
     }
 
     /**
@@ -34,6 +37,9 @@ class CustomFieldDefinitionRepository extends RepositoryBase
     {
         $request = new CustomFieldDefinitionListRequest();
 
-        return $this->handleRequest($request, CustomFieldDefinitionListView::class.'[]');
+        return $this->handleRequest(
+            $request,
+            CustomFieldDefinitionListView::class.'[]'
+        );
     }
 }

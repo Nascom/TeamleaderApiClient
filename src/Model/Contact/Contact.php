@@ -40,18 +40,6 @@ class Contact extends ContactBase
     private $companies = [];
 
     /**
-     * @param string $lastName
-     * @return Contact
-     */
-    public static function create($lastName)
-    {
-        $contact = new static;
-        $contact->setLastName($lastName);
-
-        return $contact;
-    }
-
-    /**
      * @return string
      */
     public function getRemarks()
