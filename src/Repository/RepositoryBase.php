@@ -50,7 +50,7 @@ abstract class RepositoryBase
     /**
      * @param $data
      * @param array $context
-     * @return string
+     * @return string|array
      */
     protected function normalize($data, $context = array())
     {

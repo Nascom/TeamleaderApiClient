@@ -68,6 +68,7 @@ class SerializerFactory
                 // TimeTracking
                 new FieldDescription\Model\TimeTracking\TimeTrackingFieldDescription(),
                 new FieldDescription\Model\TimeTracking\TimeTrackingListViewFieldDescription(),
+                new FieldDescription\Model\Timer\TimerFieldDescription(),
 
                 // Aggregates
                 new FieldDescription\Model\Aggregate\AccountFieldDescription(),

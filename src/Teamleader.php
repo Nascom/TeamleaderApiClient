@@ -23,6 +23,7 @@ use Nascom\TeamleaderApiClient\Repository\ProjectRepository;
 use Nascom\TeamleaderApiClient\Repository\QuotationRepository;
 use Nascom\TeamleaderApiClient\Repository\TagRepository;
 use Nascom\TeamleaderApiClient\Repository\TaxRateRepository;
+use Nascom\TeamleaderApiClient\Repository\TimerRepository;
 use Nascom\TeamleaderApiClient\Repository\TimeTrackingRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
 use Nascom\TeamleaderApiClient\Repository\WithholdingTaxRateRepository;
@@ -260,5 +261,13 @@ class Teamleader
     public function timeTracking()
     {
         return new TimeTrackingRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return TimerRepository
+     */
+    public function timers()
+    {
+        return new TimerRepository($this->apiClient, $this->serializer);
     }
 }
