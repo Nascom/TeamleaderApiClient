@@ -65,19 +65,20 @@ class SerializerFactory
                 new FieldDescription\Model\Project\ProjectFieldDescription(),
                 new FieldDescription\Model\Milestone\MilestoneFieldDescription(),
                 new FieldDescription\Model\Milestone\MilestoneListViewFieldDescription(),
+                // TimeTracking
+                new FieldDescription\Model\TimeTracking\TimeTrackingFieldDescription(),
+                new FieldDescription\Model\TimeTracking\TimeTrackingListViewFieldDescription(),
 
                 // Aggregates
                 new FieldDescription\Model\Aggregate\AccountFieldDescription(),
                 new FieldDescription\Model\Aggregate\TelephoneFieldDescription(),
                 new FieldDescription\Model\Aggregate\EmailFieldDescription(),
                 new FieldDescription\Model\Aggregate\AddressFieldDescription(),
-                new FieldDescription\Model\Aggregate\AddressWithTypeFieldDescription(),
                 new FieldDescription\Model\Aggregate\ConfigurationFieldDescription(),
                 new FieldDescription\Model\Aggregate\BusinessTypeFieldDescription(),
                 new FieldDescription\Model\Aggregate\InvoicingPreferenceFieldDescription(),
                 new FieldDescription\Model\Aggregate\PaymentTermFieldDescription(),
                 new FieldDescription\Model\Aggregate\AddressesFieldDescription(),
-                new FieldDescription\Model\Aggregate\AddressWithAddresseeFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedCustomFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedDefinitionDescription(),
                 new FieldDescription\Model\Aggregate\LinkedCompanyDescription(),
@@ -124,6 +125,10 @@ class SerializerFactory
                 new FieldDescription\Model\Aggregate\LinkedParticipantWithRoleFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedParticipantFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedProjectFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedSubjectFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedWorkTypeFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedTimeTrackingFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedTimerFieldDescription(),
             ]
         );
 
