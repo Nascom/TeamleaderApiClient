@@ -6,6 +6,8 @@ use Http\Client\HttpClient;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
 use Nascom\OAuth2\Client\Provider\Teamleader;
+use Nascom\TeamleaderApiClient\Request\Attributes\Filter\FilterInterface;
+use Nascom\TeamleaderApiClient\Request\BaseListRequest;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
 
 /**
@@ -65,12 +67,37 @@ class ApiClient implements ApiClientInterface
      */
     public function handle(RequestInterface $request)
     {
-        dump($request);
         $options = [];
         $body = $request->getBody();
+
+        if ($request instanceof BaseListRequest) {
+            if (!empty($filters = $request->getFilters())) {
+                foreach ($filters as $key => $value) {
+                    $body['filter'][$key] = $value;
+                }
+            }
+            if (!empty($sort = $request->getSort())) {
+                foreach ($sort as $field => $order) {
+                    $body['sort'][] = [
+                        'field' => $field,
+                        'order' => $order,
+                    ];
+                }
+            }
+            if (!empty($page = $request->getPage())) {
+                foreach ($page as $size => $number) {
+                    $body['page']['size'] = $size;
+                    $body['page']['number'] = $number;
+                }
+            }
+        }
+
+
         if (!empty($body)) {
             $options['body'] = json_encode($body);
         }
+
+        dump($options);
 
         $psrRequest = $this->provider->getAuthenticatedRequest(
             $request->getMethod() ?: $this->defaultMethod,

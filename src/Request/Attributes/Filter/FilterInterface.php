@@ -5,12 +5,17 @@ namespace Nascom\TeamleaderApiClient\Request\Attributes\Filter;
 /**
  * Interface FilterInterface
  *
- * @package Nascom\TeamleaderApiClient\Request\Attributes\Filter
+ * @package Nascom\TeamleaderApiClient\Request
  */
 interface FilterInterface
 {
     /**
-     * @return string
+     * @param array $filers
      */
-    public function toArray();
+    public function setFilters(array $filers = []);
+
+    /**
+     * @return array
+     */
+    public function getFilters();
 }

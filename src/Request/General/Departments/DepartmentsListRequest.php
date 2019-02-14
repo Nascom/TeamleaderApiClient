@@ -2,7 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Request\General\Departments;
 
-use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\BaseListRequest;
 use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
@@ -10,7 +10,7 @@ use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
  *
  * @package Nascom\TeamleaderApiClient\Request\General\Departments
  */
-class DepartmentsListRequest extends GetRequest
+class DepartmentsListRequest extends BaseListRequest
 {
     use MultipleMethodsTrait;
 

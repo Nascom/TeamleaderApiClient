@@ -4,7 +4,9 @@ namespace Nascom\TeamleaderApiClient\Request;
 
 use Nascom\TeamleaderApiClient\Request\Attributes\Filter\FilterInterface;
 use Nascom\TeamleaderApiClient\Request\Attributes\Filter\NoFilter;
+use Nascom\TeamleaderApiClient\Request\Attributes\Page\PageInterface;
 use Nascom\TeamleaderApiClient\Request\Attributes\PageInfo;
+use Nascom\TeamleaderApiClient\Request\Attributes\Sort\SortInterface;
 use Nascom\TeamleaderApiClient\Request\Attributes\SortInfo;
 
 /**
@@ -13,83 +15,68 @@ use Nascom\TeamleaderApiClient\Request\Attributes\SortInfo;
  * @package Nascom\TeamleaderApiClient\Request
  */
 abstract class BaseListRequest extends BaseRequest implements
-    SupportsMultipleMethods
+    FilterInterface, PageInterface, SortInterface
 {
-    use MultipleMethodsTrait;
+    /**
+     * @var array[]
+     */
+    private $filters;
 
     /**
-     * @var FilterInterface
+     * @var array[]
      */
-    protected $filter;
+    private $page;
 
     /**
-     * @var PageInfo
+     * @var array[]
      */
-    protected $pageInfo;
+    private $sort;
 
     /**
-     * @var SortInfo
+     * @param array[] $filers
      */
-    protected $sortInfo;
-
-    /**
-     * BaseListRequest constructor.
-     *
-     * @param FilterInterface|null $filter
-     * @param PageInfo|null $pageInfo
-     * @param SortInfo|null $sortInfo
-     */
-    public function __construct(
-        FilterInterface $filter = null,
-        PageInfo $pageInfo = null,
-        SortInfo $sortInfo = null
-    ) {
-        $this->filter = $filter ?: new NoFilter();
-        $this->pageInfo = $pageInfo ?: new PageInfo();
-        $this->sortInfo = $sortInfo ?: new SortInfo();
+    public function setFilters(array $filers = [])
+    {
+        $this->filters = $filers;
     }
 
     /**
-     * @return PageInfo
+     * @return array[]
      */
-    public function getPageInfo()
+    public function getFilters()
     {
-        return $this->pageInfo;
+        return $this->filters;
     }
 
     /**
-     * @return SortInfo
+     * @return array[]
      */
-    public function getSortInfo()
+    public function getPage()
     {
-        return $this->sortInfo;
+        return $this->page;
     }
 
     /**
-     * @return FilterInterface
+     * @param array[] $page
      */
-    public function getFilter()
+    public function setPage(array $page = [])
     {
-        return $this->filter;
+        $this->page = $page;
     }
 
     /**
-     * @inheritdoc
+     * @return array[]
      */
-    public function getBody()
+    public function getSort()
     {
-        if ($this->filter !== null) {
-            $this->body['filter'] = $this->filter->toArray();
-        }
-        $pageInfo = $this->pageInfo->toArray();
-        if (!empty($pageInfo)) {
-            $this->body['page'] = $pageInfo;
-        }
-        $sortInfo = $this->sortInfo->toArray();
-        if (!empty($sortInfo)) {
-            $this->body['sort'] = $sortInfo;
-        }
+        return $this->sort;
+    }
 
-        return parent::getBody();
+    /**
+     * @param array[] $sort
+     */
+    public function setSort(array $sort = [])
+    {
+        $this->sort = $sort;
     }
 }

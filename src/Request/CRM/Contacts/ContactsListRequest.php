@@ -2,7 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Request\CRM\Contacts;
 
-use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\BaseListRequest;
 use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
@@ -10,7 +10,7 @@ use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
  *
  * @package Nascom\TeamleaderApiClient\Request\CRM\Contacts
  */
-class ContactsListRequest extends GetRequest
+class ContactsListRequest extends BaseListRequest
 {
     use MultipleMethodsTrait;
 

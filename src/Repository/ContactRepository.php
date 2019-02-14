@@ -23,15 +23,21 @@ use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsUpdateRequest;
 class ContactRepository extends RepositoryBase
 {
     /**
+     * @param array $filters
+     * @param array $sort
+     * @param array $page
      * @return ContactListView[]
      * @throws \Http\Client\Exception
      */
-    public function listContacts()
+    public function listContacts(array $filters = [], array $sort = [], array $page = [])
     {
-        $contactsListRequest = new ContactsListRequest();
+        $request = new ContactsListRequest();
+        $request->setFilters($filters);
+        $request->setSort($sort);
+        $request->setPage($page);
 
         return $this->handleRequest(
-            $contactsListRequest,
+            $request,
             ContactListView::class.'[]'
         );
     }
