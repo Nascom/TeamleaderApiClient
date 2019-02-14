@@ -6,12 +6,13 @@ use Nascom\TeamleaderApiClient\Model\Quotation\Quotation;
 
 /**
  * Class QuotationFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Quotation
  */
 class QuotationFieldDescription extends QuotationFieldDescriptionBase
 {
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

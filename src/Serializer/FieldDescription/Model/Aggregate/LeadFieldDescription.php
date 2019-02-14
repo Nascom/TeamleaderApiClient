@@ -2,17 +2,20 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
-
 use Nascom\TeamleaderApiClient\Model\Aggregate\Lead;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedContact;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomer;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
+/**
+ * Class LeadFieldDescription
+ *
+ * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
+ */
 class LeadFieldDescription extends FieldDescriptionBase
 {
-
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
@@ -23,7 +26,7 @@ class LeadFieldDescription extends FieldDescriptionBase
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

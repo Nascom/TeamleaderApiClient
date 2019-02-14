@@ -2,8 +2,10 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedDeal;
 use Nascom\TeamleaderApiClient\Model\Deal\Deal;
 use Nascom\TeamleaderApiClient\Model\Deal\DealListView;
+use Nascom\TeamleaderApiClient\Model\LostReason\LostReasonListView;
 use Nascom\TeamleaderApiClient\Request\Deals\Deals\DealsCreateRequest;
 use Nascom\TeamleaderApiClient\Request\Deals\Deals\DealsDeleteRequest;
 use Nascom\TeamleaderApiClient\Request\Deals\Deals\DealsInfoRequest;
@@ -12,21 +14,25 @@ use Nascom\TeamleaderApiClient\Request\Deals\Deals\DealsLoseRequest;
 use Nascom\TeamleaderApiClient\Request\Deals\Deals\DealsMoveRequest;
 use Nascom\TeamleaderApiClient\Request\Deals\Deals\DealsUpdateRequest;
 use Nascom\TeamleaderApiClient\Request\Deals\Deals\DealsWinRequest;
+use Nascom\TeamleaderApiClient\Request\Deals\Deals\LostReasonsListRequest;
 
 /**
  * Class DealRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class DealRepository extends RepositoryBase
 {
     /**
-     * @return DealListView
+     * @return DealListView[]
      * @throws \Http\Client\Exception
      */
     public function listDeals()
     {
+        $request = new DealsListRequest();
+
         return $this->handleRequest(
-            new DealsListRequest(),
+            $request,
             DealListView::class.'[]'
         );
     }
@@ -38,21 +44,27 @@ class DealRepository extends RepositoryBase
      */
     public function getDeal($id)
     {
+        $request = new DealsInfoRequest($id);
+
         return $this->handleRequest(
-            new DealsInfoRequest($id),
+            $request,
             Deal::class
         );
     }
 
     /**
      * @param Deal $deal
+     * @return LinkedDeal
      * @throws \Http\Client\Exception
      */
     public function addDeal(Deal $deal)
     {
-        $dealArray = $this->normalize($deal);
+        $request = new DealsCreateRequest($this->normalize($deal));
 
-        $this->apiClient->handle(new DealsCreateRequest($dealArray));
+        return $this->handleRequest(
+            $request,
+            LinkedDeal::class
+        );
     }
 
     /**
@@ -61,9 +73,9 @@ class DealRepository extends RepositoryBase
      */
     public function updateDeal(Deal $deal)
     {
-        $dealArray = $this->normalize($deal);
+        $request = new DealsUpdateRequest($this->normalize($deal));
 
-        $this->apiClient->handle(new DealsUpdateRequest($dealArray));
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -73,7 +85,9 @@ class DealRepository extends RepositoryBase
      */
     public function moveDeal($id, $phaseId)
     {
-        $this->apiClient->handle(new DealsMoveRequest($id, $phaseId));
+        $request = new DealsMoveRequest($id, $phaseId);
+
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -82,7 +96,9 @@ class DealRepository extends RepositoryBase
      */
     public function winDeal($id)
     {
-        $this->apiClient->handle(new DealsWinRequest($id));
+        $request = new DealsWinRequest($id);
+
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -93,14 +109,33 @@ class DealRepository extends RepositoryBase
      */
     public function loseDeal($id, $reasonId = null, $extraInfo = null)
     {
-        $this->apiClient->handle(new DealsLoseRequest($id, $reasonId, $extraInfo));
+        $request = new DealsLoseRequest($id, $reasonId, $extraInfo);
+
+        $this->apiClient->handle($request);
     }
 
     /**
      * @param string $id
      * @throws \Http\Client\Exception
      */
-    public function deleteDeal($id) {
-        $this->apiClient->handle(new DealsDeleteRequest($id));
+    public function deleteDeal($id)
+    {
+        $request = new DealsDeleteRequest($id);
+
+        $this->apiClient->handle($request);
+    }
+
+    /**
+     * @return LostReasonListView[]
+     * @throws \Http\Client\Exception
+     */
+    public function listLostReasons()
+    {
+        $request = new LostReasonsListRequest();
+
+        return $this->handleRequest(
+            $request,
+            LostReasonListView::class.'[]'
+        );
     }
 }

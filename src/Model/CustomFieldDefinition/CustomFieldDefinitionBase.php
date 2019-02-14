@@ -7,6 +7,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class CustomFieldDefinitionBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\CustomFieldDefinition
  */
 abstract class CustomFieldDefinitionBase extends ModelBase

@@ -3,11 +3,12 @@
 namespace Nascom\TeamleaderApiClient\Model\Project;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomer;
-use Nascom\TeamleaderApiClient\Model\Aggregate\Source;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedSource;
 use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class ProjectBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\Project
  */
 abstract class ProjectBase extends ModelBase
@@ -48,7 +49,7 @@ abstract class ProjectBase extends ModelBase
     private $dueOn;
 
     /**
-     * @var Source
+     * @var LinkedSource
      */
     private $source;
 
@@ -185,7 +186,7 @@ abstract class ProjectBase extends ModelBase
     }
 
     /**
-     * @return Source
+     * @return LinkedSource
      */
     public function getSource()
     {
@@ -193,7 +194,7 @@ abstract class ProjectBase extends ModelBase
     }
 
     /**
-     * @param Source $source
+     * @param LinkedSource $source
      */
     public function setSource($source)
     {

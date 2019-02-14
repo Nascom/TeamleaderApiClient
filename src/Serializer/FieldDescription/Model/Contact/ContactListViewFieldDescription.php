@@ -17,12 +17,14 @@ class ContactListViewFieldDescription extends ContactFieldDescriptionBase
      */
     protected function getFieldMapping()
     {
-        $parentFields = parent::getFieldMapping();
-        $additionalFields = [
+        $fields = [
             'primary_address' => ['target_class' => Address::class],
         ];
 
-        return array_merge($parentFields, $additionalFields);
+        return array_merge(
+            parent::getFieldMapping(),
+            $fields
+        );
     }
 
     /**

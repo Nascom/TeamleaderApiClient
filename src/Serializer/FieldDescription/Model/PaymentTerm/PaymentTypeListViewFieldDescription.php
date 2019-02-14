@@ -6,12 +6,13 @@ use Nascom\TeamleaderApiClient\Model\PaymentTerm\PaymentTermListView;
 
 /**
  * Class PaymentTypeListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\PaymentTerm
  */
 class PaymentTypeListViewFieldDescription extends PaymentTermFieldDescriptionBase
 {
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

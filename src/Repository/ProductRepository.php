@@ -7,6 +7,7 @@ use Nascom\TeamleaderApiClient\Request\Products\Products\ProductsListRequest;
 
 /**
  * Class ProductRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class ProductRepository extends RepositoryBase
@@ -17,9 +18,10 @@ class ProductRepository extends RepositoryBase
      */
     public function listProducts()
     {
-        return $this->handleRequest
-        (
-            new ProductsListRequest(),
+        $request = new ProductsListRequest();
+
+        return $this->handleRequest(
+            $request,
             ProductListView::class.'[]'
         );
     }

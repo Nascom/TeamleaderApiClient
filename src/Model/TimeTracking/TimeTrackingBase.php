@@ -2,19 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Model\TimeTracking;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Account;
+use DateTime;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedUser;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedSubject;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedWorkType;
 use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class TimeTrackingBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\TimeTracking
  */
 abstract class TimeTrackingBase extends ModelBase
 {
     /**
-     * @var Account
+     * @var LinkedUser
      */
     private $user;
 
@@ -29,12 +31,12 @@ abstract class TimeTrackingBase extends ModelBase
     private $startedOn;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $startedAt;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $endedAt;
 
@@ -61,8 +63,8 @@ abstract class TimeTrackingBase extends ModelBase
     /**
      * TimeTrackingBase constructor.
      * @param LinkedWorkType|null $workType
-     * @param \DateTime|null $startedAt
-     * @param \DateTime|null $endedAt
+     * @param DateTime|null $startedAt
+     * @param DateTime|null $endedAt
      * @param string|null $duration
      * @param string|null $description
      * @param LinkedSubject|null $subject
@@ -70,8 +72,8 @@ abstract class TimeTrackingBase extends ModelBase
     public function __construct
     (
         LinkedWorkType $workType = null,
-        \DateTime $startedAt = null,
-        \DateTime $endedAt = null,
+        DateTime $startedAt = null,
+        DateTime $endedAt = null,
         $duration = null,
         $description = null,
         LinkedSubject $subject = null
@@ -85,7 +87,7 @@ abstract class TimeTrackingBase extends ModelBase
     }
 
     /**
-     * @return Account
+     * @return LinkedUser
      */
     public function getUser()
     {
@@ -93,7 +95,7 @@ abstract class TimeTrackingBase extends ModelBase
     }
 
     /**
-     * @param Account $user
+     * @param LinkedUser $user
      */
     public function setUser($user)
     {
@@ -133,7 +135,7 @@ abstract class TimeTrackingBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getStartedAt()
     {
@@ -141,7 +143,7 @@ abstract class TimeTrackingBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $startedAt
+     * @param DateTime $startedAt
      */
     public function setStartedAt($startedAt)
     {
@@ -149,7 +151,7 @@ abstract class TimeTrackingBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getEndedAt()
     {
@@ -157,7 +159,7 @@ abstract class TimeTrackingBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $endedAt
+     * @param DateTime $endedAt
      */
     public function setEndedAt($endedAt)
     {

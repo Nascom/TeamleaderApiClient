@@ -2,18 +2,19 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Milestone;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Account;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedProject;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedUser;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class MilestoneFieldDescriptionBase
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Milestone
  */
 abstract class MilestoneFieldDescriptionBase extends FieldDescriptionBase
 {
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
@@ -22,7 +23,7 @@ abstract class MilestoneFieldDescriptionBase extends FieldDescriptionBase
             'project' => ['target_class' => LinkedProject::class],
             'due_on',
             'name',
-            'responsible_user' => ['target_class' => Account::class],
+            'responsible_user' => ['target_class' => LinkedUser::class],
             'status',
         ];
     }

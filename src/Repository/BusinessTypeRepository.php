@@ -7,18 +7,22 @@ use Nascom\TeamleaderApiClient\Request\CRM\BusinessTypes\BusinessTypesListReques
 
 /**
  * Class BusinessTypeRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class BusinessTypeRepository extends RepositoryBase
 {
     /**
-     * @return mixed
+     * @return BusinessTypeListView[]
      * @throws \Http\Client\Exception
      */
     public function listBusinessTypes()
     {
         $request = new BusinessTypesListRequest();
 
-        return $this->handleRequest($request, BusinessTypeListView::class.'[]');
+        return $this->handleRequest(
+            $request,
+            BusinessTypeListView::class.'[]'
+        );
     }
 }

@@ -7,17 +7,21 @@ use Nascom\TeamleaderApiClient\Request\Deals\DealSources\DealSourcesListRequest;
 
 /**
  * Class DealSourceRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class DealSourceRepository extends RepositoryBase
 {
     /**
-     * @return mixed
+     * @return DealSourceListView[]
      * @throws \Http\Client\Exception
      */
-    public function listDealSources() {
+    public function listDealSources()
+    {
+        $request = new DealSourcesListRequest();
+
         return $this->handleRequest(
-            new DealSourcesListRequest(),
+            $request,
             DealSourceListView::class.'[]'
         );
     }

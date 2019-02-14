@@ -6,12 +6,13 @@ use Nascom\TeamleaderApiClient\Model\Webhook\WebhookListView;
 
 /**
  * Class WebhookListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Webhook
  */
 class WebhookListViewFieldDescription extends WebhookFieldDescriptionBase
 {
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

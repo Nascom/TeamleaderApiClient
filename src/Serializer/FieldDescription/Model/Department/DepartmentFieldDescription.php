@@ -19,8 +19,7 @@ class DepartmentFieldDescription extends DepartmentFieldDescriptionBase
      */
     protected function getFieldMapping()
     {
-        $parentFields = parent::getFieldMapping();
-        $additionalFields = [
+        $fields = [
             'address' => ['target_class' => Address::class.'[]'],
             'emails' => ['target_class' => Email::class.'[]'],
             'telephones' => ['target_class' => Telephone::class.'[]'],
@@ -30,7 +29,10 @@ class DepartmentFieldDescription extends DepartmentFieldDescriptionBase
             'fiscal_regime',
         ];
 
-        return array_merge($parentFields, $additionalFields);
+        return array_merge(
+            parent::getFieldMapping(),
+            $fields
+        );
     }
 
     /**

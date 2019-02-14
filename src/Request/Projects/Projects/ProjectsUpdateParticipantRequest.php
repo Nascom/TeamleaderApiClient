@@ -2,16 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Projects\Projects;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class ProjectsUpdateParticipantRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Projects\Projects
  */
 class ProjectsUpdateParticipantRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * ProjectsUpdateParticipantRequest constructor.
+     *
      * @param string $id
      * @param array $participantWithRole
      */
@@ -22,7 +27,7 @@ class ProjectsUpdateParticipantRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

@@ -7,12 +7,13 @@ use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class ProductFieldDescriptionBase
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Product
  */
 abstract class ProductFieldDescriptionBase extends FieldDescriptionBase
 {
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {

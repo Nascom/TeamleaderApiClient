@@ -8,6 +8,7 @@ use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
  * Class UserFieldDescriptionBase
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\User
  */
 abstract class UserFieldDescriptionBase extends FieldDescriptionBase

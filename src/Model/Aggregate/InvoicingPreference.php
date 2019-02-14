@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class InvoicingPreference
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class InvoicingPreference

@@ -2,18 +2,18 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Phase;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedSource;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class PhaseFieldDescription
+ * Class LinkedSourceFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
-class PhaseFieldDescription extends FieldDescriptionBase
+class LinkedSourceFieldDescription extends FieldDescriptionBase
 {
-
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
@@ -24,10 +24,10 @@ class PhaseFieldDescription extends FieldDescriptionBase
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {
-        return Phase::class;
+        return LinkedSource::class;
     }
 }

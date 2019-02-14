@@ -2,16 +2,17 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Company;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Account;
-use Nascom\TeamleaderApiClient\Model\Aggregate\BusinessType;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedBusinessType;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 use Nascom\TeamleaderApiClient\Model\Aggregate\InvoicingPreference;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedUser;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
 use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class CompanyBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\Company
  */
 abstract class CompanyBase extends ModelBase
@@ -22,9 +23,9 @@ abstract class CompanyBase extends ModelBase
     private $name;
 
     /**
-     * @var BusinessType
+     * @var LinkedBusinessType
      */
-    private $businessType = [];
+    private $businessType;
 
     /**
      * @var string
@@ -37,14 +38,14 @@ abstract class CompanyBase extends ModelBase
     private $nationalIdentificationNumber;
 
     /**
-     * @var Email
+     * @var Email[]
      */
-    private $emails = [];
+    private $emails;
 
     /**
-     * @var Telephone
+     * @var Telephone[]
      */
-    private $telephones = [];
+    private $telephones;
 
     /**
      * @var string
@@ -74,7 +75,7 @@ abstract class CompanyBase extends ModelBase
     /**
      * @var PaymentTerm
      */
-    private $paymentTerm = [];
+    private $paymentTerm;
 
     /**
      * @var InvoicingPreference
@@ -82,9 +83,9 @@ abstract class CompanyBase extends ModelBase
     private $invoicingPreferences;
 
     /**
-     * @var Account
+     * @var LinkedUser
      */
-    private $responsibleUser = [];
+    private $responsibleUser;
 
     /**
      * @var string
@@ -107,6 +108,14 @@ abstract class CompanyBase extends ModelBase
     private $tags;
 
     /**
+     * @param string $name
+     */
+    public function create($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
      * @return string
      */
     public function getName()
@@ -123,7 +132,7 @@ abstract class CompanyBase extends ModelBase
     }
 
     /**
-     * @return BusinessType
+     * @return LinkedBusinessType
      */
     public function getBusinessType()
     {
@@ -131,7 +140,7 @@ abstract class CompanyBase extends ModelBase
     }
 
     /**
-     * @param BusinessType $businessType
+     * @param LinkedBusinessType $businessType
      */
     public function setBusinessType($businessType)
     {
@@ -171,7 +180,7 @@ abstract class CompanyBase extends ModelBase
     }
 
     /**
-     * @return Email
+     * @return Email[]
      */
     public function getEmails()
     {
@@ -179,7 +188,7 @@ abstract class CompanyBase extends ModelBase
     }
 
     /**
-     * @param Email $emails
+     * @param Email[] $emails
      */
     public function setEmails($emails)
     {
@@ -187,7 +196,7 @@ abstract class CompanyBase extends ModelBase
     }
 
     /**
-     * @return Telephone
+     * @return Telephone[]
      */
     public function getTelephones()
     {
@@ -195,7 +204,7 @@ abstract class CompanyBase extends ModelBase
     }
 
     /**
-     * @param Telephone $telephones
+     * @param Telephone[] $telephones
      */
     public function setTelephones($telephones)
     {
@@ -315,7 +324,7 @@ abstract class CompanyBase extends ModelBase
     }
 
     /**
-     * @return Account
+     * @return LinkedUser
      */
     public function getResponsibleUser()
     {
@@ -323,7 +332,7 @@ abstract class CompanyBase extends ModelBase
     }
 
     /**
-     * @param Account $responsibleUser
+     * @param LinkedUser $responsibleUser
      */
     public function setResponsibleUser($responsibleUser)
     {

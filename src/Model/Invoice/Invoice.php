@@ -9,6 +9,7 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentWithDate;
 
 /**
  * Class Invoice
+ *
  * @package Nascom\TeamleaderApiClient\Model\Invoice
  */
 class Invoice extends InvoiceBase
@@ -16,22 +17,22 @@ class Invoice extends InvoiceBase
     /**
      * @var DiscountWithDescription[]
      */
-    private $discounts = [];
+    private $discounts;
 
     /**
      * @var GroupedLine[]
      */
-    private $groupedLines = [];
+    private $groupedLines;
 
     /**
      * @var PaymentTerm
      */
-    private $paymentTerm = [];
+    private $paymentTerm;
 
     /**
      * @var PaymentWithDate
      */
-    private $payments = [];
+    private $payments;
 
     /**
      * @var string

@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class EstimatedValue
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class EstimatedValue

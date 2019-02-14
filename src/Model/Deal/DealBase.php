@@ -2,15 +2,17 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Deal;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Account;
+use DateTime;
 use Nascom\TeamleaderApiClient\Model\Aggregate\EstimatedValue;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Lead;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedDepartment;
-use Nascom\TeamleaderApiClient\Model\Aggregate\Source;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedUser;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedSource;
 use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class DealBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\Deal
  */
 abstract class DealBase extends ModelBase
@@ -33,17 +35,17 @@ abstract class DealBase extends ModelBase
     /**
      * @var Lead
      */
-    private $lead = [];
+    private $lead;
 
     /**
      * @var LinkedDepartment
      */
-    private $department = [];
+    private $department;
 
     /**
      * @var EstimatedValue
      */
-    private $estimatedValue = [];
+    private $estimatedValue;
 
     /**
      * @var string
@@ -56,27 +58,27 @@ abstract class DealBase extends ModelBase
     private $estimatedProbability;
 
     /**
-     * @var Account
+     * @var LinkedUser
      */
-    private $responsibleUser = [];
+    private $responsibleUser;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $closedAt;
 
     /**
-     * @var Source
+     * @var LinkedSource
      */
-    private $source = [];
+    private $source;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $updatedAt;
 
@@ -214,7 +216,7 @@ abstract class DealBase extends ModelBase
     }
 
     /**
-     * @return Account
+     * @return LinkedUser
      */
     public function getResponsibleUser()
     {
@@ -222,7 +224,7 @@ abstract class DealBase extends ModelBase
     }
 
     /**
-     * @param Account $responsibleUser
+     * @param LinkedUser $responsibleUser
      */
     public function setResponsibleUser($responsibleUser)
     {
@@ -230,7 +232,7 @@ abstract class DealBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getClosedAt()
     {
@@ -238,7 +240,7 @@ abstract class DealBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $closedAt
+     * @param DateTime $closedAt
      */
     public function setClosedAt($closedAt)
     {
@@ -246,7 +248,7 @@ abstract class DealBase extends ModelBase
     }
 
     /**
-     * @return Source
+     * @return LinkedSource
      */
     public function getSource()
     {
@@ -254,7 +256,7 @@ abstract class DealBase extends ModelBase
     }
 
     /**
-     * @param Source $source
+     * @param LinkedSource $source
      */
     public function setSource($source)
     {
@@ -262,7 +264,7 @@ abstract class DealBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -270,7 +272,7 @@ abstract class DealBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      */
     public function setCreatedAt($createdAt)
     {
@@ -278,7 +280,7 @@ abstract class DealBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getUpdatedAt()
     {
@@ -286,7 +288,7 @@ abstract class DealBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param DateTime $updatedAt
      */
     public function setUpdatedAt($updatedAt)
     {

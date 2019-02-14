@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class ContactWithName
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class ContactWithName
@@ -16,7 +17,7 @@ class ContactWithName
     /**
      * @var LinkedContact
      */
-    private $contact = [];
+    private $contact;
 
     /**
      * ContactWithName constructor.

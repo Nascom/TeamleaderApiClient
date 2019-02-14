@@ -11,19 +11,21 @@ use Nascom\TeamleaderApiClient\Request\Invoicing\CreditNotes\CreditNotesListRequ
 
 /**
  * Class CreditNoteRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class CreditNoteRepository extends RepositoryBase
 {
     /**
-     * @return CreditNoteListView
+     * @return CreditNoteListView[]
      * @throws \Http\Client\Exception
      */
     public function listCreditNotes()
     {
-        return $this->handleRequest
-        (
-            new CreditNotesListRequest(),
+        $request = new CreditNotesListRequest();
+
+        return $this->handleRequest(
+            $request,
             CreditNoteListView::class.'[]'
         );
     }
@@ -35,9 +37,10 @@ class CreditNoteRepository extends RepositoryBase
      */
     public function getCreditNote($id)
     {
-        return $this->handleRequest
-        (
-            new CreditNotesInfoRequest($id),
+        $request = new CreditNotesInfoRequest($id);
+
+        return $this->handleRequest(
+            $request,
             CreditNote::class
         );
     }
@@ -50,9 +53,10 @@ class CreditNoteRepository extends RepositoryBase
      */
     public function downloadCreditNote($id, $format)
     {
-        return $this->handleRequest
-        (
-            new CreditNotesDownloadRequest($id, $format),
+        $request = new CreditNotesDownloadRequest($id, $format);
+
+        return $this->handleRequest(
+            $request,
             DownloadedCreditNote::class
         );
     }

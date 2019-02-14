@@ -7,19 +7,22 @@ use Nascom\TeamleaderApiClient\Request\Invoicing\PaymentTerms\PaymentTermsListRe
 
 /**
  * Class PaymentTermRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class PaymentTermRepository extends RepositoryBase
 {
     /**
-     * @return PaymentTermListView
+     * @return PaymentTermListView[]
      * @throws \Http\Client\Exception
      */
     public function listPaymentTerms()
     {
+        $request = new PaymentTermsListRequest();
+
         return $this->handleRequest
         (
-            new PaymentTermsListRequest(),
+            $request,
             PaymentTermListView::class.'[]'
         );
     }

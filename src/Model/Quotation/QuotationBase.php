@@ -8,6 +8,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class QuotationBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\Quotation
  */
 abstract class QuotationBase extends  ModelBase
@@ -18,9 +19,9 @@ abstract class QuotationBase extends  ModelBase
     private $deal;
 
     /**
-     * @var GroupedLine
+     * @var GroupedLine[]
      */
-    private $groupedLines = [];
+    private $groupedLines;
 
     /**
      * @return LinkedDeal
@@ -39,7 +40,7 @@ abstract class QuotationBase extends  ModelBase
     }
 
     /**
-     * @return GroupedLine
+     * @return GroupedLine[]
      */
     public function getGroupedLines()
     {
@@ -47,7 +48,7 @@ abstract class QuotationBase extends  ModelBase
     }
 
     /**
-     * @param GroupedLine $groupedLines
+     * @param GroupedLine[] $groupedLines
      */
     public function setGroupedLines($groupedLines)
     {

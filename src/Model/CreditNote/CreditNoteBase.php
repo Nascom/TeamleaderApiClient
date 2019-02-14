@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Model\CreditNote;
 
+use DateTime;
 use Nascom\TeamleaderApiClient\Model\Aggregate\InvoiceeMinimal;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedDepartment;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedInvoice;
@@ -10,6 +11,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class CreditNoteBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\CustomFieldDefinition
  */
 abstract class CreditNoteBase extends ModelBase
@@ -45,7 +47,7 @@ abstract class CreditNoteBase extends ModelBase
     private $paid;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $paidAt;
 
@@ -60,12 +62,12 @@ abstract class CreditNoteBase extends ModelBase
     private $total;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $updatedAt;
 
@@ -166,7 +168,7 @@ abstract class CreditNoteBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getPaidAt()
     {
@@ -174,7 +176,7 @@ abstract class CreditNoteBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $paidAt
+     * @param DateTime $paidAt
      */
     public function setPaidAt($paidAt)
     {
@@ -214,7 +216,7 @@ abstract class CreditNoteBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -222,7 +224,7 @@ abstract class CreditNoteBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      */
     public function setCreatedAt($createdAt)
     {
@@ -230,7 +232,7 @@ abstract class CreditNoteBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getUpdatedAt()
     {
@@ -238,7 +240,7 @@ abstract class CreditNoteBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param DateTime $updatedAt
      */
     public function setUpdatedAt($updatedAt)
     {

@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedEvent;
 use Nascom\TeamleaderApiClient\Model\CalendarEvents\CalendarEvent;
 use Nascom\TeamleaderApiClient\Model\CalendarEvents\CalendarEventListView;
 use Nascom\TeamleaderApiClient\Request\Calendar\CalendarEvents\CalendarEventsCancelRequest;
@@ -11,10 +12,11 @@ use Nascom\TeamleaderApiClient\Request\Calendar\CalendarEvents\CalendarEventsLis
 use Nascom\TeamleaderApiClient\Request\Calendar\CalendarEvents\CalendarEventsUpdateRequest;
 
 /**
- * Class CalendarRepository
+ * Class CalendarEventRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
-class CalendarRepository extends RepositoryBase
+class CalendarEventRepository extends RepositoryBase
 {
     /**
      * @param string $id
@@ -25,28 +27,39 @@ class CalendarRepository extends RepositoryBase
     {
         $request = new CalendarEventsInfoRequest($id);
 
-        return $this->handleRequest($request, CalendarEvent::class);
+        return $this->handleRequest(
+            $request,
+            CalendarEvent::class
+        );
     }
 
     /**
-     * @return CalendarEventListView
+     * @return CalendarEventListView[]
      * @throws \Http\Client\Exception
      */
     public function listCalendarEvents()
     {
         $request = new CalendarEventsListRequest();
 
-        return $this->handleRequest($request, CalendarEventListView::class.'[]');
+        return $this->handleRequest(
+            $request,
+            CalendarEventListView::class.'[]'
+        );
     }
 
     /**
      * @param CalendarEvent $calendarEvent
+     * @return LinkedEvent
      * @throws \Http\Client\Exception
      */
-    public function addCalendarEvent(CalendarEvent $calendarEvent) {
-        $calendarEventArray = $this->normalize($calendarEvent);
+    public function addCalendarEvent(CalendarEvent $calendarEvent)
+    {
+        $request = new CalendarEventsCreateRequest($this->normalize($calendarEvent));
 
-        $this->apiClient->handle(new CalendarEventsCreateRequest($calendarEventArray));
+        return $this->handleRequest(
+            $request,
+            LinkedEvent::class
+        );
     }
 
     /**
@@ -55,9 +68,9 @@ class CalendarRepository extends RepositoryBase
      */
     public function updateCalendarEvent(CalendarEvent $calendarEvent)
     {
-        $calendarEventArray = $this->normalize($calendarEvent);
+        $request = new CalendarEventsUpdateRequest($this->normalize($calendarEvent));
 
-        $this->apiClient->handle(new CalendarEventsUpdateRequest($calendarEventArray));
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -66,6 +79,8 @@ class CalendarRepository extends RepositoryBase
      */
     public function cancelCalendarEvent($id)
     {
-        $this->apiClient->handle(new CalendarEventsCancelRequest($id));
+        $request = new CalendarEventsCancelRequest($id);
+
+        $this->apiClient->handle($request);
     }
 }

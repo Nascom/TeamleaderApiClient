@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class InvoiceeBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 abstract class InvoiceeBase
@@ -21,12 +22,12 @@ abstract class InvoiceeBase
     /**
      * @var LinkedCustomer
      */
-    private $customer = [];
+    private $customer;
 
     /**
      * @var ContactWithName
      */
-    private $forAttentionOf = [];
+    private $forAttentionOf;
 
     /**
      * @return string

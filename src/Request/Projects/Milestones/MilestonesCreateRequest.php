@@ -2,16 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Projects\Milestones;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class MilestonesCreateRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Projects\Milestones
  */
 class MilestonesCreateRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * MilestonesCreateRequest constructor.
+     *
      * @param array $milestone
      */
     public function __construct(array $milestone)
@@ -19,8 +24,7 @@ class MilestonesCreateRequest extends PostRequest
         $milestone['project_id'] = $milestone['project']['id'];
         $milestone['responsible_user_id'] = $milestone['responsible_user']['id'];
 
-        unset
-        (
+        unset(
             $milestone['project'],
             $milestone['responsible_user']
         );
@@ -29,7 +33,7 @@ class MilestonesCreateRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

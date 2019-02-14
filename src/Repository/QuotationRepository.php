@@ -9,6 +9,7 @@ use Nascom\TeamleaderApiClient\Request\Deals\Quotations\QuotationsInfoRequest;
 
 /**
  * Class QuotationRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class QuotationRepository extends RepositoryBase
@@ -18,9 +19,12 @@ class QuotationRepository extends RepositoryBase
      * @return Quotation
      * @throws \Http\Client\Exception
      */
-    public function getQuotation($id) {
+    public function getQuotation($id)
+    {
+        $request = new QuotationsInfoRequest($id);
+
         return $this->handleRequest(
-            new QuotationsInfoRequest($id),
+            $request,
             Quotation::class
         );
     }
@@ -31,9 +35,12 @@ class QuotationRepository extends RepositoryBase
      * @return DownloadedQuotation
      * @throws \Http\Client\Exception
      */
-    public function downloadQuotation($id, $format) {
+    public function downloadQuotation($id, $format)
+    {
+        $request = new QuotationsDownloadRequest($id, $format);
+
         return $this->handleRequest(
-            new QuotationsDownloadRequest($id, $format),
+            $request,
             DownloadedQuotation::class
         );
     }

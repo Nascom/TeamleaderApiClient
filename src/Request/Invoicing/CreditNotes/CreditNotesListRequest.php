@@ -3,15 +3,19 @@
 namespace Nascom\TeamleaderApiClient\Request\Invoicing\CreditNotes;
 
 use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class CreditNotesListRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Invoicing\CreditNotes
  */
 class CreditNotesListRequest extends GetRequest
 {
+    use MultipleMethodsTrait;
+
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

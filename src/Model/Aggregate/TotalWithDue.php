@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class TotalWithDue
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class TotalWithDue extends Total

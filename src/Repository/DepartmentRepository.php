@@ -30,7 +30,7 @@ class DepartmentRepository extends RepositoryBase
     }
 
     /**
-     * @return DepartmentListView
+     * @return DepartmentListView[]
      * @throws \Http\Client\Exception
      */
     public function listDepartments()

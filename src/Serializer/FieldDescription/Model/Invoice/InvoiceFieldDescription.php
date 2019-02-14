@@ -11,28 +11,34 @@ use Nascom\TeamleaderApiClient\Model\Invoice\Invoice;
 
 /**
  * Class InvoiceFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Invoice
  */
 class InvoiceFieldDescription extends InvoiceFieldDescriptionBase
 {
+    /**
+     * @inheritdoc
+     */
     protected function getFieldMapping()
     {
+        $fields = [
+            'invoicee' => ['target_class' => InvoiceeExtended::class],
+            'discounts' => ['target_class' => DiscountWithDescription::class.'[]'],
+            'grouped_lines' => ['target_class' => GroupedLine::class.'[]'],
+            'payment_term' => ['target_class' => PaymentTerm::class],
+            'payments' => ['target_class' => PaymentWithDate::class.'[]'],
+            'payment_reference',
+            'note',
+        ];
+
         return array_merge(
             parent::getFieldMapping(),
-            [
-                'invoicee' => ['target_class' => InvoiceeExtended::class],
-                'discounts' => ['target_class' => DiscountWithDescription::class.'[]'],
-                'grouped_lines' => ['target_class' => GroupedLine::class.'[]'],
-                'payment_term' => ['target_class' => PaymentTerm::class],
-                'payments' => ['target_class' => PaymentWithDate::class.'[]'],
-                'payment_reference',
-                'note',
-            ]
+            $fields
         );
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

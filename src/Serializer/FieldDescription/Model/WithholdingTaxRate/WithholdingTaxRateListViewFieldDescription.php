@@ -6,12 +6,13 @@ use Nascom\TeamleaderApiClient\Model\WithholdingTaxRate\WithholdingTaxRateListVi
 
 /**
  * Class WithholdingTaxRateListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\WithholdingTaxRate
  */
 class WithholdingTaxRateListViewFieldDescription extends WithholdingTaxRateFieldDescriptionBase
 {
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

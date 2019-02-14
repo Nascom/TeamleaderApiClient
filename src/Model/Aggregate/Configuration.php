@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class Configuration
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class Configuration

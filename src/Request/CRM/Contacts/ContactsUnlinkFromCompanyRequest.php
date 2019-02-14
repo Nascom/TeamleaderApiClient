@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Request\CRM\Contacts;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
@@ -11,6 +12,8 @@ use Nascom\TeamleaderApiClient\Request\PostRequest;
  */
 class ContactsUnlinkFromCompanyRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * ContactsUnlinkFromCompanyRequest constructor.
      *

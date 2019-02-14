@@ -3,10 +3,11 @@
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
- * Class Addresses
+ * Class AddressWithType
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
-class Addresses
+class AddressWithType
 {
     /**
      * @var string

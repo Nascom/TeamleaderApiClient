@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class InvoiceeMinimal
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class InvoiceeMinimal

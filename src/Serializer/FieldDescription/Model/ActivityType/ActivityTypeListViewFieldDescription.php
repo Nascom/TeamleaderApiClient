@@ -6,12 +6,13 @@ use Nascom\TeamleaderApiClient\Model\ActivityType\ActivityTypeListView;
 
 /**
  * Class ActivityTypeListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\ActivityType
  */
 class ActivityTypeListViewFieldDescription extends ActivityTypeFieldDescriptionBase
 {
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

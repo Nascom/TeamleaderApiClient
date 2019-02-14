@@ -2,14 +2,18 @@
 
 namespace Nascom\TeamleaderApiClient\Request\CRM\Contacts;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class ContactsUpdateRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\CRM\Contacts
  */
 class ContactsUpdateRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * ContactsUpdateRequest constructor.
      *

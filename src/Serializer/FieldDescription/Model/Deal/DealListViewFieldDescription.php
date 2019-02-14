@@ -2,27 +2,33 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Deal;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Phase;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedPhase;
 use Nascom\TeamleaderApiClient\Model\Deal\DealListView;
 
 /**
  * Class DealListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Deal
  */
 class DealListViewFieldDescription extends DealFieldDescriptionBase
 {
+    /**
+     * @inheritdoc
+     */
     protected function getFieldMapping()
     {
-        $parentFields = parent::getFieldMapping();
-        $additionalFields = [
-            'current_phase' => ['target_class' => Phase::class]
+        $fields = [
+            'current_phase' => ['target_class' => LinkedPhase::class],
         ];
 
-        return array_merge($parentFields, $additionalFields);
+        return array_merge(
+            parent::getFieldMapping(),
+            $fields
+        );
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

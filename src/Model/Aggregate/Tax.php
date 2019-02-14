@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class Tax
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class Tax

@@ -19,6 +19,7 @@ use Nascom\TeamleaderApiClient\Request\Invoicing\Invoices\InvoicesUpdateRequest;
 
 /**
  * Class InvoiceRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class InvoiceRepository extends RepositoryBase
@@ -30,21 +31,25 @@ class InvoiceRepository extends RepositoryBase
      */
     public function getInvoice($id)
     {
+        $request = new InvoicesInfoRequest($id);
+
         return $this->handleRequest
         (
-            new InvoicesInfoRequest($id),
+            $request,
             Invoice::class
         );
     }
 
     /**
-     * @return InvoiceListView
+     * @return InvoiceListView[]
      * @throws \Http\Client\Exception
      */
     public function listInvoices()
     {
+        $request = new InvoicesListRequest();
+
         return $this->handleRequest(
-            new InvoicesListRequest(),
+            $request,
             InvoiceListView::class.'[]'
         );
     }
@@ -57,8 +62,10 @@ class InvoiceRepository extends RepositoryBase
      */
     public function downloadInvoice($id, $format)
     {
+        $request = new InvoicesDownloadRequest($id, $format);
+
         return $this->handleRequest(
-            new InvoicesDownloadRequest($id, $format),
+            $request,
             DownloadedInvoice::class
         );
     }
@@ -70,8 +77,10 @@ class InvoiceRepository extends RepositoryBase
      */
     public function draftInvoice(Invoice $invoice)
     {
+        $request = new InvoicesDraftRequest($this->normalize($invoice));
+
         return $this->handleRequest(
-            new InvoicesDraftRequest($this->normalize($invoice)),
+            $request,
             LinkedInvoice::class
         );
     }
@@ -82,7 +91,9 @@ class InvoiceRepository extends RepositoryBase
      */
     public function updateInvoice(Invoice $invoice)
     {
-        $this->apiClient->handle(new InvoicesUpdateRequest($this->normalize($invoice)));
+        $request = new InvoicesUpdateRequest($this->normalize($invoice));
+
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -90,8 +101,11 @@ class InvoiceRepository extends RepositoryBase
      * @return LinkedInvoice
      * @throws \Http\Client\Exception
      */
-    public function copyInvoice($id) {
-        return $this->handleRequest(new InvoicesCopyRequest($id), LinkedInvoice::class);
+    public function copyInvoice($id)
+    {
+        $request = new InvoicesCopyRequest($id);
+
+        return $this->handleRequest($request, LinkedInvoice::class);
     }
 
     /**
@@ -99,16 +113,22 @@ class InvoiceRepository extends RepositoryBase
      * @param string $on
      * @throws \Http\Client\Exception
      */
-    public function bookInvoice($id, $on) {
-        $this->apiClient->handle(new InvoicesBookRequest($id, $on));
+    public function bookInvoice($id, $on)
+    {
+        $request = new InvoicesBookRequest($id, $on);
+
+        $this->apiClient->handle($request);
     }
 
     /**
      * @param string $id
      * @throws \Http\Client\Exception
      */
-    public function deleteInvoice($id) {
-        $this->apiClient->handle(new InvoicesDeleteRequest($id));
+    public function deleteInvoice($id)
+    {
+        $request = new InvoicesDeleteRequest($id);
+
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -116,7 +136,10 @@ class InvoiceRepository extends RepositoryBase
      * @param PaymentWithDate $paymentWithDate
      * @throws \Http\Client\Exception
      */
-    public function registerPayment($id, PaymentWithDate $paymentWithDate) {
-        $this->apiClient->handle(new InvoicesRegisterPaymentRequest($id, $this->normalize($paymentWithDate)));
+    public function registerPayment($id, PaymentWithDate $paymentWithDate)
+    {
+        $request = new InvoicesRegisterPaymentRequest($id, $this->normalize($paymentWithDate));
+
+        $this->apiClient->handle($request);
     }
 }

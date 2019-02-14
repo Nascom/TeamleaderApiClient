@@ -2,16 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Invoicing\Invoices;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class InvoicesRegisterPaymentRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Invoicing\Invoices
  */
 class InvoicesRegisterPaymentRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * InvoicesRegisterPaymentRequest constructor.
+     *
      * @param string $id
      * @param array $paymentWithDate
      */
@@ -22,7 +27,7 @@ class InvoicesRegisterPaymentRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

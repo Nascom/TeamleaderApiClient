@@ -7,15 +7,22 @@ use Nascom\TeamleaderApiClient\Request\Invoicing\WithholdingTaxRates\Withholding
 
 /**
  * Class WithholdingTaxRateRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class WithholdingTaxRateRepository extends RepositoryBase
 {
     /**
-     * @return WithholdingTaxRateListView
+     * @return WithholdingTaxRateListView[]
      * @throws \Http\Client\Exception
      */
-    public function listWithholdingTaxRates() {
-        return $this->handleRequest(new WithholdingTaxRatesListRequest(), WithholdingTaxRateListView::class.'[]');
+    public function listWithholdingTaxRates()
+    {
+        $request = new WithholdingTaxRatesListRequest();
+
+        return $this->handleRequest(
+            $request,
+            WithholdingTaxRateListView::class.'[]'
+        );
     }
 }

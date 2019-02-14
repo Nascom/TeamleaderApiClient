@@ -7,6 +7,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class TaxRateBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\TaxRate
  */
 abstract class TaxRateBase extends ModelBase

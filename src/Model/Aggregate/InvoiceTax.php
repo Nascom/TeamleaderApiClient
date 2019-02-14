@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class InvoiceTax
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class InvoiceTax extends Tax
@@ -11,12 +12,12 @@ class InvoiceTax extends Tax
     /**
      * @var PaymentAmount
      */
-    private $taxable = [];
+    private $taxable;
 
     /**
      * @var PaymentAmount
      */
-    private $tax = [];
+    private $tax;
 
     /**
      * @return PaymentAmount

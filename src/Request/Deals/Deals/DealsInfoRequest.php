@@ -3,15 +3,20 @@
 namespace Nascom\TeamleaderApiClient\Request\Deals\Deals;
 
 use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class DealsInfoRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Deals\Deals
  */
 class DealsInfoRequest extends GetRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * DealsInfoRequest constructor.
+     *
      * @param string $id
      */
     public function __construct($id)
@@ -20,7 +25,7 @@ class DealsInfoRequest extends GetRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

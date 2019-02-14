@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class Lead
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class Lead
@@ -11,12 +12,12 @@ class Lead
     /**
      * @var LinkedCustomer
      */
-    private $customer = [];
+    private $customer;
 
     /**
      * @var LinkedContact
      */
-    private $contactPerson = [];
+    private $contactPerson;
 
     /**
      * @return LinkedCustomer

@@ -2,21 +2,22 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Deal;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Phase;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedPhase;
 
 /**
  * Class DealListView
+ *
  * @package Nascom\TeamleaderApiClient\Model\Deal
  */
 class DealListView extends DealBase
 {
     /**
-     * @var Phase
+     * @var LinkedPhase
      */
-    private $currentPhase = [];
+    private $currentPhase;
 
     /**
-     * @return Phase
+     * @return LinkedPhase
      */
     public function getCurrentPhase()
     {
@@ -24,7 +25,7 @@ class DealListView extends DealBase
     }
 
     /**
-     * @param Phase $currentPhase
+     * @param LinkedPhase $currentPhase
      */
     public function setCurrentPhase($currentPhase)
     {

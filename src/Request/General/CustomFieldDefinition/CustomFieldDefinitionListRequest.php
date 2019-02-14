@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Request\General\CustomFieldDefinition;
 
 use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class CustomFieldDefinitionListRequest
@@ -11,6 +12,8 @@ use Nascom\TeamleaderApiClient\Request\GetRequest;
  */
 class CustomFieldDefinitionListRequest extends GetRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * @inheritdoc
      */

@@ -2,16 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Deals\Deals;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class DealsLoseRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Deals\Deals
  */
 class DealsLoseRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * DealsLoseRequest constructor.
+     *
      * @param string $id
      * @param string|null $reasonId
      * @param string|null $extraInfo
@@ -28,7 +33,7 @@ class DealsLoseRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

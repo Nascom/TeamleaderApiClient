@@ -2,9 +2,9 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Contact;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
+use Nascom\TeamleaderApiClient\Model\Aggregate\AddressWithType;
 use Nascom\TeamleaderApiClient\Model\Aggregate\CustomField;
-use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCompany;
+use Nascom\TeamleaderApiClient\Model\Aggregate\CompanyEmployee;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 
 /**
@@ -25,7 +25,7 @@ class Contact extends ContactBase
     private $marketingMailsConsent;
 
     /**
-     * @var Addresses[]
+     * @var AddressWithType[]
      */
     private $addresses;
 
@@ -35,7 +35,7 @@ class Contact extends ContactBase
     private $customFields;
 
     /**
-     * @var LinkedCompany
+     * @var CompanyEmployee
      */
     private $companies;
 
@@ -79,7 +79,7 @@ class Contact extends ContactBase
     }
 
     /**
-     * @return Addresses[]
+     * @return AddressWithType[]
      */
     public function getAddresses()
     {
@@ -87,7 +87,7 @@ class Contact extends ContactBase
     }
 
     /**
-     * @param Addresses[] $addresses
+     * @param AddressWithType[] $addresses
      */
     public function setAddresses($addresses)
     {
@@ -111,7 +111,7 @@ class Contact extends ContactBase
     }
 
     /**
-     * @return LinkedCompany
+     * @return CompanyEmployee
      */
     public function getCompanies()
     {
@@ -119,7 +119,7 @@ class Contact extends ContactBase
     }
 
     /**
-     * @param LinkedCompany $companies
+     * @param CompanyEmployee $companies
      */
     public function setCompanies($companies)
     {

@@ -2,8 +2,11 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
+use DateTime;
+
 /**
  * Class DownloadedBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 abstract class DownloadedBase
@@ -14,7 +17,7 @@ abstract class DownloadedBase
     private $location;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $expires;
 
@@ -35,7 +38,7 @@ abstract class DownloadedBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getExpires()
     {
@@ -43,7 +46,7 @@ abstract class DownloadedBase
     }
 
     /**
-     * @param \DateTime $expires
+     * @param DateTime $expires
      */
     public function setExpires($expires)
     {

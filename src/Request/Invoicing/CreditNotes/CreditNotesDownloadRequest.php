@@ -2,16 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Invoicing\CreditNotes;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class CreditNotesDownloadRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Invoicing\CreditNotes
  */
 class CreditNotesDownloadRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * CreditNotesDownloadRequest constructor.
+     *
      * @param string $id
      * @param string $format
      */
@@ -22,7 +27,7 @@ class CreditNotesDownloadRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

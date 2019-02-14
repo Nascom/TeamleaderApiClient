@@ -3,13 +3,17 @@
 namespace Nascom\TeamleaderApiClient\Request\Projects\Milestones;
 
 use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class MilestonesInfoRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Projects\Milestones
  */
 class MilestonesInfoRequest extends GetRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * MilestonesInfoRequest constructor.
      * @param string $id
@@ -20,7 +24,7 @@ class MilestonesInfoRequest extends GetRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

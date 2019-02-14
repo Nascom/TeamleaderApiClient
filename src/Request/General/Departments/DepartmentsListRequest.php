@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Request\General\Departments;
 
 use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class DepartmentsListRequest
@@ -11,6 +12,8 @@ use Nascom\TeamleaderApiClient\Request\GetRequest;
  */
 class DepartmentsListRequest extends GetRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * @inheritdoc
      */

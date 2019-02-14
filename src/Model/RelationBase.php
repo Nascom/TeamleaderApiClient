@@ -12,6 +12,7 @@ abstract class RelationBase extends ModelBase
 
     /**
      * RelationBase constructor.
+     *
      * @param string|null $type
      * @param string|null $id
      */

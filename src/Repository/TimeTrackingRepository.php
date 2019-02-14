@@ -15,6 +15,7 @@ use Nascom\TeamleaderApiClient\Request\TimeTracking\TimeTracking\TimeTrackingUpd
 
 /**
  * Class TimeTrackingRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class TimeTrackingRepository extends RepositoryBase
@@ -25,9 +26,10 @@ class TimeTrackingRepository extends RepositoryBase
      */
     public function listTimeTracking()
     {
-        return $this->handleRequest
-        (
-            new TimeTrackingListRequest(),
+        $request = new TimeTrackingListRequest();
+
+        return $this->handleRequest(
+            $request,
             TimeTrackingListView::class.'[]'
         );
     }
@@ -38,10 +40,11 @@ class TimeTrackingRepository extends RepositoryBase
      * @throws \Http\Client\Exception
      */
     public function getTimeTracking($id)
-    {
-        return $this->handleRequest
-        (
-            new TimeTrackingInfoRequest($id),
+    { // TODO Broken Teamleader -> 400, "Key id must be present"
+        $request = new TimeTrackingInfoRequest($id);
+
+        return $this->handleRequest(
+            $request,
             TimeTracking::class
         );
     }
@@ -53,9 +56,10 @@ class TimeTrackingRepository extends RepositoryBase
      */
     public function addTimeTracking(TimeTracking $timeTracking)
     {
-        return $this->handleRequest
-        (
-            new TimeTrackingAddRequest($this->normalize($timeTracking)),
+        $request = new TimeTrackingAddRequest($this->normalize($timeTracking));
+
+        return $this->handleRequest(
+            $request,
             LinkedTimeTracking::class
         );
     }
@@ -66,10 +70,9 @@ class TimeTrackingRepository extends RepositoryBase
      */
     public function updateTimeTracking(TimeTracking $timeTracking)
     {
-        $this->apiClient->handle
-        (
-            new TimeTrackingUpdateRequest($this->normalize($timeTracking))
-        );
+        $request = new TimeTrackingUpdateRequest($this->normalize($timeTracking));
+
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -80,8 +83,10 @@ class TimeTrackingRepository extends RepositoryBase
      */
     public function resumeTimeTracking($id, $startedAt = null)
     {
+        $request = new TimeTrackingResumeRequest($id, $startedAt);
+
         return $this->handleRequest(
-            new TimeTrackingResumeRequest($id, $startedAt),
+            $request,
             LinkedTimer::class
         );
     }
@@ -92,9 +97,8 @@ class TimeTrackingRepository extends RepositoryBase
      */
     public function deleteTimeTracking($id)
     {
-        $this->apiClient->handle
-        (
-            new TimeTrackingDeleteRequest($id)
-        );
+        $request = new TimeTrackingDeleteRequest($id);
+
+        $this->apiClient->handle($request);
     }
 }

@@ -6,12 +6,13 @@ use Nascom\TeamleaderApiClient\Model\ProductCategory\ProductCategoryListView;
 
 /**
  * Class ProductCategoryListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\ProductCategory
  */
 class ProductCategoryListViewFieldDescription extends ProductCategoryFieldDescriptionBase
 {
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

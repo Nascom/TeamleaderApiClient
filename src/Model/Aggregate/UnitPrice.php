@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class UnitPrice
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class UnitPrice

@@ -10,6 +10,7 @@ use Nascom\TeamleaderApiClient\Request\Other\Webhooks\WebhooksUnregisterRequest;
 
 /**
  * Class WebhookRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class WebhookRepository extends RepositoryBase
@@ -20,9 +21,10 @@ class WebhookRepository extends RepositoryBase
      */
     public function listWebhooks()
     {
-        return $this->handleRequest
-        (
-            new WebhooksListRequest(),
+        $request = new WebhooksListRequest();
+
+        return $this->handleRequest(
+            $request,
             WebhookListView::class.'[]'
         );
     }
@@ -33,10 +35,9 @@ class WebhookRepository extends RepositoryBase
      */
     public function registerWebhook(Webhook $webhook)
     {
-        $this->apiClient->handle
-        (
-            new WebhooksRegisterRequest($this->normalize($webhook))
-        );
+        $request = new WebhooksRegisterRequest($this->normalize($webhook));
+
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -45,9 +46,8 @@ class WebhookRepository extends RepositoryBase
      */
     public function unRegisterWebHook(Webhook $webhook)
     {
-        $this->apiClient->handle
-        (
-            new WebhooksUnregisterRequest($this->normalize($webhook))
-        );
+        $request = new WebhooksUnregisterRequest($this->normalize($webhook));
+
+        $this->apiClient->handle($request);
     }
 }

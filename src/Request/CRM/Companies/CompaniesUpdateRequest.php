@@ -2,14 +2,23 @@
 
 namespace Nascom\TeamleaderApiClient\Request\CRM\Companies;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class CompaniesUpdateRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\CRM\Companies
  */
 class CompaniesUpdateRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
+    /**
+     * CompaniesUpdateRequest constructor.
+     *
+     * @param array $company
+     */
     public function __construct(array $company)
     {
         if (!empty($company['business_type'])) {
@@ -36,7 +45,7 @@ class CompaniesUpdateRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

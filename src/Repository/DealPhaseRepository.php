@@ -7,17 +7,21 @@ use Nascom\TeamleaderApiClient\Request\Deals\DealPhases\DealPhasesListRequest;
 
 /**
  * Class DealPhaseRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class DealPhaseRepository extends RepositoryBase
 {
     /**
-     * @return DealPhaseListView
+     * @return DealPhaseListView[]
      * @throws \Http\Client\Exception
      */
-    public function listDealPhases() {
+    public function listDealPhases()
+    {
+        $request = new DealPhasesListRequest();
+
         return $this->handleRequest(
-            new DealPhasesListRequest(),
+            $request,
             DealPhaseListView::class.'[]'
         );
     }

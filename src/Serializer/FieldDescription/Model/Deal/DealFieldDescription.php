@@ -9,27 +9,30 @@ use Nascom\TeamleaderApiClient\Model\Deal\Deal;
 
 /**
  * Class DealFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Deal
  */
 class DealFieldDescription extends DealFieldDescriptionBase
 {
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
-        $parentFields = parent::getFieldMapping();
-        $additionalFields = [
+        $fields = [
             'phase_history' => ['target_class' => PhaseHistory::class.'[]'],
             'quotations' => ['target_class' => LinkedQuotation::class.'[]'],
             'custom_fields' => ['target_class' => LinkedCustomField::class.'[]'],
         ];
 
-        return array_merge($parentFields, $additionalFields);
+        return array_merge(
+            parent::getFieldMapping(),
+            $fields
+        );
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

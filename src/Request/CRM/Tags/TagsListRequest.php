@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Request\CRM\Tags;
 
 use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class TagsListRequest
@@ -10,8 +11,10 @@ use Nascom\TeamleaderApiClient\Request\GetRequest;
  */
 class TagsListRequest extends GetRequest
 {
+    use MultipleMethodsTrait;
+
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

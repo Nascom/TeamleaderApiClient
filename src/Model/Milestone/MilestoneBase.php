@@ -2,12 +2,13 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Milestone;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Account;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedUser;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedProject;
 use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class MilestoneBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\Milestone
  */
 abstract class MilestoneBase extends ModelBase
@@ -28,7 +29,7 @@ abstract class MilestoneBase extends ModelBase
     private $name;
 
     /**
-     * @var Account
+     * @var LinkedUser
      */
     private $responsibleUser;
 
@@ -41,13 +42,13 @@ abstract class MilestoneBase extends ModelBase
      * MilestoneBase constructor.
      * @param string|null $dueOn
      * @param string|null $name
-     * @param Account|null $responsibleUser
+     * @param LinkedUser|null $responsibleUser
      */
     public function __construct
     (
         $dueOn = null,
         $name = null,
-        Account $responsibleUser = null
+        LinkedUser $responsibleUser = null
     ) {
         $this->dueOn = $dueOn;
         $this->name = $name;
@@ -103,7 +104,7 @@ abstract class MilestoneBase extends ModelBase
     }
 
     /**
-     * @return Account
+     * @return LinkedUser
      */
     public function getResponsibleUser()
     {
@@ -111,7 +112,7 @@ abstract class MilestoneBase extends ModelBase
     }
 
     /**
-     * @param Account $responsibleUser
+     * @param LinkedUser $responsibleUser
      */
     public function setResponsibleUser($responsibleUser)
     {

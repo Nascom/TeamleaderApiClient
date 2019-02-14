@@ -6,6 +6,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class PaymentTermBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\PaymentTerm
  */
 abstract class PaymentTermBase extends ModelBase

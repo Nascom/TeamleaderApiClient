@@ -4,14 +4,15 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class PhaseHistory
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class PhaseHistory
 {
     /**
-     * @var Phase
+     * @var LinkedPhase
      */
-    private $phase = [];
+    private $phase;
 
     /**
      * @var \DateTime
@@ -19,12 +20,12 @@ class PhaseHistory
     private $startedAt;
 
     /**
-     * @var Account
+     * @var LinkedUser
      */
-    private $startedBy = [];
+    private $startedBy;
 
     /**
-     * @return Phase
+     * @return LinkedPhase
      */
     public function getPhase()
     {
@@ -32,7 +33,7 @@ class PhaseHistory
     }
 
     /**
-     * @param Phase $phase
+     * @param LinkedPhase $phase
      */
     public function setPhase($phase)
     {
@@ -56,7 +57,7 @@ class PhaseHistory
     }
 
     /**
-     * @return Account
+     * @return LinkedUser
      */
     public function getStartedBy()
     {
@@ -64,7 +65,7 @@ class PhaseHistory
     }
 
     /**
-     * @param Account $startedBy
+     * @param LinkedUser $startedBy
      */
     public function setStartedBy($startedBy)
     {

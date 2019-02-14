@@ -3,16 +3,21 @@
 namespace Nascom\TeamleaderApiClient\Request\Invoicing\Invoices;
 
 use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class InvoicesInfoRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Invoicing\Invoices
  */
 class InvoicesInfoRequest extends GetRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * InvoicesInfoRequest constructor.
-     * @param $id
+     *
+     * @param string $id
      */
     public function __construct($id)
     {
@@ -20,7 +25,7 @@ class InvoicesInfoRequest extends GetRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

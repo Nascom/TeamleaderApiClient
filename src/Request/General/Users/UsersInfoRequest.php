@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Request\General\Users;
 
 use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class UsersInfoRequest
@@ -11,6 +12,8 @@ use Nascom\TeamleaderApiClient\Request\GetRequest;
  */
 class UsersInfoRequest extends GetRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * UsersInfoRequest constructor.
      *

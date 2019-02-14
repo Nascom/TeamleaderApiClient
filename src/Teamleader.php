@@ -5,7 +5,7 @@ namespace Nascom\TeamleaderApiClient;
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClientInterface;
 use Nascom\TeamleaderApiClient\Repository\ActivityTypeRepository;
 use Nascom\TeamleaderApiClient\Repository\BusinessTypeRepository;
-use Nascom\TeamleaderApiClient\Repository\CalendarRepository;
+use Nascom\TeamleaderApiClient\Repository\CalendarEventRepository;
 use Nascom\TeamleaderApiClient\Repository\CompanyRepository;
 use Nascom\TeamleaderApiClient\Repository\ContactRepository;
 use Nascom\TeamleaderApiClient\Repository\CreditNoteRepository;
@@ -15,6 +15,7 @@ use Nascom\TeamleaderApiClient\Repository\DealRepository;
 use Nascom\TeamleaderApiClient\Repository\DealSourceRepository;
 use Nascom\TeamleaderApiClient\Repository\DepartmentRepository;
 use Nascom\TeamleaderApiClient\Repository\InvoiceRepository;
+use Nascom\TeamleaderApiClient\Repository\LevelTwoAreaRepository;
 use Nascom\TeamleaderApiClient\Repository\MilestoneRepository;
 use Nascom\TeamleaderApiClient\Repository\PaymentTermRepository;
 use Nascom\TeamleaderApiClient\Repository\ProductCategoryRepository;
@@ -170,11 +171,11 @@ class Teamleader
     }
 
     /**
-     * @return CalendarRepository
+     * @return CalendarEventRepository
      */
     public function calendarEvents()
     {
-        return new CalendarRepository($this->apiClient, $this->serializer);
+        return new CalendarEventRepository($this->apiClient, $this->serializer);
     }
 
     /**
@@ -273,7 +274,19 @@ class Teamleader
         return new TimerRepository($this->apiClient, $this->serializer);
     }
 
-    public function webhooks() {
+    /**
+     * @return WebhookRepository
+     */
+    public function webhooks()
+    {
         return new WebhookRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return LevelTwoAreaRepository
+     */
+    public function levelTwoAreas()
+    {
+        return new LevelTwoAreaRepository($this->apiClient, $this->serializer);
     }
 }

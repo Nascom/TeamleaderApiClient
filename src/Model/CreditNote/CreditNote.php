@@ -6,6 +6,7 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\GroupedLine;
 
 /**
  * Class CreditNote
+ *
  * @package Nascom\TeamleaderApiClient\Model\CreditNote
  */
 class CreditNote extends CreditNoteBase

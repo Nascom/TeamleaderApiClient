@@ -11,7 +11,7 @@ class LineItem
     /**
      * @var LinkedProduct
      */
-    private $product = [];
+    private $product;
 
     /**
      * @var LinkedProductCategory
@@ -36,22 +36,22 @@ class LineItem
     /**
      * @var UnitPrice
      */
-    private $unitPrice = [];
+    private $unitPrice;
 
     /**
      * @var Tax
      */
-    private $tax = [];
+    private $tax;
 
     /**
      * @var Discount
      */
-    private $discount = [];
+    private $discount;
 
     /**
      * @var CalculatedTotal
      */
-    private $total = [];
+    private $total;
 
     /**
      * @var string

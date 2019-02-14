@@ -2,16 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Deals\Deals;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class DealsUpdateRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Deals\Deals
  */
 class DealsUpdateRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * DealsUpdateRequest constructor.
+     *
      * @param array $deal
      */
     public function __construct(array $deal)
@@ -34,13 +39,16 @@ class DealsUpdateRequest extends PostRequest
             }
         }
 
-        $this->body = array_filter($deal, function ($value) {
-            return !empty($value);
-        });
+        $this->body = array_filter(
+            $deal,
+            function ($value) {
+                return !empty($value);
+            }
+        );
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

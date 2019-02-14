@@ -3,15 +3,19 @@
 namespace Nascom\TeamleaderApiClient\Request\Invoicing\Invoices;
 
 use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class InvoicesListRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Invoicing\Invoices
  */
 class InvoicesListRequest extends GetRequest
 {
+    use MultipleMethodsTrait;
+
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

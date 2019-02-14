@@ -8,6 +8,7 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedParticipantWithRole;
 
 /**
  * Class Project
+ *
  * @package Nascom\TeamleaderApiClient\Model\Project
  */
 class Project extends ProjectBase

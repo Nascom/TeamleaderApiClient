@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class Total
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class Total
@@ -11,22 +12,22 @@ class Total
     /**
      * @var PaymentAmount
      */
-    private $taxExclusive = [];
+    private $taxExclusive;
 
     /**
      * @var PaymentAmount
      */
-    private $taxInclusive = [];
+    private $taxInclusive;
 
     /**
      * @var PaymentAmount
      */
-    private $payable = [];
+    private $payable;
 
     /**
      * @var InvoiceTax[]
      */
-    private $taxes = [];
+    private $taxes;
 
     /**
      * @return PaymentAmount

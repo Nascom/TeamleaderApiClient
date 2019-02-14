@@ -2,16 +2,20 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Deals\Deals;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class DealsDeleteRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Deals\Deals
  */
 class DealsDeleteRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
     /**
      * DealsDeleteRequest constructor.
+     *
      * @param $id
      */
     public function __construct($id)
@@ -20,7 +24,7 @@ class DealsDeleteRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

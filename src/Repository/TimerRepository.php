@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
+use DateTime;
 use Http\Client\Exception;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedTimer;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedTimeTracking;
@@ -13,6 +14,7 @@ use Nascom\TeamleaderApiClient\Request\TimeTracking\Timers\TimersUpdateRequest;
 
 /**
  * Class TimerRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class TimerRepository extends RepositoryBase
@@ -23,9 +25,10 @@ class TimerRepository extends RepositoryBase
      */
     public function currentTimer()
     {
-        return $this->handleRequest
-        (
-            new TimersCurrentRequest(),
+        $request = new TimersCurrentRequest();
+
+        return $this->handleRequest(
+            $request,
             Timer::class
         );
     }
@@ -37,23 +40,25 @@ class TimerRepository extends RepositoryBase
      */
     public function startTimer(Timer $timer)
     {
-        return $this->handleRequest
-        (
-            new TimersStartRequest($this->normalize($timer)),
+        $request = new TimersStartRequest($this->normalize($timer));
+
+        return $this->handleRequest(
+            $request,
             LinkedTimer::class
         );
     }
 
     /**
-     * @param \DateTime|null $endedAt
+     * @param DateTime|null $endedAt
      * @return LinkedTimeTracking
      * @throws Exception
      */
-    public function stopTimer(\DateTime $endedAt = null)
+    public function stopTimer(DateTime $endedAt = null)
     {
-        return $this->handleRequest
-        (
-            new TimersStopRequest($this->normalize($endedAt)),
+        $request = new TimersStopRequest($this->normalize($endedAt));
+
+        return $this->handleRequest(
+            $request,
             LinkedTimeTracking::class
         );
     }
@@ -64,9 +69,8 @@ class TimerRepository extends RepositoryBase
      */
     public function updateTimer(Timer $timer)
     {
-        $this->apiClient->handle
-        (
-            new TimersUpdateRequest($this->normalize($timer))
-        );
+        $request = new TimersUpdateRequest($this->normalize($timer));
+
+        $this->apiClient->handle($request);
     }
 }

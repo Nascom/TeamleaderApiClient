@@ -7,6 +7,7 @@ use Nascom\TeamleaderApiClient\Request\Products\ProductCategories\ProductCategor
 
 /**
  * Class ProductCategoryRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class ProductCategoryRepository extends RepositoryBase
@@ -17,9 +18,10 @@ class ProductCategoryRepository extends RepositoryBase
      */
     public function listProductCategories()
     {
-        return $this->handleRequest
-        (
-            new ProductCategoriesListRequest(),
+        $request = new ProductCategoriesListRequest();
+
+        return $this->handleRequest(
+            $request,
             ProductCategoryListView::class.'[]'
         );
     }

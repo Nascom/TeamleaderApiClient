@@ -7,25 +7,28 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\TotalWithDue;
 
 /**
  * Class TotalWithDueFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
 class TotalWithDueFieldDescription extends TotalFieldDescription
 {
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
+        $fields = [
+            'due' => ['target_class' => PaymentAmount::class],
+        ];
+
         return array_merge(
             parent::getFieldMapping(),
-            [
-                'due' => ['target_class' => PaymentAmount::class],
-            ]
+            $fields
         );
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

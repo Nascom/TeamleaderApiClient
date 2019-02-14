@@ -6,6 +6,7 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\Address;
 
 /**
  * Class CompanyListView
+ *
  * @package Nascom\TeamleaderApiClient\Model\Company
  */
 class CompanyListView extends CompanyBase
@@ -13,7 +14,7 @@ class CompanyListView extends CompanyBase
     /**
      * @var Address
      */
-    private $primaryAddress = [];
+    private $primaryAddress;
 
     /**
      * @return Address
@@ -30,6 +31,4 @@ class CompanyListView extends CompanyBase
     {
         $this->primaryAddress = $primaryAddress;
     }
-
-
 }

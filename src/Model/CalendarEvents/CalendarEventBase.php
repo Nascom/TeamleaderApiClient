@@ -2,33 +2,34 @@
 
 namespace Nascom\TeamleaderApiClient\Model\CalendarEvents;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Account;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedActivityType;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedContact;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomer;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedTodo;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedUser;
 use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class CalendarEventBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\CalendarEvents
  */
 abstract class CalendarEventBase extends ModelBase
 {
     /**
-     * @var Account
+     * @var LinkedUser
      */
-    private $creator = [];
+    private $creator;
 
     /**
      * @var LinkedTodo
      */
-    private $todo = [];
+    private $todo;
 
     /**
      * @var LinkedActivityType
      */
-    private $activityType = [];
+    private $activityType;
 
     /**
      * @var string
@@ -58,15 +59,15 @@ abstract class CalendarEventBase extends ModelBase
     /**
      * @var LinkedContact[]
      */
-    private $attendees = [];
+    private $attendees;
 
     /**
      * @var LinkedCustomer[]
      */
-    private $links = [];
+    private $links;
 
     /**
-     * @return Account
+     * @return LinkedUser
      */
     public function getCreator()
     {
@@ -74,7 +75,7 @@ abstract class CalendarEventBase extends ModelBase
     }
 
     /**
-     * @param Account $creator
+     * @param LinkedUser $creator
      */
     public function setCreator($creator)
     {

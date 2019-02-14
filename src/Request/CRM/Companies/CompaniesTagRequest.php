@@ -2,16 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Request\CRM\Companies;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class CompaniesTagRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\CRM\Companies
  */
 class CompaniesTagRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * CompaniesTagRequest constructor.
+     *
      * @param string $id
      * @param array $tags
      */
@@ -22,7 +27,7 @@ class CompaniesTagRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

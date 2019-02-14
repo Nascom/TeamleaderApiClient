@@ -20,7 +20,7 @@ class GuzzleApiClientFactory
 
     /**
      * @param AbstractProvider $provider
-     * @param AccessToken $accessToken
+     * @param AccessToken|array $accessToken
      * @param array $config
      * @return ApiClient
      */

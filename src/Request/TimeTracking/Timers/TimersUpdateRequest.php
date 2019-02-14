@@ -2,16 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Request\TimeTracking\Timers;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class TimersUpdateRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\TimeTracking\Timers
  */
 class TimersUpdateRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * TimersUpdateRequest constructor.
+     *
      * @param array $timer
      */
     public function __construct(array $timer)
@@ -23,8 +28,7 @@ class TimersUpdateRequest extends PostRequest
             $timer['work_type_id'] = $id;
         }
 
-        unset
-        (
+        unset(
             $timer['id'],
             $timer['user'],
             $timer['invoiceable'],
@@ -36,7 +40,7 @@ class TimersUpdateRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

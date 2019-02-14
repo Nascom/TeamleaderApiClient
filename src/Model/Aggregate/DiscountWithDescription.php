@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class DiscountWithDescription
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class DiscountWithDescription extends Discount

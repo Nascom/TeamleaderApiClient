@@ -45,7 +45,7 @@ class UserRepository extends RepositoryBase
     }
 
     /**
-     * @return UserListView
+     * @return UserListView[]
      * @throws \Http\Client\Exception
      */
     public function listUsers()

@@ -8,23 +8,29 @@ use Nascom\TeamleaderApiClient\Model\Project\Project;
 
 /**
  * Class ProjectFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Project
  */
 class ProjectFieldDescription extends ProjectFieldDescriptionBase
 {
+    /**
+     * @inheritdoc
+     */
     protected function getFieldMapping()
     {
+        $fields = [
+            'milestones' => ['target_class' => LinkedMileStone::class.'[]'],
+            'participants' => ['target_class' => LinkedParticipantWithRole::class.'[]'],
+        ];
+
         return array_merge(
             parent::getFieldMapping(),
-            [
-                'milestones' => ['target_class' => LinkedMileStone::class.'[]'],
-                'participants' => ['target_class' => LinkedParticipantWithRole::class.'[]'],
-            ]
+            $fields
         );
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

@@ -6,6 +6,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class DealPhaseBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\DealPhase
  */
 abstract class DealPhaseBase extends ModelBase

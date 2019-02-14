@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class InvoiceeExtended
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class InvoiceeExtended extends InvoiceeBase

@@ -7,6 +7,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class ProductBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\Product
  */
 abstract class ProductBase extends ModelBase

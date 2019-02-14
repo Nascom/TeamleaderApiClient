@@ -6,12 +6,13 @@ use Nascom\TeamleaderApiClient\Model\TaxRate\TaxRateListView;
 
 /**
  * Class TaxRateListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\TaxRate
  */
 class TaxRateListViewFieldDescription extends TaxRateFieldDescriptionBase
 {
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

@@ -2,13 +2,16 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Invoice;
 
+use DateTime;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Invoicee;
 use Nascom\TeamleaderApiClient\Model\Aggregate\InvoiceeExtended;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedDepartment;
+use Nascom\TeamleaderApiClient\Model\Aggregate\TotalWithDue;
 use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class InvoiceBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\Invoicee
  */
 abstract class InvoiceBase extends ModelBase
@@ -16,7 +19,7 @@ abstract class InvoiceBase extends ModelBase
     /**
      * @var LinkedDepartment
      */
-    private $department = [];
+    private $department;
 
     /**
      * @var string
@@ -26,7 +29,7 @@ abstract class InvoiceBase extends ModelBase
     /**
      * @var Invoicee|InvoiceeExtended
      */
-    private $invoicee = [];
+    private $invoicee;
 
     /**
      * @var string
@@ -49,22 +52,22 @@ abstract class InvoiceBase extends ModelBase
     private $paid;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $paidAt;
 
     /**
-     * @var array
+     * @var TotalWithDue
      */
-    private $total = [];
+    private $total;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $updatedAt;
 
@@ -165,7 +168,7 @@ abstract class InvoiceBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getPaidAt()
     {
@@ -173,7 +176,7 @@ abstract class InvoiceBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $paidAt
+     * @param DateTime $paidAt
      */
     public function setPaidAt($paidAt)
     {
@@ -181,7 +184,7 @@ abstract class InvoiceBase extends ModelBase
     }
 
     /**
-     * @return array
+     * @return TotalWithDue
      */
     public function getTotal()
     {
@@ -189,7 +192,7 @@ abstract class InvoiceBase extends ModelBase
     }
 
     /**
-     * @param array $total
+     * @param TotalWithDue $total
      */
     public function setTotal($total)
     {
@@ -197,7 +200,7 @@ abstract class InvoiceBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCreatedAt()
     {
@@ -205,7 +208,7 @@ abstract class InvoiceBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      */
     public function setCreatedAt($createdAt)
     {
@@ -213,7 +216,7 @@ abstract class InvoiceBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getUpdatedAt()
     {
@@ -221,7 +224,7 @@ abstract class InvoiceBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param DateTime $updatedAt
      */
     public function setUpdatedAt($updatedAt)
     {

@@ -7,6 +7,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class WithholdingTaxRateBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\WithholdingTaxRate
  */
 class WithholdingTaxRateBase extends ModelBase

@@ -6,9 +6,10 @@ use Nascom\TeamleaderApiClient\Model\RelationBase;
 
 /**
  * Class LinkedDeal
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class LinkedDeal extends RelationBase
 {
-
+    //
 }

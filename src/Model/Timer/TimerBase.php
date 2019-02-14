@@ -2,19 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Timer;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Account;
+use DateTime;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedUser;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedSubject;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedWorkType;
 use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class TimerBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\Timer
  */
 abstract class TimerBase extends ModelBase
 {
     /**
-     * @var Account
+     * @var LinkedUser
      */
     private $user;
 
@@ -24,7 +26,7 @@ abstract class TimerBase extends ModelBase
     private $workType;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $startedAt;
 
@@ -46,14 +48,14 @@ abstract class TimerBase extends ModelBase
     /**
      * TimerBase constructor.
      * @param LinkedWorkType|null $workType
-     * @param \DateTime|null $startedAt
+     * @param DateTime|null $startedAt
      * @param string|null $description
      * @param LinkedSubject|null $subject
      */
     public function __construct
     (
         LinkedWorkType $workType = null,
-        \DateTime $startedAt = null,
+        DateTime $startedAt = null,
         $description = null,
         LinkedSubject $subject = null
     ) {
@@ -64,7 +66,7 @@ abstract class TimerBase extends ModelBase
     }
 
     /**
-     * @return Account
+     * @return LinkedUser
      */
     public function getUser()
     {
@@ -72,7 +74,7 @@ abstract class TimerBase extends ModelBase
     }
 
     /**
-     * @param Account $user
+     * @param LinkedUser $user
      */
     public function setUser($user)
     {
@@ -96,7 +98,7 @@ abstract class TimerBase extends ModelBase
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getStartedAt()
     {
@@ -104,7 +106,7 @@ abstract class TimerBase extends ModelBase
     }
 
     /**
-     * @param \DateTime $startedAt
+     * @param DateTime $startedAt
      */
     public function setStartedAt($startedAt)
     {

@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class Translation
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class Translation

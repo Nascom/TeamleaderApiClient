@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class PaymentAmount
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class PaymentAmount

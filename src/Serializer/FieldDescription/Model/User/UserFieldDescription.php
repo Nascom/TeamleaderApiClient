@@ -16,12 +16,14 @@ class UserFieldDescription extends UserFieldDescriptionBase
      */
     protected function getFieldMapping()
     {
-        $parentFields = parent::getFieldMapping();
-        $additionalFields = [
+        $fields = [
             'time_zone',
         ];
 
-        return array_merge($parentFields, $additionalFields);
+        return array_merge(
+            parent::getFieldMapping(),
+            $fields
+        );
     }
 
     /**

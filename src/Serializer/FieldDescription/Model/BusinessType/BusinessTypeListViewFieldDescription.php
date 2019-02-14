@@ -6,18 +6,11 @@ use Nascom\TeamleaderApiClient\Model\BusinessType\BusinessTypeListView;
 
 /**
  * Class BusinessTypeListViewFieldDescription
- * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\BusinessType
+ *
+ * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\LinkedBusinessType
  */
 class BusinessTypeListViewFieldDescription extends BusinessTypeFieldDescriptionBase
 {
-    /**
-     * @inheritdoc
-     */
-    protected function getFieldMapping()
-    {
-        return parent::getFieldMapping();
-    }
-
     /**
      * @inheritdoc
      */

@@ -2,8 +2,8 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Contact;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
-use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCompany;
+use Nascom\TeamleaderApiClient\Model\Aggregate\AddressWithType;
+use Nascom\TeamleaderApiClient\Model\Aggregate\CompanyEmployee;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomField;
 use Nascom\TeamleaderApiClient\Model\Contact\Contact;
 
@@ -14,18 +14,23 @@ use Nascom\TeamleaderApiClient\Model\Contact\Contact;
  */
 class ContactFieldDescription extends ContactFieldDescriptionBase
 {
+    /**
+     * @inheritdoc
+     */
     protected function getFieldMapping()
     {
-        $parentFields = parent::getFieldMapping();
-        $additionalFields = [
-            'addresses' => ['target_class' => Addresses::class.'[]'],
-            'companies' => ['target_class' => LinkedCompany::class.'[]'],
+        $fields = [
+            'addresses' => ['target_class' => AddressWithType::class.'[]'],
+            'companies' => ['target_class' => CompanyEmployee::class.'[]'],
             'remarks',
             'custom_fields' => ['target_class' => LinkedCustomField::class.'[]'],
             'marketing_mails_consent' => ['getter' => 'hasMarketingMailsConsent'],
         ];
 
-        return array_merge($parentFields, $additionalFields);
+        return array_merge(
+            parent::getFieldMapping(),
+            $fields
+        );
     }
 
     /**

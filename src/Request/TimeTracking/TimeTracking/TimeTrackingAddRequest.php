@@ -6,12 +6,14 @@ use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class TimeTrackingAddRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\TimeTracking\TimeTracking
  */
 class TimeTrackingAddRequest extends PostRequest
 {
     /**
      * TimeTrackingAddRequest constructor.
+     *
      * @param array $timeTracking
      */
     public function __construct(array $timeTracking)
@@ -23,8 +25,7 @@ class TimeTrackingAddRequest extends PostRequest
             $timeTracking['work_type_id'] = $id;
         }
 
-        unset
-        (
+        unset(
             $timeTracking['work_type']
         );
 

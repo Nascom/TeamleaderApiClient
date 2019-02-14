@@ -6,6 +6,7 @@ use Nascom\TeamleaderApiClient\Model\CreditNote\CreditNoteListView;
 
 /**
  * Class CreditNoteListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\CreditNote
  */
 class CreditNoteListViewFieldDescription extends CreditNoteFieldDescriptionBase

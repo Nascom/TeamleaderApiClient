@@ -30,7 +30,7 @@ class CustomFieldDefinitionRepository extends RepositoryBase
     }
 
     /**
-     * @return CustomFieldDefinitionListView
+     * @return CustomFieldDefinitionListView[]
      * @throws \Http\Client\Exception
      */
     public function listCustomFieldDefinitions()

@@ -6,12 +6,13 @@ use Nascom\TeamleaderApiClient\Model\Project\ProjectListView;
 
 /**
  * Class ProjectListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Project
  */
 class ProjectListViewFieldDescription extends ProjectFieldDescriptionBase
 {
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

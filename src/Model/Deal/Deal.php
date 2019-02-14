@@ -8,6 +8,7 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedQuotation;
 
 /**
  * Class Deal
+ *
  * @package Nascom\TeamleaderApiClient\Model\Deal
  */
 class Deal extends DealBase
@@ -15,7 +16,7 @@ class Deal extends DealBase
     /**
      * @var PhaseHistory[]
      */
-    private $phaseHistory = [];
+    private $phaseHistory;
 
     /**
      * @var LinkedQuotation[]
@@ -25,7 +26,7 @@ class Deal extends DealBase
     /**
      * @var LinkedCustomField[]
      */
-    private $customFields = [];
+    private $customFields;
 
     /**
      * @return PhaseHistory[]

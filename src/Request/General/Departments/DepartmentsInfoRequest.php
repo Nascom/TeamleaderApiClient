@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Request\General\Departments;
 
 use Nascom\TeamleaderApiClient\Request\GetRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class DepartmentsInfoRequest
@@ -11,6 +12,8 @@ use Nascom\TeamleaderApiClient\Request\GetRequest;
  */
 class DepartmentsInfoRequest extends GetRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * DepartmentsInfoRequest constructor.
      * @param string $id

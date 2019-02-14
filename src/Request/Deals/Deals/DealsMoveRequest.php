@@ -2,16 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Deals\Deals;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class DealsMoveRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Deals\Deals
  */
 class DealsMoveRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * DealsMoveRequest constructor.
+     *
      * @param string $id
      * @param string $phaseId
      */
@@ -22,7 +27,7 @@ class DealsMoveRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

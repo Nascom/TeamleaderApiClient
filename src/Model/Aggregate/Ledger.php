@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class Ledger
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class Ledger

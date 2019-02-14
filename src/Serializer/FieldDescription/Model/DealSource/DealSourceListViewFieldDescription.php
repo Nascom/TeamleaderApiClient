@@ -6,13 +6,13 @@ use Nascom\TeamleaderApiClient\Model\DealSource\DealSourceListView;
 
 /**
  * Class DealSourceListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\DealSource
  */
 class DealSourceListViewFieldDescription extends DealSourceFieldDescriptionBase
 {
-
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

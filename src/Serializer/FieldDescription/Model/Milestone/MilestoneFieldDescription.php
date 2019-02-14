@@ -6,12 +6,13 @@ use Nascom\TeamleaderApiClient\Model\Milestone\Milestone;
 
 /**
  * Class MilestoneFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Milestone
  */
 class MilestoneFieldDescription extends MilestoneFieldDescriptionBase
 {
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

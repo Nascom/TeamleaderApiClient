@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Request\General\WorkTypes;
 
 use Nascom\TeamleaderApiClient\Request\BaseRequest;
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
 /**
  * Class WorkTypesListRequest
@@ -11,6 +12,8 @@ use Nascom\TeamleaderApiClient\Request\BaseRequest;
  */
 class WorkTypesListRequest extends BaseRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * @inheritdoc
      */

@@ -2,16 +2,16 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCompany;
+use Nascom\TeamleaderApiClient\Model\Aggregate\CompanyEmployee;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedDefinition;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class LinkedCompanyDescription
+ * Class CompanyEmployeeFieldDescription
  *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
-class LinkedCompanyDescription extends FieldDescriptionBase
+class CompanyEmployeeFieldDescription extends FieldDescriptionBase
 {
     /**
      * @inheritdoc
@@ -30,6 +30,6 @@ class LinkedCompanyDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return LinkedCompany::class;
+        return CompanyEmployee::class;
     }
 }

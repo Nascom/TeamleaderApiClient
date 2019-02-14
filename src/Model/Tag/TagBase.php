@@ -4,17 +4,18 @@ namespace Nascom\TeamleaderApiClient\Model\Tag;
 
 /**
  * Class TagBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\TagBase
  */
 abstract class TagBase
 {
     /**
-     * @var string
+     * @var string[]
      */
     private $tag;
 
     /**
-     * @return string
+     * @return string[]
      */
     public function getTag()
     {
@@ -22,7 +23,7 @@ abstract class TagBase
     }
 
     /**
-     * @param string $tag
+     * @param string[] $tag
      */
     public function setTag($tag)
     {

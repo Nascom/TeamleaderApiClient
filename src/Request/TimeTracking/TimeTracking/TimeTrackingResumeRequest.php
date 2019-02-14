@@ -2,17 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Request\TimeTracking\TimeTracking;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
-use spec\PhpSpec\Process\ReRunner\CompositeReRunnerSpec;
 
 /**
  * Class TimeTrackingResumeRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\TimeTracking\TimeTracking
  */
 class TimeTrackingResumeRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * TimeTrackingResumeRequest constructor.
+     *
      * @param string $id
      * @param string|null $startedAt
      */
@@ -26,7 +30,7 @@ class TimeTrackingResumeRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

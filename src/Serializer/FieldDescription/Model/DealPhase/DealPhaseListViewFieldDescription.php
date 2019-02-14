@@ -6,20 +6,13 @@ use Nascom\TeamleaderApiClient\Model\DealPhase\DealPhaseListView;
 
 /**
  * Class DealPhaseListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\DealPhase
  */
 class DealPhaseListViewFieldDescription extends DealPhaseFieldDescriptionBase
 {
     /**
-     * @return array
-     */
-    protected function getFieldMapping()
-    {
-        return parent::getFieldMapping();
-    }
-
-    /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

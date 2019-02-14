@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
  * Class LinkedParticipantWithRole
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class LinkedParticipantWithRole

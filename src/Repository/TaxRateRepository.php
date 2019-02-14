@@ -7,16 +7,22 @@ use Nascom\TeamleaderApiClient\Request\Invoicing\TaxRates\TaxRatesListRequest;
 
 /**
  * Class TaxRateRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class TaxRateRepository extends RepositoryBase
 {
     /**
-     * @return TaxRateListView
+     * @return TaxRateListView[]
      * @throws \Http\Client\Exception
      */
     public function listTaxRates()
     {
-        return $this->handleRequest(new TaxRatesListRequest(), TaxRateListView::class.'[]');
+        $request = new TaxRatesListRequest();
+
+        return $this->handleRequest(
+            $request,
+            TaxRateListView::class.'[]'
+        );
     }
 }

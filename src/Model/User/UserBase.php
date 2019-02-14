@@ -8,6 +8,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class UserBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\User
  */
 abstract class UserBase extends ModelBase

@@ -6,13 +6,13 @@ use Nascom\TeamleaderApiClient\Model\CalendarEvents\CalendarEvent;
 
 /**
  * Class CalendarEventFieldDefinition
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\CalendarEvent
  */
 class CalendarEventFieldDefinition extends CalendarEventFieldDescriptionBase
 {
-
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

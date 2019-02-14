@@ -2,16 +2,21 @@
 
 namespace Nascom\TeamleaderApiClient\Request\CRM\Companies;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class CompaniesUntagRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\CRM\Companies
  */
 class CompaniesUntagRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * CompaniesUntagRequest constructor.
+     *
      * @param string $id
      * @param array $tags
      */
@@ -22,7 +27,7 @@ class CompaniesUntagRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

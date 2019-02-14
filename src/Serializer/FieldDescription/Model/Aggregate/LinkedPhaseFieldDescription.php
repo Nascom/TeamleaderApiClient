@@ -2,16 +2,15 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Address;
-use Nascom\TeamleaderApiClient\Model\Aggregate\Addresses;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedPhase;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class AddressesFieldDescription
+ * Class LinkedPhaseFieldDescription
  *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
-class AddressesFieldDescription extends FieldDescriptionBase
+class LinkedPhaseFieldDescription extends FieldDescriptionBase
 {
     /**
      * @inheritdoc
@@ -19,8 +18,8 @@ class AddressesFieldDescription extends FieldDescriptionBase
     protected function getFieldMapping()
     {
         return [
+            'id',
             'type',
-            'address' => ['target_class' => Address::class]
         ];
     }
 
@@ -29,6 +28,6 @@ class AddressesFieldDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return Addresses::class;
+        return LinkedPhase::class;
     }
 }

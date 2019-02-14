@@ -2,6 +2,11 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
+/**
+ * Class LinkedCustomField
+ *
+ * @package Nascom\TeamleaderApiClient\Model\Aggregate
+ */
 class LinkedCustomField
 {
     /**

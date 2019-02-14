@@ -6,16 +6,16 @@ use Nascom\TeamleaderApiClient\Model\TimeTracking\TimeTrackingListView;
 
 /**
  * Class TimeTrackingListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\TimeTracking
  */
 class TimeTrackingListViewFieldDescription extends TimeTrackingFieldDescriptionBase
 {
-
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {
-        return TimeTrackingListView::class;;
+        return TimeTrackingListView::class;
     }
 }

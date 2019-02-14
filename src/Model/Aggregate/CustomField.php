@@ -6,6 +6,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class CustomField
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class CustomField extends ModelBase
@@ -30,6 +31,4 @@ class CustomField extends ModelBase
     {
         $this->value = $value;
     }
-
-
 }

@@ -6,6 +6,7 @@ use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
  * Class ActivityTypeBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\ActivityType
  */
 abstract class ActivityTypeBase extends ModelBase

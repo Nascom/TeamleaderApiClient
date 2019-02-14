@@ -2,22 +2,26 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Projects\Projects;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class ProjectsUpdateRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Projects\Projects
  */
 class ProjectsUpdateRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * ProjectsUpdateRequest constructor.
+     *
      * @param array $project
      */
     public function __construct(array $project)
     {
-        unset
-        (
+        unset(
             $project['reference'],
             $project['customer'],
             $project['due_on'],
@@ -25,11 +29,12 @@ class ProjectsUpdateRequest extends PostRequest
             $project['milestones'],
             $project['participants']
         );
+
         $this->body = $project;
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

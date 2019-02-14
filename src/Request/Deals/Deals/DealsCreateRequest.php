@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Deals\Deals;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
@@ -10,6 +11,13 @@ use Nascom\TeamleaderApiClient\Request\PostRequest;
  */
 class DealsCreateRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
+    /**
+     * DealsCreateRequest constructor.
+     *
+     * @param array $deal
+     */
     public function __construct(array $deal)
     {
         if (isset($deal['lead']['contact_person']['id'])) {
@@ -36,7 +44,7 @@ class DealsCreateRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

@@ -2,23 +2,27 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Invoicing\Invoices;
 
+use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 use Nascom\TeamleaderApiClient\Request\PostRequest;
 
 /**
  * Class InvoicesDraftRequest
+ *
  * @package Nascom\TeamleaderApiClient\Request\Invoicing\Invoices
  */
 class InvoicesDraftRequest extends PostRequest
 {
+    use MultipleMethodsTrait;
+
     /**
      * InvoicesDraftRequest constructor.
+     *
      * @param array $invoice
      */
     public function __construct(array $invoice) {
         $invoice['department_id'] = $invoice['department']['id'];
-        dump($invoice);
-        unset
-        (
+
+        unset(
             $invoice['id'],
             $invoice['invoicee']['name'],
             $invoice['invoicee']['email'],
@@ -46,7 +50,7 @@ class InvoicesDraftRequest extends PostRequest
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getEndpoint()
     {

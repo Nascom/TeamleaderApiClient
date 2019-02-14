@@ -3,6 +3,7 @@
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
 /**
+ *
  * Class GroupedLine
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
@@ -11,12 +12,12 @@ class GroupedLine
     /**
      * @var Section
      */
-    private $section = [];
+    private $section;
 
     /**
-     * @var LineItem
+     * @var LineItem[]
      */
-    private $lineItems = [];
+    private $lineItems;
 
     /**
      * GroupedLine constructor.
@@ -46,7 +47,7 @@ class GroupedLine
     }
 
     /**
-     * @return LineItem
+     * @return LineItem[]
      */
     public function getLineItems()
     {
@@ -54,7 +55,7 @@ class GroupedLine
     }
 
     /**
-     * @param LineItem $lineItems
+     * @param LineItem[] $lineItems
      */
     public function setLineItems($lineItems)
     {

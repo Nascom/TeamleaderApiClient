@@ -2,14 +2,17 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
+use DateTime;
+
 /**
  * Class PaymentWithDate
+ *
  * @package Nascom\TeamleaderApiClient\Model\Aggregate
  */
 class PaymentWithDate
 {
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $paidAt;
 
@@ -20,17 +23,20 @@ class PaymentWithDate
 
     /**
      * PaymentWithDate constructor.
-     * @param \DateTime|null $paidAt
+     *
+     * @param DateTime|null $paidAt
      * @param PaymentAmount|null $payment
      */
-    public function __construct(\DateTime $paidAt = null, PaymentAmount $payment = null)
-    {
+    public function __construct(
+        DateTime $paidAt = null,
+        PaymentAmount $payment = null
+    ) {
         $this->paidAt = $paidAt;
         $this->payment = $payment;
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
     public function getPaidAt()
     {
@@ -38,7 +44,7 @@ class PaymentWithDate
     }
 
     /**
-     * @param \DateTime $paidAt
+     * @param DateTime $paidAt
      */
     public function setPaidAt($paidAt)
     {

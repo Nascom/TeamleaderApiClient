@@ -2,10 +2,9 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Webhook;
 
-use function PHPSTORM_META\type;
-
 /**
  * Class WebhookBase
+ *
  * @package Nascom\TeamleaderApiClient\Model\Webhook
  */
 abstract class WebhookBase

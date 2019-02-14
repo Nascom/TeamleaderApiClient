@@ -2,31 +2,33 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\Source;
+use Nascom\TeamleaderApiClient\Model\Aggregate\Address;
+use Nascom\TeamleaderApiClient\Model\Aggregate\AddressWithType;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class SourceFieldDescription
+ * Class AddressWithTypeFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
-class SourceFieldDescription extends FieldDescriptionBase
+class AddressWithTypeFieldDescription extends FieldDescriptionBase
 {
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
         return [
-            'id',
             'type',
+            'address' => ['target_class' => Address::class]
         ];
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {
-        return Source::class;
+        return AddressWithType::class;
     }
 }

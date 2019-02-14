@@ -7,22 +7,28 @@ use Nascom\TeamleaderApiClient\Model\Company\CompanyListView;
 
 /**
  * Class CompanyListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Company
  */
 class CompanyListViewFieldDescription extends CompanyFieldDescriptionBase
 {
+    /**
+     * @inheritdoc
+     */
     protected function getFieldMapping()
     {
-        $parentFields = parent::getFieldMapping();
-        $additionalFields = [
+        $fields = [
             'primary_address' => ['target_class' => Address::class],
         ];
 
-        return array_merge($parentFields, $additionalFields);
+        return array_merge(
+            parent::getFieldMapping(),
+            $fields
+        );
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

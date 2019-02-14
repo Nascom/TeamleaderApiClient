@@ -12,6 +12,7 @@ use Nascom\TeamleaderApiClient\Request\Projects\Milestones\MilestoneUpdateReques
 
 /**
  * Class MilestoneRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class MilestoneRepository extends RepositoryBase
@@ -22,9 +23,10 @@ class MilestoneRepository extends RepositoryBase
      */
     public function listMilestones()
     {
-        return $this->handleRequest
-        (
-            new MilestonesListRequest(),
+        $request = new MilestonesListRequest();
+
+        return $this->handleRequest(
+            $request,
             MilestoneListView::class.'[]'
         );
     }
@@ -36,9 +38,10 @@ class MilestoneRepository extends RepositoryBase
      */
     public function getMilestone($id)
     {
-        return $this->handleRequest
-        (
-            new MilestonesInfoRequest($id),
+        $request = new MilestonesInfoRequest($id);
+
+        return $this->handleRequest(
+            $request,
             Milestone::class
         );
     }
@@ -50,9 +53,10 @@ class MilestoneRepository extends RepositoryBase
      */
     public function addMilestone(Milestone $milestone)
     {
-        return $this->handleRequest
-        (
-            new MilestonesCreateRequest($this->normalize($milestone)),
+        $request = new MilestonesCreateRequest($this->normalize($milestone));
+
+        return $this->handleRequest(
+            $request,
             LinkedMileStone::class
         );
     }
@@ -63,6 +67,8 @@ class MilestoneRepository extends RepositoryBase
      */
     public function updateMilestone(Milestone $milestone)
     {
-        $this->apiClient->handle(new MilestoneUpdateRequest($this->normalize($milestone)));
+        $request = new MilestoneUpdateRequest($this->normalize($milestone));
+
+        $this->apiClient->handle($request);
     }
 }

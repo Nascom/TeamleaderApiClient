@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCompany;
 use Nascom\TeamleaderApiClient\Model\Company\Company;
 use Nascom\TeamleaderApiClient\Model\Company\CompanyListView;
 use Nascom\TeamleaderApiClient\Request\CRM\Companies\CompaniesAddRequest;
@@ -14,6 +15,7 @@ use Nascom\TeamleaderApiClient\Request\CRM\Companies\CompaniesUpdateRequest;
 
 /**
  * Class CompanyRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class CompanyRepository extends RepositoryBase
@@ -27,29 +29,39 @@ class CompanyRepository extends RepositoryBase
     {
         $request = new CompaniesInfoRequest($id);
 
-        return $this->handleRequest($request, Company::class);
+        return $this->handleRequest(
+            $request,
+            Company::class
+        );
     }
 
     /**
-     * @return CompanyListView
+     * @return CompanyListView[]
      * @throws \Http\Client\Exception
      */
     public function listCompanies()
     {
         $request = new CompaniesListRequest();
 
-        return $this->handleRequest($request, CompanyListView::class.'[]');
+        return $this->handleRequest(
+            $request,
+            CompanyListView::class.'[]'
+        );
     }
 
     /**
      * @param Company $company
+     * @return LinkedCompany
      * @throws \Http\Client\Exception
      */
     public function addCompany(Company $company)
     {
-        $companyArray = $this->normalize($company);
-        $contactAddRequest = new CompaniesAddRequest($companyArray);
-        $this->apiClient->handle($contactAddRequest);
+        $request = new CompaniesAddRequest($this->normalize($company));
+
+        return $this->handleRequest(
+            $request,
+            LinkedCompany::class
+        );
     }
 
     /**
@@ -58,26 +70,20 @@ class CompanyRepository extends RepositoryBase
      */
     public function updateCompany(Company $company)
     {
-        $companyArray = $this->normalize($company);
-        $contactAddRequest = new CompaniesUpdateRequest($companyArray);
-        $this->apiClient->handle($contactAddRequest);
+        $request = new CompaniesUpdateRequest($this->normalize($company));
+
+        $this->apiClient->handle($request);
     }
 
     /**
      * @param string $id
      * @throws \Http\Client\Exception
      */
-    public function deleteCompany($id) {
-        $this->apiClient->handle(new CompaniesDeleteRequest($id));
-    }
+    public function deleteCompany($id)
+    {
+        $request = new CompaniesDeleteRequest($id);
 
-    /**
-     * @param string $id
-     * @param array $tags
-     * @throws \Http\Client\Exception
-     */
-    public function tagCompany($id, array $tags) {
-        $this->apiClient->handle(new CompaniesTagRequest($id, $tags));
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -85,7 +91,22 @@ class CompanyRepository extends RepositoryBase
      * @param array $tags
      * @throws \Http\Client\Exception
      */
-    public function untagCompany($id, array $tags) {
-        $this->apiClient->handle(new CompaniesUntagRequest($id, $tags));
+    public function tagCompany($id, array $tags)
+    {
+        $request = new CompaniesTagRequest($id, $tags);
+
+        $this->apiClient->handle($request);
+    }
+
+    /**
+     * @param string $id
+     * @param array $tags
+     * @throws \Http\Client\Exception
+     */
+    public function untagCompany($id, array $tags)
+    {
+        $request = new CompaniesUntagRequest($id, $tags);
+
+        $this->apiClient->handle($request);
     }
 }

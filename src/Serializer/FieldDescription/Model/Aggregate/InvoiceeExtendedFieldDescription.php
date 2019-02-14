@@ -6,10 +6,14 @@ use Nascom\TeamleaderApiClient\Model\Aggregate\InvoiceeExtended;
 
 /**
  * Class InvoiceeExtendedFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
 class InvoiceeExtendedFieldDescription extends InvoiceeFieldDescriptionBase
 {
+    /**
+     * @inheritdoc
+     */
     protected function getFieldMapping()
     {
         return array_merge(
@@ -22,7 +26,7 @@ class InvoiceeExtendedFieldDescription extends InvoiceeFieldDescriptionBase
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

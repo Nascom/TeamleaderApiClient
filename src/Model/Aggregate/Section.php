@@ -2,6 +2,11 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Aggregate;
 
+/**
+ * Class Section
+ *
+ * @package Nascom\TeamleaderApiClient\Model\Aggregate
+ */
 class Section
 {
     /**

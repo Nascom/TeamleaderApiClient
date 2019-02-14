@@ -7,19 +7,28 @@ use Nascom\TeamleaderApiClient\Model\Invoice\InvoiceListView;
 
 /**
  * Class InvoiceListViewFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Invoice
  */
 class InvoiceListViewFieldDescription extends InvoiceFieldDescriptionBase
 {
+    /**
+     * @inheritdoc
+     */
     protected function getFieldMapping()
     {
-        return array_merge(parent::getFieldMapping(), [
-            'invoicee'=> ['target_class' => Invoicee::class],
-        ]);
+        $fields = [
+            'invoicee' => ['target_class' => Invoicee::class],
+        ];
+
+        return array_merge(
+            parent::getFieldMapping(),
+            $fields
+        );
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

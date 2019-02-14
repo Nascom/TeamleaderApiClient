@@ -16,6 +16,7 @@ use Nascom\TeamleaderApiClient\Request\Projects\Projects\ProjectsUpdateRequest;
 
 /**
  * Class ProjectRepository
+ *
  * @package Nascom\TeamleaderApiClient\Repository
  */
 class ProjectRepository extends RepositoryBase
@@ -26,9 +27,10 @@ class ProjectRepository extends RepositoryBase
      */
     public function listProjects()
     {
-        return $this->handleRequest
-        (
-            new ProjectsListRequest(),
+        $request = new ProjectsListRequest();
+
+        return $this->handleRequest(
+            $request,
             ProjectListView::class.'[]'
         );
     }
@@ -40,9 +42,10 @@ class ProjectRepository extends RepositoryBase
      */
     public function getProject($id)
     {
-        return $this->handleRequest
-        (
-            new ProjectsInfoRequest($id),
+        $request = new ProjectsInfoRequest($id);
+
+        return $this->handleRequest(
+            $request,
             Project::class
         );
     }
@@ -54,9 +57,10 @@ class ProjectRepository extends RepositoryBase
      */
     public function addProject(Project $project)
     {
-        return $this->handleRequest
-        (
-            new ProjectsCreateRequest($this->normalize($project)),
+        $request = new ProjectsCreateRequest($this->normalize($project));
+
+        return $this->handleRequest(
+            $request,
             LinkedProject::class
         );
     }
@@ -67,10 +71,9 @@ class ProjectRepository extends RepositoryBase
      */
     public function updateProject(Project $project)
     {
-        $this->apiClient->handle
-        (
-            new ProjectsUpdateRequest($this->normalize($project))
-        );
+        $request = new ProjectsUpdateRequest($this->normalize($project));
+
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -79,10 +82,9 @@ class ProjectRepository extends RepositoryBase
      */
     public function deleteProject($id)
     {
-        $this->apiClient->handle
-        (
-            new ProjectsDeleteRequest($id)
-        );
+        $request = new ProjectsDeleteRequest($id);
+
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -92,10 +94,9 @@ class ProjectRepository extends RepositoryBase
      */
     public function addParticipant($id, LinkedParticipantWithRole $linkedParticipantWithRole)
     {
-        $this->apiClient->handle
-        (
-            new ProjectsAddParticipantRequest($id, $this->normalize($linkedParticipantWithRole))
-        );
+        $request = new ProjectsAddParticipantRequest($id, $this->normalize($linkedParticipantWithRole));
+
+        $this->apiClient->handle($request);
     }
 
     /**
@@ -105,9 +106,8 @@ class ProjectRepository extends RepositoryBase
      */
     public function updateParticipant($id, LinkedParticipantWithRole $linkedParticipantWithRole)
     {
-        $this->apiClient->handle
-        (
-            new  ProjectsUpdateParticipantRequest($id, $this->normalize($linkedParticipantWithRole))
-        );
+        $request = new  ProjectsUpdateParticipantRequest($id, $this->normalize($linkedParticipantWithRole));
+
+        $this->apiClient->handle($request);
     }
 }

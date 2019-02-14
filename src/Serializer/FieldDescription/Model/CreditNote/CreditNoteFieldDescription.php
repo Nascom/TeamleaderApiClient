@@ -7,25 +7,28 @@ use Nascom\TeamleaderApiClient\Model\CreditNote\CreditNote;
 
 /**
  * Class CreditNoteFieldDescription
+ *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\CreditNote
  */
 class CreditNoteFieldDescription extends CreditNoteFieldDescriptionBase
 {
     /**
-     * @return array
+     * @inheritdoc
      */
     protected function getFieldMapping()
     {
+        $fields = [
+            'grouped_lines' => ['target_class' => GroupedLine::class.'[]'],
+        ];
+
         return array_merge(
             parent::getFieldMapping(),
-            [
-                'grouped_lines' => ['target_class' => GroupedLine::class.'[]'],
-            ]
+            $fields
         );
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getTargetClass()
     {

@@ -5,8 +5,9 @@ namespace Nascom\TeamleaderApiClient\Model\BusinessType;
 use Nascom\TeamleaderApiClient\Model\ModelBase;
 
 /**
- * Class BusinessType
- * @package Nascom\TeamleaderApiClient\Model\BusinessType
+ * Class LinkedBusinessType
+ *
+ * @package Nascom\TeamleaderApiClient\Model\LinkedBusinessType
  */
 abstract class BusinessTypeBase extends ModelBase
 {

@@ -2,15 +2,15 @@
 
 namespace Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\BusinessType;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCompany;
 use Nascom\TeamleaderApiClient\Serializer\FieldDescription\FieldDescriptionBase;
 
 /**
- * Class BusinessTypeFieldDescriptionBase
+ * Class LinkedCompanyFieldDescription
  *
  * @package Nascom\TeamleaderApiClient\Serializer\FieldDescription\Model\Aggregate
  */
-class BusinessTypeFieldDescription extends FieldDescriptionBase
+class LinkedCompanyFieldDescription extends FieldDescriptionBase
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class BusinessTypeFieldDescription extends FieldDescriptionBase
     protected function getFieldMapping()
     {
         return [
-            'type',
             'id',
+            'type',
         ];
     }
 
@@ -28,6 +28,6 @@ class BusinessTypeFieldDescription extends FieldDescriptionBase
      */
     public function getTargetClass()
     {
-        return BusinessType::class;
+        return LinkedCompany::class;
     }
 }
