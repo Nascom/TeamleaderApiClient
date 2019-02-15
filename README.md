@@ -53,7 +53,13 @@ use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
 $apiClient = GuzzleApiClientFactory::create(
     $provider,
     $accessToken,
-    ['timeout' => 3.0] // Optional extra configuration.
+    [ // Optional extra configuration.
+        'timeout' => 3.0, 
+        'callback' => function($newActionToken) {
+            // Do stuff with the new token
+            // ...
+        }
+    ] 
 );
 
 // Alternatively, you can use any other PHP-HTTP compatible client of your
@@ -77,17 +83,31 @@ All available requests can be found [here][request-list].
 <?php
 
 use Nascom\TeamleaderApiClient\Request\General\Users\UsersMeRequest;
-use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsListRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Companies\CompaniesListRequest;
 
 $request = new UsersMeRequest();
 $response = $apiClient->handle($request);
 $userArray = json_decode($response->getBody()->getContents());
 
 // A slightly more complex example involves filtering and sorting.
-$request = new ContactsListRequest($filter);
-$request->getFilter()->addTag('prospect');
-$request->getPageInfo()->setPageNumber(3);
-$request->getSortInfo()->addSort('updated_at');
+$filters = [
+    'email' => [
+        'type' => 'primary',
+        'email' => 'info@example.org',
+    ],
+];
+$pagination = [
+    'size' => 5,
+    'number' => 1,
+];
+$sorting = [
+    'name' => 'asc',
+    'added_at' => 'desc',
+];
+$request = new CompaniesListRequest();
+$request->setFilters($filters);
+$request->setPage($page);
+$request->setSort($sort);
 $response = $apiClient->handle($request);
 ```
 
@@ -103,7 +123,6 @@ to install [Symfony's Serializer component][symfony-serializer]
 
 use Nascom\TeamleaderApiClient\Teamleader;
 use Nascom\TeamleaderApiClient\Request\Attributes\Filter\ContactFilter;
-use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 
 // Instantiate using the default serializer setup.
 $teamleader = Teamleader::withDefaultSerializer($apiClient);
@@ -113,14 +132,32 @@ $user = $teamleader->users()->me();
 echo get_class($user); // => 'Nascom\TeamleaderApiClient\Model\User'
 echo $user->getAccount()->getType(); // => 'account'
 
-// Filters, page info and sorting can be passed as arguments when applicable.
-$filter = new ContactFilter();
-$filter->setEmail(new Email('some@email.com', 'primary'));
-$contacts = $teamleader->contacts()->listContacts(
-    $filter,
-    new PageInfo(5),
-    new SortInfo('added_at')
+// Perform a companies.list request
+$companies = $teamleader->companies()->listCompanies();
+
+// Optionally filters, page info and sorting can be passed as arguments when applicable.
+$filters = [
+    'email' => [
+        'type' => 'primary',
+        'email' => 'info@example.org',
+    ],
+];
+$pagination = [
+    'size' => 5,
+    'number' => 1,
+];
+$sorting = [
+    'name' => 'asc',
+    'added_at' => 'desc',
+];
+$companies = $teamleader->companies()->listCompanies(
+    $filters,
+    $pagination,
+    $sorting
 );
+
+// Perform a companies.add request
+
 ```
 
 [teamleader-docs]: https://developer.teamleader.eu
@@ -130,4 +167,4 @@ $contacts = $teamleader->contacts()->listContacts(
 [league-usage]: http://oauth2-client.thephpleague.com/usage/
 [guzzle-homepage]: https://github.com/guzzle/guzzle
 [symfony-serializer]: https://symfony.com/doc/current/components/serializer.html
-[request-list]: https://github.com/Nascom/TeamleaderApiClient/tree/v2/src/Request
+[request-list]: https://github.com/Nascom/TeamleaderApiClient/tree/v2-refactor/src/Request

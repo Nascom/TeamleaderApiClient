@@ -136,6 +136,7 @@ class SerializerFactory
                 new FieldDescription\Model\Aggregate\LinkedTimeTrackingFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedTimerFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedCompanyFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedUserFieldDescription(),
             ]
         );
 

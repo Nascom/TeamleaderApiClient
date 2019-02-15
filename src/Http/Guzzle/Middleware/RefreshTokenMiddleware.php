@@ -52,7 +52,6 @@ class RefreshTokenMiddleware
     public function __invoke(callable $handler)
     {
         return function (RequestInterface $request, array $options) use ($handler) {
-            dump($this->token);
             if ($this->token->hasExpired()) {
                 $this->refreshToken();
             }

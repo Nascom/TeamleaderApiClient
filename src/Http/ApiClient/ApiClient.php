@@ -9,7 +9,6 @@ use Nascom\OAuth2\Client\Provider\Teamleader;
 use Nascom\TeamleaderApiClient\Request\Attributes\Filter\FilterInterface;
 use Nascom\TeamleaderApiClient\Request\Attributes\Page\PageInterface;
 use Nascom\TeamleaderApiClient\Request\Attributes\Sort\SortInterface;
-use Nascom\TeamleaderApiClient\Request\BaseListRequest;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
 
 /**
@@ -74,6 +73,7 @@ class ApiClient implements ApiClientInterface
 
         if ($request instanceof FilterInterface) {
             if (!empty($filters = $request->getFilters())) {
+                dump($filters);
                 foreach ($filters as $filter => $value) {
                     $body['filter'][$filter] = $value;
                 }
@@ -82,6 +82,7 @@ class ApiClient implements ApiClientInterface
 
         if ($request instanceof SortInterface) {
             if (!empty($sort = $request->getSort())) {
+                dump($sort);
                 foreach ($sort as $field => $order) {
                     $body['sort'][] = [
                         'field' => $field,
@@ -93,6 +94,7 @@ class ApiClient implements ApiClientInterface
 
         if ($request instanceof PageInterface) {
             if (!empty($page = $request->getPage())) {
+                dump($page);
                 $body['page'] = $page;
             }
         }
