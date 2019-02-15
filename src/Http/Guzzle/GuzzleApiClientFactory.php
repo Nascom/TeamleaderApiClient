@@ -17,7 +17,6 @@ use GuzzleHttp\Client as GuzzleHttpClient;
  */
 class GuzzleApiClientFactory
 {
-
     /**
      * @param AbstractProvider $provider
      * @param AccessToken|array $accessToken
@@ -30,7 +29,15 @@ class GuzzleApiClientFactory
         array $config = []
     ) {
         if (!isset($config['handler'])) {
-            $handler = self::initialiseHandlerStack($provider, $accessToken);
+            if (!isset($config['callback'])) {
+                $config['callback'] = null;
+            }
+            $handler = self::initialiseHandlerStack(
+                $provider,
+                $accessToken,
+                $config['callback']
+            );
+
             $config['handler'] = $handler;
         }
 
@@ -43,16 +50,19 @@ class GuzzleApiClientFactory
     /**
      * @param AbstractProvider $provider
      * @param AccessToken $accessToken
+     * @param callable $refreshTokenCallback
      * @return HandlerStack
      */
     protected static function initialiseHandlerStack(
         AbstractProvider $provider,
-        AccessToken $accessToken
+        AccessToken $accessToken,
+        callable $refreshTokenCallback = null
     ) {
         $handlerStack = HandlerStack::create();
         $refreshMiddleware = new RefreshTokenMiddleware(
             $provider,
-            $accessToken
+            $accessToken,
+            $refreshTokenCallback
         );
         $handlerStack->push($refreshMiddleware);
 

@@ -101,8 +101,6 @@ class ApiClient implements ApiClientInterface
             $options['body'] = json_encode($body);
         }
 
-        dump($options);
-
         $psrRequest = $this->provider->getAuthenticatedRequest(
             $request->getMethod() ?: $this->defaultMethod,
             Teamleader::API_BASE_URL.$request->getEndpoint(),
