@@ -45,12 +45,18 @@ class UserRepository extends RepositoryBase
     }
 
     /**
+     * @param array $filters
+     * @param array $sort
+     * @param array $page
      * @return UserListView[]
      * @throws \Http\Client\Exception
      */
-    public function listUsers()
+    public function listUsers(array $filters = [], array $sort = [], array $page = [])
     {
         $request = new UsersListRequest();
+        $request->setFilters($filters);
+        $request->setSort($sort);
+        $request->setPage($page);
 
         return $this->handleRequest(
             $request,

@@ -16,12 +16,16 @@ class TagRepository extends RepositoryBase
     use MultipleMethodsTrait;
 
     /**
+     * @param array $page
+     * @param array $sort
      * @return TagListView[]
      * @throws \Http\Client\Exception
      */
-    public function listTags()
+    public function listTags(array $page = [], array $sort = [])
     {
         $request = new TagsListRequest();
+        $request->setPage($page);
+        $request->setSort($sort);
 
         return $this->handleRequest(
             $request,

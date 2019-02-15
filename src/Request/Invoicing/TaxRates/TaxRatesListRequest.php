@@ -2,6 +2,9 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Invoicing\TaxRates;
 
+use Nascom\TeamleaderApiClient\Request\Attributes\Filter\FilterTrait;
+use Nascom\TeamleaderApiClient\Request\Attributes\Page\PageTrait;
+use Nascom\TeamleaderApiClient\Request\Attributes\Sort\SortTrait;
 use Nascom\TeamleaderApiClient\Request\GetRequest;
 use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
@@ -10,9 +13,9 @@ use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
  *
  * @package Nascom\TeamleaderApiClient\Request\Invoicing\TaxRates
  */
-class TaxRatesListRequest extends GetRequest
+class TaxRatesListRequest extends GetRequest implements FilterInterface, PageInterface, SortInterface
 {
-    use MultipleMethodsTrait;
+    use MultipleMethodsTrait, FilterTrait, PageTrait, SortTrait;
 
     /**
      * @inheritdoc

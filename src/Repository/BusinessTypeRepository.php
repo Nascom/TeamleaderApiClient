@@ -13,12 +13,13 @@ use Nascom\TeamleaderApiClient\Request\CRM\BusinessTypes\BusinessTypesListReques
 class BusinessTypeRepository extends RepositoryBase
 {
     /**
+     * @param string|null $country
      * @return BusinessTypeListView[]
      * @throws \Http\Client\Exception
      */
-    public function listBusinessTypes()
+    public function listBusinessTypes($country = null)
     {
-        $request = new BusinessTypesListRequest();
+        $request = new BusinessTypesListRequest($country);
 
         return $this->handleRequest(
             $request,

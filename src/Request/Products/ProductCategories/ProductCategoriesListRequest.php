@@ -2,6 +2,8 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Products\ProductCategories;
 
+use Nascom\TeamleaderApiClient\Request\Attributes\Filter\FilterInterface;
+use Nascom\TeamleaderApiClient\Request\Attributes\Filter\FilterTrait;
 use Nascom\TeamleaderApiClient\Request\GetRequest;
 use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
@@ -10,9 +12,9 @@ use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
  *
  * @package Nascom\TeamleaderApiClient\Request\Products\ProductCategories
  */
-class ProductCategoriesListRequest extends GetRequest
+class ProductCategoriesListRequest extends GetRequest implements FilterInterface
 {
-    use MultipleMethodsTrait;
+    use MultipleMethodsTrait, FilterTrait;
 
     /**
      * @inheritdoc

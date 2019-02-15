@@ -65,6 +65,8 @@ class RefreshTokenMiddleware
      */
     private function refreshToken()
     {
+        dump('RefreshTokenMiddleware->RefreshToken');
+
         $this->token = $this->provider->getAccessToken('refresh_token', [
             'refresh_token' => $this->token->getRefreshToken()
         ]);

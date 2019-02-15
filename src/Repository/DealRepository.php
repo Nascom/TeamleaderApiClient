@@ -24,12 +24,18 @@ use Nascom\TeamleaderApiClient\Request\Deals\Deals\LostReasonsListRequest;
 class DealRepository extends RepositoryBase
 {
     /**
+     * @param array $filters
+     * @param array $page
+     * @param array $sort
      * @return DealListView[]
      * @throws \Http\Client\Exception
      */
-    public function listDeals()
+    public function listDeals(array $filters = [], array $page = [], array $sort = [])
     {
         $request = new DealsListRequest();
+        $request->setFilters($filters);
+        $request->setSort($sort);
+        $request->setPage($page);
 
         return $this->handleRequest(
             $request,
@@ -126,12 +132,16 @@ class DealRepository extends RepositoryBase
     }
 
     /**
+     * @param array $page
+     * @param array $sort
      * @return LostReasonListView[]
      * @throws \Http\Client\Exception
      */
-    public function listLostReasons()
+    public function listLostReasons(array $page = [], array $sort = [])
     {
         $request = new LostReasonsListRequest();
+        $request->setPage($page);
+        $request->setSort($sort);
 
         return $this->handleRequest(
             $request,

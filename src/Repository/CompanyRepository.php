@@ -36,12 +36,18 @@ class CompanyRepository extends RepositoryBase
     }
 
     /**
+     * @param array $filters
+     * @param array $page
+     * @param array $sort
      * @return CompanyListView[]
      * @throws \Http\Client\Exception
      */
-    public function listCompanies()
+    public function listCompanies(array $filters = [], array $page = [], array $sort = [])
     {
         $request = new CompaniesListRequest();
+        $request->setFilters($filters);
+        $request->setPage($page);
+        $request->setSort($sort);
 
         return $this->handleRequest(
             $request,

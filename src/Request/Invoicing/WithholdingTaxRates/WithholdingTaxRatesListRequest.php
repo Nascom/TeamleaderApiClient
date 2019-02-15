@@ -2,6 +2,8 @@
 
 namespace Nascom\TeamleaderApiClient\Request\Invoicing\WithholdingTaxRates;
 
+use Nascom\TeamleaderApiClient\Request\Attributes\Filter\FilterInterface;
+use Nascom\TeamleaderApiClient\Request\Attributes\Filter\FilterTrait;
 use Nascom\TeamleaderApiClient\Request\GetRequest;
 use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
@@ -10,9 +12,9 @@ use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
  *
  * @package Nascom\TeamleaderApiClient\Request\Invoicing\WithholdingTaxRates
  */
-class WithholdingTaxRatesListRequest extends GetRequest
+class WithholdingTaxRatesListRequest extends GetRequest implements FilterInterface
 {
-    use MultipleMethodsTrait;
+    use MultipleMethodsTrait, FilterTrait;
 
     /**
      * @inheritdoc

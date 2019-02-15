@@ -7,6 +7,8 @@ use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
 use Nascom\OAuth2\Client\Provider\Teamleader;
 use Nascom\TeamleaderApiClient\Request\Attributes\Filter\FilterInterface;
+use Nascom\TeamleaderApiClient\Request\Attributes\Page\PageInterface;
+use Nascom\TeamleaderApiClient\Request\Attributes\Sort\SortInterface;
 use Nascom\TeamleaderApiClient\Request\BaseListRequest;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
 
@@ -70,12 +72,15 @@ class ApiClient implements ApiClientInterface
         $options = [];
         $body = $request->getBody();
 
-        if ($request instanceof BaseListRequest) {
+        if ($request instanceof FilterInterface) {
             if (!empty($filters = $request->getFilters())) {
-                foreach ($filters as $key => $value) {
-                    $body['filter'][$key] = $value;
+                foreach ($filters as $filter => $value) {
+                    $body['filter'][$filter] = $value;
                 }
             }
+        }
+
+        if ($request instanceof SortInterface) {
             if (!empty($sort = $request->getSort())) {
                 foreach ($sort as $field => $order) {
                     $body['sort'][] = [
@@ -84,14 +89,13 @@ class ApiClient implements ApiClientInterface
                     ];
                 }
             }
-            if (!empty($page = $request->getPage())) {
-                foreach ($page as $size => $number) {
-                    $body['page']['size'] = $size;
-                    $body['page']['number'] = $number;
-                }
-            }
         }
 
+        if ($request instanceof PageInterface) {
+            if (!empty($page = $request->getPage())) {
+                $body['page'] = $page;
+            }
+        }
 
         if (!empty($body)) {
             $options['body'] = json_encode($body);

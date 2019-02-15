@@ -21,12 +21,18 @@ use Nascom\TeamleaderApiClient\Request\TimeTracking\TimeTracking\TimeTrackingUpd
 class TimeTrackingRepository extends RepositoryBase
 {
     /**
+     * @param array $filters
+     * @param array $page
+     * @param array $sort
      * @return TimeTrackingListView[]
      * @throws \Http\Client\Exception
      */
-    public function listTimeTracking()
+    public function listTimeTracking(array $filters = [], array $page = [], array $sort = [])
     {
         $request = new TimeTrackingListRequest();
+        $request->setFilters($filters);
+        $request->setPage($page);
+        $request->setSort($sort);
 
         return $this->handleRequest(
             $request,

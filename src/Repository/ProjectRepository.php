@@ -22,12 +22,18 @@ use Nascom\TeamleaderApiClient\Request\Projects\Projects\ProjectsUpdateRequest;
 class ProjectRepository extends RepositoryBase
 {
     /**
+     * @param array $filters
+     * @param array $page
+     * @param array $sort
      * @return ProjectListView[]
      * @throws \Http\Client\Exception
      */
-    public function listProjects()
+    public function listProjects(array $filters = [], array $page = [], array $sort = [])
     {
         $request = new ProjectsListRequest();
+        $request->setFilters($filters);
+        $request->setPage($page);
+        $request->setSort($sort);
 
         return $this->handleRequest(
             $request,

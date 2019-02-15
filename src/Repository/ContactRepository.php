@@ -29,7 +29,7 @@ class ContactRepository extends RepositoryBase
      * @return ContactListView[]
      * @throws \Http\Client\Exception
      */
-    public function listContacts(array $filters = [], array $sort = [], array $page = [])
+    public function listContacts(array $filters = [], array $page = [], array $sort = [])
     {
         $request = new ContactsListRequest();
         $request->setFilters($filters);

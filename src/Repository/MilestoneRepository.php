@@ -18,12 +18,18 @@ use Nascom\TeamleaderApiClient\Request\Projects\Milestones\MilestoneUpdateReques
 class MilestoneRepository extends RepositoryBase
 {
     /**
+     * @param array $filters
+     * @param array $page
+     * @param array $sort
      * @return MilestoneListView[]
      * @throws \Http\Client\Exception
      */
-    public function listMilestones()
+    public function listMilestones(array $filters = [], array $page = [], array $sort = [])
     {
         $request = new MilestonesListRequest();
+        $request->setFilters($filters);
+        $request->setSort($sort);
+        $request->setPage($page);
 
         return $this->handleRequest(
             $request,

@@ -2,6 +2,10 @@
 
 namespace Nascom\TeamleaderApiClient\Request\General\CustomFieldDefinition;
 
+use Nascom\TeamleaderApiClient\Request\Attributes\Page\PageInterface;
+use Nascom\TeamleaderApiClient\Request\Attributes\Page\PageTrait;
+use Nascom\TeamleaderApiClient\Request\Attributes\Sort\SortInterface;
+use Nascom\TeamleaderApiClient\Request\Attributes\Sort\SortTrait;
 use Nascom\TeamleaderApiClient\Request\GetRequest;
 use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
 
@@ -10,9 +14,9 @@ use Nascom\TeamleaderApiClient\Request\MultipleMethodsTrait;
  *
  * @package Nascom\TeamleaderApiClient\Request\General\Departments
  */
-class CustomFieldDefinitionListRequest extends GetRequest
+class CustomFieldDefinitionListRequest extends GetRequest implements PageInterface, SortInterface
 {
-    use MultipleMethodsTrait;
+    use MultipleMethodsTrait, PageTrait, SortTrait;
 
     /**
      * @inheritdoc

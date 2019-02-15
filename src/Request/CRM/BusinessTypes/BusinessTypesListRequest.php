@@ -15,6 +15,16 @@ class BusinessTypesListRequest extends GetRequest
     use MultipleMethodsTrait;
 
     /**
+     * BusinessTypesListRequest constructor.
+     *
+     * @param string|null $country
+     */
+    public function __construct($country = null)
+    {
+        $this->body['country'] = $country;
+    }
+
+    /**
      * @inheritdoc
      */
     public function getEndpoint()

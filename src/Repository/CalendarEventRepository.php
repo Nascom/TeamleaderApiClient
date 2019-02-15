@@ -34,12 +34,18 @@ class CalendarEventRepository extends RepositoryBase
     }
 
     /**
+     * @param array $filters
+     * @param array $page
+     * @param array $sort
      * @return CalendarEventListView[]
      * @throws \Http\Client\Exception
      */
-    public function listCalendarEvents()
+    public function listCalendarEvents(array $filters = [], array $page = [], array $sort = [])
     {
         $request = new CalendarEventsListRequest();
+        $request->setFilters($filters);
+        $request->setPage($page);
+        $request->setSort($sort);
 
         return $this->handleRequest(
             $request,

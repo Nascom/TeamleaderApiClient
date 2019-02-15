@@ -17,12 +17,18 @@ use Nascom\TeamleaderApiClient\Request\Invoicing\CreditNotes\CreditNotesListRequ
 class CreditNoteRepository extends RepositoryBase
 {
     /**
+     * @param array $filters
+     * @param array $page
+     * @param array $sort
      * @return CreditNoteListView[]
      * @throws \Http\Client\Exception
      */
-    public function listCreditNotes()
+    public function listCreditNotes(array $filters = [], array $page = [], array $sort = [])
     {
         $request = new CreditNotesListRequest();
+        $request->setFilters($filters);
+        $request->setPage($page);
+        $request->setSort($sort);
 
         return $this->handleRequest(
             $request,

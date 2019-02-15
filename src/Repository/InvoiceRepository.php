@@ -41,12 +41,18 @@ class InvoiceRepository extends RepositoryBase
     }
 
     /**
+     * @param array $filters
+     * @param array $page
+     * @param array $sort
      * @return InvoiceListView[]
      * @throws \Http\Client\Exception
      */
-    public function listInvoices()
+    public function listInvoices(array $filters = [], array $page = [], array $sort = [])
     {
         $request = new InvoicesListRequest();
+        $request->setFilters($filters);
+        $request->setPage($page);
+        $request->setSort($sort);
 
         return $this->handleRequest(
             $request,

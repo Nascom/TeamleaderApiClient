@@ -13,12 +13,14 @@ use Nascom\TeamleaderApiClient\Request\Invoicing\WithholdingTaxRates\Withholding
 class WithholdingTaxRateRepository extends RepositoryBase
 {
     /**
+     * @param array $filters
      * @return WithholdingTaxRateListView[]
      * @throws \Http\Client\Exception
      */
-    public function listWithholdingTaxRates()
+    public function listWithholdingTaxRates(array $filters = [])
     {
         $request = new WithholdingTaxRatesListRequest();
+        $request->setFilters($filters);
 
         return $this->handleRequest(
             $request,

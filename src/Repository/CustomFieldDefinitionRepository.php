@@ -30,12 +30,16 @@ class CustomFieldDefinitionRepository extends RepositoryBase
     }
 
     /**
+     * @param array $page
+     * @param array $sort
      * @return CustomFieldDefinitionListView[]
      * @throws \Http\Client\Exception
      */
-    public function listCustomFieldDefinitions()
+    public function listCustomFieldDefinitions(array $page = [], array $sort = [])
     {
         $request = new CustomFieldDefinitionListRequest();
+        $request->setSort($sort);
+        $request->setPage($page);
 
         return $this->handleRequest(
             $request,

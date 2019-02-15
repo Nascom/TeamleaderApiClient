@@ -13,12 +13,14 @@ use Nascom\TeamleaderApiClient\Request\Products\ProductCategories\ProductCategor
 class ProductCategoryRepository extends RepositoryBase
 {
     /**
+     * @param array $filters
      * @return ProductCategoryListView[]
      * @throws \Http\Client\Exception
      */
-    public function listProductCategories()
+    public function listProductCategories(array $filters = [])
     {
         $request = new ProductCategoriesListRequest();
+        $request->setFilters($filters);
 
         return $this->handleRequest(
             $request,

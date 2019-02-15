@@ -13,11 +13,15 @@ use Nascom\TeamleaderApiClient\Request\Calendar\ActivityTypes\ActivityTypesListR
 class ActivityTypeRepository extends RepositoryBase
 {
     /**
+     * @param array $filters
+     * @param array $page
      * @return ActivityTypeListView[]
      * @throws \Http\Client\Exception
      */
-    public function listActivityTypes() {
+    public function listActivityTypes(array $filters = [], array $page = []) {
         $request = new ActivityTypesListRequest();
+        $request->setFilters($filters);
+        $request->setPage($page);
 
         return $this->handleRequest(
             $request,
