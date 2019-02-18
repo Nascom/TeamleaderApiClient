@@ -180,7 +180,7 @@ $teamleader->companies()->updateCompany($company);
 // Performing a companies.delete request
 $teamleader->companies()->deleteCompany($linkedCompany->getId());
 
-// Perform a companies.list request
+// Performing a companies.list request
 $companies = $teamleader->companies()->listCompanies();
 
 // Performing a companies.list request with filters, pagination and sorting
@@ -200,6 +200,9 @@ $sorting = [
 ];
 $companies = $teamleader->companies()->listCompanies($filters, $pagination, $sorting);
 ```
+
+###  Known issues
+The `timeTracking.info` request results in a `'400 Bad Request' response: {"errors":[{"code":0,"title":"Key id must be present","status":400,"meta":{"field":"id"}}]}`
 
 [teamleader-docs]: https://developer.teamleader.eu
 [php-http-homepage]: http://docs.php-http.org/en/latest/

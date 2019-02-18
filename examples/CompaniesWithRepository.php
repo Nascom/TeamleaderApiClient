@@ -52,7 +52,7 @@ $teamleader->companies()->updateCompany($company);
 // Performing a companies.delete request
 $teamleader->companies()->deleteCompany($linkedCompany->getId());
 
-// Perform a companies.list request
+// Performing a companies.list request
 $companies = $teamleader->companies()->listCompanies();
 
 // Performing a companies.list request with filters, pagination and sorting
