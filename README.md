@@ -82,14 +82,46 @@ All available requests can be found [here][request-list].
 ```php
 <?php
 
-use Nascom\TeamleaderApiClient\Request\General\Users\UsersMeRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Companies\CompaniesAddRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Companies\CompaniesDeleteRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Companies\CompaniesInfoRequest;
 use Nascom\TeamleaderApiClient\Request\CRM\Companies\CompaniesListRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Companies\CompaniesUpdateRequest;
 
-$request = new UsersMeRequest();
+// Performing a companies.add request
+$company = [
+    'name' => 'TeamLeader',
+    'emails' => [
+        ['type' => 'primary', 'email' => 'sales@teamleader.eu'],
+        ['type' => 'invoicing', 'email' => 'invoicing@teamleader.eu'],
+    ],
+    'language' => 'en',
+    'website' => 'https://teamleader.eu/',
+];
+$request = new CompaniesAddRequest($company);
 $response = $apiClient->handle($request);
-$userArray = json_decode($response->getBody()->getContents());
+$linkedCompany = json_decode($response->getBody()->getContents(), true);
 
-// A slightly more complex example involves filtering and sorting.
+// Performing a companies.info request
+$request = new CompaniesInfoRequest($linkedCompany['data']['id']);
+$response = $apiClient->handle($request);
+$company = json_decode($response->getBody()->getContents(), true)['data'];
+
+// Performing a companies.update request
+$company['custom_fields'][0]['value'] = 'New Custom Value';
+$request = new CompaniesUpdateRequest($company);
+$apiClient->handle($request);
+
+// Performing a companies.delete request
+$request = new CompaniesDeleteRequest($linkedCompany['data']['id']);
+$apiClient->handle($request);
+
+// Performing a companies.list request
+$request = new CompaniesListRequest();
+$response = $apiClient->handle($request);
+$companies = json_decode($response->getBody()->getContents());
+
+// Performing a companies.list request with filters, pagination and sorting
 $filters = [
     'email' => [
         'type' => 'primary',
@@ -105,10 +137,10 @@ $sorting = [
     'added_at' => 'desc',
 ];
 $request = new CompaniesListRequest();
-$request->setFilters($filters);
-$request->setPage($page);
-$request->setSort($sort);
+$request->setPage($pagination);
+$request->setSort($sorting);
 $response = $apiClient->handle($request);
+$companies = json_decode($response->getBody()->getContents());
 ```
 
 ###  Using the repository classes
@@ -121,21 +153,37 @@ to install [Symfony's Serializer component][symfony-serializer]
 ```php
 <?php
 
-use Nascom\TeamleaderApiClient\Teamleader;
-use Nascom\TeamleaderApiClient\Request\Attributes\Filter\ContactFilter;
+use Nascom\TeamleaderApiClient\Model\Company\Company;
+use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 
-// Instantiate using the default serializer setup.
-$teamleader = Teamleader::withDefaultSerializer($apiClient);
+// Performing a companies.add request
+$company = new Company();
+$company->create('TeamLeader');
+$emails = [
+    new Email('sales@teamleader.eu', 'primary'),
+    new Email('invoicing@teamleader.eu', 'invoicing'),
+];
+$company->setEmails($emails);
+$company->setLanguage('en');
+$company->setWebsite('https://teamleader.eu/');
+$linkedCompany = $teamleader->companies()->addCompany($company);
 
-// Perform a users.me request
-$user = $teamleader->users()->me();
-echo get_class($user); // => 'Nascom\TeamleaderApiClient\Model\User'
-echo $user->getAccount()->getType(); // => 'account'
+// Performing a companies.info request
+$company = $teamleader->companies()->getCompany($linkedCompany->getId());
+
+// Performing a companies.update request
+$customFields = $company->getCustomFields();
+$customFields[0]->setValue('New custom value');
+$company->setCustomFields($customFields);
+$teamleader->companies()->updateCompany($company);
+
+// Performing a companies.delete request
+$teamleader->companies()->deleteCompany($linkedCompany->getId());
 
 // Perform a companies.list request
 $companies = $teamleader->companies()->listCompanies();
 
-// Optionally filters, page info and sorting can be passed as arguments when applicable.
+// Performing a companies.list request with filters, pagination and sorting
 $filters = [
     'email' => [
         'type' => 'primary',
@@ -150,14 +198,7 @@ $sorting = [
     'name' => 'asc',
     'added_at' => 'desc',
 ];
-$companies = $teamleader->companies()->listCompanies(
-    $filters,
-    $pagination,
-    $sorting
-);
-
-// Perform a companies.add request
-
+$companies = $teamleader->companies()->listCompanies($filters, $pagination, $sorting);
 ```
 
 [teamleader-docs]: https://developer.teamleader.eu

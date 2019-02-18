@@ -28,7 +28,7 @@ $apiClient = GuzzleApiClientFactory::create(
 
 $teamleader = Nascom\TeamleaderApiClient\Teamleader::withDefaultSerializer($apiClient);
 
-// FPerforming a companies.add request
+// Performing a companies.add request
 $company = new Company();
 $company->create('TeamLeader');
 $emails = [
