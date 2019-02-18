@@ -39,17 +39,18 @@ abstract class MilestoneBase extends ModelBase
     private $status;
 
     /**
-     * MilestoneBase constructor.
-     * @param string|null $dueOn
-     * @param string|null $name
-     * @param LinkedUser|null $responsibleUser
+     * @param LinkedProject $project
+     * @param string $dueOn
+     * @param string $name
+     * @param LinkedUser $responsibleUser
      */
-    public function __construct
-    (
-        $dueOn = null,
-        $name = null,
-        LinkedUser $responsibleUser = null
+    public function create(
+        LinkedProject $project,
+        $dueOn,
+        $name,
+        LinkedUser $responsibleUser
     ) {
+        $this->project = $project;
         $this->dueOn = $dueOn;
         $this->name = $name;
         $this->responsibleUser = $responsibleUser;

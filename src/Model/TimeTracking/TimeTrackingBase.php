@@ -4,7 +4,6 @@ namespace Nascom\TeamleaderApiClient\Model\TimeTracking;
 
 use DateTime;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedUser;
-use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedSubject;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedWorkType;
 use Nascom\TeamleaderApiClient\Model\ModelBase;
 
@@ -61,29 +60,33 @@ abstract class TimeTrackingBase extends ModelBase
     private $invoiceAble;
 
     /**
-     * TimeTrackingBase constructor.
-     * @param LinkedWorkType|null $workType
-     * @param DateTime|null $startedAt
-     * @param DateTime|null $endedAt
-     * @param string|null $duration
-     * @param string|null $description
-     * @param LinkedSubject|null $subject
+     * @param LinkedWorkType $workType
+     * @param DateTime $startedAt
+     * @param integer $duration
      */
-    public function __construct
-    (
-        LinkedWorkType $workType = null,
-        DateTime $startedAt = null,
-        DateTime $endedAt = null,
-        $duration = null,
-        $description = null,
-        LinkedSubject $subject = null
+    public function createWithDuration(
+        LinkedWorkType $workType,
+        DateTime $startedAt,
+        $duration
+    ) {
+        $this->workType = $workType;
+        $this->startedAt = $startedAt;
+        $this->duration = $duration;
+    }
+
+    /**
+     * @param LinkedWorkType $workType
+     * @param DateTime $startedAt
+     * @param DateTime $endedAt
+     */
+    public function createWithEndDate(
+        LinkedWorkType $workType,
+        DateTime $startedAt,
+        DateTime $endedAt
     ) {
         $this->workType = $workType;
         $this->startedAt = $startedAt;
         $this->endedAt = $endedAt;
-        $this->duration = $duration;
-        $this->description = $description;
-        $this->subject = $subject;
     }
 
     /**

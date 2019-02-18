@@ -4,6 +4,8 @@ namespace Nascom\TeamleaderApiClient\Model\Invoice;
 
 use Nascom\TeamleaderApiClient\Model\Aggregate\DiscountWithDescription;
 use Nascom\TeamleaderApiClient\Model\Aggregate\GroupedLine;
+use Nascom\TeamleaderApiClient\Model\Aggregate\Invoicee;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedDepartment;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentWithDate;
 
@@ -43,6 +45,24 @@ class Invoice extends InvoiceBase
      * @var string
      */
     private $note;
+
+    /**
+     * @param Invoicee $invoicee
+     * @param LinkedDepartment $department
+     * @param PaymentTerm $paymentTerm
+     * @param GroupedLine[] $groupedLines
+     */
+    public function create(
+        Invoicee $invoicee,
+        LinkedDepartment $department,
+        PaymentTerm $paymentTerm,
+        array $groupedLines
+    ) {
+        $this->setInvoicee($invoicee);
+        $this->setDepartment($department);
+        $this->paymentTerm = $paymentTerm;
+        $this->groupedLines = $groupedLines;
+    }
 
     /**
      * @return DiscountWithDescription[]

@@ -2,7 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Project;
 
-use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedCustomer;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedMileStone;
 use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedParticipantWithRole;
 
@@ -24,24 +23,19 @@ class Project extends ProjectBase
     private $participants;
 
     /**
-     * Project constructor.
-     * @param string|null $title
-     * @param string|null $description
-     * @param string|null $startsOn
-     * @param array|null $milestones
-     * @param array|null $participants
-     * @param LinkedCustomer|null $customer
+     * @param string $title
+     * @param string $startsOn
+     * @param LinkedMileStone[] $milestones
+     * @param LinkedParticipantWithRole[] $participants
      */
-    public function __construct
-    (
-        $title = null,
-        $description = null,
-        $startsOn = null,
-        array $milestones = null,
-        array $participants = null,
-        LinkedCustomer $customer = null
+    public function create(
+        $title,
+        $startsOn,
+        array $milestones,
+        array $participants
     ) {
-        parent::__construct($title, $description, $startsOn, $customer);
+        $this->setTitle($title);
+        $this->setStartsOn($startsOn);
         $this->milestones = $milestones;
         $this->participants = $participants;
     }

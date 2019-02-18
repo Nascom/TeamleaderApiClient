@@ -67,6 +67,15 @@ abstract class CalendarEventBase extends ModelBase
     private $links;
 
     /**
+     * @param $title
+     * @param LinkedActivityType $activityType
+     */
+    public function create($title, $activityType) {
+        $this->title = $title;
+        $this->activityType = $activityType;
+    }
+
+    /**
      * @return LinkedUser
      */
     public function getCreator()

@@ -88,6 +88,16 @@ abstract class DealBase extends ModelBase
     private $webUrl;
 
     /**
+     * @param Lead $lead
+     * @param string $title
+     */
+    public function create(Lead $lead, $title)
+    {
+        $this->lead = $lead;
+        $this->title = $title;
+    }
+
+    /**
      * @return string
      */
     public function getTitle()
