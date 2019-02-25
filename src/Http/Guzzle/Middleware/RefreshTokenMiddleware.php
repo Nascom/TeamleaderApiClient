@@ -50,7 +50,7 @@ class RefreshTokenMiddleware
         return function (RequestInterface $request, array $options) use ($handler) {
             if ($this->token->hasExpired()) {
                 $this->refreshToken();
-                $request->withHeader('Authorisation', 'Bearer '.$this->token->getToken());
+                $request = $request->withHeader('Authorisation', 'Bearer '.$this->token->getToken());
             }
 
             return $handler($request, $options);
