@@ -71,6 +71,8 @@ class SerializerFactory
                 new FieldDescription\Model\TimeTracking\TimeTrackingFieldDescription(),
                 new FieldDescription\Model\TimeTracking\TimeTrackingListViewFieldDescription(),
                 new FieldDescription\Model\Timer\TimerFieldDescription(),
+                // WorkOrders
+                new FieldDescription\Model\WorkOrder\WorkOrderFieldDescription(),
                 // Other
                 new FieldDescription\Model\Webhook\WebhookFieldDescription(),
                 new FieldDescription\Model\Webhook\WebhookListViewFieldDescription(),
@@ -137,6 +139,7 @@ class SerializerFactory
                 new FieldDescription\Model\Aggregate\LinkedTimerFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedCompanyFieldDescription(),
                 new FieldDescription\Model\Aggregate\LinkedUserFieldDescription(),
+                new FieldDescription\Model\Aggregate\LinkedWorkOrderFieldDescription(),
             ]
         );
 

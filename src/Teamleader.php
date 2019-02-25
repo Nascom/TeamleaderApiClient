@@ -29,6 +29,7 @@ use Nascom\TeamleaderApiClient\Repository\TimeTrackingRepository;
 use Nascom\TeamleaderApiClient\Repository\UserRepository;
 use Nascom\TeamleaderApiClient\Repository\WebhookRepository;
 use Nascom\TeamleaderApiClient\Repository\WithholdingTaxRateRepository;
+use Nascom\TeamleaderApiClient\Repository\WorkOrderRepository;
 use Nascom\TeamleaderApiClient\Repository\WorkTypeRepository;
 use Nascom\TeamleaderApiClient\Serializer\SerializerFactory;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
@@ -67,6 +68,7 @@ class Teamleader
 
     /**
      * @param ApiClientInterface $apiClient
+     *
      * @return Teamleader
      */
     public static function withDefaultSerializer(ApiClientInterface $apiClient)
@@ -288,5 +290,13 @@ class Teamleader
     public function levelTwoAreas()
     {
         return new LevelTwoAreaRepository($this->apiClient, $this->serializer);
+    }
+
+    /**
+     * @return WorkOrderRepository
+     */
+    public function workOrders()
+    {
+        return new WorkOrderRepository($this->apiClient, $this->serializer);
     }
 }
