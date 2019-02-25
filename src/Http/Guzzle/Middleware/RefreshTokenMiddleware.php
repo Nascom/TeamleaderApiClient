@@ -45,15 +45,12 @@ class RefreshTokenMiddleware
         $this->refreshTokenCallback = $refreshTokenCallback;
     }
 
-    /**
-     * @param callable $handler
-     * @return \Closure
-     */
     public function __invoke(callable $handler)
     {
         return function (RequestInterface $request, array $options) use ($handler) {
             if ($this->token->hasExpired()) {
                 $this->refreshToken();
+                $request->withHeader('Authorisation', 'Bearer '.$this->token->getToken());
             }
 
             return $handler($request, $options);
@@ -65,15 +62,15 @@ class RefreshTokenMiddleware
      */
     private function refreshToken()
     {
-        dump('RefreshTokenMiddleware->RefreshToken');
-
-        $this->token = $this->provider->getAccessToken('refresh_token', [
-            'refresh_token' => $this->token->getRefreshToken()
-        ]);
+        $this->token = $this->provider->getAccessToken(
+            'refresh_token',
+            [
+                'refresh_token' => $this->token->getRefreshToken(),
+            ]
+        );
 
         if ($this->refreshTokenCallback) {
             call_user_func($this->refreshTokenCallback, $this->token);
         }
     }
-
 }
