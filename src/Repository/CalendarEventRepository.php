@@ -75,6 +75,7 @@ class CalendarEventRepository extends RepositoryBase
     public function updateCalendarEvent(CalendarEvent $calendarEvent)
     {
         $request = new CalendarEventsUpdateRequest($this->normalize($calendarEvent));
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

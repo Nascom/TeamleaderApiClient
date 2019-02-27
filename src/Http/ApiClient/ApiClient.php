@@ -2,6 +2,7 @@
 
 namespace Nascom\TeamleaderApiClient\Http\ApiClient;
 
+use GuzzleHttp\Exception\ClientException;
 use Http\Client\HttpClient;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
