@@ -5,6 +5,7 @@ namespace Nascom\TeamleaderApiClient\Http\ApiClient;
 use Http\Client\Common\HttpMethodsClient;
 use Http\Client\HttpClient;
 use Http\Discovery\MessageFactoryDiscovery;
+use Nascom\TeamleaderApiClient\Repository\BusinessTypeRepository;
 use Nascom\TeamleaderApiClient\Repository\ContactRepository;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
 use Nascom\TeamleaderApiClient\Response\Response;
@@ -54,6 +55,14 @@ class ApiClient implements ApiClientInterface
     public function getContactRepository()
     {
         return new ContactRepository($this);
+    }
+
+    /**
+     * Returns the businesstyperepository.
+     */
+    public function getBusinessTypeRepository()
+    {
+      return new BusinessTypeRepository($this);
     }
 
     public function gethttpMethodsClient() {
