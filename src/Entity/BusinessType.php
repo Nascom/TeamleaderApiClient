@@ -4,7 +4,7 @@ namespace Nascom\TeamleaderApiClient\Entity;
 use Nascom\TeamleaderApiClient\Entity\Entity;
 
 /**
- * Class Email
+ * Class BusinessType
  *
  * @package Nascom\TeamleaderApiClient\Entity
  */
