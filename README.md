@@ -71,12 +71,6 @@ $apiClient = new ApiClient(
 );
 ```
 
-Instantiate teamleader as shown below to make use of the repositories
- 
-```php
-$teamleader = \Nascom\TeamleaderApiClient\Teamleader::withDefaultSerializer($apiClient);
-```
-
 ### Making requests
 
 Once you have the API client set up, you can start making requests. This is done
@@ -155,6 +149,13 @@ If you want to work with deserialized models, you can make use of the
 `Teamleader` class. This acts as a wrapper for the API. You'll need
 to install [Symfony's Serializer component][symfony-serializer]
 (`symfony/serializer`) for this.
+
+
+Instantiate teamleader as shown below to make use of the repositories
+ 
+```php
+$teamleader = \Nascom\TeamleaderApiClient\Teamleader::withDefaultSerializer($apiClient);
+```
 
 ```php
 <?php
