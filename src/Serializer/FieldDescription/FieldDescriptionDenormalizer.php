@@ -47,13 +47,12 @@ class FieldDescriptionDenormalizer implements
         $format = null,
         array $context = []
     ) {
-//        dump($data);
         $fieldDescription = $this->getFieldDescriptionByClassName($class);
         $className = $fieldDescription->getTargetClass();
         $object = new $className;
         foreach ($fieldDescription->getFields() as $field) {
             $fieldName = $field->getName();
-            $value = isset($data[$fieldName]) ? $data[$fieldName] : NULL;
+            $value = isset($data[$fieldName]) ? $data[$fieldName] : null;
             if ($value === null) {
                 continue;
             }
@@ -117,6 +116,7 @@ class FieldDescriptionDenormalizer implements
 
     /**
      * @param string $className
+     *
      * @return FieldDescriptionInterface|null
      */
     protected function getFieldDescriptionByClassName($className)

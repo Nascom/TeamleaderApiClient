@@ -30,8 +30,8 @@ class CalendarEventsUpdateRequest extends PostRequest
             $calendarEvent['todo']
         );
 
-        unset($calendarEvent['attendees']); // Bug in Teamleader - "attendees must have a length lower than 0"
-        unset($calendarEvent['location']); // Bug in Teamleader - “location must be null"
+        unset($calendarEvent['attendees']); // TODO Bug in Teamleader - "attendees must have a length lower than 0"
+        unset($calendarEvent['location']); // TODO Bug in Teamleader - “location must be null"
 
         $this->body = $calendarEvent;
     }

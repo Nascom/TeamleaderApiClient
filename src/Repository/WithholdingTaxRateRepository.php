@@ -14,6 +14,7 @@ class WithholdingTaxRateRepository extends RepositoryBase
 {
     /**
      * @param array $filters
+     *
      * @return WithholdingTaxRateListView[]
      * @throws \Http\Client\Exception
      */
@@ -21,10 +22,11 @@ class WithholdingTaxRateRepository extends RepositoryBase
     {
         $request = new WithholdingTaxRatesListRequest();
         $request->setFilters($filters);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            WithholdingTaxRateListView::class.'[]'
+            WithholdingTaxRateListView::class . '[]'
         );
     }
 }

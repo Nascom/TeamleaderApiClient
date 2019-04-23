@@ -26,6 +26,7 @@ class ContactRepository extends RepositoryBase
      * @param array $filters
      * @param array $sort
      * @param array $page
+     *
      * @return ContactListView[]
      * @throws \Http\Client\Exception
      */
@@ -35,21 +36,24 @@ class ContactRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setSort($sort);
         $request->setPage($page);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            ContactListView::class.'[]'
+            ContactListView::class . '[]'
         );
     }
 
     /**
      * @param string $id
+     *
      * @return Contact
      * @throws \Http\Client\Exception
      */
     public function getContact($id)
     {
         $request = new ContactsInfoRequest($id);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -59,12 +63,14 @@ class ContactRepository extends RepositoryBase
 
     /**
      * @param Contact $contact
+     *
      * @return LinkedContact
      * @throws \Http\Client\Exception
      */
     public function addContact(Contact $contact)
     {
         $request = new ContactsAddRequest($this->normalize($contact));
+        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -74,22 +80,26 @@ class ContactRepository extends RepositoryBase
 
     /**
      * @param Contact $contact
+     *
      * @throws \Http\Client\Exception
      */
     public function updateContact(Contact $contact)
     {
         $request = new ContactsUpdateRequest($this->normalize($contact));
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
 
     /**
      * @param string $id
+     *
      * @throws \Http\Client\Exception
      */
     public function deleteContact($id)
     {
         $request = new ContactsDeleteRequest($id);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -97,11 +107,13 @@ class ContactRepository extends RepositoryBase
     /**
      * @param string $id
      * @param array $tags
+     *
      * @throws \Http\Client\Exception
      */
     public function tagContact($id, array $tags)
     {
         $request = new ContactsTagRequest($id, $tags);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -109,11 +121,13 @@ class ContactRepository extends RepositoryBase
     /**
      * @param string $id
      * @param array $tags
+     *
      * @throws \Http\Client\Exception
      */
     public function untagContact($id, array $tags)
     {
         $request = new ContactsUntagRequest($id, $tags);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -123,6 +137,7 @@ class ContactRepository extends RepositoryBase
      * @param string $companyId
      * @param string $position
      * @param boolean $decisionMaker
+     *
      * @throws \Http\Client\Exception
      */
     public function linkContactToCompany(
@@ -137,6 +152,7 @@ class ContactRepository extends RepositoryBase
             $position,
             $decisionMaker
         );
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -144,6 +160,7 @@ class ContactRepository extends RepositoryBase
     /**
      * @param string $id
      * @param string $companyId
+     *
      * @throws \Http\Client\Exception
      */
     public function unlinkContactFromCompany($id, $companyId)
@@ -152,6 +169,7 @@ class ContactRepository extends RepositoryBase
             $id,
             $companyId
         );
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

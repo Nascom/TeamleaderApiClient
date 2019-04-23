@@ -22,31 +22,36 @@ class WebhookRepository extends RepositoryBase
     public function listWebhooks()
     {
         $request = new WebhooksListRequest();
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            WebhookListView::class.'[]'
+            WebhookListView::class . '[]'
         );
     }
 
     /**
      * @param Webhook $webhook
+     *
      * @throws \Http\Client\Exception
      */
     public function registerWebhook(Webhook $webhook)
     {
         $request = new WebhooksRegisterRequest($this->normalize($webhook));
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
 
     /**
      * @param Webhook $webhook
+     *
      * @throws \Http\Client\Exception
      */
     public function unRegisterWebHook(Webhook $webhook)
     {
         $request = new WebhooksUnregisterRequest($this->normalize($webhook));
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

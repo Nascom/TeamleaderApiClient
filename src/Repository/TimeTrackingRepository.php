@@ -24,6 +24,7 @@ class TimeTrackingRepository extends RepositoryBase
      * @param array $filters
      * @param array $page
      * @param array $sort
+     *
      * @return TimeTrackingListView[]
      * @throws \Http\Client\Exception
      */
@@ -33,21 +34,24 @@ class TimeTrackingRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            TimeTrackingListView::class.'[]'
+            TimeTrackingListView::class . '[]'
         );
     }
 
     /**
      * @param string $id
+     *
      * @return TimeTracking
      * @throws \Http\Client\Exception
      */
     public function getTimeTracking($id)
     { // TODO Broken Teamleader -> 400, "Key id must be present"
         $request = new TimeTrackingInfoRequest($id);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -57,12 +61,14 @@ class TimeTrackingRepository extends RepositoryBase
 
     /**
      * @param TimeTracking $timeTracking
+     *
      * @return LinkedTimeTracking
      * @throws \Http\Client\Exception
      */
     public function addTimeTracking(TimeTracking $timeTracking)
     {
         $request = new TimeTrackingAddRequest($this->normalize($timeTracking));
+        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -72,11 +78,13 @@ class TimeTrackingRepository extends RepositoryBase
 
     /**
      * @param TimeTracking $timeTracking
+     *
      * @throws \Http\Client\Exception
      */
     public function updateTimeTracking(TimeTracking $timeTracking)
     {
         $request = new TimeTrackingUpdateRequest($this->normalize($timeTracking));
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -84,12 +92,14 @@ class TimeTrackingRepository extends RepositoryBase
     /**
      * @param string $id
      * @param \DateTime|null $startedAt
+     *
      * @return LinkedTimer
      * @throws \Http\Client\Exception
      */
     public function resumeTimeTracking($id, $startedAt = null)
     {
         $request = new TimeTrackingResumeRequest($id, $startedAt);
+        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -99,11 +109,13 @@ class TimeTrackingRepository extends RepositoryBase
 
     /**
      * @param string $id
+     *
      * @throws \Http\Client\Exception
      */
     public function deleteTimeTracking($id)
     {
         $request = new TimeTrackingDeleteRequest($id);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

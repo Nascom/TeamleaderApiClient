@@ -22,12 +22,14 @@ class CompanyRepository extends RepositoryBase
 {
     /**
      * @param string $id
+     *
      * @return Company
      * @throws \Http\Client\Exception
      */
     public function getCompany($id)
     {
         $request = new CompaniesInfoRequest($id);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -39,6 +41,7 @@ class CompanyRepository extends RepositoryBase
      * @param array $filters
      * @param array $page
      * @param array $sort
+     *
      * @return CompanyListView[]
      * @throws \Http\Client\Exception
      */
@@ -48,21 +51,24 @@ class CompanyRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            CompanyListView::class.'[]'
+            CompanyListView::class . '[]'
         );
     }
 
     /**
      * @param Company $company
+     *
      * @return LinkedCompany
      * @throws \Http\Client\Exception
      */
     public function addCompany(Company $company)
     {
         $request = new CompaniesAddRequest($this->normalize($company));
+        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -72,22 +78,26 @@ class CompanyRepository extends RepositoryBase
 
     /**
      * @param Company $company
+     *
      * @throws \Http\Client\Exception
      */
     public function updateCompany(Company $company)
     {
         $request = new CompaniesUpdateRequest($this->normalize($company));
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
 
     /**
      * @param string $id
+     *
      * @throws \Http\Client\Exception
      */
     public function deleteCompany($id)
     {
         $request = new CompaniesDeleteRequest($id);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -95,11 +105,13 @@ class CompanyRepository extends RepositoryBase
     /**
      * @param string $id
      * @param array $tags
+     *
      * @throws \Http\Client\Exception
      */
     public function tagCompany($id, array $tags)
     {
         $request = new CompaniesTagRequest($id, $tags);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -107,11 +119,13 @@ class CompanyRepository extends RepositoryBase
     /**
      * @param string $id
      * @param array $tags
+     *
      * @throws \Http\Client\Exception
      */
     public function untagCompany($id, array $tags)
     {
         $request = new CompaniesUntagRequest($id, $tags);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

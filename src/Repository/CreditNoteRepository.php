@@ -20,6 +20,7 @@ class CreditNoteRepository extends RepositoryBase
      * @param array $filters
      * @param array $page
      * @param array $sort
+     *
      * @return CreditNoteListView[]
      * @throws \Http\Client\Exception
      */
@@ -29,21 +30,24 @@ class CreditNoteRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            CreditNoteListView::class.'[]'
+            CreditNoteListView::class . '[]'
         );
     }
 
     /**
      * @param string $id
+     *
      * @return CreditNote
      * @throws \Http\Client\Exception
      */
     public function getCreditNote($id)
     {
         $request = new CreditNotesInfoRequest($id);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -54,12 +58,14 @@ class CreditNoteRepository extends RepositoryBase
     /**
      * @param string $id
      * @param string $format
+     *
      * @return DownloadedCreditNote
      * @throws \Http\Client\Exception
      */
     public function downloadCreditNote($id, $format)
     {
         $request = new CreditNotesDownloadRequest($id, $format);
+        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,

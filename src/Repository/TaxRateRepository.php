@@ -19,6 +19,7 @@ class TaxRateRepository extends RepositoryBase
      * @param array $filters
      * @param array $page
      * @param array $sort
+     *
      * @return TaxRateListView[]
      * @throws \Http\Client\Exception
      */
@@ -28,10 +29,11 @@ class TaxRateRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            TaxRateListView::class.'[]'
+            TaxRateListView::class . '[]'
         );
     }
 }

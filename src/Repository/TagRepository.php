@@ -18,6 +18,7 @@ class TagRepository extends RepositoryBase
     /**
      * @param array $page
      * @param array $sort
+     *
      * @return TagListView[]
      * @throws \Http\Client\Exception
      */
@@ -26,10 +27,11 @@ class TagRepository extends RepositoryBase
         $request = new TagsListRequest();
         $request->setPage($page);
         $request->setSort($sort);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            TagListView::class.'[]'
+            TagListView::class . '[]'
         );
     }
 }

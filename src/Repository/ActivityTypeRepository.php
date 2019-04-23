@@ -15,17 +15,20 @@ class ActivityTypeRepository extends RepositoryBase
     /**
      * @param array $filters
      * @param array $page
+     *
      * @return ActivityTypeListView[]
      * @throws \Http\Client\Exception
      */
-    public function listActivityTypes(array $filters = [], array $page = []) {
+    public function listActivityTypes(array $filters = [], array $page = [])
+    {
         $request = new ActivityTypesListRequest();
         $request->setFilters($filters);
         $request->setPage($page);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            ActivityTypeListView::class.'[]'
+            ActivityTypeListView::class . '[]'
         );
     }
 }

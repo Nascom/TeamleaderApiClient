@@ -16,6 +16,7 @@ class WorkTypeRepository extends RepositoryBase
      * @param array $filters
      * @param array $page
      * @param array $sort
+     *
      * @return WorkTypeListView[]
      * @throws \Http\Client\Exception
      */
@@ -25,10 +26,11 @@ class WorkTypeRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setSort($sort);
         $request->setPage($page);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            WorkTypeListView::class.'[]'
+            WorkTypeListView::class . '[]'
         );
     }
 }

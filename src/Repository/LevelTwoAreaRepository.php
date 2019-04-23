@@ -15,16 +15,18 @@ class LevelTwoAreaRepository extends RepositoryBase
     /**
      * @param string $country
      * @param string|null $language
+     *
      * @return LevelTwoAreaListView[]
      * @throws \Http\Client\Exception
      */
     public function listLevelTwoAreas($country, $language = null)
     {
         $request = new LevelTwoAreasListRequest($country, $language);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            LevelTwoAreaListView::class.'[]'
+            LevelTwoAreaListView::class . '[]'
         );
     }
 }

@@ -21,6 +21,7 @@ class WorkOrderRepository extends RepositoryBase
     public function draftWorkOrder(WorkOrder $workOrder)
     {
         $request = new WorkOrdersDraftRequest($this->normalize($workOrder));
+        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,

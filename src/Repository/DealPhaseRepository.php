@@ -15,6 +15,7 @@ class DealPhaseRepository extends RepositoryBase
     /**
      * @param array $filters
      * @param array $page
+     *
      * @return DealPhaseListView[]
      * @throws \Http\Client\Exception
      */
@@ -23,10 +24,11 @@ class DealPhaseRepository extends RepositoryBase
         $request = new DealPhasesListRequest();
         $request->setFilters($filters);
         $request->setPage($page);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            DealPhaseListView::class.'[]'
+            DealPhaseListView::class . '[]'
         );
     }
 }

@@ -20,12 +20,14 @@ class CalendarEventRepository extends RepositoryBase
 {
     /**
      * @param string $id
+     *
      * @return CalendarEvent
      * @throws \Http\Client\Exception
      */
     public function getCalendarEvent($id)
     {
         $request = new CalendarEventsInfoRequest($id);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -37,6 +39,7 @@ class CalendarEventRepository extends RepositoryBase
      * @param array $filters
      * @param array $page
      * @param array $sort
+     *
      * @return CalendarEventListView[]
      * @throws \Http\Client\Exception
      */
@@ -46,21 +49,24 @@ class CalendarEventRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            CalendarEventListView::class.'[]'
+            CalendarEventListView::class . '[]'
         );
     }
 
     /**
      * @param CalendarEvent $calendarEvent
+     *
      * @return LinkedEvent
      * @throws \Http\Client\Exception
      */
     public function addCalendarEvent(CalendarEvent $calendarEvent)
     {
         $request = new CalendarEventsCreateRequest($this->normalize($calendarEvent));
+        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -70,6 +76,7 @@ class CalendarEventRepository extends RepositoryBase
 
     /**
      * @param CalendarEvent $calendarEvent
+     *
      * @throws \Http\Client\Exception
      */
     public function updateCalendarEvent(CalendarEvent $calendarEvent)
@@ -82,11 +89,13 @@ class CalendarEventRepository extends RepositoryBase
 
     /**
      * @param string $id
+     *
      * @throws \Http\Client\Exception
      */
     public function cancelCalendarEvent($id)
     {
         $request = new CalendarEventsCancelRequest($id);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

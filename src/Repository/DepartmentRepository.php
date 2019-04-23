@@ -17,12 +17,14 @@ class DepartmentRepository extends RepositoryBase
 {
     /**
      * @param string $id
+     *
      * @return Department
      * @throws \Http\Client\Exception
      */
     public function getDepartment($id)
     {
         $request = new DepartmentsInfoRequest($id);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -33,6 +35,7 @@ class DepartmentRepository extends RepositoryBase
     /**
      * @param array $filters
      * @param array $sort
+     *
      * @return DepartmentListView[]
      * @throws \Http\Client\Exception
      */
@@ -41,10 +44,11 @@ class DepartmentRepository extends RepositoryBase
         $request = new DepartmentsListRequest();
         $request->setFilters($filters);
         $request->setSort($sort);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            DepartmentListView::class.'[]'
+            DepartmentListView::class . '[]'
         );
     }
 }

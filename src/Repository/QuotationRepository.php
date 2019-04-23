@@ -16,12 +16,14 @@ class QuotationRepository extends RepositoryBase
 {
     /**
      * @param string $id
+     *
      * @return Quotation
      * @throws \Http\Client\Exception
      */
     public function getQuotation($id)
     {
         $request = new QuotationsInfoRequest($id);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -32,12 +34,14 @@ class QuotationRepository extends RepositoryBase
     /**
      * @param string $id
      * @param string $format
+     *
      * @return DownloadedQuotation
      * @throws \Http\Client\Exception
      */
     public function downloadQuotation($id, $format)
     {
         $request = new QuotationsDownloadRequest($id, $format);
+        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,

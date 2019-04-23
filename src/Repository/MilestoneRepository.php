@@ -21,6 +21,7 @@ class MilestoneRepository extends RepositoryBase
      * @param array $filters
      * @param array $page
      * @param array $sort
+     *
      * @return MilestoneListView[]
      * @throws \Http\Client\Exception
      */
@@ -30,21 +31,24 @@ class MilestoneRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setSort($sort);
         $request->setPage($page);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            MilestoneListView::class.'[]'
+            MilestoneListView::class . '[]'
         );
     }
 
     /**
      * @param string $id
+     *
      * @return Milestone
      * @throws \Http\Client\Exception
      */
     public function getMilestone($id)
     {
         $request = new MilestonesInfoRequest($id);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -54,12 +58,14 @@ class MilestoneRepository extends RepositoryBase
 
     /**
      * @param Milestone $milestone
+     *
      * @return LinkedMileStone
      * @throws \Http\Client\Exception
      */
     public function addMilestone(Milestone $milestone)
     {
         $request = new MilestonesCreateRequest($this->normalize($milestone));
+        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -69,11 +75,13 @@ class MilestoneRepository extends RepositoryBase
 
     /**
      * @param Milestone $milestone
+     *
      * @throws \Http\Client\Exception
      */
     public function updateMilestone(Milestone $milestone)
     {
         $request = new MilestoneUpdateRequest($this->normalize($milestone));
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

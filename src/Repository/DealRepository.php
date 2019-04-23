@@ -27,6 +27,7 @@ class DealRepository extends RepositoryBase
      * @param array $filters
      * @param array $page
      * @param array $sort
+     *
      * @return DealListView[]
      * @throws \Http\Client\Exception
      */
@@ -36,21 +37,24 @@ class DealRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setSort($sort);
         $request->setPage($page);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            DealListView::class.'[]'
+            DealListView::class . '[]'
         );
     }
 
     /**
      * @param string $id
+     *
      * @return Deal
      * @throws \Http\Client\Exception
      */
     public function getDeal($id)
     {
         $request = new DealsInfoRequest($id);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -60,12 +64,14 @@ class DealRepository extends RepositoryBase
 
     /**
      * @param Deal $deal
+     *
      * @return LinkedDeal
      * @throws \Http\Client\Exception
      */
     public function addDeal(Deal $deal)
     {
         $request = new DealsCreateRequest($this->normalize($deal));
+        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -75,11 +81,13 @@ class DealRepository extends RepositoryBase
 
     /**
      * @param Deal $deal
+     *
      * @throws \Http\Client\Exception
      */
     public function updateDeal(Deal $deal)
     {
         $request = new DealsUpdateRequest($this->normalize($deal));
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -87,22 +95,26 @@ class DealRepository extends RepositoryBase
     /**
      * @param string $id
      * @param string $phaseId
+     *
      * @throws \Http\Client\Exception
      */
     public function moveDeal($id, $phaseId)
     {
         $request = new DealsMoveRequest($id, $phaseId);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
 
     /**
      * @param string $id
+     *
      * @throws \Http\Client\Exception
      */
     public function winDeal($id)
     {
         $request = new DealsWinRequest($id);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -111,22 +123,26 @@ class DealRepository extends RepositoryBase
      * @param string $id
      * @param string|null $reasonId
      * @param string|null $extraInfo
+     *
      * @throws \Http\Client\Exception
      */
     public function loseDeal($id, $reasonId = null, $extraInfo = null)
     {
         $request = new DealsLoseRequest($id, $reasonId, $extraInfo);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
 
     /**
      * @param string $id
+     *
      * @throws \Http\Client\Exception
      */
     public function deleteDeal($id)
     {
         $request = new DealsDeleteRequest($id);
+        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -134,6 +150,7 @@ class DealRepository extends RepositoryBase
     /**
      * @param array $page
      * @param array $sort
+     *
      * @return LostReasonListView[]
      * @throws \Http\Client\Exception
      */
@@ -142,10 +159,11 @@ class DealRepository extends RepositoryBase
         $request = new LostReasonsListRequest();
         $request->setPage($page);
         $request->setSort($sort);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            LostReasonListView::class.'[]'
+            LostReasonListView::class . '[]'
         );
     }
 }

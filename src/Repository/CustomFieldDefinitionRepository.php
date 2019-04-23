@@ -16,12 +16,14 @@ class CustomFieldDefinitionRepository extends RepositoryBase
 {
     /**
      * @param string $id
+     *
      * @return CustomFieldDefinition
      * @throws \Http\Client\Exception
      */
     public function getCustomFieldDefinition($id)
     {
         $request = new CustomFieldDefinitionInfoRequest($id);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -32,6 +34,7 @@ class CustomFieldDefinitionRepository extends RepositoryBase
     /**
      * @param array $page
      * @param array $sort
+     *
      * @return CustomFieldDefinitionListView[]
      * @throws \Http\Client\Exception
      */
@@ -40,10 +43,11 @@ class CustomFieldDefinitionRepository extends RepositoryBase
         $request = new CustomFieldDefinitionListRequest();
         $request->setSort($sort);
         $request->setPage($page);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            CustomFieldDefinitionListView::class.'[]'
+            CustomFieldDefinitionListView::class . '[]'
         );
     }
 }

@@ -40,6 +40,7 @@ abstract class RepositoryBase
     /**
      * @param $data
      * @param $type
+     *
      * @return mixed
      */
     protected function deserialize($data, $type)
@@ -50,6 +51,7 @@ abstract class RepositoryBase
     /**
      * @param $data
      * @param array $context
+     *
      * @return string|array
      */
     protected function normalize($data, $context = array())
@@ -60,6 +62,7 @@ abstract class RepositoryBase
     /**
      * @param RequestInterface $request
      * @param $responseClass
+     *
      * @return mixed
      * @throws \Http\Client\Exception
      */

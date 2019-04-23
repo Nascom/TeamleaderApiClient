@@ -14,6 +14,7 @@ class ProductCategoryRepository extends RepositoryBase
 {
     /**
      * @param array $filters
+     *
      * @return ProductCategoryListView[]
      * @throws \Http\Client\Exception
      */
@@ -21,10 +22,11 @@ class ProductCategoryRepository extends RepositoryBase
     {
         $request = new ProductCategoriesListRequest();
         $request->setFilters($filters);
+        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
-            ProductCategoryListView::class.'[]'
+            ProductCategoryListView::class . '[]'
         );
     }
 }

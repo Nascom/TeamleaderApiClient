@@ -19,11 +19,12 @@ class PaymentTermRepository extends RepositoryBase
     public function listPaymentTerms()
     {
         $request = new PaymentTermsListRequest();
+        $request->setMethod('GET');
 
         return $this->handleRequest
         (
             $request,
-            PaymentTermListView::class.'[]'
+            PaymentTermListView::class . '[]'
         );
     }
 }
