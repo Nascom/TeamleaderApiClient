@@ -51,7 +51,7 @@ abstract class ContactBase extends ModelBase
     private $gender;
 
     /**
-     * @var DateTime
+     * @var string
      */
     private $birthdate;
 
@@ -192,7 +192,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return DateTime
+     * @return string
      */
     public function getBirthdate()
     {
@@ -200,9 +200,9 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param DateTime $birthdate
+     * @param string $birthdate
      */
-    public function setBirthdate(DateTime $birthdate)
+    public function setBirthdate($birthdate)
     {
         $this->birthdate = $birthdate;
     }
