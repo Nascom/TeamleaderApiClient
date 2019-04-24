@@ -218,4 +218,4 @@ The `timeTracking.info` request results in a `'400 Bad Request' response: {"erro
 [league-usage]: http://oauth2-client.thephpleague.com/usage/
 [guzzle-homepage]: https://github.com/guzzle/guzzle
 [symfony-serializer]: https://symfony.com/doc/current/components/serializer.html
-[request-list]: https://github.com/Nascom/TeamleaderApiClient/tree/v2-refactor/src/Request
+[request-list]: https://github.com/Nascom/TeamleaderApiClient/tree/v2/src/Request
