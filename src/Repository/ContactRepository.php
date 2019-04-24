@@ -2,147 +2,166 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-use Nascom\TeamleaderApiClient\Attributes\ContactFilter;
-use Nascom\TeamleaderApiClient\Attributes\Page;
-use Nascom\TeamleaderApiClient\Attributes\Sort;
-use Nascom\TeamleaderApiClient\Entity\Contact;
-use Nascom\TeamleaderApiClient\Exception\ApiException;
-use Nascom\TeamleaderApiClient\Request\Contact\ContactsAddRequest;
-use Nascom\TeamleaderApiClient\Request\Contact\ContactsDeleteRequest;
-use Nascom\TeamleaderApiClient\Request\Contact\ContactsInfoRequest;
-use Nascom\TeamleaderApiClient\Request\Contact\ContactsListRequest;
+use Nascom\TeamleaderApiClient\Model\Aggregate\LinkedContact;
+use Nascom\TeamleaderApiClient\Model\Contact\ContactListView;
+use Nascom\TeamleaderApiClient\Model\Contact\Contact;
+use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsAddRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsDeleteRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsInfoRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsLinkToCompanyRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsListRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsTagRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsUnlinkFromCompanyRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsUntagRequest;
+use Nascom\TeamleaderApiClient\Request\CRM\Contacts\ContactsUpdateRequest;
 
+/**
+ * Class ContactRepository
+ *
+ * @package Nascom\TeamleaderApiClient\Repository
+ */
 class ContactRepository extends RepositoryBase
 {
-
     /**
-     * Gets a list of contacts.
-     * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.list
-     * @param ContactFilter|null $filter
-     * @param Page|null $page
-     * @param Sort[]|null $sorts
-     * @throws ApiException
-     * @return Contact[]
+     * @param array $filters
+     * @param array $sort
+     * @param array $page
+     *
+     * @return ContactListView[]
+     * @throws \Http\Client\Exception
      */
-    public function listContacts(ContactFilter $filter = null, Page $page = null, array $sorts = [])
+    public function listContacts(array $filters = [], array $page = [], array $sort = [])
     {
         $request = new ContactsListRequest();
-        if ($page !== null) {
-            $request->setPage($page);
-        }
-        if ($filter !== null) {
-            $request->setFilter($filter);
-        }
-        if (!empty($sorts)) {
-            $request->setSort($sorts);
-        }
+        $request->setFilters($filters);
+        $request->setSort($sort);
+        $request->setPage($page);
 
-        $response = $this->sendRequest($request);
-        $responseBody = $this->getResponseBody($response);
-
-        $contacts = [];
-        if (!isset($responseBody['data'])) {
-            throw new ApiException('Something went wrong while fetching the contacts');
-        }
-        foreach ($responseBody['data'] as $contactItem) {
-            $contacts[] = new Contact($contactItem);
-        }
-
-        return $contacts;
+        return $this->handleRequest(
+            $request,
+            ContactListView::class . '[]'
+        );
     }
 
     /**
-     * Get details for a single contact.
-     *
-     * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.info
      * @param string $id
-     * @throws ApiException
+     *
      * @return Contact
+     * @throws \Http\Client\Exception
      */
     public function getContact($id)
     {
         $request = new ContactsInfoRequest($id);
-        $response = $this->sendRequest($request);
-        $responseBody = $this->getResponseBody($response);
 
-        if (!isset($responseBody['data'])) {
-            throw new ApiException('Something went wrong while getting information for user with id .' . $id);
-        }
-        $contact = new Contact($responseBody['data']);
-
-        return $contact;
+        return $this->handleRequest(
+            $request,
+            Contact::class
+        );
     }
 
-
     /**
-     * Add a new contact.
-     * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.add
      * @param Contact $contact
-     * @throws ApiException
-     * @return Contact
-     */
-    public function addContact(Contact $contact) {
-
-        $request = new ContactsAddRequest($contact);
-        $response = $this->sendRequest($request);
-        $responseBody = $this->getResponseBody($response);
-
-        if ($response->getStatusCode() != 201) {
-            throw new ApiException('Something went wrong while creating a contact.');
-        }
-
-        if (!isset($responseBody['data']['id'])) {
-            throw new ApiException('Something went wrong while creating a contact.');
-        }
-        if (isset($responseBody['data']['id'])) {
-            $contact->setId($responseBody['data']['id']);
-        }
-
-        return $contact;
-    }
-
-    /**
-     * Update a contact.
      *
-     * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.update
+     * @return LinkedContact
+     * @throws \Http\Client\Exception
+     */
+    public function addContact(Contact $contact)
+    {
+        $request = new ContactsAddRequest($this->normalize($contact));
+
+        return $this->handleRequest(
+            $request,
+            LinkedContact::class
+        );
+    }
+
+    /**
      * @param Contact $contact
-     * @return Contact
+     *
+     * @throws \Http\Client\Exception
      */
-    public function updateContact(Contact $contact) {
-        //@TODO.
+    public function updateContact(Contact $contact)
+    {
+        $request = new ContactsUpdateRequest($this->normalize($contact));
+
+        $this->apiClient->handle($request);
     }
 
     /**
-     * Delete a contact.
-     * @see https://developer.teamleader.eu/#/reference/crm/contacts/contacts.delete
-     * @throws ApiException
      * @param string $id
-     * @return bool
+     *
+     * @throws \Http\Client\Exception
      */
-    public function deleteContact($id) {
+    public function deleteContact($id)
+    {
         $request = new ContactsDeleteRequest($id);
-        $response = $this->sendRequest($request);
-        $this->getResponseBody($response);
-        if ($response->getStatusCode() != 204) {
-            return false;
-        }
-        return true;
+
+        $this->apiClient->handle($request);
     }
 
     /**
      * @param string $id
      * @param array $tags
+     *
+     * @throws \Http\Client\Exception
      */
-    public function tagContact($id, array $tags) {
-        //@TODO.
+    public function tagContact($id, array $tags)
+    {
+        $request = new ContactsTagRequest($id, $tags);
+
+        $this->apiClient->handle($request);
     }
 
     /**
      * @param string $id
      * @param array $tags
+     *
+     * @throws \Http\Client\Exception
      */
-    public function untagContact($id, array $tags) {
-        //@TODO.
+    public function untagContact($id, array $tags)
+    {
+        $request = new ContactsUntagRequest($id, $tags);
+
+        $this->apiClient->handle($request);
     }
 
+    /**
+     * @param string $id
+     * @param string $companyId
+     * @param string $position
+     * @param boolean $decisionMaker
+     *
+     * @throws \Http\Client\Exception
+     */
+    public function linkContactToCompany(
+        $id,
+        $companyId,
+        $position,
+        $decisionMaker
+    ) {
+        $request = new ContactsLinkToCompanyRequest(
+            $id,
+            $companyId,
+            $position,
+            $decisionMaker
+        );
+
+        $this->apiClient->handle($request);
+    }
+
+    /**
+     * @param string $id
+     * @param string $companyId
+     *
+     * @throws \Http\Client\Exception
+     */
+    public function unlinkContactFromCompany($id, $companyId)
+    {
+        $request = new ContactsUnlinkFromCompanyRequest(
+            $id,
+            $companyId
+        );
+
+        $this->apiClient->handle($request);
+    }
 }

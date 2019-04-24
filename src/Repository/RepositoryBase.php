@@ -2,43 +2,76 @@
 
 namespace Nascom\TeamleaderApiClient\Repository;
 
-use Http\Discovery\StreamFactoryDiscovery;
-use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClient;
-use Nascom\TeamleaderApiClient\Request\AbstractRequest;
-use Psr\Http\Message\ResponseInterface;
+use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClientInterface;
+use Nascom\TeamleaderApiClient\Request\RequestInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
+/**
+ * Class RepositoryBase
+ *
+ * @package Nascom\TeamleaderApiClient\Repository
+ */
 abstract class RepositoryBase
 {
-    /** @var  ApiClient */
+    /**
+     * @var ApiClientInterface
+     */
     protected $apiClient;
 
-    public function __construct($apiClient)
-    {
+    /**
+     * @var SerializerInterface&NormalizerInterface
+     */
+    protected $serializer;
+
+    /**
+     * RepositoryBase constructor.
+     *
+     * @param ApiClientInterface $apiClient
+     * @param SerializerInterface&NormalizerInterface $serializer
+     */
+    public function __construct(
+        ApiClientInterface $apiClient,
+        SerializerInterface $serializer
+    ) {
         $this->apiClient = $apiClient;
+        $this->serializer = $serializer;
     }
 
-    public function getApiClient() {
-        return $this->apiClient;
+    /**
+     * @param $data
+     * @param $type
+     *
+     * @return mixed
+     */
+    protected function deserialize($data, $type)
+    {
+        return $this->serializer->deserialize($data, $type, 'json');
     }
 
-    public function sendRequest(AbstractRequest $request) {
-
-        // Get the actual Request as understood by the given httpClient.
-        $httpRequest = $request->getRequest();
-
-        // Find out if we need to ship it with any payload and set it.
-        $reqBody = $request->getRequestBody();
-        if ($reqBody !== null) {
-            $requestBodyStream = StreamFactoryDiscovery::find()->createStream(json_encode($request->getRequestBody()));
-            // Must return a new object according to the documentation.
-            $httpRequest = $httpRequest->withBody($requestBodyStream);
-        }
-
-        // Execute and get the response.
-        return $this->getApiClient()->gethttpClient()->sendRequest($httpRequest);
+    /**
+     * @param $data
+     * @param array $context
+     *
+     * @return string|array
+     */
+    protected function normalize($data, $context = array())
+    {
+        return $this->serializer->normalize($data, 'json', $context);
     }
 
-    public function getResponseBody(ResponseInterface $response) {
-        return json_decode($response->getBody()->getContents(), true);
+    /**
+     * @param RequestInterface $request
+     * @param $responseClass
+     *
+     * @return mixed
+     * @throws \Http\Client\Exception
+     */
+    protected function handleRequest(RequestInterface $request, $responseClass)
+    {
+        $response = $this->apiClient->handle($request);
+        $responseBody = $response->getBody()->getContents();
+
+        return $this->deserialize($responseBody, $responseClass);
     }
 }
