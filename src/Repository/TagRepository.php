@@ -27,7 +27,6 @@ class TagRepository extends RepositoryBase
         $request = new TagsListRequest();
         $request->setPage($page);
         $request->setSort($sort);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

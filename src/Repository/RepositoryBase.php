@@ -4,6 +4,7 @@ namespace Nascom\TeamleaderApiClient\Repository;
 
 use Nascom\TeamleaderApiClient\Http\ApiClient\ApiClientInterface;
 use Nascom\TeamleaderApiClient\Request\RequestInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**

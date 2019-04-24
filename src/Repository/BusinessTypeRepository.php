@@ -21,7 +21,6 @@ class BusinessTypeRepository extends RepositoryBase
     public function listBusinessTypes($country = null)
     {
         $request = new BusinessTypesListRequest($country);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

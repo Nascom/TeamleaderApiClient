@@ -36,7 +36,6 @@ class ContactRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setSort($sort);
         $request->setPage($page);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -53,7 +52,6 @@ class ContactRepository extends RepositoryBase
     public function getContact($id)
     {
         $request = new ContactsInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -70,7 +68,6 @@ class ContactRepository extends RepositoryBase
     public function addContact(Contact $contact)
     {
         $request = new ContactsAddRequest($this->normalize($contact));
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -86,7 +83,6 @@ class ContactRepository extends RepositoryBase
     public function updateContact(Contact $contact)
     {
         $request = new ContactsUpdateRequest($this->normalize($contact));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -99,7 +95,6 @@ class ContactRepository extends RepositoryBase
     public function deleteContact($id)
     {
         $request = new ContactsDeleteRequest($id);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -113,7 +108,6 @@ class ContactRepository extends RepositoryBase
     public function tagContact($id, array $tags)
     {
         $request = new ContactsTagRequest($id, $tags);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -127,7 +121,6 @@ class ContactRepository extends RepositoryBase
     public function untagContact($id, array $tags)
     {
         $request = new ContactsUntagRequest($id, $tags);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -152,7 +145,6 @@ class ContactRepository extends RepositoryBase
             $position,
             $decisionMaker
         );
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -169,7 +161,6 @@ class ContactRepository extends RepositoryBase
             $id,
             $companyId
         );
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

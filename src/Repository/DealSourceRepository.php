@@ -22,7 +22,6 @@ class DealSourceRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

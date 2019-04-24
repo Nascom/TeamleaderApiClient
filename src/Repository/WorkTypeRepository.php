@@ -26,7 +26,6 @@ class WorkTypeRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setSort($sort);
         $request->setPage($page);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

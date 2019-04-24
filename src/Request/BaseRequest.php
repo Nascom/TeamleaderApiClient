@@ -27,6 +27,6 @@ abstract class BaseRequest implements RequestInterface
      */
     public function getMethod()
     {
-        return null;
+        return 'GET';
     }
 }

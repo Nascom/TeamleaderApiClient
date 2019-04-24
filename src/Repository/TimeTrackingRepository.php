@@ -34,7 +34,6 @@ class TimeTrackingRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -51,7 +50,6 @@ class TimeTrackingRepository extends RepositoryBase
     public function getTimeTracking($id)
     { // TODO Broken Teamleader -> 400, "Key id must be present"
         $request = new TimeTrackingInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -68,7 +66,6 @@ class TimeTrackingRepository extends RepositoryBase
     public function addTimeTracking(TimeTracking $timeTracking)
     {
         $request = new TimeTrackingAddRequest($this->normalize($timeTracking));
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -84,7 +81,6 @@ class TimeTrackingRepository extends RepositoryBase
     public function updateTimeTracking(TimeTracking $timeTracking)
     {
         $request = new TimeTrackingUpdateRequest($this->normalize($timeTracking));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -99,7 +95,6 @@ class TimeTrackingRepository extends RepositoryBase
     public function resumeTimeTracking($id, $startedAt = null)
     {
         $request = new TimeTrackingResumeRequest($id, $startedAt);
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -115,7 +110,6 @@ class TimeTrackingRepository extends RepositoryBase
     public function deleteTimeTracking($id)
     {
         $request = new TimeTrackingDeleteRequest($id);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

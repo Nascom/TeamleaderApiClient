@@ -26,7 +26,6 @@ class TimerRepository extends RepositoryBase
     public function currentTimer()
     {
         $request = new TimersCurrentRequest();
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -43,7 +42,6 @@ class TimerRepository extends RepositoryBase
     public function startTimer(Timer $timer)
     {
         $request = new TimersStartRequest($this->normalize($timer));
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -60,7 +58,6 @@ class TimerRepository extends RepositoryBase
     public function stopTimer(DateTime $endedAt = null)
     {
         $request = new TimersStopRequest($this->normalize($endedAt));
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -76,7 +73,6 @@ class TimerRepository extends RepositoryBase
     public function updateTimer(Timer $timer)
     {
         $request = new TimersUpdateRequest($this->normalize($timer));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

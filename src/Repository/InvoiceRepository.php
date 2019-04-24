@@ -33,7 +33,6 @@ class InvoiceRepository extends RepositoryBase
     public function getInvoice($id)
     {
         $request = new InvoicesInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest
         (
@@ -56,7 +55,6 @@ class InvoiceRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -74,7 +72,6 @@ class InvoiceRepository extends RepositoryBase
     public function downloadInvoice($id, $format)
     {
         $request = new InvoicesDownloadRequest($id, $format);
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -91,7 +88,6 @@ class InvoiceRepository extends RepositoryBase
     public function draftInvoice(Invoice $invoice)
     {
         $request = new InvoicesDraftRequest($this->normalize($invoice));
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -107,7 +103,6 @@ class InvoiceRepository extends RepositoryBase
     public function updateInvoice(Invoice $invoice)
     {
         $request = new InvoicesUpdateRequest($this->normalize($invoice));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -121,7 +116,6 @@ class InvoiceRepository extends RepositoryBase
     public function copyInvoice($id)
     {
         $request = new InvoicesCopyRequest($id);
-        $request->setMethod('POST');
 
         return $this->handleRequest($request, LinkedInvoice::class);
     }
@@ -135,7 +129,6 @@ class InvoiceRepository extends RepositoryBase
     public function bookInvoice($id, $on)
     {
         $request = new InvoicesBookRequest($id, $on);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -148,7 +141,6 @@ class InvoiceRepository extends RepositoryBase
     public function deleteInvoice($id)
     {
         $request = new InvoicesDeleteRequest($id);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -162,7 +154,6 @@ class InvoiceRepository extends RepositoryBase
     public function registerPayment($id, PaymentWithDate $paymentWithDate)
     {
         $request = new InvoicesRegisterPaymentRequest($id, $this->normalize($paymentWithDate));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

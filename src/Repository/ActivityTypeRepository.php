@@ -24,7 +24,6 @@ class ActivityTypeRepository extends RepositoryBase
         $request = new ActivityTypesListRequest();
         $request->setFilters($filters);
         $request->setPage($page);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

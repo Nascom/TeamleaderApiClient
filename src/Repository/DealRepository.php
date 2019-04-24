@@ -37,7 +37,6 @@ class DealRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setSort($sort);
         $request->setPage($page);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -54,7 +53,6 @@ class DealRepository extends RepositoryBase
     public function getDeal($id)
     {
         $request = new DealsInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -71,7 +69,6 @@ class DealRepository extends RepositoryBase
     public function addDeal(Deal $deal)
     {
         $request = new DealsCreateRequest($this->normalize($deal));
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -87,7 +84,6 @@ class DealRepository extends RepositoryBase
     public function updateDeal(Deal $deal)
     {
         $request = new DealsUpdateRequest($this->normalize($deal));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -101,7 +97,6 @@ class DealRepository extends RepositoryBase
     public function moveDeal($id, $phaseId)
     {
         $request = new DealsMoveRequest($id, $phaseId);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -114,7 +109,6 @@ class DealRepository extends RepositoryBase
     public function winDeal($id)
     {
         $request = new DealsWinRequest($id);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -129,7 +123,6 @@ class DealRepository extends RepositoryBase
     public function loseDeal($id, $reasonId = null, $extraInfo = null)
     {
         $request = new DealsLoseRequest($id, $reasonId, $extraInfo);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -142,7 +135,6 @@ class DealRepository extends RepositoryBase
     public function deleteDeal($id)
     {
         $request = new DealsDeleteRequest($id);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -159,7 +151,6 @@ class DealRepository extends RepositoryBase
         $request = new LostReasonsListRequest();
         $request->setPage($page);
         $request->setSort($sort);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

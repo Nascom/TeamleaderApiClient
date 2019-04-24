@@ -27,7 +27,6 @@ class CalendarEventRepository extends RepositoryBase
     public function getCalendarEvent($id)
     {
         $request = new CalendarEventsInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -49,7 +48,6 @@ class CalendarEventRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -66,7 +64,6 @@ class CalendarEventRepository extends RepositoryBase
     public function addCalendarEvent(CalendarEvent $calendarEvent)
     {
         $request = new CalendarEventsCreateRequest($this->normalize($calendarEvent));
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -82,7 +79,6 @@ class CalendarEventRepository extends RepositoryBase
     public function updateCalendarEvent(CalendarEvent $calendarEvent)
     {
         $request = new CalendarEventsUpdateRequest($this->normalize($calendarEvent));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -95,7 +91,6 @@ class CalendarEventRepository extends RepositoryBase
     public function cancelCalendarEvent($id)
     {
         $request = new CalendarEventsCancelRequest($id);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

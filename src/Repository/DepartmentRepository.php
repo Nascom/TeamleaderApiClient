@@ -24,7 +24,6 @@ class DepartmentRepository extends RepositoryBase
     public function getDepartment($id)
     {
         $request = new DepartmentsInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -44,7 +43,6 @@ class DepartmentRepository extends RepositoryBase
         $request = new DepartmentsListRequest();
         $request->setFilters($filters);
         $request->setSort($sort);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

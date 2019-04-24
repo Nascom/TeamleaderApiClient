@@ -22,7 +22,6 @@ class ProductCategoryRepository extends RepositoryBase
     {
         $request = new ProductCategoriesListRequest();
         $request->setFilters($filters);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

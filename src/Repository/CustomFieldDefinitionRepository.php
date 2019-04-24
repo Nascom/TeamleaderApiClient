@@ -23,7 +23,6 @@ class CustomFieldDefinitionRepository extends RepositoryBase
     public function getCustomFieldDefinition($id)
     {
         $request = new CustomFieldDefinitionInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -43,7 +42,6 @@ class CustomFieldDefinitionRepository extends RepositoryBase
         $request = new CustomFieldDefinitionListRequest();
         $request->setSort($sort);
         $request->setPage($page);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

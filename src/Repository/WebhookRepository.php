@@ -22,7 +22,6 @@ class WebhookRepository extends RepositoryBase
     public function listWebhooks()
     {
         $request = new WebhooksListRequest();
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -38,7 +37,6 @@ class WebhookRepository extends RepositoryBase
     public function registerWebhook(Webhook $webhook)
     {
         $request = new WebhooksRegisterRequest($this->normalize($webhook));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -51,7 +49,6 @@ class WebhookRepository extends RepositoryBase
     public function unRegisterWebHook(Webhook $webhook)
     {
         $request = new WebhooksUnregisterRequest($this->normalize($webhook));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

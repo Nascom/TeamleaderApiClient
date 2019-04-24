@@ -35,7 +35,6 @@ class ProjectRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -52,7 +51,6 @@ class ProjectRepository extends RepositoryBase
     public function getProject($id)
     {
         $request = new ProjectsInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -69,7 +67,6 @@ class ProjectRepository extends RepositoryBase
     public function addProject(Project $project)
     {
         $request = new ProjectsCreateRequest($this->normalize($project));
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -85,7 +82,6 @@ class ProjectRepository extends RepositoryBase
     public function updateProject(Project $project)
     {
         $request = new ProjectsUpdateRequest($this->normalize($project));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -98,7 +94,6 @@ class ProjectRepository extends RepositoryBase
     public function deleteProject($id)
     {
         $request = new ProjectsDeleteRequest($id);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -112,7 +107,6 @@ class ProjectRepository extends RepositoryBase
     public function addParticipant($id, LinkedParticipantWithRole $linkedParticipantWithRole)
     {
         $request = new ProjectsAddParticipantRequest($id, $this->normalize($linkedParticipantWithRole));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -126,7 +120,6 @@ class ProjectRepository extends RepositoryBase
     public function updateParticipant($id, LinkedParticipantWithRole $linkedParticipantWithRole)
     {
         $request = new ProjectsUpdateParticipantRequest($id, $this->normalize($linkedParticipantWithRole));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

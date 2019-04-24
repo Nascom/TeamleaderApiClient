@@ -29,7 +29,6 @@ class CompanyRepository extends RepositoryBase
     public function getCompany($id)
     {
         $request = new CompaniesInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -51,7 +50,6 @@ class CompanyRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -68,7 +66,6 @@ class CompanyRepository extends RepositoryBase
     public function addCompany(Company $company)
     {
         $request = new CompaniesAddRequest($this->normalize($company));
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -84,7 +81,6 @@ class CompanyRepository extends RepositoryBase
     public function updateCompany(Company $company)
     {
         $request = new CompaniesUpdateRequest($this->normalize($company));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -97,7 +93,6 @@ class CompanyRepository extends RepositoryBase
     public function deleteCompany($id)
     {
         $request = new CompaniesDeleteRequest($id);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -111,7 +106,6 @@ class CompanyRepository extends RepositoryBase
     public function tagCompany($id, array $tags)
     {
         $request = new CompaniesTagRequest($id, $tags);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
@@ -125,7 +119,6 @@ class CompanyRepository extends RepositoryBase
     public function untagCompany($id, array $tags)
     {
         $request = new CompaniesUntagRequest($id, $tags);
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }

@@ -17,11 +17,11 @@ class WorkOrderRepository extends RepositoryBase
      * @param WorkOrder $workOrder
      *
      * @return LinkedWorkOrder
+     * @throws \Http\Client\Exception
      */
     public function draftWorkOrder(WorkOrder $workOrder)
     {
         $request = new WorkOrdersDraftRequest($this->normalize($workOrder));
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,

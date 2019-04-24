@@ -22,7 +22,6 @@ class WithholdingTaxRateRepository extends RepositoryBase
     {
         $request = new WithholdingTaxRatesListRequest();
         $request->setFilters($filters);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

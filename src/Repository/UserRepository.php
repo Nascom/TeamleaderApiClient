@@ -22,7 +22,6 @@ class UserRepository extends RepositoryBase
     public function me()
     {
         $request = new UsersMeRequest();
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -39,7 +38,6 @@ class UserRepository extends RepositoryBase
     public function getUser($id)
     {
         $request = new UsersInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -61,7 +59,6 @@ class UserRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setSort($sort);
         $request->setPage($page);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

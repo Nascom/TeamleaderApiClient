@@ -22,7 +22,6 @@ class LevelTwoAreaRepository extends RepositoryBase
     public function listLevelTwoAreas($country, $language = null)
     {
         $request = new LevelTwoAreasListRequest($country, $language);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,

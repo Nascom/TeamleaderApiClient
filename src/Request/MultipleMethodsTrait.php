@@ -26,6 +26,6 @@ trait MultipleMethodsTrait {
      */
     public function getMethod()
     {
-        return $this->method;
+        return $this->method ?: parent::getMethod();
     }
 }

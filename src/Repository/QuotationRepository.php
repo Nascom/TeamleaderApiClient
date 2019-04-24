@@ -23,7 +23,6 @@ class QuotationRepository extends RepositoryBase
     public function getQuotation($id)
     {
         $request = new QuotationsInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -41,7 +40,6 @@ class QuotationRepository extends RepositoryBase
     public function downloadQuotation($id, $format)
     {
         $request = new QuotationsDownloadRequest($id, $format);
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,

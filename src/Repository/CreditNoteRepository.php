@@ -30,7 +30,6 @@ class CreditNoteRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setPage($page);
         $request->setSort($sort);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -47,7 +46,6 @@ class CreditNoteRepository extends RepositoryBase
     public function getCreditNote($id)
     {
         $request = new CreditNotesInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -65,7 +63,6 @@ class CreditNoteRepository extends RepositoryBase
     public function downloadCreditNote($id, $format)
     {
         $request = new CreditNotesDownloadRequest($id, $format);
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,

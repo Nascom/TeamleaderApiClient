@@ -31,7 +31,6 @@ class MilestoneRepository extends RepositoryBase
         $request->setFilters($filters);
         $request->setSort($sort);
         $request->setPage($page);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -48,7 +47,6 @@ class MilestoneRepository extends RepositoryBase
     public function getMilestone($id)
     {
         $request = new MilestonesInfoRequest($id);
-        $request->setMethod('GET');
 
         return $this->handleRequest(
             $request,
@@ -65,7 +63,6 @@ class MilestoneRepository extends RepositoryBase
     public function addMilestone(Milestone $milestone)
     {
         $request = new MilestonesCreateRequest($this->normalize($milestone));
-        $request->setMethod('POST');
 
         return $this->handleRequest(
             $request,
@@ -81,7 +78,6 @@ class MilestoneRepository extends RepositoryBase
     public function updateMilestone(Milestone $milestone)
     {
         $request = new MilestoneUpdateRequest($this->normalize($milestone));
-        $request->setMethod('POST');
 
         $this->apiClient->handle($request);
     }
