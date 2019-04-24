@@ -18,6 +18,8 @@ class ContactsUpdateRequest extends PostRequest
      * ContactsUpdateRequest constructor.
      *
      * @param array $contact
+     *
+     * @throws \Exception
      */
     public function __construct(array $contact)
     {
@@ -26,6 +28,12 @@ class ContactsUpdateRequest extends PostRequest
             $contact['updated_at'],
             $contact['web_url']
         );
+
+        // Strip the time of the birthdate string
+        if (isset($contact['birthdate'])) {
+            $date = new \DateTime($contact['birthdate']);
+            $contact['birthdate'] = $date->format('Y-m-d');
+        }
 
         $customFields = $contact['custom_fields'];
         $contact['custom_fields'] = [];

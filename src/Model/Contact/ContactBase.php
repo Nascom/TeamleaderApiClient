@@ -2,7 +2,6 @@
 
 namespace Nascom\TeamleaderApiClient\Model\Contact;
 
-use DateTime;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Email;
 use Nascom\TeamleaderApiClient\Model\Aggregate\PaymentTerm;
 use Nascom\TeamleaderApiClient\Model\Aggregate\Telephone;
@@ -51,7 +50,7 @@ abstract class ContactBase extends ModelBase
     private $gender;
 
     /**
-     * @var string
+     * @var \DateTime
      */
     private $birthdate;
 
@@ -76,12 +75,12 @@ abstract class ContactBase extends ModelBase
     private $paymentTerm;
 
     /**
-     * @var DateTime
+     * @var \DateTime
      */
     private $addedAt;
 
     /**
-     * @var DateTime
+     * @var \DateTime
      */
     private $updatedAt;
 
@@ -192,7 +191,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getBirthdate()
     {
@@ -200,9 +199,9 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param string $birthdate
+     * @param \DateTime $birthdate
      */
-    public function setBirthdate($birthdate)
+    public function setBirthdate(\DateTime $birthdate)
     {
         $this->birthdate = $birthdate;
     }
@@ -272,7 +271,7 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getAddedAt()
     {
@@ -280,15 +279,15 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param DateTime $addedAt
+     * @param \DateTime $addedAt
      */
-    public function setAddedAt(DateTime $addedAt)
+    public function setAddedAt(\DateTime $addedAt)
     {
         $this->addedAt = $addedAt;
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -296,9 +295,9 @@ abstract class ContactBase extends ModelBase
     }
 
     /**
-     * @param DateTime $updatedAt
+     * @param \DateTime $updatedAt
      */
-    public function setUpdatedAt(DateTime $updatedAt)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }

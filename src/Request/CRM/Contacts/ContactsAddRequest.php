@@ -18,10 +18,18 @@ class ContactsAddRequest extends PostRequest
      * ContactsAddRequest constructor.
      *
      * @param array $contact
+     *
+     * @throws \Exception
      */
     public function __construct(array $contact)
     {
         unset($contact['web_url']);
+
+        // Strip the time of the birthdate string
+        if (isset($contact['birthdate'])) {
+            $date = new \DateTime($contact['birthdate']);
+            $contact['birthdate'] = $date->format('Y-m-d');
+        }
 
         $this->body = $contact;
     }

@@ -29,7 +29,7 @@ abstract class ContactFieldDescriptionBase extends FieldDescriptionBase
             'telephones' => ['target_class' => Telephone::class.'[]'],
             'website',
             'gender',
-            'birthdate',
+            'birthdate' => ['target_class' => DateTime::class],
             'iban',
             'bic',
             'language',
