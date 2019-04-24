@@ -20,6 +20,18 @@ class Telephone
     private $type;
 
     /**
+     * Telephone constructor.
+     *
+     * @param string|null $number
+     * @param string|null $type
+     */
+    public function __construct($number = null, $type = null)
+    {
+      $this->number = $number;
+      $this->type = $type;
+    }
+
+    /**
      * @return string
      */
     public function getNumber()
