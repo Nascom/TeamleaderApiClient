@@ -94,6 +94,6 @@ class RefreshTokenMiddleware
     {
         $expiresAt = $token->getExpires() - self::EXPIRES_AT_DELTA;
 
-        return dump($expiresAt < time());
+        return $expiresAt < time();
     }
 }
