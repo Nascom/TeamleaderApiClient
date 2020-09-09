@@ -41,7 +41,7 @@ class DealsCreateRequest extends PostRequest
         }
 
         $this->body = array_filter($deal, function ($value) {
-            return !empty($value);
+            return isset($value);
         });
     }
 
