@@ -26,20 +26,22 @@ class DealsCreateRequest extends PostRequest
 
         unset($deal['lead']['contact_person']);
 
-        $customFields = $deal['custom_fields'];
-        $deal['custom_fields'] = [];
+        if (isset($deal['custom_fields'])) {
+            $customFields = $deal['custom_fields'];
+            $deal['custom_fields'] = [];
 
-        foreach ($customFields as $field) {
-            if (isset($field['value'])) {
-                $deal['custom_fields'][] = [
-                    'id' => $field['definition']['id'],
-                    'value' => $field['value'],
-                ];
+            foreach ($customFields as $field) {
+                if (isset($field['value'])) {
+                    $deal['custom_fields'][] = [
+                        'id' => $field['definition']['id'],
+                        'value' => $field['value'],
+                    ];
+                }
             }
         }
 
         $this->body = array_filter($deal, function ($value) {
-            return !empty($value);
+            return isset($value);
         });
     }
 
