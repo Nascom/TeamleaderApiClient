@@ -25,6 +25,11 @@ abstract class DealBase extends ModelBase
     /**
      * @var string
      */
+    private $summary;
+
+    /**
+     * @var string
+     */
     private $reference;
 
     /**
@@ -111,6 +116,22 @@ abstract class DealBase extends ModelBase
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param string $reference
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
     }
 
     /**

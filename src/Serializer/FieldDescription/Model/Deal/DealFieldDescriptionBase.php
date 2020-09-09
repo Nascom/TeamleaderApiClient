@@ -24,6 +24,7 @@ abstract class DealFieldDescriptionBase extends FieldDescriptionBase
         return [
             'id',
             'title',
+            'summary',
             'reference',
             'status',
             'lead' => ['target_class' => Lead::class],
