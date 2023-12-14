@@ -69,7 +69,11 @@ class ApiClient implements ApiClientInterface
      */
     public function handle(RequestInterface $request)
     {
-        $options = [];
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+        ];
         $body = $request->getBody();
 
         if ($request instanceof FilterInterface) {
